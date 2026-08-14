@@ -1,0 +1,2226 @@
+<title>The Walkthrough</title>
+<style>
+  :root {
+    --ground: #f4f6f1;
+    --panel: #ffffff;
+    --sunk: #e8ece2;
+    --ink: #171b15;
+    --soft: #4d5548;
+    --faint: #79806f;
+    --rule: #d3d9c9;
+    --hair: #e4e8dc;
+    --brand: #2e7d32;
+    --brand-deep: #1b5e20;
+    --wash: #e4efe2;
+    --amber: #8a5a00;
+    --amber-wash: #f6ecd8;
+    --focus: #1b5e20;
+    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --ground: #101309;
+      --panel: #181c14;
+      --sunk: #1f241a;
+      --ink: #e9ede1;
+      --soft: #aeb6a3;
+      --faint: #828a76;
+      --rule: #333a2b;
+      --hair: #262c1f;
+      --brand: #8ecb8f;
+      --brand-deep: #b0e0b0;
+      --wash: #1d2a1b;
+      --amber: #dba746;
+      --amber-wash: #2a2211;
+      --focus: #8ecb8f;
+    }
+  }
+  :root[data-theme='dark'] {
+    --ground: #101309;
+    --panel: #181c14;
+    --sunk: #1f241a;
+    --ink: #e9ede1;
+    --soft: #aeb6a3;
+    --faint: #828a76;
+    --rule: #333a2b;
+    --hair: #262c1f;
+    --brand: #8ecb8f;
+    --brand-deep: #b0e0b0;
+    --wash: #1d2a1b;
+    --amber: #dba746;
+    --amber-wash: #2a2211;
+    --focus: #8ecb8f;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.62;
+  }
+  h1,
+  h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    line-height: 1.14;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+
+  .shell {
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.1rem, 4vw, 3rem);
+  }
+
+  .top {
+    padding-block: clamp(3rem, 7vw, 5.5rem) 2.5rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brand);
+  }
+  .top h1 {
+    font-size: clamp(2.3rem, 6vw, 3.9rem);
+    margin-block: 0.55rem 0.9rem;
+    max-width: 16ch;
+  }
+  .top p {
+    max-width: 44rem;
+    font-size: 1.2rem;
+    color: var(--soft);
+  }
+
+  .layout {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    grid-template-columns: 1fr;
+    padding-block: clamp(2rem, 5vw, 3.5rem) 5rem;
+  }
+  @media (min-width: 62rem) {
+    .layout {
+      grid-template-columns: 17rem 1fr;
+      align-items: start;
+    }
+  }
+
+  .rail {
+    position: sticky;
+    top: 1.5rem;
+  }
+  .rail h2 {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 0.85rem;
+  }
+  .rail ol {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .rail a {
+    display: grid;
+    grid-template-columns: 2.1rem 1fr auto;
+    align-items: baseline;
+    gap: 0.15rem;
+    padding: 0.55rem 0.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-top: 1px solid var(--hair);
+    font-size: 0.92rem;
+  }
+  .rail li:last-child a {
+    border-bottom: 1px solid var(--hair);
+  }
+  .rail a:hover {
+    color: var(--brand-deep);
+  }
+  .rail a:hover .rail__t {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  .rail__n {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--brand);
+  }
+  .rail__c {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--faint);
+  }
+
+  .stage + .stage {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+  }
+  .stage__head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 0.4rem;
+  }
+  .stage__n {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--brand);
+    padding-top: 0.42rem;
+    letter-spacing: 0.06em;
+  }
+  .stage__head h2 {
+    font-size: clamp(1.45rem, 3.2vw, 2rem);
+  }
+  .stage__lede {
+    color: var(--soft);
+    margin-top: 0.28rem;
+    font-size: 0.98rem;
+  }
+
+  .qs {
+    display: flex;
+    flex-direction: column;
+  }
+  .q {
+    border-bottom: 1px solid var(--hair);
+  }
+  .q summary {
+    display: grid;
+    grid-template-columns: 1.4rem 1fr;
+    gap: 0.55rem;
+    align-items: start;
+    padding: 1rem 0.2rem;
+    font-size: 1.06rem;
+    font-weight: 600;
+  }
+  .q summary:hover {
+    color: var(--brand-deep);
+  }
+  .q__mark {
+    position: relative;
+    width: 1rem;
+    height: 1.55rem;
+  }
+  .q__mark::before,
+  .q__mark::after {
+    content: '';
+    position: absolute;
+    background: var(--brand);
+    transition: transform 0.18s ease;
+  }
+  .q__mark::before {
+    inset-inline-start: 0;
+    top: 0.72rem;
+    width: 0.85rem;
+    height: 2px;
+  }
+  .q__mark::after {
+    inset-inline-start: 0.415rem;
+    top: 0.3rem;
+    width: 2px;
+    height: 0.85rem;
+  }
+  .q[open] .q__mark::after {
+    transform: scaleY(0);
+  }
+  .q__body {
+    padding: 0 0.2rem 1.35rem 1.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    max-width: 42rem;
+    color: var(--soft);
+  }
+  .q__body p {
+    font-size: 1rem;
+  }
+
+  .flag {
+    background: var(--amber-wash);
+    border-inline-start: 3px solid var(--amber);
+    padding: 0.75rem 0.95rem;
+    border-radius: 0 3px 3px 0;
+  }
+  .flag__tag {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.3rem;
+  }
+  .flag p {
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+
+  .foot {
+    border-top: 1px solid var(--rule);
+    padding-block: 2rem 4rem;
+  }
+  .foot p {
+    font-size: 0.88rem;
+    color: var(--faint);
+    max-width: 44rem;
+  }
+</style>
+
+<div class="shell">
+  <header class="top">
+    <p class="eyebrow">GMZ Landscaping &middot; Design, Build, Maintenance</p>
+    <h1>How a project actually works</h1>
+    <p>
+      From the first phone call to the season after the crew leaves. Read it in order if you are
+      just starting out, or jump to the stage you are at.
+    </p>
+  </header>
+
+  <div class="layout">
+    <nav class="rail" aria-label="Stages">
+      <h2>The stages</h2>
+      <ol>
+        <li>
+          <a href="#getting-started"
+            ><span class="rail__n">01</span><span class="rail__t">Getting started</span
+            ><span class="rail__c">8</span></a
+          >
+        </li>
+        <li>
+          <a href="#planning-budget"
+            ><span class="rail__n">02</span
+            ><span class="rail__t">Your concept and planning budget</span
+            ><span class="rail__c">8</span></a
+          >
+        </li>
+        <li>
+          <a href="#design"
+            ><span class="rail__n">03</span><span class="rail__t">The design</span
+            ><span class="rail__c">8</span></a
+          >
+        </li>
+        <li>
+          <a href="#firm-price"
+            ><span class="rail__n">04</span><span class="rail__t">Your firm price</span
+            ><span class="rail__c">5</span></a
+          >
+        </li>
+        <li>
+          <a href="#building"
+            ><span class="rail__n">05</span><span class="rail__t">Building it</span
+            ><span class="rail__c">8</span></a
+          >
+        </li>
+        <li>
+          <a href="#after"
+            ><span class="rail__n">06</span><span class="rail__t">After the build</span
+            ><span class="rail__c">6</span></a
+          >
+        </li>
+        <li>
+          <a href="#maintenance"
+            ><span class="rail__n">07</span><span class="rail__t">Maintenance</span
+            ><span class="rail__c">9</span></a
+          >
+        </li>
+        <li>
+          <a href="#bridge"
+            ><span class="rail__n">08</span><span class="rail__t">Between the two</span
+            ><span class="rail__c">4</span></a
+          >
+        </li>
+      </ol>
+    </nav>
+    <main>
+      <section class="stage" id="getting-started" aria-labelledby="h-getting-started">
+        <div class="stage__head">
+          <span class="stage__n">01</span>
+          <div>
+            <h2 id="h-getting-started">Getting started</h2>
+            <p class="stage__lede">Before you have spoken to anyone.</p>
+          </div>
+        </div>
+        <div class="qs">
+          <details class="q" id="does-site-visit-cost">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Does the site visit cost anything?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                No. The first site visit is free. Someone comes out, walks the property with you,
+                looks at access, grade, drainage and what is already growing there, and talks
+                through what you want. Booking it commits you to nothing.
+              </p>
+              <p>
+                Two things are worth knowing before it happens. The visit is a working conversation
+                rather than a sales call, and it is also where GMZ works out whether this is a
+                project we are the right contractor for, so expect direct questions about scope,
+                timing and what you are planning to spend. And a visit is not a bid. What can come
+                out of it is a shared understanding of the work and, when it makes sense, a
+                complimentary concept and a planning range to think about.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm the site consultation stays free and that this can be stated publicly. It
+                  is free today but nothing is written down. Also decide whether a charge applies to
+                  properties outside the regular service area, or to a second trip on the same lead.
+                  Note that the free-visit statement also appears in &#x27;Is the concept free&#x27;
+                  and &#x27;Ballpark over the phone&#x27;; if it changes, all three change together.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="how-soon-can-you-come">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>How soon can someone come out and look at my yard?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                It depends on the week, and you will get an actual date rather than a promise that
+                someone will call you back. Tell us your town and what you want done, and you will
+                hear what is genuinely open. Landscape work here runs on the weather, so spring
+                books up faster than late fall.
+              </p>
+              <p>
+                If your project has a date attached to it, say so on that first call: an event, a
+                house going on the market, a permit clock, a school year, a family visit. It changes
+                what can honestly be promised, and it is far better known at the start than
+                discovered halfway through.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Decide whether to publish a typical scheduling window for site visits, for example
+                  &quot;usually within two weeks.&quot; No such commitment exists today, so this
+                  answer promises a real date on the call instead of a lead time. If a window is
+                  published it has to be one the schedule can actually hold.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="which-towns-do-you-serve">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Which towns do you work in?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                GMZ works the San Francisco Peninsula and is based in Redwood City. The towns we
+                work in regularly are Redwood City, Atherton, Menlo Park, Palo Alto, Woodside, San
+                Carlos, Belmont, Portola Valley, Los Altos and Hillsborough.
+              </p>
+              <p>
+                If you are near that list but not on it, ask. For a build project a little extra
+                distance is usually workable, because the crew parks once in the morning and works
+                the same ground all day. For maintenance it matters more: maintenance runs on
+                fixed-day routes, so a property well away from an existing route may not be one we
+                can serve properly. We would rather tell you that than take the account and become
+                the contractor who keeps arriving late.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="what-size-projects">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What size projects do you take? Is my job too small?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                There is no published minimum job size, so ask about your job rather than talk
+                yourself out of calling. GMZ does full residential design and build work: planting,
+                irrigation, drainage, patios, walls, fences and lighting. It also runs a maintenance
+                book of weekly and biweekly accounts, so work that is too small to mobilize a build
+                crew for is often better handled as a maintenance visit or a short service call.
+              </p>
+              <p>
+                What decides it is not square footage. It is whether the work justifies bringing a
+                crew, a truck and equipment to your property at all. An afternoon of pruning and a
+                new patio are different kinds of job, not different sizes of the same job, and they
+                are priced and contracted differently.
+              </p>
+              <p>
+                Say what you want done on the first call and you will get a straight answer,
+                including &quot;that is not the right fit for us&quot; if that is the answer. A
+                contractor who takes a job that is wrong for them serves it badly, and you feel it
+                in the schedule.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Set the &quot;projects typically start at&quot; figure for design/build and
+                  confirm whether it gets published. No number exists today and this answer
+                  deliberately names none. Also confirm the routing rule for small work: sent to
+                  maintenance, taken as a one-off service call, or declined.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="licensed-and-insured">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Are you licensed and insured?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Yes. GMZ Landscaping Inc. is a licensed California landscape contractor, and our
+                CSLB license number is published on this site so you can check it yourself. Look it
+                up on the Contractors State License Board website, which shows the license status,
+                the classification, and the bond and workers&#x27; compensation records on file. It
+                is free, it takes about a minute, and it is worth doing for every contractor you are
+                considering, not only this one.
+              </p>
+              <p>
+                If you need a certificate of insurance for an HOA, a property manager or your own
+                file, ask and one will be sent to you. We work out of a P.O. Box rather than a
+                storefront, which is normal for a landscape contractor; the license number is the
+                thing to verify us by.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm what insurance language may be published. The only confirmed credential is
+                  the CSLB license, so the draft&#x27;s flat claim that GMZ &quot;carries general
+                  liability and workers&#x27; compensation coverage&quot; has been removed and
+                  replaced with the public license record plus a certificate on request. Confirm
+                  current general liability and workers&#x27; compensation status, the carrier, and
+                  whether a certificate can be promised on request, before any coverage sentence
+                  goes back on the site. The license number itself stays in site data and is not
+                  retyped into this answer.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="what-happens-on-first-call">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What actually happens when I call?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                A short conversation, then a decision about whether a site visit makes sense for
+                both of us. Expect to be asked what you want done, where the property is, when you
+                would like it done, who else is part of the decision, and what you are planning to
+                spend. That last question is the one people brace for, and it is asked as much for
+                your benefit as ours: it is how you find out early whether GMZ is in the right range
+                for your project, rather than after a design is already underway.
+              </p>
+              <p>
+                You will not get a price on that call. Landscape work is priced off a measured site
+                and chosen materials, and anyone pricing your yard over the phone is guessing at
+                both. What you can get on the call is whether this is work GMZ does, whether your
+                property is in the area we serve, and a date to walk it.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="do-i-need-drawings-first">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Do I need to have drawings or a plan before I call you?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                No. Most people call with photos and a rough idea, and that is enough to start. If
+                you already have drawings from an architect or a landscape designer, GMZ can build
+                to them; bring them to the visit and you will get an honest read on whether they are
+                buildable as drawn and what is missing. If you have nothing, GMZ designs as well as
+                builds, and the design step is its own paid stage under its own signed agreement.
+              </p>
+              <p>
+                What is needed before a firm price is a measured site and decided materials, and
+                that is exactly what the design step produces. It is also why a number given before
+                that point is a planning range rather than a bid. Nobody can price a yard accurately
+                from photographs, and a contractor who says otherwise is guessing with your money.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="what-to-send-before-visit">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What should I send you before you come out?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Photos and a few plain facts, sent ahead, make the visit much more useful. Send
+                photos of the whole area from several angles, including the parts you are unhappy
+                with, and anything you have already collected: a plot plan or survey, drawings from
+                an architect or designer, HOA rules that apply to your yard, and pictures of yards
+                you like.
+              </p>
+              <p>
+                Two details are worth writing down because they change the work more than people
+                expect. First, how a truck and a small machine would reach the work area, and how
+                wide the narrowest gate is. Second, whether water collects anywhere after rain. Also
+                useful: what you want kept, and what you have already decided versus what is still
+                open.
+              </p>
+              <p>
+                For a maintenance account it is simpler. Photos of the property, whether there is an
+                irrigation system and roughly how it is set up, and which day of the week suits you.
+                None of this is required. If you would rather just talk, call and bring the rest to
+                the visit.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section class="stage" id="planning-budget" aria-labelledby="h-planning-budget">
+        <div class="stage__head">
+          <span class="stage__n">02</span>
+          <div>
+            <h2 id="h-planning-budget">Your concept and planning budget</h2>
+            <p class="stage__lede">The first numbers, and why they are a range.</p>
+          </div>
+        </div>
+        <div class="qs">
+          <details class="q" id="why-a-range-not-a-price">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Why won&#x27;t you just give me a price?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Because nobody has measured your property yet, and a single number before that would
+                be a guess dressed up as a commitment. The first number you get from GMZ is a range.
+                It is built from a walk of the site, photos and rough dimensions, not from a
+                measured survey and a final materials list. Those two things move a landscape price
+                more than anything else, and neither is settled at this point.
+              </p>
+              <p>
+                Here is how much they move it. The surface material you choose can move the biggest
+                part of the price a long way, and the same patio in a different material is a
+                different project financially. What sits under the existing surface, and whether a
+                truck can reach the back of the property, changes the labor before a single thing is
+                installed. We can tell you the honest window your project sits in today. We cannot
+                hand you a fixed price for work that has not been drawn or measured, and a number
+                given before that work is done usually turns into a change order later.
+              </p>
+              <p>
+                The number tightens as the site is measured and the materials are chosen. Measuring
+                costs you nothing.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="ballpark-over-the-phone">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Can you just give me a ballpark over the phone?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Not a number, no. A price given by someone who has not seen your property is either
+                useless or misleading, and it tends to become the figure you remember for the rest
+                of the project. We would rather not start you there.
+              </p>
+              <p>
+                What a phone call is good for is deciding quickly whether we are a fit. If what you
+                are describing and what you want to spend are not in the same neighborhood, we will
+                say so on the call rather than after the drive. If they are, we book a visit. The
+                visit is free, and it is where the useful conversation actually happens.
+              </p>
+              <p>
+                If you are asking about maintenance rather than a build, the answer is the same for
+                the same reason: we walk the property first. Maintenance is priced separately from
+                construction work and runs under its own service agreement, with its own schedule
+                and its own terms.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm two things: (1) whether GMZ publishes a &quot;projects start at&quot;
+                  figure so callers can self qualify before the call, and what that figure is, since
+                  none exists today and none may be invented; (2) whether the site consultation
+                  stays free, which this answer states outright.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="how-wide-is-the-range">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>How wide is the range going to be, and why so wide?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                It is wide, and we would rather be plain about that than pretend otherwise. At the
+                concept stage the top of the range sits well above the bottom, because the two
+                things that decide the final number have not happened yet: nobody has measured the
+                site, and you have not chosen the materials. Both of those are real work, and doing
+                them properly is what closes the gap.
+              </p>
+              <p>
+                The range narrows in steps. It narrows when we measure. It narrows when you pick a
+                surface material and a plant palette. It narrows when we know whether the existing
+                surface comes out and where the debris goes, and again when current prices come back
+                on the specific items in your plan. Once there is a measured plan and selected
+                materials, the number is tight enough to commit to, and that is the point at which
+                we put a fixed price in front of you.
+              </p>
+              <p>
+                We will also tell you which parts of your range are the loose ones. Usually it is
+                demolition, drainage and anything underground, because what is beneath the surface
+                is unknown until somebody digs.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="planning-budget-is-not-a-quote">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Is the planning budget a quote?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                No. It is a planning number, not a bid and not a fixed price, and the document says
+                exactly that on its face. GMZ calls it a Preliminary Budget and Scope
+                Acknowledgment. Its job is to tell you what to plan around, and to put the scope in
+                writing so we are both looking at the same project.
+              </p>
+              <p>
+                What it is: a range for the work described, broken into the areas of your property
+                so you can see where the money sits. What it is not: an offer we are bound to, a
+                price we can hold, or a promise about work nobody has measured. A number you can
+                sign comes later, after a measured plan and chosen materials.
+              </p>
+              <p>
+                We work this way because a planning budget is the only honest thing to hand someone
+                who needs to know what to expect before they have bought a design. The alternative
+                is a firm-sounding number written over an unmeasured yard, and the person holding
+                the difference in that arrangement is you.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="does-accepting-commit-me">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>If I accept the planning budget, what have I committed to?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Nothing. Acknowledging the planning budget is not a contract to build and it does
+                not obligate you to spend anything. You are confirming three things: that you have
+                seen the scope we described, that you understand the number is a planning range
+                rather than a fixed price, and that you would like to keep going.
+              </p>
+              <p>
+                It exists to prevent one specific problem, which is two people remembering the scope
+                differently three months later. Everything we priced is listed. Everything we did
+                not price is listed as well, and that second list is the one worth reading slowly,
+                because it is where most disputes in this trade actually live.
+              </p>
+              <p>
+                The next commitment is a separate document and it is a real one: the design
+                agreement, which is signed and paid. The construction contract is separate again,
+                and comes after that. Nothing before those two obligates you to build anything.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="is-the-concept-free">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Is the concept really free, or is there a catch?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                It is complimentary today, and there is no catch attached to it. Before you buy any
+                design work, GMZ will walk your property, put together a concept for what could
+                happen there, and give you a planning budget to go with it. You are not billed for
+                that and you are not obliged to go further.
+              </p>
+              <p>
+                What is not free is the design itself. The measured plans, the material selections
+                and the drawings a crew can actually build from are paid work, under their own
+                signed design agreement. That step is priced as a percentage of construction, in a
+                band of 10 to 15 percent. The design fee is not credited back against the
+                construction price, and we say so plainly because most people assume the opposite.
+                It pays for design time, which is real time by real people, and it has value whether
+                or not GMZ ends up building the project.
+              </p>
+              <p>
+                The concept exists so you can decide whether this project is worth designing at all.
+                If the answer is no, you have spent nothing.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm two things before this publishes: (1) whether the concept and planning
+                  budget stay complimentary or become a small paid first phase of the design
+                  agreement, and if paid, the fee, since no figure exists and none may be invented;
+                  (2) whether the site consultation stays free, which this answer also states. This
+                  is the canonical decision on the free concept and free visit: the same statements
+                  appear in &#x27;Does the site visit cost anything&#x27;, &#x27;Ballpark over the
+                  phone&#x27;, &#x27;Why do I have to pay for a design&#x27; and &#x27;Maintenance
+                  client, new project&#x27;, and all of them move together.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="budget-higher-than-expected">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What if the budget comes back higher than I was expecting?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Say so, and tell us the number you had in mind. That is a normal conversation and it
+                is far better to have it now than after a design has been drawn to a scope you
+                cannot fund. A planning budget that lands above your expectation is doing its job:
+                it found the gap while closing it is still cheap.
+              </p>
+              <p>
+                There are three usual ways to close it. The first is scope: take something out or
+                make it smaller. A smaller paved area, fewer built structures, planting instead of a
+                hard surface. The second is material choice, which is the biggest single lever on
+                most projects, because the same design in a different surface material is a
+                different price. The third is phasing the work over time, which we cover separately.
+              </p>
+              <p>
+                What we will not do is quietly thin the work to hit a number. Cutting base depth,
+                drainage or soil preparation makes a job cheaper on paper and more expensive in a
+                few years, and you are the one who pays that second bill. If a scope genuinely
+                cannot be built properly for your budget, we would rather tell you than take the
+                job.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="can-we-phase-the-work">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Can we do the project in phases to spread the cost?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Yes, and it is common. Phasing is a real option rather than a consolation prize. It
+                works best when every phase is drawn on one plan at the start, so that the property
+                is not built twice.
+              </p>
+              <p>
+                The order matters more than the split does. Grading, drainage and anything that has
+                to run under a patio or a walkway goes first, even when the visible part of that
+                area is years away. Sleeves for irrigation and lighting are inexpensive while the
+                ground is open and costly once there is concrete over them. Planting often makes a
+                good later phase, since plants fill in over time regardless of when they go in.
+              </p>
+              <p>
+                Two things to know before you plan around it. Each phase is its own agreement with
+                its own price, and that price is set when the phase is priced rather than years in
+                advance. Phasing also costs somewhat more in total than doing the same work at once,
+                because the setup and cleanup happen more than once. It is still the right answer
+                for plenty of projects.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section class="stage" id="design" aria-labelledby="h-design">
+        <div class="stage__head">
+          <span class="stage__n">03</span>
+          <div>
+            <h2 id="h-design">The design</h2>
+            <p class="stage__lede">What you are buying, and what it does for the price.</p>
+          </div>
+        </div>
+        <div class="qs">
+          <details class="q" id="why-pay-for-design">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span
+                >Why do I have to pay for a design? Can&#x27;t you just draw something up?</span
+              >
+            </summary>
+            <div class="q__body">
+              <p>
+                Because the design is real work, and it is the part that makes everything after it
+                accurate. Before you pay anything, you get a complimentary concept and a written
+                planning budget: a range to plan around, not a bid. That is enough to decide whether
+                the project is worth going further with. It is not enough to build from.
+              </p>
+              <p>
+                The paid design step is what turns that concept into something buildable. Your
+                property is measured in detail and drawn to scale. Levels, drainage and access get
+                worked out. Plants and materials get chosen and drawn in place. Those hours are the
+                same hours whether we end up building the project or not, so they are sold as their
+                own step rather than folded into a construction price you have not agreed to yet.
+              </p>
+              <p>
+                Design is covered by its own signed agreement, separate from any construction
+                contract. You see the scope and the fee in writing before you commit to it.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="what-does-design-cost">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>How much do you charge for design?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Design is priced as a percentage of the construction price, and the band is 10 to 15
+                percent. That is a common way landscape design is priced, and it is the same band
+                printed on the planning budget you receive before any of this is decided, so you can
+                work out roughly what design will run as soon as you have a construction range.
+              </p>
+              <p>
+                Where a project lands inside that band depends on how much design there is to do:
+                how many separate areas are in scope, how much grading and drainage has to be
+                resolved, how much irrigation, and whether anything needs outside review. A single
+                planting bed and a whole-property renovation are not the same amount of drawing.
+              </p>
+              <p>
+                We do not put a design fee in front of you before there is a construction range to
+                apply it to, which is why the complimentary concept and the planning budget come
+                first. The fee, and exactly what it covers, go into the design agreement before you
+                sign it.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="design-fee-credited-to-construction">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span
+                >If I hire you to build it, does the design fee come off the construction
+                price?</span
+              >
+            </summary>
+            <div class="q__body">
+              <p>
+                No. The design fee is not credited toward construction, and it is not refunded when
+                you build with us. We say that plainly and early because plenty of clients expect it
+                to be credited, and contract signing is the worst possible moment to find out
+                otherwise.
+              </p>
+              <p>
+                The reason is straightforward. Design and construction are two separate pieces of
+                work, and each carries its own price. The design hours are spent before a shovel
+                moves, and they are spent whether or not you go ahead. If the fee were credited, the
+                construction price would simply have to carry those hours somewhere you could not
+                see them. We would rather show you both numbers and let you judge each one on its
+                own.
+              </p>
+              <p>
+                What the fee buys is a plan drawn from real measurements of your property, and a
+                construction price built from that plan instead of from a guess.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="what-you-get-and-who-owns-it">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What do I actually get for the design fee, and do I own the drawings?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                You get a measured plan set for your property: a site plan drawn to scale from real
+                measurements, the layout of paving, walls, steps and beds, a planting plan showing
+                what goes where, irrigation and drainage resolved, and materials specified closely
+                enough to price and build from. You also get the firm construction number that comes
+                out of those plans, which is something a concept sketch cannot produce.
+              </p>
+              <p>
+                On ownership, the position we recommend and expect to put in writing is this: you
+                receive the drawings and are free to keep them and use them for your property, and
+                GMZ retains the copyright in the drawings themselves. That language is being
+                finalized now.
+              </p>
+              <p>
+                So ask to see the ownership clause in the design agreement before you sign, and if
+                it is not in there yet, ask for it. A design you paid for should come with a written
+                answer about what you can do with it.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm the ownership and copyright language for design deliverables: whether the
+                  client receives the drawings outright, whether GMZ retains copyright, and what use
+                  of them is permitted. Nothing is written today, and this must match whatever is
+                  decided about taking drawings to another contractor.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="how-long-does-design-take">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>How long does the design take?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                For a straightforward residential project, weeks rather than months. That is our
+                recommended position and we are in the middle of committing it to writing, so treat
+                it as an honest expectation rather than a published term.
+              </p>
+              <p>
+                The clock starts when your property is measured, not when you sign. What drives it
+                after that is mostly on the decision side: how many areas are in scope, how quickly
+                plant and material selections get settled, and whether anything needs outside
+                review. A design where the choices land quickly moves quickly, and one that waits on
+                a decision waits.
+              </p>
+              <p>
+                Ask for a target presentation date to be written into the design agreement. Any date
+                we give you should be one you can hold us to.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm the design timeline GMZ will state publicly: whether it is published as a
+                  range, written as a per-project target date in each design agreement, or not
+                  published at all. No term exists today.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="dont-like-the-first-design">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What if I don&#x27;t like the first design you show me?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                You say so, and we revise it. Nobody gets a yard right on the first try, and the
+                first presentation exists to be reacted to. We would far rather hear that a plan is
+                wrong on paper than watch it get built.
+              </p>
+              <p>
+                How many rounds of revision are included is being settled now. What we recommend,
+                and what we would write, is two rounds included in the design fee, with anything
+                beyond that priced in writing before we start on it. There is a distinction worth
+                naming: moving a patio, changing a plant palette or reworking a bed line is a
+                revision. Adding a whole new area of the property, or changing what the project is,
+                is new scope, and it moves both the design and the construction number.
+              </p>
+              <p>
+                Ask what your agreement includes before you sign it, and get the answer in the
+                document rather than in conversation.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm how many revision rounds are included in the design fee, what counts as a
+                  revision versus new scope, and how additional rounds are handled and priced.
+                  Nothing is written today; the recommended position above is two included rounds.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="take-drawings-to-another-contractor">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>If I pay for the design, can I take the drawings to another contractor?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Our recommended position is yes, once the design fee is paid in full and with the
+                drawings used for your own property only. That is not settled policy yet, so ask for
+                it to be stated in the design agreement. We would rather earn the construction work
+                on price and workmanship than by holding your plans.
+              </p>
+              <p>
+                Two things are worth knowing before you do it. A price from another contractor on
+                the same drawings is often not the same thing as ours: the specification, the
+                material grades and how the work is sequenced all move the number, so compare what
+                is actually included rather than just the totals. And whoever builds it carries the
+                workmanship for it. We cannot stand behind construction we did not do.
+              </p>
+              <p>
+                If another price comes back materially lower, tell us and ask why. There is almost
+                always a nameable reason, and it is much better to find it before the work starts
+                than after.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Sensitive. Confirm whether clients may take GMZ design drawings to another
+                  contractor for pricing or construction, and on what conditions: design fee paid in
+                  full, use limited to the client&#x27;s own property, and whether GMZ&#x27;s name
+                  comes off the drawings. Must be consistent with the ownership and copyright
+                  language in the design agreement.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="build-to-another-designers-plans">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span
+                >I already have plans from a landscape architect. Will you build from them?</span
+              >
+            </summary>
+            <div class="q__body">
+              <p>
+                Yes. Building to someone else&#x27;s plans is one of the normal ways a project comes
+                to us, alongside designing it ourselves. There is no design fee in that case,
+                because we are not doing the design.
+              </p>
+              <p>
+                What we need from you is the full set: the plan, the plant list, and any grading,
+                drainage or construction details that exist. It helps considerably if whoever drew
+                it is reachable for questions. We walk the property and check the drawings against
+                the ground before we price anything. Where a plan does not match the site, and that
+                does happen, you hear about it then, not halfway through construction.
+              </p>
+              <p>
+                One line worth being clear on: the person who designed it carries the design, and we
+                carry the build. If a detail will not work as drawn, we will say so and propose a
+                fix rather than build something we think is wrong and leave you with it.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section class="stage" id="firm-price" aria-labelledby="h-firm-price">
+        <div class="stage__head">
+          <span class="stage__n">04</span>
+          <div>
+            <h2 id="h-firm-price">Your firm price</h2>
+            <p class="stage__lede">The number you can commit to, and what sits behind it.</p>
+          </div>
+        </div>
+        <div class="qs">
+          <details class="q" id="whats-included-whats-excluded">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What&#x27;s actually included in the price, and what isn&#x27;t?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Both are listed in writing in the bid, before you sign anything. Included is every
+                item of work we have priced: the materials and their level, the labor, the
+                equipment, the haul-off and the daily site services. Excluded is named just as
+                plainly, item by item. On a residential landscape job the usual exclusions are
+                permit fees, arborist reports, work inside the house, utility upgrades, rock or
+                buried concrete that could not be seen from the surface, and anything the plan does
+                not show.
+              </p>
+              <p>
+                A named exclusion is more honest than a padded number. If we quietly added money to
+                cover things that might not happen, you would pay for them whether or not they
+                happened, and you would have no way to tell how much of your price was real work and
+                how much was insurance against a maybe. Naming an exclusion tells you exactly where
+                your price ends and lets you decide what to do about it: bring the item in now,
+                price it separately, or accept the risk knowingly.
+              </p>
+              <p>
+                Read the exclusions page first. It is the shortest page in the document and it is
+                where nearly every contractor dispute actually lives. If something you assumed was
+                included is sitting on that page, ask us before you sign and we will price it.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="why-bid-differs-from-budget-range">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Why is the bid different from the budget range you gave me earlier?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Because the earlier number was a planning range built from a walk-through and a
+                concept, and this one is built from a measured site and materials you have chosen.
+                That is the entire difference, and it is the reason this number can be committed to
+                and the first one could not.
+              </p>
+              <p>
+                Three things move it, and we name which ones moved yours. The site gets measured, so
+                quantities stop being read off photographs. Materials get chosen, and on hardscape
+                the gap between a basic paver and natural stone over the same area is a multiple,
+                not a percentage. And the scope settles: demolition and haul-off come in or stay
+                out, and drainage gets assessed rather than assumed. Any of those three can move a
+                number in either direction, and the measured price sometimes comes in under the
+                planning range.
+              </p>
+              <p>
+                If the bid lands outside the range you were given, we tell you before you open the
+                document and we name the reason. Every real gap has one. A number that moved for no
+                reason anybody can name means we got something wrong, and we would rather find that
+                ourselves than have you find it.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="how-long-price-holds">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>How long is this price good for?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Until the date printed on the face of the bid. We normally set that at thirty days
+                from the day we issue it, and after that we re-check material prices before we honor
+                the number.
+              </p>
+              <p>
+                Thirty days is not an arbitrary deadline. Material prices in this trade move on
+                their own schedule: stone, lumber, concrete and plant stock especially. The prices
+                sitting behind your number carry expiry dates of their own. A month is long enough
+                for you to think it over and short enough that we are not committing to a price
+                nobody can still buy.
+              </p>
+              <p>
+                If you go past the date, tell us rather than assuming the number is dead. Most of
+                the time it barely moves and we simply re-issue it. Where something has genuinely
+                changed, we show you which line changed and why, instead of handing you a new total
+                and letting you guess.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm the price-validity window before this publishes: whether thirty days from
+                  issue is the standing rule, what the printed expiry date is measured from, and
+                  what GMZ does when a client comes back after it lapses. Nothing on this is
+                  currently written down, and the draft stated thirty days as settled policy.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="pricing-material-options">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Can you price a couple of different material options so I can compare?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Yes, and on the big items we would rather you asked. Tell us which two levels you
+                want to see and we price the identical scope both ways, so the only thing that
+                changes between the two documents is the material.
+              </p>
+              <p>
+                We do this because the material level is the largest single lever in a landscape
+                price, and there is no honest midpoint to guess at. Pricing one tier and calling it
+                the answer hides the decision from you. Seeing the same patio priced two ways puts
+                the trade in front of you in dollars, which is where it belongs. We will also tell
+                you where we think the money works hardest: a smaller area in the better material
+                usually reads better than a large area in the cheaper one, and there are places
+                where nobody will ever notice the difference.
+              </p>
+              <p>
+                The same applies to phasing. If the whole scope is more than you want to commit to
+                now, we can price it in stages, so the parts that only happen once go in together:
+                base, drainage and irrigation lines. The visible surfaces follow later. Tell us at
+                bid time, because phasing decided after the crew has left costs more than phasing
+                designed in.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="who-pulls-permits">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Who pulls the permits, and who pays for them?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                GMZ files the permit and manages the inspections as the licensed contractor of
+                record, and the fee itself is billed to you as a separate line at whatever the town
+                charges, not folded into the price.
+              </p>
+              <p>
+                Most residential landscape work on the Peninsula needs no permit at all. The work
+                that commonly does: a retaining wall over a certain height, structures you can stand
+                under, electrical, gas lines, anything that changes how water leaves your property,
+                and on larger planting and irrigation projects, the state&#x27;s landscape
+                water-efficiency review. Every town on the Peninsula sets its own thresholds and its
+                own timeline, so we tell you at bid time which of these we expect to apply to your
+                job and roughly what it does to the start date.
+              </p>
+              <p>
+                The fee is excluded from the price rather than estimated into it for a simple
+                reason: the town sets it, it varies by jurisdiction and by valuation, and we cannot
+                know it before the application goes in. Naming a guess and then correcting it later
+                is worse than naming it as a pass-through from the start.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm: (a) that GMZ files permits and manages inspections as standard rather
+                  than case by case, and (b) that permit fees are passed through to the client as a
+                  separate line at the town&#x27;s cost rather than carried in the price. Neither is
+                  currently written down.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section class="stage" id="building" aria-labelledby="h-building">
+        <div class="stage__head">
+          <span class="stage__n">05</span>
+          <div>
+            <h2 id="h-building">Building it</h2>
+            <p class="stage__lede">What the weeks on site actually look like.</p>
+          </div>
+        </div>
+        <div class="qs">
+          <details class="q" id="how-far-out-booked">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>How far out are you booked?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                It changes month to month, so ask us and we will give you the real date rather than
+                a comfortable one. We check the work already committed against the calendar before
+                we promise a start, which is why we do not post a booking window on the website: a
+                number published there is wrong by the time most people read it.
+              </p>
+              <p>
+                What does not change is how the queue works. A start date is held by a signed
+                contract, not by a conversation, and until the paperwork is done your slot is not
+                yours. We will say that plainly rather than let you assume otherwise and then find
+                out in week six. Materials with a long lead are ordered as soon as the contract is
+                in: specimen trees, stone from a particular quarry, custom metal. That ordering
+                window, rather than crew availability, is often what sets the earliest honest start.
+              </p>
+              <p>
+                If you have a hard date, an event, a house sale, a school year, a permit clock, tell
+                us in the first conversation. It changes what we recommend, it sometimes changes the
+                sequence of the build, and occasionally it is the reason we tell you we are not the
+                right contractor for this one.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm what GMZ publishes about lead time: whether a current booking window goes
+                  on the site at all, who updates it and how often, and whether the stated rule is
+                  that a start date is held only by a signed contract and deposit.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="how-long-yard-is-a-site">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>How long is my yard going to be a construction site?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Longer than the number of working days on the schedule, and you should hear that
+                from us now rather than discover it in week three. A build is not continuous work.
+                There are days of machines and noise, then a quiet stretch waiting on a concrete
+                cure, an inspection or a delivery, then noise again. Your yard is out of use from
+                the first day of demolition to the last day of cleanup, quiet stretches included.
+              </p>
+              <p>
+                The shape of it is fairly consistent. The roughest part is at the front: demolition,
+                grading and drainage, which is where the noise, the dust and the machine traffic all
+                live. Expect part of your driveway or street frontage to be staging for material and
+                debris, and we will tell you which part before we start. If plants are staying,
+                irrigation may be off for a stretch and we will tell you what needs hand watering
+                and when. The back half of a job is quieter and finer: planting, irrigation
+                adjustment, lighting and cleanup.
+              </p>
+              <p>
+                You get a working schedule at the pre-construction meeting and an update once a week
+                on the same day: what changed, what is next, and anything that needs a decision from
+                you. Three things move a landscape schedule: weather, inspections, and what we find
+                underground. Each has its own answer in this list, and none of them is a surprise we
+                spring on you at the end.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="deposit-and-payment-schedule">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>How much do you need up front, and when do I pay the rest?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Less than most people expect, because California limits it. On a home improvement
+                contract the down payment cannot exceed the lesser of $1,000 or 10 percent of the
+                contract price. That is state law and it exists to protect you. Any residential
+                contractor asking for a third up front is not following it, and that is worth
+                knowing whoever you hire.
+              </p>
+              <p>
+                For the rest, payments fall due against milestones as work is completed, never on a
+                calendar. A payment is triggered by something finished that you can walk out and
+                look at, and each milestone is named in the contract before you sign, so there is no
+                interpretation left for later. The final payment comes after the walkthrough and
+                after the punch list is cleared, not before.
+              </p>
+              <p>
+                One thing that catches people out: the design step runs under its own separate
+                signed agreement, with its own terms, and it is paid separately from construction.
+                The design fee is not a deposit on the build and it is not credited toward it. That
+                is the single most common assumption clients bring to this conversation, so we
+                answer it early rather than at signing.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm the milestone payment schedule for design/build contracts: how many
+                  payments, what completed event triggers each one, what share of the contract sits
+                  in the final payment, and whether final payment is formally tied to a cleared
+                  punch list. Nothing is currently standardized and jobs vary. Also confirm what the
+                  final walkthrough consists of, since this answer ties the last payment to it. The
+                  $1,000 / 10 percent figure is the California statutory limit on home improvement
+                  down payments, not a GMZ number.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="what-is-a-change-order">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span
+                >What&#x27;s a change order, and how do I avoid getting hit with a pile of
+                them?</span
+              >
+            </summary>
+            <div class="q__body">
+              <p>
+                A change order is a written amendment to the contract, priced and signed by both of
+                us before the work happens, covering anything that was not in the original scope.
+                Nothing is added to your bill without one. If anyone on a job site tells you a
+                change is no problem and it never appears in writing, that is not generosity; it is
+                a bill you have not seen yet.
+              </p>
+              <p>
+                There are three causes and two of them are avoidable. Scope you add mid-job, which
+                is fine and is what change orders are for: you see the wall going up and want it
+                longer. Decisions made late, a surface chosen after the base is already in. And
+                genuine unknowns underground, which is the third and is the reason the exclusions
+                page exists at all.
+              </p>
+              <p>
+                How to keep the count near zero: choose your materials before we start rather than
+                during, read the exclusions page and ask about anything you assumed was included,
+                let us assess the drainage instead of assuming the existing setup is fine, and make
+                your list of while-you&#x27;re-here additions before the contract rather than in
+                week two. Adding something at bid time is nearly always cheaper than adding it after
+                the crew has moved past that part of the yard and has to come back to it.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="who-is-on-site">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Who is actually going to be on my property, and do I need to be home?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                GMZ&#x27;s own crew does the work under our supervision, and no, you do not need to
+                be home once we have what we need to get in and get water. Where a trade requires
+                its own license, electrical work being the usual one, that portion is done by a
+                licensed subcontractor working under our contract, and we tell you in advance which
+                parts those are and when they are coming.
+              </p>
+              <p>
+                What we need from you comes up at the pre-construction meeting, before the first
+                truck arrives: gate code or key, where the water and power are, where we can park
+                and stage material, hours that work for you and your neighbors, anything we should
+                know about pets and children, and one person on your side who can answer a question
+                by phone during the day. That last one matters more than being present. A decision
+                that sits over a weekend can hold the schedule up for a day.
+              </p>
+              <p>
+                There are three moments worth being there for. Layout on the first day, when the
+                shapes get marked on the ground and are cheap to move. The irrigation and controller
+                handover, which takes a few minutes in person and a long email otherwise. And the
+                walkthrough at the end. Everything in between runs perfectly well on a weekly update
+                and photographs.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="what-happens-when-it-rains">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What happens when it rains?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Work that rain would ruin stops; work it would not carries on. Compaction, concrete,
+                paving, grading and planting into saturated soil all fail if you force them, so
+                those move. Fence posts, irrigation repair, pruning, cleanup and most maintenance
+                visits go ahead in the wet.
+              </p>
+              <p>
+                A weather delay is not a change order and does not add anything to your price. It
+                moves the schedule, and we tell you the same week what moved and what the new
+                sequence looks like. What we will not do is push a weather-sensitive task through
+                because a date was promised. A patio set on soft base looks fine for one season and
+                then tells on you for years afterward, and that is our problem as much as yours.
+              </p>
+              <p>
+                From late autumn through early spring we build float into the schedule for this
+                rather than pretending the season is dry, and we leave the site safe ahead of a
+                storm: exposed soil covered, open trenches protected, and water still leaving your
+                property the way it is supposed to.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="found-underground">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What happens if you dig and find something you weren&#x27;t expecting?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                We stop, photograph it, show it to you, price the fix and get your signature before
+                we carry on. You will not learn about it from the final invoice.
+              </p>
+              <p>
+                What actually turns up in Peninsula yards: an old slab or footing under the lawn,
+                rock, an abandoned irrigation line, a septic remnant, tree roots at a size where an
+                arborist ought to look at them, a drain that goes nowhere, and utility lines that
+                are not where any map says. None of it is visible from the surface, which is
+                precisely why it sits on the exclusions page instead of inside your price. If we
+                padded every bid for things that are usually not there, every client would be paying
+                for the unlucky ones.
+              </p>
+              <p>
+                We cut the odds where we can. We call the utility locate in before any digging, we
+                assess the drainage rather than assume it, and where we have real doubt about what
+                is under a surface we say so at bid time and suggest digging a test hole before you
+                sign. A test hole costs a fraction of what the same discovery costs in week two with
+                a crew standing on it.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="utility-locating-811">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Do you call 811 before digging, or is that something I have to arrange?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Yes, every job, and no, you do not arrange it. GMZ places the utility locate request
+                before any digging on your property. It is free, it is required in California, and
+                the marks have to be on the ground before a shovel goes in. The request carries a
+                required notice period, so it goes in ahead of the first day of work rather than
+                being called in that morning.
+              </p>
+              <p>
+                One limit is worth knowing. The locate service marks public utilities in the work
+                area by color: gas, electric, water, communications. It does not mark private lines,
+                and Peninsula properties are full of them: the run out to a detached garage or shed,
+                pool equipment, landscape lighting, a well, a septic line. Those sit on your side of
+                the meter and no agency holds a record of them. Tell us anything you know about or
+                suspect, even vaguely, and we hand-dig wherever a private line is likely.
+              </p>
+              <p>
+                Skipping the call is how a routine Tuesday becomes an incident: a struck gas line,
+                an evacuated block, a neighborhood without power, and a homeowner in the middle of a
+                conversation they did not sign up for. There is no version of this job we do faster
+                by not doing it.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section class="stage" id="after" aria-labelledby="h-after">
+        <div class="stage__head">
+          <span class="stage__n">06</span>
+          <div>
+            <h2 id="h-after">After the build</h2>
+            <p class="stage__lede">Handover, warranty, and the first year.</p>
+          </div>
+        </div>
+        <div class="qs">
+          <details class="q" id="workmanship-warranty">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What&#x27;s your warranty if something you built fails?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                One year on workmanship from the date your project is complete is the term we work
+                to, and we will put it in writing in your contract before you sign. It covers the
+                work of our hands: paving that settles, a wall that moves, a drain that will not
+                drain, a leaking irrigation fitting, a light that fails because of how it was wired.
+                If it is our installation, we come back and put it right at no cost to you.
+              </p>
+              <p>
+                It does not cover plants, which we answer separately, and it does not cover things
+                outside our control: another trade working the same ground after we leave, a change
+                somebody else made, storm damage, or a root from a neighboring tree. Where materials
+                and equipment carry a manufacturer&#x27;s coverage, that coverage is yours and we
+                will help you use it.
+              </p>
+              <p>
+                One thing to be straight about: the written warranty page is still being finalized,
+                so do not rely on a verbal term from anybody, including us. Ask for the current
+                warranty language, read it, and get it attached to your contract before work starts.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Nothing is written today. This is the canonical warranty decision and &#x27;Who to
+                  call if something fails&#x27; and &#x27;Plants and the maintenance account&#x27;
+                  both depend on it. Confirm the workmanship warranty term (recommended: one year
+                  from substantial completion), the exclusion list, whether it transfers if the home
+                  is sold, and approve the written warranty document before this answer is
+                  published.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="plants-died-replacement">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>A few of the new plants died. Will you replace them?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Not automatically, and we would rather say that up front than surprise you later.
+                GMZ does not guarantee plants after installation. The reason is watering: once the
+                garden is yours, we do not control how much water it gets or when it gets it, and a
+                plant&#x27;s first year is decided almost entirely by that.
+              </p>
+              <p>
+                What we do stand behind is our part of it: sound nursery stock, correct planting
+                depth, prepared soil, and irrigation that was working when we handed it over. If a
+                plant fails because of how it was planted, or because a zone was never actually
+                running, that one is ours and we replace it. Call us and we will come and look.
+              </p>
+              <p>
+                The exception is when GMZ holds your maintenance account. Then the watering and the
+                aftercare are ours, we are in the garden every week or every other week, and a plant
+                that fails under our care is ours to make right. That is the honest reason the two
+                things are connected, not a sales pitch.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="who-to-call-after-completion">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Something stopped working after you finished. Who do I call?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Call the office number on your paperwork and ask for the person who ran your job.
+                That is the fastest route, because they know the ground, the zones and what is
+                buried where. Please do not route it through a crew member&#x27;s personal phone:
+                work that is not written down at the office is work that gets lost.
+              </p>
+              <p>
+                Have three things ready when you call: what is failing, when it started, and a
+                photo. For irrigation, the zone number if you know it. That is usually enough to
+                tell whether it is a fitting, a valve, the controller or a plant that was never
+                getting water, and it decides whether we bring a truck or talk you through it on the
+                phone.
+              </p>
+              <p>
+                Then we come and look. If it is our workmanship, we put it right at no cost to you.
+                If it turns out to be something else, a repair somebody else made, storm damage, or
+                a plant that dried out, we will tell you plainly and give you a price to put it
+                right rather than quietly adding it to a bill. Water against the house or a leak you
+                cannot shut off should be called in the same day.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm whether GMZ publishes a response commitment for post-completion callbacks
+                  (for example: contact within two business days, urgent water issues same day),
+                  whether one named point of contact is assigned per job, and whether the diagnostic
+                  visit is free regardless of who turns out to be at fault. Also confirm the
+                  workmanship warranty term before publishing, since this answer promises free
+                  repair of GMZ workmanship.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="last-day-walkthrough">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What actually happens on the last day? Is there a final walkthrough?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Yes, and our position is that it should be the same on every job: a walkthrough with
+                you, on site, ending in a written punch list. We walk the whole project together,
+                you point out anything that is not right, we write each item down with a date next
+                to it, and you keep a copy. Nothing on that list is a favor. It is part of the job
+                you already bought, and the list is not closed until you say it is.
+              </p>
+              <p>
+                One honest caveat: this has varied job to job, and we are standardizing it. If it
+                matters to you, ask for it before you sign and we will put it in the contract in
+                plain words.
+              </p>
+              <p>
+                The last day is also when we offer maintenance. That is a separate conversation with
+                its own agreement, its own schedule and its own terms, not something folded into
+                your construction contract, and you are free to say no.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm that a walkthrough with a written punch list is standard on every
+                  design/build job: who attends, who signs it, whether both parties keep a copy, and
+                  how long GMZ has to clear punch items before the job is called complete.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="first-year-garden-care">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What does a brand new garden actually need in its first year?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Water, delivered the right way, matters more than everything else combined in the
+                first year. New plants are growing roots, not showing off. Water deeply and less
+                often so the moisture goes down and the roots follow it; short daily sprinkles keep
+                roots at the surface and make a plant that cannot survive its first hot week. If
+                something looks stressed between cycles, hand water that plant rather than raising
+                the schedule for the whole garden.
+              </p>
+              <p>
+                Two other things carry most of the rest. Keep mulch topped up and pulled back off
+                the stems, and pull weeds while they are small, because freshly worked soil grows
+                them fast. Do not push fertilizer in the first season and do not prune new shrubs
+                hard: both work against a plant that is trying to root. Expect some settling in new
+                beds and paths, and expect a few plants to sit and sulk for a season before they
+                move.
+              </p>
+              <p>
+                By the second summer the garden can run on a normal schedule. The first year is the
+                one that decides whether it gets there, which is also why we always offer to
+                maintain it ourselves.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm whether a written closeout package (plan copy, plant list, watering
+                  schedule, care guide) is handed over on every design/build job, and whether the
+                  thirty-day and six-month follow-up calls become standard practice. This answer
+                  currently promises care guidance that no document delivers yet. The same closeout
+                  package is promised in &#x27;Running your irrigation controller&#x27;, &#x27;Using
+                  someone else&#x27; and &#x27;Plants and the maintenance account&#x27;.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="running-irrigation-controller">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span
+                >How do I run the new irrigation controller? I don&#x27;t want to kill
+                everything.</span
+              >
+            </summary>
+            <div class="q__body">
+              <p>
+                Mostly you do not have to run it: we program it before we hand it over and we walk
+                you through it on site, so you are not working it out alone. The short version is:
+                leave the schedule we set. It is built for your zones, your soil and the season you
+                took the garden over in.
+              </p>
+              <p>
+                A few things worth knowing. Zones water early in the morning, before the heat and
+                the wind. Drip zones in the beds run long and only a couple of times a week, because
+                they put water down slowly. Lawn and spray zones run shorter and more often. If you
+                have a smart Wi-Fi controller, it adjusts itself with the weather, so a stretch of
+                rain or heat does not need you to touch anything. Use the manual or single zone
+                function when you want to run one zone and see where the water is actually going.
+              </p>
+              <p>
+                Change the schedule twice a year rather than constantly: down in the fall, up in
+                late spring. If you are not sure, call before you change it. A controller that
+                somebody reset is a common reason a new garden dies, and it is the easiest one to
+                avoid.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm whether every job leaves with a written irrigation zone map and a copy of
+                  the programmed seasonal schedule, and whether later reprogramming or a seasonal
+                  adjustment visit is included, billed by the hour, or available only under a
+                  maintenance account.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section class="stage" id="maintenance" aria-labelledby="h-maintenance">
+        <div class="stage__head">
+          <span class="stage__n">07</span>
+          <div>
+            <h2 id="h-maintenance">Maintenance</h2>
+            <p class="stage__lede">
+              The standing service, and what a visit does and does not cover.
+            </p>
+          </div>
+        </div>
+        <div class="qs">
+          <details class="q" id="maintenance-visit-includes">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What do you actually do on a maintenance visit?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                A visit is routine care: the work that keeps a garden looking the way it did the
+                week we finished it. On a typical residential property that means mowing and edging
+                where there is lawn, cleaning down the hard surfaces, weeding the beds, light
+                seasonal pruning and shaping of shrubs, perennials and grasses, and hauling away the
+                green waste we generate that day.
+              </p>
+              <p>
+                We also walk the irrigation while we are there. A head knocked out of line, a drip
+                line pulled loose by a dog, a zone that quietly stopped running: those are easy to
+                catch on a regular visit and painful to find after a month of dry weather has taken
+                the plants on that zone. We adjust controller run times as the seasons change, and
+                we tell you what we saw.
+              </p>
+              <p>
+                We work from a standing list for your property rather than from whatever catches the
+                eye that morning. If we see something that falls outside the visit, we tell you
+                about it instead of doing it and billing you afterward.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="maintenance-pricing-basis">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>How do you price maintenance?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                On how much your property takes to service properly, and how often we come. We walk
+                the property before pricing anything: how much lawn there is, how much planted bed,
+                how much pruning it will want across a year, how much green waste comes off it, and
+                how easily equipment moves around it.
+              </p>
+              <p>
+                That produces one set price per visit, agreed before the first visit, which does not
+                move from week to week because one visit ran longer than another. Two things sit
+                outside it: work that is not part of routine care, and materials we bring for you.
+                Both are priced and approved before we do them, never added to a bill after the
+                fact.
+              </p>
+              <p>
+                We do not price maintenance off a photo or a look from the street. A number produced
+                that way is a number for a property nobody has seen, and it changes once someone
+                finally walks it.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="weekly-or-biweekly">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Should I be on a weekly or an every-other-week schedule?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Weekly if you have lawn, a lot of planted bed, or you want the property to look tidy
+                every day of the week. Every other week works well for gardens that are mostly
+                established shrubs, groundcover, gravel or decomposed granite, where growth is slow
+                and there is not much to pick up.
+              </p>
+              <p>
+                The honest test is the growing season, not the winter. From spring into early
+                summer, a lawn on a two-week cycle can look shaggy well before the next visit, and
+                the beds put on enough growth that the visit stops being maintenance and starts
+                being catch-up. Plenty of properties want weekly through the growing months and
+                settle into every other week once things slow down.
+              </p>
+              <p>
+                If you are unsure, tell us which way you are leaning and we will give you an honest
+                read after a few visits. Changing cadence changes your service agreement and your
+                price, so we confirm it with you in writing rather than simply showing up more
+                often.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="fixed-service-day">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What day will you come, and is it the same day every time?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Yes, you get a fixed day of the week and we keep it. Routes are built by area so the
+                crew is working rather than driving, which means your day is not very moveable once
+                it is set. If you need a particular day, say so before we start and we will tell you
+                what the route allows.
+              </p>
+              <p>
+                We give you a day, not an arrival time. The stops ahead of you vary, so the hour
+                moves. You do not need to be home. What we do need is reliable access on your day: a
+                gate code or a key if there is a lock, dogs secured, and a working outdoor spigot.
+              </p>
+              <p>
+                Weather and holidays are the two exceptions. Most maintenance work goes ahead in
+                light rain. When conditions make the work pointless or damaging, we move the visit
+                within the same week where the route allows it, and we tell you rather than leaving
+                you to notice.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="maintenance-not-included">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>What is not included in maintenance?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Anything that changes the garden rather than keeping it as it is. Routine care is
+                in: mowing, edging, blowing down hard surfaces, weeding, seasonal pruning of shrubs
+                and perennials, hauling the green waste from that visit, and checking the irrigation
+                as we go. What follows is out, and it is a long list on purpose.
+              </p>
+              <p>
+                Not included: tree work beyond what can be reached safely from the ground, and
+                anything needing a climb, a lift or a chipper; structural or heavy renovation
+                pruning; removing plants, replacing plants, and any new planting; seasonal color
+                changeouts; lawn renovation, reseeding, sod, aeration and dethatching; irrigation
+                repair beyond a quick fix at a head or an emitter, which means valves, wiring,
+                mainline breaks, new zones and controller replacement are all separate; fertilizer,
+                compost and soil amendment programs; pest, disease and weed treatments calling for a
+                licensed applicator; storm cleanup and debris we did not generate; heavy leaf drop
+                through the fall; mulch and gravel top-ups, which are a material purchase; pressure
+                washing, gutters and roofs; hardscape, fence, deck, lighting and drainage repair;
+                pet waste; moving furniture and planters; and holiday lighting.
+              </p>
+              <p>
+                None of that is a refusal. Much of it we can take on as separate work, and where a
+                job calls for a licensed specialty trade we bring in the right one. Either way it is
+                priced and approved separately, so nobody meets it on an invoice. Writing the line
+                down where you can see it is easier for both of us than arguing about it later. The
+                other half is what we need from you: access on your day, pets contained, water
+                available, and any HOA rules that limit what can be cut or removed.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="same-crew-each-visit">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Will the same people come every week?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Usually, yes. A route is worked by the same team week after week, and that is
+                deliberate. They learn where the valve box is, which shrub the dog gets behind,
+                which corner holds water, and how you like the beds edged. A property served by
+                whoever happened to be free that morning gets maintained to the average of everyone
+                who has ever been there.
+              </p>
+              <p>
+                We will not promise the identical people on every single visit, because people take
+                vacation, get sick and sometimes move on, and that is a promise we would end up
+                breaking. When somebody covers, they work from the record for your property: the
+                photos and notes from the first assessment visit, and what has been done since. A
+                covering team should not arrive blind.
+              </p>
+              <p>
+                If a visit is ever done poorly, tell us that week rather than months later. It is
+                easy to put right while everyone still remembers the day.
+              </p>
+            </div>
+          </details>
+          <details class="q" id="maintenance-agreement-and-cancelling">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Am I locked into a contract, and how do I cancel?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                You are not locked into a long commitment, and our position is that you should be
+                able to end it in writing with no penalty. There is a written service agreement, and
+                it is a separate document from any construction contract you may have with us. It
+                states the scope of a visit, the cadence, your day, the price, what is included,
+                what is not, and how either side ends it. Maintenance is a standing obligation
+                rather than a job with a finish line, so it needs terms a construction contract does
+                not have.
+              </p>
+              <p>
+                We hold ourselves to the same notice in the other direction. An agreement should
+                keep a schedule honest, not trap anybody. The exact notice period and the renewal
+                terms are being finalized and will be printed on the face of the agreement, so you
+                read them before you sign rather than after.
+              </p>
+              <p>
+                If something is not working, the better first move is usually a conversation. A
+                cancellation is often a scope problem or a cadence problem that nobody raised while
+                it was still easy to fix.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm the maintenance agreement terms before this answer publishes: the notice
+                  period for cancellation by either side, the agreement term and renewal terms, and
+                  whether an annual price review is stated on the face of the agreement. Nothing is
+                  written yet, so this answer states the recommended position rather than a settled
+                  one.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="taking-new-maintenance-accounts">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Are you taking on new maintenance clients right now?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Ask us, because the answer depends on where you are. Maintenance runs as routes: a
+                group of properties in the same area on the same day. A property that sits well off
+                an existing route is hard to serve well, and we would rather decline it than take it
+                and become the crew that arrives late and leaves early.
+              </p>
+              <p>
+                So the useful thing to tell us first is your town and which part of it you are in,
+                before anything about the yard. If you are near a route we already run, this is a
+                short conversation. If you are not, we will say so plainly instead of putting you on
+                a list that goes nowhere.
+              </p>
+              <p>We are based in Redwood City and work the San Francisco Peninsula.</p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm whether GMZ is open to new maintenance accounts right now, and which towns
+                  or route days are open, so this answer can say yes or no instead of &#x27;ask
+                  us&#x27;.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="one-time-cleanup">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Can you just come once and clean the place up?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Sometimes, and it depends on the schedule. Tell us what you are actually after,
+                because a one-time cleanup is a different thing from maintenance: a defined job with
+                a start and a finish, priced on the work in front of us rather than a recurring
+                visit on a route.
+              </p>
+              <p>
+                Our position is that these are worth doing when they fit the week, and especially
+                where a property is heading toward ongoing service or a build. A standalone cleanup
+                dropped into a full week displaces work already promised to somebody else, so the
+                answer is sometimes no, and that is better said early than late.
+              </p>
+              <p>
+                Whether we offer cleanups as a standing service is being settled. Send a few photos
+                along with your town and we will tell you straight.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm whether GMZ offers one-time or seasonal cleanups as a standalone service,
+                  and on what conditions (route fit, existing clients only, or certain seasons
+                  only).
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section class="stage" id="bridge" aria-labelledby="h-bridge">
+        <div class="stage__head">
+          <span class="stage__n">08</span>
+          <div>
+            <h2 id="h-bridge">Between the two</h2>
+            <p class="stage__lede">Where a finished garden becomes a maintained one.</p>
+          </div>
+        </div>
+        <div class="qs">
+          <details class="q" id="maintain-what-you-built">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>You built my garden. Do you maintain it too?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Yes, and we offer it at handover on every project we build. The first year is when a
+                new garden is most easily lost: irrigation needs adjusting as roots go down, the
+                first prunings set the shape for years, and the watering schedule that was right in
+                May is wrong by September. None of that is difficult, but it has to actually happen.
+              </p>
+              <p>
+                It is a separate engagement rather than a continuation of the build. Your
+                construction contract ends when the work is accepted. Maintenance begins after that
+                under its own service agreement, with its own schedule and its own terms, because a
+                recurring service and a fixed-price construction job carry different obligations on
+                both sides.
+              </p>
+              <p>
+                We put the maintenance price in front of you at handover so you can decide with the
+                number in hand instead of being asked in the abstract. No is a normal answer and it
+                changes nothing about the build.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm what happens at handover, since it currently varies by job: whether the
+                  maintenance price is presented at the final walkthrough, who presents it, and what
+                  else that walkthrough covers. Until that is settled this answer says &#x27;at
+                  handover&#x27; and does not name a final walkthrough step.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="not-required-to-use-gmz">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>Do I have to use you for maintenance after you build it?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                No. Hire whoever you like, keep the gardener you already have, or look after it
+                yourself. We will not make it awkward.
+              </p>
+              <p>
+                What we hand over is built to work for whoever ends up caring for the garden: a copy
+                of the plan, the plant list, the irrigation zone map with the controller settings we
+                programmed, and a care guide covering what needs doing and roughly when. Give that
+                to your gardener on the first day and they start well ahead of where most people
+                start.
+              </p>
+              <p>
+                One thing we would rather state than bury: our position on plants is different
+                depending on who is doing the watering. That has its own answer, and the reason is
+                about control rather than pressure.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  This answer promises the same written closeout package as &#x27;Caring for a new
+                  garden&#x27; and &#x27;Plants and the maintenance account&#x27;: plan copy, plant
+                  list, irrigation zone map with programmed settings, and a care guide. No document
+                  delivers that yet. Confirm the closeout package before this publishes, or the
+                  promise has to come out of all three answers together.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="plants-and-maintenance-account">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span
+                >Why aren&#x27;t the plants guaranteed unless you&#x27;re the ones maintaining the
+                garden?</span
+              >
+            </summary>
+            <div class="q__body">
+              <p>
+                Because once we hand over, we no longer control the watering, and watering is what
+                decides whether plants live. We can choose the right plant for the exposure, prepare
+                the soil, plant it correctly and set the controller before we leave. What happens
+                next is outside our hands: a controller switched off for a trip, a zone that stops
+                running and nobody notices, a mower through a drip line, a hot stretch in the first
+                September. So we do not guarantee plants after installation, and we say that before
+                you sign rather than after something dies.
+              </p>
+              <p>
+                When we hold the maintenance account, that reason goes away. We are the ones on the
+                property, we are the ones adjusting run times through the season, and we are the
+                ones who see a plant under stress while it can still be saved. Standing behind
+                planting is reasonable where we control the conditions and unreasonable where we do
+                not. What exactly that covers is being written down now, and it will sit in the
+                agreement rather than in a conversation.
+              </p>
+              <p>
+                If it still reads as a sales pitch, measure it against what a client who goes
+                elsewhere gets: the plan, the plant list, the irrigation zone map, the controller
+                settings and the care guide, with nothing held back. We would rather the garden
+                survive under somebody else&#x27;s care than sell an account nobody wanted.
+              </p>
+              <div class="flag">
+                <span class="flag__tag">Needs your sign-off</span>
+                <p>
+                  Confirm the written warranty before this publishes: the workmanship term
+                  (recommended one year from completion), that plants are excluded with the reason
+                  stated, and what, if anything, GMZ commits to on planting where GMZ holds the
+                  maintenance account. Nothing is written yet, so no term or coverage is stated here
+                  as fact.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="q" id="maintenance-client-wants-project">
+            <summary>
+              <span class="q__mark" aria-hidden="true"></span
+              ><span>I&#x27;m already a maintenance client. Can you build something for me?</span>
+            </summary>
+            <div class="q__body">
+              <p>
+                Yes, and it runs the same way it would for anyone else: a site consultation, a
+                complimentary concept, a preliminary budget with a planning range, then a separate
+                signed design agreement if you want measured drawings and a firm price. Being a
+                maintenance client does not shortcut the design step and does not change how the
+                work is priced.
+              </p>
+              <p>
+                What it does change is how much we already know. We have been on your property every
+                week or two, so we know the irrigation, the soil, where water sits after a wet
+                winter and what has failed there before. That usually makes the concept sharper and
+                the list of open questions shorter, and it takes some of the guesswork out of the
+                budget range.
+              </p>
+              <p>
+                Your maintenance continues during the build. Where construction touches ground the
+                crew normally services, we will tell you what happens to those visits for that
+                stretch rather than leaving you to work it out from an invoice. The two agreements
+                stay separate: the build is a construction contract, the maintenance is a service
+                agreement, and neither absorbs the other.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="foot">
+    <p>
+      GMZ Landscaping Inc. &middot; A licensed California landscape contractor serving the San
+      Francisco Peninsula. Nothing on this page is a quote. Prices come from a measured site and
+      chosen materials.
+    </p>
+  </footer>
+</div>
