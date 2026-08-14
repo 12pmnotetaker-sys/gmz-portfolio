@@ -1,0 +1,373 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageHeader from '@components/PageHeader.astro';
+import FaqAnswer from '@components/FaqAnswer.astro';
+import { getFaqs, FAQ_PHASE_META } from '@data/content';
+import { company, primaryPhone } from '@data/site';
+
+/**
+ * The searchable answer desk. Optimized for the visitor who arrives from a
+ * search with one question: everything is on one page, filtering is instant,
+ * and no answer is more than a keystroke away.
+ */
+const faqs = await getFaqs();
+
+// Render each answer once, and build a plain-text copy for the search index
+// and the structured data. Doing it here keeps the client-side filter to a
+// substring match on a prepared string rather than walking the DOM.
+const rendered = await Promise.all(
+  faqs.map(async (faq) => {
+    const { Content } = await render(faq);
+    const text = faq.body ?? '';
+    return { faq, Content, text };
+  }),
+);
+
+const groupsPresent = FAQ_PHASE_META.filter((p) => faqs.some((f) => f.data.phase === p.key)).map(
+  (p) => ({ ...p, count: faqs.filter((f) => f.data.phase === p.key).length }),
+);
+
+/**
+ * FAQPage structured data, so these answers can surface directly in a search
+ * result. This is the reason this layout was chosen over the alternatives.
+ */
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: rendered.map(({ faq, text }) => ({
+    '@type': 'Question',
+    name: faq.data.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: text.replace(/\s+/g, ' ').trim(),
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="Questions, answered"
+  description={`Straight answers about landscape design, building and maintenance from ${company.legalName}, a licensed contractor on the San Francisco Peninsula.`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline slot="head" />
+
+  <PageHeader
+    eyebrow="Answers"
+    title="Questions, answered"
+    lede="Everything people ask us, in one place. Search it, or filter by where you are in a project."
+  />
+
+  <div class="section">
+    <div class="container">
+      <div class="deck">
+        <label class="search">
+          <span class="visually-hidden">Search the answers</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.5-3.5"></path>
+          </svg>
+          <input
+            type="search"
+            id="faq-search"
+            name="q"
+            placeholder="Search: warranty, deposit, how long, plants…"
+            autocomplete="off"
+            data-faq-search
+          />
+        </label>
+
+        <div class="filters" role="group" aria-label="Filter by stage">
+          {
+            groupsPresent.map((group) => (
+              <button type="button" class="chip" data-faq-filter={group.key} aria-pressed="false">
+                {group.label}
+                <span class="chip__n">{group.count}</span>
+              </button>
+            ))
+          }
+          <button type="button" class="chip chip--reset" data-faq-reset>Clear</button>
+        </div>
+      </div>
+
+      <p class="count" role="status" data-faq-count>
+        Showing all {faqs.length} answers
+      </p>
+
+      <div data-faq-list>
+        {
+          rendered.map(({ faq, Content, text }) => (
+            <FaqAnswer {faq} searchText={text}>
+              <Content />
+            </FaqAnswer>
+          ))
+        }
+      </div>
+
+      <div class="empty" hidden data-faq-empty>
+        <p class="empty__head">Nothing matches that.</p>
+        <p>
+          Try a shorter word, or clear the filters. If it is not here, call
+          <a href={`tel:${primaryPhone.tel}`}>{primaryPhone.display}</a> and ask.
+        </p>
+      </div>
+
+      <aside class="ask">
+        <h2>Still not answered?</h2>
+        <p>
+          Most of what is on this page started as something a client asked on a first visit. If
+          yours is not here, it is worth a phone call.
+        </p>
+        <p class="ask__actions">
+          <a class="button" href="/contact">Get in touch</a>
+          <a class="button button--quiet" href={`tel:${primaryPhone.tel}`}>
+            {primaryPhone.display}
+          </a>
+        </p>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  /*
+   * Progressive enhancement: with JavaScript off, every answer is present and
+   * expandable, and only the search box and chips are inert. Nothing is
+   * hidden behind script.
+   */
+  const input = document.querySelector<HTMLInputElement>('[data-faq-search]');
+  const list = document.querySelector<HTMLElement>('[data-faq-list]');
+  const countEl = document.querySelector<HTMLElement>('[data-faq-count]');
+  const emptyEl = document.querySelector<HTMLElement>('[data-faq-empty]');
+  const resetEl = document.querySelector<HTMLButtonElement>('[data-faq-reset]');
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-faq-filter]')];
+
+  if (input && list && countEl) {
+    const items = [...list.querySelectorAll<HTMLElement>('[data-faq-item]')];
+    const total = items.length;
+    let phase: string | null = null;
+
+    const apply = () => {
+      const term = input.value.trim().toLowerCase();
+      let shown = 0;
+
+      for (const item of items) {
+        const matchesPhase = !phase || item.dataset.phase === phase;
+        const matchesTerm = !term || (item.dataset.search ?? '').includes(term);
+        const show = matchesPhase && matchesTerm;
+        item.hidden = !show;
+        if (show) {
+          shown += 1;
+        } else {
+          // Collapse anything being hidden so it is not left open underneath.
+          item.querySelector('details')?.removeAttribute('open');
+        }
+      }
+
+      if (emptyEl) emptyEl.hidden = shown > 0;
+      countEl.textContent =
+        !term && !phase
+          ? `Showing all ${total} answers`
+          : `${shown} of ${total} ${shown === 1 ? 'answer' : 'answers'}`;
+    };
+
+    input.addEventListener('input', apply);
+
+    for (const chip of chips) {
+      chip.addEventListener('click', () => {
+        phase = phase === chip.dataset.faqFilter ? null : (chip.dataset.faqFilter ?? null);
+        for (const other of chips) {
+          other.setAttribute('aria-pressed', String(other.dataset.faqFilter === phase));
+        }
+        apply();
+      });
+    }
+
+    resetEl?.addEventListener('click', () => {
+      input.value = '';
+      phase = null;
+      for (const chip of chips) chip.setAttribute('aria-pressed', 'false');
+      apply();
+      input.focus();
+    });
+
+    // "/" jumps to the search box, the convention people already know.
+    document.addEventListener('keydown', (event) => {
+      if (event.key === '/' && document.activeElement !== input) {
+        event.preventDefault();
+        input.focus();
+      }
+    });
+
+    // Deep links like /faq#workmanship-warranty should open their answer.
+    const openFromHash = () => {
+      const id = decodeURIComponent(location.hash.slice(1));
+      if (!id) return;
+      const target = document.getElementById(id);
+      target?.querySelector('details')?.setAttribute('open', '');
+      target?.scrollIntoView({ block: 'center' });
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+  }
+</script>
+
+<style>
+  .deck {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--color-bg);
+    padding-block: var(--space-sm);
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .search {
+    position: relative;
+    display: block;
+  }
+
+  .search input {
+    inline-size: 100%;
+    font: inherit;
+    color: var(--color-text);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md) var(--space-sm) 2.4rem;
+  }
+
+  .search input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .search svg {
+    position: absolute;
+    inset-inline-start: var(--space-sm);
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    inline-size: 1rem;
+    block-size: 1rem;
+    stroke: var(--color-text-muted);
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+    margin-block-start: var(--space-sm);
+    align-items: center;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2xs);
+    padding: var(--space-2xs) var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font: inherit;
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition:
+      background var(--transition),
+      border-color var(--transition);
+  }
+
+  .chip:hover {
+    border-color: var(--color-accent);
+  }
+
+  .chip[aria-pressed='true'] {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent-contrast);
+  }
+
+  .chip__n {
+    font-size: var(--text-xs);
+    opacity: 0.7;
+  }
+
+  .chip--reset {
+    margin-inline-start: auto;
+    border-style: dashed;
+    color: var(--color-text-muted);
+  }
+
+  .count {
+    padding-block: var(--space-md) var(--space-2xs);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .empty {
+    padding-block: var(--space-2xl);
+    color: var(--color-text-muted);
+  }
+
+  .empty__head {
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    margin-block-end: var(--space-2xs);
+  }
+
+  .ask {
+    margin-block-start: var(--space-2xl);
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-subtle);
+    max-width: var(--width-prose);
+  }
+
+  .ask h2 {
+    font-size: var(--text-xl);
+  }
+
+  .ask p {
+    margin-block-start: var(--space-sm);
+    color: var(--color-text-muted);
+  }
+
+  .ask__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-block-start: var(--space-lg);
+  }
+
+  .button {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-lg);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .button:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+    color: var(--color-accent-contrast);
+  }
+
+  .button--quiet {
+    background: transparent;
+    color: var(--color-accent);
+  }
+
+  .button--quiet:hover {
+    background: var(--color-bg-tint);
+    color: var(--color-accent-hover);
+  }
+</style>

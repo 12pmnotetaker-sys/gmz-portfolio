@@ -137,6 +137,63 @@ publish it.
 `src/content.config.ts`. `order` controls where it sits in the listing,
 `highlights` are the bullets, and `relatedProjects` is a list of project slugs.
 
+## Adding or editing an FAQ answer
+
+`src/content/faqs/<slug>.md`. One question per file, so two people can edit
+different answers without colliding.
+
+```markdown
+---
+question: "What's your warranty if something you built fails?"
+short: 'What the warranty covers'
+phase: after
+serviceLine: design-build
+sorePoint: change-orders # optional, one of four
+order: 10
+published: false
+needsDecision: true
+decisionNote: 'Exactly what has to be confirmed before this goes live.'
+---
+
+The answer, in plain prose. Lead with the answer in the first sentence,
+then explain.
+```
+
+`phase` is one of `getting-started`, `planning-budget`, `design`,
+`firm-price`, `building`, `after`, `maintenance`, `bridge`. `sorePoint` is
+one of `range-vs-price`, `design-fee`, `change-orders`, `timeline`, and an
+entry that has one gets led with on `/straight-answers` instead of buried.
+
+### `published` is a gate, like `approved` on a testimonial
+
+**Nothing renders in production until `published: true`.** An answer that
+states a policy nobody has decided is worse than no answer, because a client
+will hold GMZ to whatever the website said.
+
+Held-back answers are fully visible in `npm run dev` with their decision note
+attached, so they can be read and corrected before going live. To see the
+outstanding list without starting a server:
+
+```bash
+npm run faq:decisions
+```
+
+To publish one: make the decision, correct the answer if the decision differs
+from what is written, then set `published: true` and delete the
+`needsDecision` and `decisionNote` lines.
+
+### Where the answers appear
+
+- `/faq` is the searchable page, and the one search engines should find. It
+  emits `FAQPage` structured data, so answers can surface directly in a
+  search result.
+- `/straight-answers` is the same content led by the four recurring
+  objections. It is deliberately `noindex` and excluded from the sitemap,
+  because two indexed pages carrying the same answers compete with each
+  other. It exists to be sent to someone.
+
+Both read from the same files, so an edit lands on both.
+
 ## Changing a phone number, address or license number
 
 Not here. Those live in `src/data/site.ts`, once, and every page reads them

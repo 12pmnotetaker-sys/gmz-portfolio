@@ -27,14 +27,15 @@ Requires Node 20.11 or newer. `.nvmrc` pins 22.
 
 ## Commands
 
-| Command              | What it does                                            |
-| -------------------- | ------------------------------------------------------- |
-| `npm run dev`        | Dev server with hot reload. Drafts are visible here     |
-| `npm run build`      | Type-check, then build to `dist/`. Drafts are excluded  |
-| `npm run build:fast` | Build without the type-check                            |
-| `npm run preview`    | Serve the built `dist/` locally                         |
-| `npm run check`      | Type-check and validate all content against the schemas |
-| `npm run format`     | Prettier over the repo                                  |
+| Command                 | What it does                                            |
+| ----------------------- | ------------------------------------------------------- |
+| `npm run dev`           | Dev server with hot reload. Drafts are visible here     |
+| `npm run build`         | Type-check, then build to `dist/`. Drafts are excluded  |
+| `npm run build:fast`    | Build without the type-check                            |
+| `npm run preview`       | Serve the built `dist/` locally                         |
+| `npm run check`         | Type-check and validate all content against the schemas |
+| `npm run format`        | Prettier over the repo                                  |
+| `npm run faq:decisions` | List FAQ answers held back pending a decision           |
 
 `npm run build` is the real gate: it fails on a type error, a content field
 that does not match its schema, a broken image path or a broken content
@@ -50,6 +51,7 @@ src/
     projects/          One Markdown file per project
     services/          One per service
     testimonials/      One per client quote
+    faqs/              One per customer question
   data/
     site.ts            Company facts. The ONLY place they live
     content.ts         Content queries and display labels
@@ -59,6 +61,8 @@ src/
     index.astro        Home
     work/              Project index and detail pages
     services/          Service index and detail pages
+    faq.astro          Searchable answers, emits FAQPage structured data
+    straight-answers.astro  Same answers, objection-led. noindex, for sending
     about.astro
     contact.astro
     404.astro
@@ -124,5 +128,6 @@ and the sitemap will point at the default.
 - [ ] Write the About page copy in Xavier's own words
 - [ ] Wire up and **test** the contact form
 - [ ] Get written permission for each testimonial, then set `approved: true`
+- [ ] Work through `npm run faq:decisions` and publish the held-back answers
 - [ ] Confirm the service-area list in `src/data/site.ts` is accurate
 - [ ] Fill in the social links in `src/data/site.ts`, or leave them empty to hide

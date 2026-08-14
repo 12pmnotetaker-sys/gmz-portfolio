@@ -27,6 +27,12 @@ only when that entry sets `showBudgetBand: true`.
 testimonial does not render anywhere until `approved: true`, which means the
 client has agreed in writing to be quoted publicly.
 
+**Undecided policy does not get published.** An FAQ answer stays
+`published: false` until the underlying decision is actually made. The site
+must never state a warranty term, a lead time or a fee that nobody has agreed
+to, because a client will hold GMZ to whatever it said. `npm run faq:decisions`
+lists what is outstanding. Same principle as `approved` on a testimonial.
+
 **Alt text is required** by the schema. Do not route around it by dropping the
 attribute in a template.
 

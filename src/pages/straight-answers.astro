@@ -1,0 +1,275 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import FaqAnswer from '@components/FaqAnswer.astro';
+import { getFaqsBySorePoint, getRemainingFaqsByPhase, type Faq } from '@data/content';
+import { company, primaryPhone } from '@data/site';
+
+/**
+ * The one to send someone.
+ *
+ * Same answers as /faq, led by the four things that come up on nearly every
+ * job rather than by a search box. This is the link to put in a reply when a
+ * client has gone quiet on the design fee.
+ *
+ * Deliberately noindex: it carries the same content as /faq, and two indexed
+ * pages saying the same thing compete with each other. /faq is the page that
+ * should win a search; this is the page you hand someone.
+ */
+const chapters = await getFaqsBySorePoint();
+const rest = await getRemainingFaqsByPhase();
+
+const renderAll = async (faqs: Faq[]) =>
+  Promise.all(faqs.map(async (faq) => ({ faq, Content: (await render(faq)).Content })));
+
+const chaptersRendered = await Promise.all(
+  chapters.map(async (chapter) => ({ ...chapter, items: await renderAll(chapter.faqs) })),
+);
+
+const restRendered = await Promise.all(
+  rest.map(async (group) => ({ ...group, items: await renderAll(group.faqs) })),
+);
+---
+
+<BaseLayout
+  title="Straight answers"
+  description="The four things that come up on nearly every landscape project, answered plainly."
+  noindex
+  chrome={false}
+>
+  <article class="sheet">
+    <header class="opening">
+      <p class="eyebrow">{company.name}</p>
+      <h1>The questions people are too polite to ask twice</h1>
+      <p class="intro">
+        Four things come up on nearly every job, and all four are easier to hear early than late.
+        Here they are, answered the way we would answer them sitting in your garden.
+      </p>
+      <p class="intro">Everything else people ask is further down.</p>
+
+      {
+        chaptersRendered.length > 0 && (
+          <nav class="jump" aria-label="Contents">
+            <h2>What this covers</h2>
+            <ol>
+              {chaptersRendered.map((chapter) => (
+                <li>
+                  <a href={`#${chapter.key}`}>{chapter.title}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )
+      }
+    </header>
+
+    {
+      chaptersRendered.map((chapter) => (
+        <section class="chapter" id={chapter.key} aria-labelledby={`h-${chapter.key}`}>
+          <h2 id={`h-${chapter.key}`}>{chapter.title}</h2>
+          <p class="chapter__lede">{chapter.lede}</p>
+          <div class="qs">
+            {chapter.items.map(({ faq, Content }) => (
+              <FaqAnswer {faq} showPhase={false}>
+                <Content />
+              </FaqAnswer>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    {
+      restRendered.length > 0 && (
+        <section class="everything" aria-labelledby="h-rest">
+          <h2 id="h-rest">Everything else</h2>
+          <p class="chapter__lede">Grouped by where you are in a project.</p>
+          {restRendered.map((group) => (
+            <div class="group">
+              <h3>{group.label}</h3>
+              <div class="qs">
+                {group.items.map(({ faq, Content }) => (
+                  <FaqAnswer {faq} showPhase={false} quiet>
+                    <Content />
+                  </FaqAnswer>
+                ))}
+              </div>
+            </div>
+          ))}
+        </section>
+      )
+    }
+
+    <footer class="close">
+      <p>
+        If your question is not here, it is worth a phone call. Most of what is written above
+        started as something somebody asked on a first visit.
+      </p>
+      <p>
+        Nothing on this page is a quote. A landscape price comes from a measured site and chosen
+        materials, and until both exist any number is a range.
+      </p>
+      <p class="sig">
+        <a href="/">{company.legalName}</a> &middot; {company.license.display} &middot;
+        <a href={`tel:${primaryPhone.tel}`}>{primaryPhone.display}</a>
+      </p>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  /*
+   * Reads as a letter rather than a web page: one column, generous measure,
+   * minimal chrome. The layout intentionally drops the site header and footer.
+   */
+  .sheet {
+    max-width: 44rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    padding-block-end: var(--space-3xl);
+  }
+
+  .opening {
+    padding-block: var(--space-3xl) var(--space-lg);
+  }
+
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .opening h1 {
+    font-size: var(--text-3xl);
+    font-weight: 400;
+    margin-block: var(--space-md) var(--space-sm);
+  }
+
+  .intro {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+  }
+
+  .intro + .intro {
+    margin-block-start: var(--space-sm);
+  }
+
+  .jump {
+    margin-block-start: var(--space-xl);
+    padding-block-start: var(--space-lg);
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  .jump h2 {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-block-end: var(--space-sm);
+  }
+
+  .jump ol {
+    list-style: none;
+    padding: 0;
+    counter-reset: chapter;
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .jump li {
+    counter-increment: chapter;
+    display: grid;
+    grid-template-columns: 1.8rem 1fr;
+  }
+
+  .jump li::before {
+    content: counter(chapter, decimal-leading-zero);
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    padding-block-start: 0.35em;
+  }
+
+  .jump a {
+    color: var(--color-text);
+    text-decoration: none;
+    border-block-end: 1px solid var(--color-border);
+    padding-block-end: 0.1em;
+  }
+
+  .jump a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .chapter {
+    padding-block-start: var(--space-3xl);
+  }
+
+  .chapter h2 {
+    font-size: var(--text-2xl);
+    font-weight: 400;
+  }
+
+  .chapter__lede {
+    margin-block-start: var(--space-md);
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+  }
+
+  .qs {
+    margin-block-start: var(--space-xl);
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  .everything {
+    padding-block-start: var(--space-3xl);
+  }
+
+  .everything h2 {
+    font-size: var(--text-2xl);
+    font-weight: 400;
+  }
+
+  .group {
+    margin-block-start: var(--space-xl);
+  }
+
+  .group h3 {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    padding-block-end: var(--space-xs);
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .group .qs {
+    margin-block-start: 0;
+    border-block-start: 0;
+  }
+
+  .close {
+    margin-block-start: var(--space-3xl);
+    padding-block-start: var(--space-lg);
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  .close p {
+    color: var(--color-text-muted);
+  }
+
+  .close p + p {
+    margin-block-start: var(--space-sm);
+  }
+
+  .sig {
+    margin-block-start: var(--space-lg);
+    font-size: var(--text-sm);
+  }
+</style>

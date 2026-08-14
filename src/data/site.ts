@@ -113,6 +113,7 @@ export interface NavItem {
 export const primaryNav: NavItem[] = [
   { label: 'Work', href: '/work' },
   { label: 'Services', href: '/services' },
+  { label: 'Answers', href: '/faq' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
