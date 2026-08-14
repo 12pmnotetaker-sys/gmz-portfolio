@@ -92,7 +92,9 @@
     padding-block: clamp(2.5rem, 6vw, 5rem) 5rem;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-display);
     font-weight: 600;
     line-height: 1.15;
@@ -100,9 +102,15 @@
     margin: 0;
   }
 
-  p, li { text-wrap: pretty; margin: 0; }
+  p,
+  li {
+    text-wrap: pretty;
+    margin: 0;
+  }
 
-  .measure { max-width: var(--measure); }
+  .measure {
+    max-width: var(--measure);
+  }
 
   /* ---- Masthead -------------------------------------------------------- */
   .masthead {
@@ -133,7 +141,9 @@
     background: var(--flag-wash);
   }
 
-  .masthead h1 { font-size: clamp(2.15rem, 5.5vw, 3.4rem); }
+  .masthead h1 {
+    font-size: clamp(2.15rem, 5.5vw, 3.4rem);
+  }
 
   .standfirst {
     max-width: 46rem;
@@ -143,7 +153,9 @@
   }
 
   /* ---- Sections -------------------------------------------------------- */
-  section { padding-block-start: clamp(2.75rem, 6vw, 4.25rem); }
+  section {
+    padding-block-start: clamp(2.75rem, 6vw, 4.25rem);
+  }
 
   .section-head {
     display: flex;
@@ -162,10 +174,20 @@
     flex: none;
   }
 
-  .section-head h2 { font-size: clamp(1.4rem, 3vw, 1.85rem); }
+  .section-head h2 {
+    font-size: clamp(1.4rem, 3vw, 1.85rem);
+  }
 
-  .stack { display: flex; flex-direction: column; gap: 1rem; }
-  .stack-lg { display: flex; flex-direction: column; gap: 1.6rem; }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .stack-lg {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
 
   /* ---- Callout --------------------------------------------------------- */
   .callout {
@@ -179,8 +201,12 @@
     border-radius: 0 4px 4px 0;
   }
 
-  .callout.is-flag { border-inline-start-color: var(--flag); }
-  .callout.is-alert { border-inline-start-color: var(--alert); }
+  .callout.is-flag {
+    border-inline-start-color: var(--flag);
+  }
+  .callout.is-alert {
+    border-inline-start-color: var(--alert);
+  }
 
   .callout h3 {
     font-family: var(--font-body);
@@ -191,7 +217,9 @@
     color: var(--ink-faint);
   }
 
-  .callout p { font-size: 0.98rem; }
+  .callout p {
+    font-size: 0.98rem;
+  }
 
   /* ---- Chips ----------------------------------------------------------- */
   .chip {
@@ -206,9 +234,18 @@
     white-space: nowrap;
   }
 
-  .chip-keep { background: var(--surface-sunk); color: var(--ink-faint); }
-  .chip-change { background: var(--flag-wash); color: var(--flag); }
-  .chip-new { background: var(--accent-wash); color: var(--accent-deep); }
+  .chip-keep {
+    background: var(--surface-sunk);
+    color: var(--ink-faint);
+  }
+  .chip-change {
+    background: var(--flag-wash);
+    color: var(--flag);
+  }
+  .chip-new {
+    background: var(--accent-wash);
+    color: var(--accent-deep);
+  }
 
   /* ---- Tables ---------------------------------------------------------- */
   .scroller {
@@ -246,9 +283,13 @@
     vertical-align: top;
   }
 
-  tbody tr:last-child td { border-block-end: 0; }
+  tbody tr:last-child td {
+    border-block-end: 0;
+  }
 
-  td.stage { white-space: nowrap; }
+  td.stage {
+    white-space: nowrap;
+  }
 
   td.stage .n {
     font-family: var(--font-data);
@@ -263,8 +304,12 @@
     margin-block-start: 0.15rem;
   }
 
-  td.now { color: var(--ink-faint); }
-  td.mark { width: 1%; }
+  td.now {
+    color: var(--ink-faint);
+  }
+  td.mark {
+    width: 1%;
+  }
 
   /* ---- Cards ----------------------------------------------------------- */
   .cards {
@@ -283,8 +328,13 @@
     border-radius: 4px;
   }
 
-  .card h3 { font-size: 1.05rem; }
-  .card p { font-size: 0.92rem; color: var(--ink-soft); }
+  .card h3 {
+    font-size: 1.05rem;
+  }
+  .card p {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
 
   .card .tag {
     font-family: var(--font-data);
@@ -304,7 +354,9 @@
   }
 
   @media (min-width: 44rem) {
-    .phase { grid-template-columns: 11rem 1fr; }
+    .phase {
+      grid-template-columns: 11rem 1fr;
+    }
   }
 
   .phase-when {
@@ -316,14 +368,33 @@
     padding-block-start: 0.28rem;
   }
 
-  .phase h3 { font-size: 1.1rem; margin-block-end: 0.3rem; }
-  .phase ul { margin: 0; padding-inline-start: 1.15rem; }
-  .phase li { font-size: 0.96rem; }
-  .phase li + li { margin-block-start: 0.28rem; }
-  .phase .cost { font-size: 0.88rem; color: var(--ink-faint); margin-block-start: 0.5rem; }
+  .phase h3 {
+    font-size: 1.1rem;
+    margin-block-end: 0.3rem;
+  }
+  .phase ul {
+    margin: 0;
+    padding-inline-start: 1.15rem;
+  }
+  .phase li {
+    font-size: 0.96rem;
+  }
+  .phase li + li {
+    margin-block-start: 0.28rem;
+  }
+  .phase .cost {
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+    margin-block-start: 0.5rem;
+  }
 
   /* ---- Decisions ------------------------------------------------------- */
-  ol.decisions { margin: 0; padding-inline-start: 0; list-style: none; counter-reset: d; }
+  ol.decisions {
+    margin: 0;
+    padding-inline-start: 0;
+    list-style: none;
+    counter-reset: d;
+  }
 
   ol.decisions li {
     counter-increment: d;
@@ -342,8 +413,14 @@
     padding-block-start: 0.22rem;
   }
 
-  ol.decisions strong { display: block; font-size: 1.02rem; }
-  ol.decisions p { font-size: 0.94rem; color: var(--ink-soft); }
+  ol.decisions strong {
+    display: block;
+    font-size: 1.02rem;
+  }
+  ol.decisions p {
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
 
   .footnote {
     margin-block-start: 3.5rem;
@@ -353,7 +430,9 @@
     color: var(--ink-faint);
   }
 
-  a { color: var(--accent-deep); }
+  a {
+    color: var(--accent-deep);
+  }
 
   :focus-visible {
     outline: 2px solid var(--accent);
@@ -361,12 +440,14 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    * {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>
 
 <div class="page">
-
   <header class="masthead">
     <div class="kicker">
       <span>GMZ Landscaping Inc.</span>
@@ -375,74 +456,94 @@
     </div>
     <h1>Lead to Closeout</h1>
     <p class="standfirst">
-      A target-state process for design/build and maintenance, built around what GMZ already
-      does well and closing the two ends where the work currently lives in one person's head.
+      A target-state process for design/build and maintenance, built around what GMZ already does
+      well and closing the two ends where the work currently lives in one person's head.
     </p>
   </header>
 
   <section>
-    <div class="section-head"><span class="num">01</span><h2>The argument</h2></div>
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2>The argument</h2>
+    </div>
     <div class="stack measure">
       <p>
         GMZ's estimating is better instrumented than most contractors twice its size. Routing,
-        take-off, level discipline, floor checks, a document set that reconciles to itself.
-        That part is not the problem and nothing here touches it.
+        take-off, level discipline, floor checks, a document set that reconciles to itself. That
+        part is not the problem and nothing here touches it.
       </p>
       <p>
-        The losses are at the two ends. Before a scope exists, there is no qualification step
-        and no shared record, so unqualified site visits burn truck time and real leads go
-        unrecorded. After signature, contract, handover, warranty and renewal all run on
-        judgment, which works while you are the one exercising it and cannot be delegated,
-        published, or compared against by a prospect choosing between three bids.
+        The losses are at the two ends. Before a scope exists, there is no qualification step and no
+        shared record, so unqualified site visits burn truck time and real leads go unrecorded.
+        After signature, contract, handover, warranty and renewal all run on judgment, which works
+        while you are the one exercising it and cannot be delegated, published, or compared against
+        by a prospect choosing between three bids.
       </p>
       <p>
-        Everything proposed below is standard practice for residential design/build at this
-        size. None of it is exotic and none of it needs new software to start.
+        Everything proposed below is standard practice for residential design/build at this size.
+        None of it is exotic and none of it needs new software to start.
       </p>
     </div>
 
-    <div class="callout is-flag" style="margin-block-start: 1.6rem; max-width: var(--measure);">
+    <div class="callout is-flag" style="margin-block-start: 1.6rem; max-width: var(--measure)">
       <h3>The timing that shapes this</h3>
       <p>
-        Filoli closed on 10 August. It was the largest account and it held all of Tuesdays.
-        That capacity is open now, and referrals arrive at the pace they arrive at. Online is
-        the only one of the three lead channels that can be turned up deliberately, which is
-        why the website and the qualification step sit at the front of the plan.
+        Filoli closed on 10 August. It was the largest account and it held all of Tuesdays. That
+        capacity is open now, and referrals arrive at the pace they arrive at. Online is the only
+        one of the three lead channels that can be turned up deliberately, which is why the website
+        and the qualification step sit at the front of the plan.
       </p>
     </div>
   </section>
 
   <section>
-    <div class="section-head"><span class="num">02</span><h2>What does not change</h2></div>
+    <div class="section-head">
+      <span class="num">02</span>
+      <h2>What does not change</h2>
+    </div>
     <div class="cards">
       <div class="card">
         <span class="tag">Keep</span>
         <h3>The estimating engine</h3>
-        <p>One engine, one set of numbers, floors checked before anything reaches a client. It is the strongest asset in the business.</p>
+        <p>
+          One engine, one set of numbers, floors checked before anything reaches a client. It is the
+          strongest asset in the business.
+        </p>
       </div>
       <div class="card">
         <span class="tag">Keep</span>
         <h3>FreshBooks as the book</h3>
-        <p>Estimates and invoices stay where the accountant can see them. No parallel money system.</p>
+        <p>
+          Estimates and invoices stay where the accountant can see them. No parallel money system.
+        </p>
       </div>
       <div class="card">
         <span class="tag">Keep</span>
         <h3>Two separate service lines</h3>
-        <p>Design/build and maintenance have different rates, different agreements and different law behind them. They stay apart.</p>
+        <p>
+          Design/build and maintenance have different rates, different agreements and different law
+          behind them. They stay apart.
+        </p>
       </div>
       <div class="card">
         <span class="tag">Keep</span>
         <h3>The signed design agreement</h3>
-        <p>Design is already a paid product with its own document. That is ahead of most of the trade and it becomes the spine of the new funnel.</p>
+        <p>
+          Design is already a paid product with its own document. That is ahead of most of the trade
+          and it becomes the spine of the new funnel.
+        </p>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="section-head"><span class="num">03</span><h2>The design/build funnel</h2></div>
-    <p class="measure" style="margin-block-end: 1.5rem;">
-      Twelve stages, first contact to follow-up. Six are unchanged, six are new or reshaped.
-      The order matters: each gate exists so the next stage is only run on work worth running it on.
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2>The design/build funnel</h2>
+    </div>
+    <p class="measure" style="margin-block-end: 1.5rem">
+      Twelve stages, first contact to follow-up. Six are unchanged, six are new or reshaped. The
+      order matters: each gate exists so the next stage is only run on work worth running it on.
     </p>
 
     <div class="scroller">
@@ -459,59 +560,99 @@
           <tr>
             <td class="stage"><span class="n">01</span><span class="label">Inquiry</span></td>
             <td class="now">Phone, text, WhatsApp, email, referral. Nothing shared.</td>
-            <td>Every lead lands in one place on arrival, whoever took the call. Name, town, scope, channel, date.</td>
+            <td>
+              Every lead lands in one place on arrival, whoever took the call. Name, town, scope,
+              channel, date.
+            </td>
             <td class="mark"><span class="chip chip-new">New</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">02</span><span class="label">Phone qualification</span></td>
+            <td class="stage">
+              <span class="n">02</span><span class="label">Phone qualification</span>
+            </td>
             <td class="now">None. The site visit is the first filter.</td>
-            <td>Fifteen minutes on the phone: scope, budget band, timeline, who decides, where it is. Decline or defer here, not after the drive.</td>
+            <td>
+              Fifteen minutes on the phone: scope, budget band, timeline, who decides, where it is.
+              Decline or defer here, not after the drive.
+            </td>
             <td class="mark"><span class="chip chip-new">New</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">03</span><span class="label">Site consultation</span></td>
+            <td class="stage">
+              <span class="n">03</span><span class="label">Site consultation</span>
+            </td>
             <td class="now">Free visit, unstructured.</td>
-            <td>Same visit, run off a checklist so nothing gets missed and the notes come back in a usable shape.</td>
+            <td>
+              Same visit, run off a checklist so nothing gets missed and the notes come back in a
+              usable shape.
+            </td>
             <td class="mark"><span class="chip chip-change">Changed</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">04</span><span class="label">Concept and planning budget</span></td>
+            <td class="stage">
+              <span class="n">04</span><span class="label">Concept and planning budget</span>
+            </td>
             <td class="now">Complimentary concept, then a planning budget with a range.</td>
-            <td>Same two deliverables, sold as a small paid first phase. Cheap enough to be an easy yes, real enough to filter.</td>
+            <td>
+              Same two deliverables, sold as a small paid first phase. Cheap enough to be an easy
+              yes, real enough to filter.
+            </td>
             <td class="mark"><span class="chip chip-change">Changed</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">05</span><span class="label">Design development</span></td>
+            <td class="stage">
+              <span class="n">05</span><span class="label">Design development</span>
+            </td>
             <td class="now">One design agreement covering everything.</td>
-            <td>Second phase of the same agreement, entered only if they approve the concept. Measured survey and drawings. This is the gate that earns a firm price.</td>
+            <td>
+              Second phase of the same agreement, entered only if they approve the concept. Measured
+              survey and drawings. This is the gate that earns a firm price.
+            </td>
             <td class="mark"><span class="chip chip-change">Changed</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">06</span><span class="label">Bid presentation</span></td>
+            <td class="stage">
+              <span class="n">06</span><span class="label">Bid presentation</span>
+            </td>
             <td class="now">Package sent.</td>
             <td>Presented in person, plan and price together, decision asked for in the room.</td>
             <td class="mark"><span class="chip chip-change">Changed</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">07</span><span class="label">Construction agreement</span></td>
+            <td class="stage">
+              <span class="n">07</span><span class="label">Construction agreement</span>
+            </td>
             <td class="now">Varies. Some jobs on an accepted estimate.</td>
-            <td>One compliant contract on every job above $500, with milestone payments and the statutory deposit cap.</td>
+            <td>
+              One compliant contract on every job above $500, with milestone payments and the
+              statutory deposit cap.
+            </td>
             <td class="mark"><span class="chip chip-new">New</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">08</span><span class="label">Pre-construction meeting</span></td>
+            <td class="stage">
+              <span class="n">08</span><span class="label">Pre-construction meeting</span>
+            </td>
             <td class="now">None.</td>
-            <td>Half an hour before the first truck: access, gate codes, hours, parking, pets, kids, who to call, what the first week looks like.</td>
+            <td>
+              Half an hour before the first truck: access, gate codes, hours, parking, pets, kids,
+              who to call, what the first week looks like.
+            </td>
             <td class="mark"><span class="chip chip-new">New</span></td>
           </tr>
           <tr>
             <td class="stage"><span class="n">09</span><span class="label">Build</span></td>
             <td class="now">Updates when they happen.</td>
-            <td>One update a week, same day: what changed, what is next, what needs a decision, with a photo.</td>
+            <td>
+              One update a week, same day: what changed, what is next, what needs a decision, with a
+              photo.
+            </td>
             <td class="mark"><span class="chip chip-change">Changed</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">10</span><span class="label">Substantial completion</span></td>
+            <td class="stage">
+              <span class="n">10</span><span class="label">Substantial completion</span>
+            </td>
             <td class="now">Varies by job.</td>
             <td>Walkthrough with a written punch list, every job. Both parties hold a copy.</td>
             <td class="mark"><span class="chip chip-new">New</span></td>
@@ -519,34 +660,43 @@
           <tr>
             <td class="stage"><span class="n">11</span><span class="label">Closeout</span></td>
             <td class="now">None.</td>
-            <td>A package handed over: plan copy, plant list, irrigation zone map and controller settings, care guide, the written warranty, and the maintenance proposal.</td>
+            <td>
+              A package handed over: plan copy, plant list, irrigation zone map and controller
+              settings, care guide, the written warranty, and the maintenance proposal.
+            </td>
             <td class="mark"><span class="chip chip-new">New</span></td>
           </tr>
           <tr>
             <td class="stage"><span class="n">12</span><span class="label">Follow-up</span></td>
             <td class="now">None.</td>
-            <td>A call at thirty days and again at six months. Cheapest referral and maintenance conversion available.</td>
+            <td>
+              A call at thirty days and again at six months. Cheapest referral and maintenance
+              conversion available.
+            </td>
             <td class="mark"><span class="chip chip-new">New</span></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="callout" style="margin-block-start: 1.6rem; max-width: var(--measure);">
+    <div class="callout" style="margin-block-start: 1.6rem; max-width: var(--measure)">
       <h3>Why phasing the design agreement is the key move</h3>
       <p>
-        It solves the argument the whole business currently has with clients. Today the ask is
-        "buy a full design before you know what this costs." Phased, the ask is "buy a concept
-        and a budget for a small fee; if you like it, the next step measures and prices it
-        firmly." The first is a leap. The second is a step, and it pays for the design time
-        that is currently given away.
+        It solves the argument the whole business currently has with clients. Today the ask is "buy
+        a full design before you know what this costs." Phased, the ask is "buy a concept and a
+        budget for a small fee; if you like it, the next step measures and prices it firmly." The
+        first is a leap. The second is a step, and it pays for the design time that is currently
+        given away.
       </p>
     </div>
   </section>
 
   <section>
-    <div class="section-head"><span class="num">04</span><h2>The maintenance track</h2></div>
-    <p class="measure" style="margin-block-end: 1.5rem;">
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2>The maintenance track</h2>
+    </div>
+    <p class="measure" style="margin-block-end: 1.5rem">
       Shorter, and it renews rather than ending. Two changes carry almost all the value.
     </p>
 
@@ -568,27 +718,43 @@
             <td class="mark"><span class="chip chip-change">Changed</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">02</span><span class="label">Route-fit screen</span></td>
+            <td class="stage">
+              <span class="n">02</span><span class="label">Route-fit screen</span>
+            </td>
             <td class="now">None.</td>
-            <td>Check the address against the existing route before quoting. An off-route stop costs far more than it looks like it does.</td>
+            <td>
+              Check the address against the existing route before quoting. An off-route stop costs
+              far more than it looks like it does.
+            </td>
             <td class="mark"><span class="chip chip-new">New</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">03</span><span class="label">Property walk and quote</span></td>
+            <td class="stage">
+              <span class="n">03</span><span class="label">Property walk and quote</span>
+            </td>
             <td class="now">Walk, then quote on the maintenance book.</td>
             <td>Unchanged.</td>
             <td class="mark"><span class="chip chip-keep">Keep</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">04</span><span class="label">Service agreement</span></td>
+            <td class="stage">
+              <span class="n">04</span><span class="label">Service agreement</span>
+            </td>
             <td class="now">Agreement, schedule and its own terms.</td>
-            <td>Same, with renewal date, notice period and price escalation stated on the face of it.</td>
+            <td>
+              Same, with renewal date, notice period and price escalation stated on the face of it.
+            </td>
             <td class="mark"><span class="chip chip-change">Changed</span></td>
           </tr>
           <tr>
-            <td class="stage"><span class="n">05</span><span class="label">Onboarding visit</span></td>
+            <td class="stage">
+              <span class="n">05</span><span class="label">Onboarding visit</span>
+            </td>
             <td class="now">First visit is a normal visit.</td>
-            <td>First visit is an assessment: photos, baseline condition, irrigation walked zone by zone. Sets the record for everything after.</td>
+            <td>
+              First visit is an assessment: photos, baseline condition, irrigation walked zone by
+              zone. Sets the record for everything after.
+            </td>
             <td class="mark"><span class="chip chip-new">New</span></td>
           </tr>
           <tr>
@@ -600,14 +766,17 @@
           <tr>
             <td class="stage"><span class="n">07</span><span class="label">Annual review</span></td>
             <td class="now">Varies by account.</td>
-            <td>One fixed month a year, every account reviewed: scope still right, price re-struck, agreement renewed.</td>
+            <td>
+              One fixed month a year, every account reviewed: scope still right, price re-struck,
+              agreement renewed.
+            </td>
             <td class="mark"><span class="chip chip-new">New</span></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="callout is-flag" style="margin-block-start: 1.6rem; max-width: var(--measure);">
+    <div class="callout is-flag" style="margin-block-start: 1.6rem; max-width: var(--measure)">
       <h3>Route density is the only lever on maintenance margin</h3>
       <p>
         The maintenance book recovers a smaller share of each paid hour than the build book does,
@@ -620,43 +789,61 @@
   </section>
 
   <section>
-    <div class="section-head"><span class="num">05</span><h2>Four things to write once</h2></div>
-    <p class="measure" style="margin-block-end: 1.5rem;">
-      Most of the proposal above is a habit, not a document. These four are documents, and each
-      gets written once and reused on every job.
+    <div class="section-head">
+      <span class="num">05</span>
+      <h2>Four things to write once</h2>
+    </div>
+    <p class="measure" style="margin-block-end: 1.5rem">
+      Most of the proposal above is a habit, not a document. These four are documents, and each gets
+      written once and reused on every job.
     </p>
     <div class="cards">
       <div class="card">
         <span class="tag">One page</span>
         <h3>Qualification script</h3>
-        <p>The questions asked on every inbound call, in order, with the point at which to decline. Anyone answering the phone can run it.</p>
+        <p>
+          The questions asked on every inbound call, in order, with the point at which to decline.
+          Anyone answering the phone can run it.
+        </p>
       </div>
       <div class="card">
         <span class="tag">Needs a lawyer</span>
         <h3>Construction contract</h3>
-        <p>One compliant template with the required notices, the three-day cancellation right, a milestone payment schedule and the deposit cap.</p>
+        <p>
+          One compliant template with the required notices, the three-day cancellation right, a
+          milestone payment schedule and the deposit cap.
+        </p>
       </div>
       <div class="card">
         <span class="tag">Half a page</span>
         <h3>Written warranty</h3>
-        <p>One year on workmanship from completion, plants excluded and the reason stated. Limits exposure while reading as generous.</p>
+        <p>
+          One year on workmanship from completion, plants excluded and the reason stated. Limits
+          exposure while reading as generous.
+        </p>
       </div>
       <div class="card">
         <span class="tag">A template</span>
         <h3>Closeout package</h3>
-        <p>Plan copy, plant list, irrigation zone map and controller settings, care guide, warranty, maintenance proposal. An hour to assemble per job.</p>
+        <p>
+          Plan copy, plant list, irrigation zone map and controller settings, care guide, warranty,
+          maintenance proposal. An hour to assemble per job.
+        </p>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="section-head"><span class="num">06</span><h2>Systems</h2></div>
+    <div class="section-head">
+      <span class="num">06</span>
+      <h2>Systems</h2>
+    </div>
     <div class="stack measure">
       <p>
         The instinct at this point is to buy a field-service platform. Do not, yet. Configuring
-        software around a process that has not been decided means encoding the current mess at
-        some expense, and the estimating engine already outperforms the quoting module of
-        anything on the market at this price.
+        software around a process that has not been decided means encoding the current mess at some
+        expense, and the estimating engine already outperforms the quoting module of anything on the
+        market at this price.
       </p>
       <p>
         Codify the process first. Revisit the platform question in six months, when there is a
@@ -664,35 +851,50 @@
       </p>
     </div>
 
-    <div class="cards" style="margin-block-start: 1.6rem;">
+    <div class="cards" style="margin-block-start: 1.6rem">
       <div class="card">
         <span class="tag">Do now</span>
         <h3>One lead inbox</h3>
-        <p>A single shared place every inquiry gets written down, whatever channel it arrived on. A spreadsheet is enough to start.</p>
+        <p>
+          A single shared place every inquiry gets written down, whatever channel it arrived on. A
+          spreadsheet is enough to start.
+        </p>
       </div>
       <div class="card">
         <span class="tag">Do now</span>
         <h3>Revive Asana as the pipeline</h3>
-        <p>It is already structured project-per-client and it has been dormant since 2024. Stages matching the funnel above, and one look at it a week.</p>
+        <p>
+          It is already structured project-per-client and it has been dormant since 2024. Stages
+          matching the funnel above, and one look at it a week.
+        </p>
       </div>
       <div class="card">
         <span class="tag">Do next</span>
         <h3>Feed the actuals</h3>
-        <p>The workbook has an estimate-versus-actual tab and nothing fills it. Even a monthly manual pass tells you which jobs actually made money.</p>
+        <p>
+          The workbook has an estimate-versus-actual tab and nothing fills it. Even a monthly manual
+          pass tells you which jobs actually made money.
+        </p>
       </div>
       <div class="card">
         <span class="tag">Later</span>
         <h3>Revisit a platform</h3>
-        <p>Once the process is fixed and the pipeline has a year of real data behind it, buy the tool that fits it rather than the other way round.</p>
+        <p>
+          Once the process is fixed and the pipeline has a year of real data behind it, buy the tool
+          that fits it rather than the other way round.
+        </p>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="section-head"><span class="num">07</span><h2>Sequence</h2></div>
-    <p class="measure" style="margin-block-end: 1.2rem;">
-      Ordered by return against effort. A four-person company cannot do all of this at once and
-      does not need to.
+    <div class="section-head">
+      <span class="num">07</span>
+      <h2>Sequence</h2>
+    </div>
+    <p class="measure" style="margin-block-end: 1.2rem">
+      Ordered by return against effort. A four-person company cannot do all of this at once and does
+      not need to.
     </p>
 
     <div class="phase">
@@ -700,13 +902,21 @@
       <div>
         <h3>Turn on the front door</h3>
         <ul>
-          <li>Wire the contact form on the website. Online is already a live channel with nowhere to land.</li>
-          <li>Publish a starting-at figure so prospects self-qualify before they call. The number is yours to set.</li>
+          <li>
+            Wire the contact form on the website. Online is already a live channel with nowhere to
+            land.
+          </li>
+          <li>
+            Publish a starting-at figure so prospects self-qualify before they call. The number is
+            yours to set.
+          </li>
           <li>Write the qualification script and use it on every inbound call.</li>
           <li>Open one shared lead inbox.</li>
           <li>Write the one-year workmanship warranty.</li>
         </ul>
-        <p class="cost">Cost: a few hours and one decision. Nothing here needs a lawyer or a purchase.</p>
+        <p class="cost">
+          Cost: a few hours and one decision. Nothing here needs a lawyer or a purchase.
+        </p>
       </div>
     </div>
 
@@ -734,7 +944,10 @@
           <li>Closeout package template, then used on every job.</li>
           <li>Thirty-day and six-month follow-up calls.</li>
         </ul>
-        <p class="cost">Cost: discipline rather than money. Roughly two hours per job, and it is the part that generates referrals.</p>
+        <p class="cost">
+          Cost: discipline rather than money. Roughly two hours per job, and it is the part that
+          generates referrals.
+        </p>
       </div>
     </div>
 
@@ -753,42 +966,63 @@
   </section>
 
   <section>
-    <div class="section-head"><span class="num">08</span><h2>Decisions this needs from you</h2></div>
+    <div class="section-head">
+      <span class="num">08</span>
+      <h2>Decisions this needs from you</h2>
+    </div>
     <ol class="decisions">
       <li>
         <div>
           <strong>The starting-at figure</strong>
-          <p>The smallest design/build project worth mobilizing for. Publishing it is the single highest-leverage qualification tool available, and it costs nothing.</p>
+          <p>
+            The smallest design/build project worth mobilizing for. Publishing it is the single
+            highest-leverage qualification tool available, and it costs nothing.
+          </p>
         </div>
       </li>
       <li>
         <div>
           <strong>What the concept phase costs</strong>
-          <p>Small enough to be an easy yes, large enough to filter. It should cover Liliana's time rather than be a token.</p>
+          <p>
+            Small enough to be an easy yes, large enough to filter. It should cover Liliana's time
+            rather than be a token.
+          </p>
         </div>
       </li>
       <li>
         <div>
           <strong>Whether the site consultation stays free</strong>
-          <p>Charging filters hard, and it also suppresses volume. With Tuesdays open, my read is keep it free for now and revisit once the pipeline is full. Your call.</p>
+          <p>
+            Charging filters hard, and it also suppresses volume. With Tuesdays open, my read is
+            keep it free for now and revisit once the pipeline is full. Your call.
+          </p>
         </div>
       </li>
       <li>
         <div>
           <strong>The warranty term</strong>
-          <p>One year on workmanship is standard and is what I would write. Plants stay excluded, with the reason stated, because you do not control the watering.</p>
+          <p>
+            One year on workmanship is standard and is what I would write. Plants stay excluded,
+            with the reason stated, because you do not control the watering.
+          </p>
         </div>
       </li>
       <li>
         <div>
           <strong>The annual review month for maintenance</strong>
-          <p>Pick a quiet one. It becomes the moment a price change can actually reach twenty-four accounts.</p>
+          <p>
+            Pick a quiet one. It becomes the moment a price change can actually reach twenty-four
+            accounts.
+          </p>
         </div>
       </li>
       <li>
         <div>
           <strong>Who owns the lead inbox</strong>
-          <p>Whoever it is has to look at it daily. This is the one item that fails quietly if nobody is named.</p>
+          <p>
+            Whoever it is has to look at it daily. This is the one item that fails quietly if nobody
+            is named.
+          </p>
         </div>
       </li>
     </ol>
@@ -796,9 +1030,7 @@
 
   <p class="footnote">
     Prepared for Xavier &middot; GMZ Landscaping Inc. &middot; CSLB License #636636 &middot;
-    Internal working document, not for distribution. The construction contract and the
-    maintenance terms carry legal weight and are reviewed by someone qualified before they
-    reach a customer.
+    Internal working document, not for distribution. The construction contract and the maintenance
+    terms carry legal weight and are reviewed by someone qualified before they reach a customer.
   </p>
-
 </div>
