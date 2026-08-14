@@ -1,0 +1,240 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageHeader from '@components/PageHeader.astro';
+import { company } from '@data/site';
+import { SERVICE_LINES } from '../content.config';
+import { SERVICE_LINE_LABELS, labelFor } from '@data/content';
+
+/**
+ * Contact form delivery is not wired yet. Set PUBLIC_CONTACT_ENDPOINT to a
+ * form handler (Formspree, Netlify Forms, a Worker, whatever is chosen) and
+ * the form renders and posts to it.
+ *
+ * Until then the page shows the phone numbers and the email address and no
+ * form at all. That is deliberate: a form that silently drops a lead is
+ * worse than no form, and this site's whole job is collecting leads.
+ */
+const endpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT as string | undefined;
+---
+
+<BaseLayout
+  title="Contact"
+  description={`Get in touch with ${company.legalName} about a landscape project or a maintenance account.`}
+>
+  <PageHeader
+    eyebrow="Contact"
+    title="Start a conversation"
+    lede="Tell us about the property and what you have in mind. We will come and look at the site."
+  />
+
+  <div class="section">
+    <div class="container layout">
+      <div>
+        {
+          endpoint ? (
+            <form class="form" method="post" action={endpoint}>
+              <div class="field">
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+
+              <div class="field">
+                <label for="location">Property town</label>
+                <input id="location" name="location" type="text" autocomplete="address-level2" />
+              </div>
+
+              <div class="field">
+                <label for="serviceLine">What do you need</label>
+                <select id="serviceLine" name="serviceLine">
+                  {SERVICE_LINES.map((line) => (
+                    <option value={line}>{labelFor(SERVICE_LINE_LABELS, line)}</option>
+                  ))}
+                  <option value="unsure">Not sure yet</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message">About the project</label>
+                <textarea id="message" name="message" rows="6" required />
+              </div>
+
+              {/* Honeypot: a real person never fills this in. */}
+              <div class="honeypot" aria-hidden="true">
+                <label for="company-website">Leave this field empty</label>
+                <input
+                  id="company-website"
+                  name="company-website"
+                  type="text"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+
+              <button class="button" type="submit">
+                Send
+              </button>
+            </form>
+          ) : (
+            <div class="prose">
+              <h2>Call or email us</h2>
+              <p>
+                The quickest way to reach us is by phone. Tell us where the property is and what you
+                are thinking about, and we will arrange a time to come and see it.
+              </p>
+            </div>
+          )
+        }
+      </div>
+
+      <aside class="direct" aria-label="Direct contact details">
+        <h2 class="direct__heading">Reach us directly</h2>
+
+        <ul class="direct__list">
+          {
+            company.phones.map((phone) => (
+              <li>
+                <span class="direct__label">{phone.name}</span>
+                <a href={`tel:${phone.tel}`}>{phone.display}</a>
+              </li>
+            ))
+          }
+          <li>
+            <span class="direct__label">Email</span>
+            <a href={`mailto:${company.email}`}>{company.email}</a>
+          </li>
+          <li>
+            <span class="direct__label">Mail</span>
+            {company.address.mailing}
+          </li>
+        </ul>
+
+        <p class="direct__license">{company.license.display}</p>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .layout {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 56rem) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr) 18rem;
+      align-items: start;
+    }
+  }
+
+  .form {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: var(--width-prose);
+  }
+
+  .field {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .field label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font: inherit;
+    font-size: var(--text-sm);
+  }
+
+  .field textarea {
+    resize: vertical;
+  }
+
+  .honeypot {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .button {
+    justify-self: start;
+    padding: var(--space-sm) var(--space-xl);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition);
+  }
+
+  .button:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+  }
+
+  .direct {
+    padding: var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-subtle);
+  }
+
+  .direct__heading {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-block-end: var(--space-md);
+  }
+
+  .direct__list {
+    display: grid;
+    gap: var(--space-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+
+  .direct__label {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .direct__license {
+    margin-block-start: var(--space-lg);
+    padding-block-start: var(--space-md);
+    border-block-start: 1px solid var(--color-border);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+</style>

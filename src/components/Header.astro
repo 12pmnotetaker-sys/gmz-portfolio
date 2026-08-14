@@ -1,0 +1,128 @@
+---
+import { company, primaryNav, primaryPhone } from '@data/site';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__brand" href="/">
+      <span class="header__mark">{company.shortName}</span>
+      <span class="header__name">
+        {company.name}
+        <span class="header__tagline">{company.tagline}</span>
+      </span>
+    </a>
+
+    <nav class="header__nav" aria-label="Primary">
+      <ul class="header__list">
+        {
+          primaryNav.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a class="header__phone" href={`tel:${primaryPhone.tel}`}>
+      <span class="visually-hidden">Call {company.name} at </span>
+      {primaryPhone.display}
+    </a>
+  </div>
+</header>
+
+<style>
+  /*
+   * Placeholder chrome. This is a working header, not the designed one.
+   * The mobile nav is a plain wrapping list rather than a drawer, so there
+   * is no JS behavior here to unpick when the real design arrives.
+   */
+  .header {
+    border-block-end: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+
+  .header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md) var(--space-lg);
+    padding-block: var(--space-md);
+  }
+
+  .header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text);
+    text-decoration: none;
+    margin-inline-end: auto;
+  }
+
+  .header__mark {
+    display: grid;
+    place-items: center;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    border-radius: var(--radius-md);
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    letter-spacing: 0.04em;
+  }
+
+  .header__name {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    line-height: var(--leading-tight);
+  }
+
+  .header__tagline {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .header__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .header__list a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: var(--text-sm);
+  }
+
+  .header__list a:hover,
+  .header__list a[aria-current='page'] {
+    color: var(--color-accent);
+  }
+
+  .header__list a[aria-current='page'] {
+    text-decoration: underline;
+    text-underline-offset: 0.4em;
+  }
+
+  .header__phone {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+</style>

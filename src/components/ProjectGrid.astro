@@ -1,0 +1,41 @@
+---
+import ProjectCard from '@components/ProjectCard.astro';
+import type { Project } from '@data/content';
+
+interface Props {
+  projects: Project[];
+  /** Rendered when the list is empty, e.g. after a filter. */
+  emptyMessage?: string;
+}
+
+const { projects, emptyMessage = 'No projects to show yet.' } = Astro.props;
+---
+
+{
+  projects.length === 0 ? (
+    <p class="empty">{emptyMessage}</p>
+  ) : (
+    <ul class="grid">
+      {projects.map((project, i) => (
+        <li>
+          <ProjectCard {project} eager={i < 3} />
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .grid {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .empty {
+    color: var(--color-text-muted);
+  }
+</style>

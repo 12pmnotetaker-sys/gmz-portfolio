@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { primaryNav } from '@data/site';
+---
+
+<BaseLayout title="Page not found" noindex>
+  <div class="section">
+    <div class="container prose">
+      <h1>That page is not here</h1>
+      <p>
+        The link may be out of date, or the page may have moved. Here is where everything else
+        lives.
+      </p>
+      <ul>
+        <li><a href="/">Home</a></li>
+        {
+          primaryNav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

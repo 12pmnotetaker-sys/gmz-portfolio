@@ -1,0 +1,116 @@
+---
+import { Image } from 'astro:assets';
+import { DISCIPLINE_LABELS, labelFor, type Project } from '@data/content';
+
+interface Props {
+  project: Project;
+  /** The first card on a page should load eagerly; the rest should not. */
+  eager?: boolean;
+}
+
+const { project, eager = false } = Astro.props;
+const { title, summary, location, hero, disciplines, completed } = project.data;
+---
+
+<article class="card" data-disciplines={disciplines.join(' ')}>
+  <a class="card__link" href={`/work/${project.id}`}>
+    <div class="card__media">
+      <Image
+        src={hero.src}
+        alt={hero.alt}
+        width={800}
+        height={533}
+        widths={[400, 800, 1200]}
+        sizes="(min-width: 60rem) 33vw, (min-width: 40rem) 50vw, 100vw"
+        loading={eager ? 'eager' : 'lazy'}
+        decoding={eager ? 'sync' : 'async'}
+      />
+    </div>
+
+    <div class="card__body">
+      <h3 class="card__title">{title}</h3>
+      <p class="card__meta">
+        {location}
+        <span aria-hidden="true"> · </span>
+        <time datetime={completed.toISOString()}>
+          {completed.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+        </time>
+      </p>
+      <p class="card__summary">{summary}</p>
+      <ul class="card__tags">
+        {disciplines.map((d) => <li>{labelFor(DISCIPLINE_LABELS, d)}</li>)}
+      </ul>
+    </div>
+  </a>
+</article>
+
+<style>
+  .card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg);
+    transition: box-shadow var(--transition);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .card__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    block-size: 100%;
+  }
+
+  .card__media {
+    aspect-ratio: 3 / 2;
+    background: var(--color-bg-subtle);
+  }
+
+  .card__media :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .card__body {
+    padding: var(--space-lg);
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .card__title {
+    font-size: var(--text-lg);
+  }
+
+  .card__meta {
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .card__summary {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-xs);
+    list-style: none;
+    padding: 0;
+    margin-block-start: var(--space-2xs);
+    font-size: var(--text-xs);
+  }
+
+  .card__tags li {
+    padding: 0.15em 0.6em;
+    border-radius: 999px;
+    background: var(--color-bg-tint);
+    color: var(--color-accent-hover);
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageHeader from '@components/PageHeader.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import { getServices, SERVICE_LINE_LABELS, labelFor } from '@data/content';
+import { SERVICE_LINES } from '../../content.config';
+
+const services = await getServices();
+
+/**
+ * Grouped by service line, because design/build and maintenance are two
+ * different products with different agreements. Presenting them as one list
+ * would blur a distinction the business cares about.
+ */
+const groups = SERVICE_LINES.map((line) => ({
+  line,
+  label: labelFor(SERVICE_LINE_LABELS, line),
+  services: services.filter((s) => s.data.serviceLine === line),
+})).filter((group) => group.services.length > 0);
+---
+
+<BaseLayout
+  title="Services"
+  description="Landscape design, hardscape, planting, irrigation, drainage, fencing and garden maintenance on the San Francisco Peninsula."
+>
+  <PageHeader
+    eyebrow="Services"
+    title="What we do"
+    lede="Two service lines: design and build projects with a start and a finish, and maintenance accounts that run on a standing schedule."
+  />
+
+  {
+    groups.map((group) => (
+      <section class="section" aria-labelledby={`line-${group.line}`}>
+        <div class="container">
+          <h2 id={`line-${group.line}`}>{group.label}</h2>
+          <ul class="services">
+            {group.services.map((service) => (
+              <li>
+                <ServiceCard {service} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  .services {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-block-start: var(--space-lg);
+  }
+</style>

@@ -1,0 +1,101 @@
+/**
+ * Design tokens for the GMZ portfolio.
+ *
+ * This file is the seam for the Claude Design handoff. The palette below is
+ * the GMZ brand palette as used on the bid documents, so the scaffold looks
+ * like GMZ rather than like nothing. When the finished design lands, the
+ * expectation is that these VALUES change and the NAMES do not: every
+ * component reads tokens, never a literal color or size.
+ *
+ * See DESIGN-HANDOFF.md for the full swap procedure.
+ */
+
+:root {
+  /* ---- Brand palette ------------------------------------------------ */
+  /* Sourced from the GMZ estimating-system branding reference. */
+  --gmz-green: #2e7d32; /* primary: headings, accents, buttons */
+  --gmz-green-deep: #1b5e20; /* cover banners, footer, hover states */
+  --gmz-green-light: #e8f5e9; /* tinted section fills */
+  --gmz-ink: #222222; /* neutral body text */
+  --gmz-rule: #e0e0e0; /* hairlines and gridlines */
+
+  /* ---- Semantic colors ---------------------------------------------- */
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f7f8f6;
+  --color-bg-tint: var(--gmz-green-light);
+  --color-bg-inverse: var(--gmz-green-deep);
+
+  --color-text: var(--gmz-ink);
+  --color-text-muted: #5c625c;
+  --color-text-inverse: #ffffff;
+
+  --color-accent: var(--gmz-green);
+  --color-accent-hover: var(--gmz-green-deep);
+  --color-accent-contrast: #ffffff;
+
+  --color-border: var(--gmz-rule);
+  --color-focus: var(--gmz-green-deep);
+
+  /* ---- Type ---------------------------------------------------------- */
+  /* System stacks for now. The design handoff replaces these with the
+     chosen faces and adds the @font-face or hosted-font link. */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.75rem;
+  --text-4xl: 3.5rem;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+
+  /* ---- Space --------------------------------------------------------- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* ---- Layout -------------------------------------------------------- */
+  --width-content: 68rem;
+  --width-prose: 42rem;
+  --gutter: clamp(1rem, 5vw, 3rem);
+
+  /* ---- Surface ------------------------------------------------------- */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 6%);
+  --shadow-md: 0 4px 16px rgb(0 0 0 / 8%);
+
+  --transition: 150ms ease;
+}
+
+/**
+ * Dark mode is not designed yet. The tokens below are a neutral inversion so
+ * a visitor with a dark preference does not get a white flash; replace them
+ * with the real dark palette if the finished design specifies one.
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #141714;
+    --color-bg-subtle: #1c201c;
+    --color-bg-tint: #1f2a20;
+    --color-text: #eceee9;
+    --color-text-muted: #a6ada4;
+    --color-border: #313630;
+    --color-accent: #7cc47f;
+    --color-accent-hover: #a3d9a5;
+    --color-accent-contrast: #10130f;
+  }
+}
