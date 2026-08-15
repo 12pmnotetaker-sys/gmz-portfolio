@@ -1,0 +1,159 @@
+GMZ LANDSCAPING INC., ONE-VISIT COUNSEL BRIEF: DESIGN AGREEMENT, HOME IMPROVEMENT CONTRACT COVERAGE, CANCELLATION RIGHTS, PLAN LICENSE, MAINTENANCE CONTRACTS
+Produced by Study 002, 15 August 2026
+========================================================================
+
+NOTICE ON THE NATURE OF THIS DOCUMENT
+
+This brief assembles public statutory and regulatory texts, verbatim operative language, and precise questions for counsel. It contains no legal conclusions and no legal advice. It was prepared by a researcher so that counsel does not have to retrieve or verify the primary texts during the consultation. Every quotation below was verified against the cited official source on 2026-08-15 unless a caveat says otherwise. Where the research found nothing on a point, that negative result is stated expressly, because knowing what does not exist is part of what this brief delivers.
+
+CLIENT FACT BASE
+
+GMZ Landscaping Inc., a licensed California landscape contractor, CSLB license 636636, classification C-27, based in Redwood City, working residential properties on the San Francisco Peninsula (Redwood City, Atherton, Menlo Park, Palo Alto, Woodside, San Carlos, Belmont, Portola Valley, Los Altos, Hillsborough). Two lines of business: (1) residential design/build, in which design is sold as a separate paid step under its own signed agreement, priced as a share of anticipated construction cost, with construction under a second, later contract; and (2) approximately 24 recurring residential maintenance accounts, some auto-renewing. Contracts in both lines are ordinarily signed at the client's home, not at GMZ's place of business. The client base skews older; buyers 65 and over are common, especially in Atherton, Hillsborough and Woodside. A prior research study established the statutory frame: B&P 7159 contract contents, the 7159.5 downpayment cap, MWELO's documentation trigger at 500 square feet, and that a licensed landscape contractor may sign the MWELO design plan.
+
+THE FIVE QUESTIONS
+
+QUESTION 1. Is a paid design-only agreement within a C-27 licensee's authority under B&P 7027.5 and 5641.4, given that both statutes grant design authority only for work "to be performed and supervised by that contractor," and may the client lawfully take the finished plans to another builder? Commercial stake: GMZ sells design as a standalone paid product, and some clients will not build, or will build with someone else, so the whole design revenue line rests on this construction.
+
+QUESTION 2. Is the standalone design agreement itself a "home improvement contract" under B&P 7151.2, via the 7151 and Civil Code 1689.5 services chain, and therefore subject to the 7159 content requirements and the 7159.5 downpayment cap? Commercial stake: this determines the required form of GMZ's design agreement, whether a design retainer is capped, and whether noncompliance exposes GMZ to discipline and unenforceability arguments on every design sale.
+
+QUESTION 3. When exactly does the three-business-day (five-day for buyers 65 and older) right to cancel attach and start running, reconciling the purely locational trigger in B&P 7159(e)(6)(A) with CSLB's consumer guidance that adds a $25 price floor drawn from Civil Code 1689.5? Commercial stake: GMZ signs at kitchen tables, so nearly every contract carries the notice, and starting design work inside an unexpired cancellation window risks doing unpaid work or tainting the contract.
+
+QUESTION 4. What limited-license language should the design agreement carry over the plan set, consistent with the "performed and supervised by that contractor" limit, the ban on the title "landscape architect" in B&P 5641.4 and 5640, and the line B&P 5641 draws for construction-level documents? Commercial stake: the plan license clause is where the Question 1 risk is either managed or aggravated, and title-related wording errors in the agreement or marketing carry misdemeanor exposure.
+
+QUESTION 5. Does the recurring maintenance service agreement, or any single visit or ad-hoc repair above $750, fall inside the home improvement contract regime, and when can the service-and-repair form under B&P 7159.10 be used instead? Commercial stake: 24 recurring accounts are the stable half of the business, and using the wrong contract form on routine work either burdens every visit with 7159 formalities or leaves GMZ noncompliant on the larger ones.
+
+QUESTION 1: ASSEMBLED TEXTS
+
+B&P 7027.5(a), official text at leginfo.legislature.ca.gov, last amended Stats. 2012, Ch. 537 (AB 1750), verified current 2026-08-15:
+"(a) A landscape contractor working within the classification for which the license is issued may design systems or facilities for work to be performed and supervised by that contractor."
+Subdivision (e), verbatim: "Nothing in this section authorizes a landscape contractor to engage in or perform activities that require a license pursuant to the Professional Engineers Act (Chapter 7 (commencing with Section 6700))."
+
+B&P 5641.4 (Landscape Architects Practice Act exemption), official text, last amended Stats. 2024, Ch. 482 (SB 1452), effective 2025-01-01, verified current 2026-08-15:
+"A landscape contractor licensed under the statutes of this state, insofar as they work within the classification for which the license is issued, may design systems and facilities for work to be performed and supervised by that landscape contractor and is exempt from this chapter, except that a landscape contractor shall not use the title 'landscape architect' unless they hold a license as required under this chapter."
+Note for counsel: the identical "performed and supervised by that contractor" formula appears in both the Contractors' State License Law and the LA Practice Act; the two can be read in pari materia. Section 5641.4 was amended effective 2025, so older secondary summaries may quote superseded wording.
+
+B&P 5615 (definition of the practice of landscape architecture), official text, verified current 2026-08-15:
+"A person who practices landscape architecture within the meaning and intent of this article is a person who offers or performs professional services, for the purpose of landscape preservation, development and enhancement, such as consultation, investigation, reconnaissance, research, planning, design, preparation of drawings, construction documents and specifications, and responsible construction observation."
+Everything GMZ's paid design step produces appears to sit inside this definition unless the 5641.4 exemption covers it.
+
+B&P 5641 (unlicensed-person carve-out), official text, verified current 2026-08-15:
+"This chapter shall not be deemed to prohibit any person from preparing drawings for the conceptual design and placement of tangible objects and landscape features or plans, drawings, and specifications for the selection, placement, or use of plants for a single family dwelling. Construction documents, details, or specifications for the tangible objects or landscape features, and alteration of site requiring grading and drainage plans shall be prepared by a licensed professional as required by law."
+"A licensed professional as required by law" is not defined in the section.
+
+16 CCR 832.27 (C-27 classification definition), as reproduced on CSLB's classification page:
+"A landscape contractor constructs, maintains, repairs, installs, or subcontracts the development of landscape systems and facilities for public and private gardens and other areas which are designed to aesthetically, architecturally, horticulturally, or functionally improve the grounds within or surrounding a structure or a tract or plot of land. In connection therewith, a landscape contractor prepares and grades plots and areas of land for the installation of any architectural, horticultural and decorative treatment or arrangement."
+The regulation assigns no design activity to the contractor; the only occurrence of "design" is the participle "designed" describing the improved areas. The C-27 design authority therefore rests entirely on 7027.5 and 5641.4, not on the regulation.
+
+Landscape Architects Technical Committee, "Permitted Practices in California" (regulator publication, PDF, latc.ca.gov, metadata dated September 2023), verbatim:
+"LANDSCAPE CONTRACTORS. Hold a C-27 (landscaping contractor) license. May design systems and facilities for work to be performed and supervised by that contractor which may include landscape construction documents and landscape drawings with specifications and details. Are exempt from the Landscape Architects Practice Act insofar as they are providing services in which they are licensed to do so."
+And on unlicensed persons: "May NOT prepare construction documents, details, or specifications for tangible landscape objects or landscape features. May NOT prepare grading and drainage plans for the alteration of sites."
+The document disclaims legal effect: "While every effort has been made to ensure the accuracy of this document, it does not have legal effect. Should any difference or error occur, the law will take precedence."
+
+Negative result, stated for counsel's efficiency: no statute, regulation, published case, Attorney General opinion, or CSLB guidance was found addressing what happens when a C-27's designed work is never built, or is built by another contractor. The research located nothing resolving whether "to be performed and supervised by that contractor" is judged at the time of contracting (anticipation) or by outcome.
+
+WHAT GMZ CURRENTLY DOES THAT THE ANSWER WOULD CHANGE: GMZ sells the design phase under its own signed agreement with no contractual commitment that GMZ will build, and clients occasionally shop the plans. Counsel's construction of "to be performed and supervised" determines whether the design agreement must recite intent that GMZ perform the work, whether it should price or restrict plan portability, and whether GMZ can market "design services" to clients who state up front they may bid the construction out.
+
+QUESTION 2: ASSEMBLED TEXTS
+
+B&P 7151.2 (definition of home improvement contract), official text, last amended Stats. 1991, Ch. 1160, verified current 2026-08-15:
+"'Home improvement contract' means an agreement, whether oral or written, or contained in one or more documents, between a contractor and an owner or between a contractor and a tenant, regardless of the number of residence or dwelling units contained in the building in which the tenant resides, if the work is to be performed in, to, or upon the residence or dwelling unit of the tenant, for the performance of a home improvement as defined in Section 7151, and includes all labor, services, and materials to be furnished and performed thereunder."
+The section's second sentence extends the definition to salesperson agreements "for the sale, installation, or furnishing of home improvement goods or services." The text is silent on design-only agreements.
+
+B&P 7151 (definition of home improvement), official text, last amended Stats. 2021, Ch. 249 (SB 757), verified current 2026-08-15:
+"'Home improvement' shall also mean the installation of home improvement goods or the furnishing of home improvement services. For purposes of this chapter, 'home improvement goods or services' means goods and services, as defined in Section 1689.5 of the Civil Code, which are bought in connection with the improvement of real property."
+Section 7151 also expressly lists "landscaping" and "fences" among home improvements.
+
+Civil Code 1689.5(d), official text, last amended Stats. 2020, Ch. 158 (AB 2471), verified current 2026-08-15:
+"'Services' means work, labor and services, including, but not limited to, services furnished in connection with the repair, restoration, alteration, or improvement of residential premises, or services furnished in connection with the sale or repair of goods"
+The 1689.5(d) exclusions cover attorneys, real estate professionals, securities dealers, physicians, optometrists and dentists; design professionals are not excluded. Section 1689.5(a) sets the home solicitation contract threshold at $25 or more "made at other than appropriate trade premises." Section 1689.5(f) defines senior citizen as an individual 65 years of age or older.
+
+The definitional chain, laid out for counsel: 7151.2 (home improvement contract) incorporates 7151 (home improvement), which incorporates CIV 1689.5 services "bought in connection with the improvement of real property." A paid design fee is plausibly a service bought in connection with the improvement of real property. That final step is the researcher's inference, not stated in any source found. No statute, regulation, or published guidance expressly classifying a contractor's design-only agreement as inside or outside the home improvement contract regime was located.
+
+WHAT GMZ CURRENTLY DOES THAT THE ANSWER WOULD CHANGE: GMZ's design agreement is currently drafted as a professional-services agreement, not on the 7159 home improvement contract form, and its retainer structure was not set with the 7159.5 downpayment cap (the lesser of $1,000 or 10 percent) in mind. If counsel concludes the chain reaches design-only agreements, or that the safe course is to assume it does, the design agreement needs the full 7159 apparatus: statutory notices, the cancellation notice block, and a deposit at or under the cap. The research's working observation, for counsel to confirm or reject: drafting to 7159 costs little and forecloses the argument.
+
+QUESTION 3: ASSEMBLED TEXTS
+
+B&P 7159(e)(6), official text, last amended Stats. 2025, Ch. 585 (SB 517), effective 2026-01-01; the provisions below were re-verified in the current post-SB 517 text on 2026-08-15:
+"(A) The notice ... entitled 'Three-Day Right to Cancel,' or entitled 'Five-Day Right to Cancel' for contracts with a senior citizen, shall be provided to the buyer unless the contract is: (i) Negotiated at the contractor's place of business. (ii) Subject to the 'Seven-Day Right to Cancel,' as set forth in paragraph (7). (iii) Subject to licensure under the Alarm Company Act..."
+Required notice text, (B)(i): "You, the buyer, have the right to cancel this contract within three business days. You may cancel by emailing, mailing, faxing, or delivering a written notice to the contractor at the contractor's place of business by midnight of the third business day after you received a signed and dated copy of the contract that includes this notice."
+(B)(ii): references to "three" and "third" are changed to "five" and "fifth" for a buyer who is a senior citizen.
+7159(a)(2), verbatim: the section "does not apply to service and repair contracts that are subject to Section 7159.10, if the contract for the applicable services complies with Sections 7159.10 to 7159.14, inclusive."
+
+CSLB, "Home Improvement Contracts, Warnings and Exceptions" (consumer guidance page, cslb.ca.gov, undated, post-2020), verbatim:
+"Unless the contract is negotiated at the contractor's place of business, and/or the contract price is under $25, the buyer qualifies for a three-day right to cancel. ... Starting in 2021, seniors (those 65 and older) will have five days to cancel the following transactions: home solicitation contracts, home improvement contracts, Property Assessed Clean Energy assessment contracts, service and repair contracts, and seminar sales contracts (AB 2471)."
+Also on that page, verbatim: "The right to a three-day notice automatically is canceled the moment the contract is signed and the contractor begins working on a 'Service and Repair' contract."
+
+The tension assembled for counsel: the statutory trigger in 7159(e)(6)(A) is purely locational (negotiated at the contractor's place of business or not), with no dollar threshold; CSLB's framing imports the $25 floor from CIV 1689.5's home solicitation definition. The clock in the statutory notice runs from the buyer's receipt of a signed and dated copy of the contract containing the notice, not from signature alone. Points counsel should be aware of: (a) 7159 was amended by SB 517 effective 2026-01-01; the quoted provisions were verified present in the current text, but the full scope of the SB 517 changes was not diffed, and counsel should pull the complete current section, including paragraph (7)'s Seven-Day Right to Cancel; (b) the CSLB guidance page predates SB 517 and may be stale; (c) DCA Legal Guide K-10 (dca.ca.gov/publications/legal_guides/k_10.pdf) surfaced in search as a further reconciliation source but was not fetched.
+
+WHAT GMZ CURRENTLY DOES THAT THE ANSWER WOULD CHANGE: GMZ negotiates and signs at clients' homes, so on the statutory trigger every design and construction agreement carries the notice regardless of price. GMZ does not currently screen buyers for age 65 and over, and its Peninsula clientele makes the Five-Day variant frequently the correct one. GMZ also sometimes begins design work (site measurements, base plan) within days of signing. Counsel's answer determines: the intake step for identifying senior buyers, whether GMZ should adopt the five-day notice universally as the conservative form, the internal rule for the earliest work-start date after contract delivery, and the document-delivery practice (the countdown does not start until the client has received the signed, dated copy containing the notice, so same-day delivery of the executed copy matters).
+
+QUESTION 4: ASSEMBLED TEXTS
+
+The license-authority limit that the plan-license clause must respect is the same "for work to be performed and supervised by that contractor" language quoted under Question 1 (B&P 7027.5(a) and 5641.4).
+
+B&P 5640 (misdemeanor; penalties), official text, last amended Stats. 2024, Ch. 482 (SB 1452), effective 2025-01-01, verified current 2026-08-15:
+"It is a misdemeanor, punishable by a fine of not less than one hundred dollars ($100) nor more than five thousand dollars ($5,000) or by imprisonment in a county jail not exceeding six months, or by both that fine and imprisonment, for a person to do any of the following without possessing a valid, unrevoked license as provided in this chapter: (a) Engage in the practice of landscape architecture. (b) Use the title or term 'landscape architect,' 'landscape architecture,' 'landscape architectural,' or any other titles, words, or abbreviations that would imply or indicate that they are a landscape architect, as defined in Section 5615."
+Subdivisions (c) (use of a licensed LA's stamp) and (d) (advertising or signage suggesting licensure) extend the prohibition.
+
+B&P 5641, quoted in full under Question 1: construction documents, details, specifications, and grading and drainage plans must be prepared by "a licensed professional as required by law." The LATC Permitted Practices document (quoted under Question 1) reads the licensed-professional universe to include C-27 contractors via 5641.4, and states the C-27's deliverables "may include landscape construction documents and landscape drawings with specifications and details."
+
+B&P 7027.5(e), quoted under Question 1: no authority to perform work requiring a Professional Engineers Act license.
+
+Related advertising provision, B&P 7027.1, official text, verified current 2026-08-15: "(a) It is a misdemeanor for any person to advertise for construction or work of improvement covered by this chapter unless that person holds a valid license under this chapter in the classification so advertised... (c) A violation of this section is punishable by a fine of not less than seven hundred dollars ($700) and not more than one thousand dollars ($1,000)..." The advertising definition was verified to include "airwave or any electronic transmission," which reaches the company website.
+
+Drafting questions assembled for counsel, flowing from these texts: (a) whether the plan license should be expressly conditioned, for example a license to use the plans limited to construction performed and supervised by GMZ, with a separate conversation if the client goes elsewhere; (b) whether an unconditional transfer of construction-ready documents to a client who builds with another contractor retroactively undermines the 7027.5/5641.4 exemption for the preparation of those documents; (c) whether tiering the deliverables helps, since B&P 5641 permits anyone to prepare conceptual drawings and plant-selection plans for a single family dwelling, so a conceptual-tier package may be portable without licensing questions while the construction-document tier is not; (d) what disclaimer wording keeps every document clear of the protected titles, given that "landscape architectural" itself is a prohibited term; (e) whether the agreement should state that engineering items (for example engineered retaining walls) are excluded and referred out, per 7027.5(e).
+
+WHAT GMZ CURRENTLY DOES THAT THE ANSWER WOULD CHANGE: the current design agreement transfers the plan set to the client on final payment without a limited-license clause, GMZ marketing describes the offering as "landscape design," and the plan sheets carry no scope disclaimer. Counsel's language would be dropped directly into the agreement's intellectual-property section, the plan title block, and the website services page.
+
+QUESTION 5: ASSEMBLED TEXTS
+
+B&P 7159.10(a)(1), official text, last amended Stats. 2020, Ch. 158 (AB 2471), verified current 2026-08-15. A service and repair contract escaping full 7159 formalities must satisfy all four conditions:
+"(A) The contract amount is seven hundred fifty dollars ($750) or less. (B) The prospective buyer initiated contact with the contractor to request the work. (C) The contractor does not sell the buyer goods or services beyond those reasonably necessary to take care of the particular problem that caused the buyer to contact the contractor. (D) No payment is due, or accepted by the contractor, until the work is completed."
+Condition (D) makes the service-and-repair route incompatible with any advance payment. Work above $750, or contractor-solicited work, falls back into full 7159 territory. The interaction provision is 7159(a)(2), quoted under Question 3: 7159 does not apply to service and repair contracts subject to 7159.10 if the contract complies with 7159.10 through 7159.14 inclusive. CSLB's guidance page adds, verbatim: "The right to a three-day notice automatically is canceled the moment the contract is signed and the contractor begins working on a 'Service and Repair' contract."
+
+Also assembled here because the maintenance accounts auto-renew, B&P 17602 (automatic renewal law), official text, last amended Stats. 2024, Ch. 515 (AB 2863), effective 2025-01-01, applying to contracts entered into, amended, or extended on or after July 1, 2025 (chaptered bill text, verbatim: "The amendments made to this section by the act adding this subdivision shall only apply to a contract entered into, amended, or extended under this article on or after July 1, 2025."):
+Renewal reminder for terms of one year or longer, verbatim timing phrase: "at least 15 days and not more than 45 days before the automatic renewal offer or continuous service offer renews."
+Material-change notice, verbatim: "clear and conspicuous notice of the material change and provide information regarding how to cancel in a manner that is capable of being retained by the consumer."
+Online cancellation, verbatim, applicable when the consumer accepted the offer online: "Allow a consumer to terminate the automatic renewal or continuous service exclusively online, at will, and without engaging any further steps that obstruct or delay the consumer's ability to terminate."
+Because each renewal is an extension, legacy maintenance agreements are pulled into the amended regime as they roll over after July 1, 2025.
+
+The questions inside the question, for counsel: (a) is a recurring maintenance agreement (mowing, pruning, irrigation checks at a monthly rate) a "home improvement contract" at all, given 7151's inclusion of "landscaping" and the 16 CCR 832.27 classification text placing "maintains, repairs" squarely in the C-27 classification; (b) if it is, is the contract amount measured per visit, per month, or per term for the $750 line; (c) can GMZ paper routine ad-hoc repairs under the service-and-repair form given monthly billing practices, since condition (D) forbids accepting payment before completion and condition (B) requires buyer-initiated contact, which a technician noticing a broken valve on a scheduled visit arguably is not; (d) does a 7159.10-compliant contract extinguish the cancellation right on commencement as CSLB's page states.
+
+WHAT GMZ CURRENTLY DOES THAT THE ANSWER WOULD CHANGE: maintenance accounts run on a simple recurring agreement with monthly billing, ad-hoc repairs are performed on verbal approval and added to the monthly invoice (which violates 7159.10(a)(1)(D) if that form is the one that should govern), and renewal notices are informal. Counsel's answer sets: the contract form for the maintenance line, an internal $750 tripwire and approval path for ad-hoc work, whether repair work must be invoiced only on completion, and the 15-to-45-day renewal notice calendar with any price change stated in it.
+
+WHAT THE RESEARCH DID NOT FIND (SO COUNSEL DOES NOT SEARCH FOR IT DURING THE HOUR)
+
+1. No case law, AG opinion, or CSLB/LATC guidance on design-only engagements by a C-27 where construction never follows or goes to another builder. The LATC Permitted Practices document is the closest regulator statement and does not address it.
+2. No authority expressly classifying a contractor's design-only agreement as inside or outside 7151.2. The chain argument under Question 2 is assembled from the texts, not from any source stating it.
+3. The full effect of SB 517 (2025) on B&P 7159 was not diffed; only the quoted provisions were re-verified in the current text.
+4. DCA Legal Guide K-10 was identified but not retrieved.
+5. Whether a pre-agreed CPI escalation formula in an auto-renewing consumer contract is a "material change" under 17602 is unsettled in the sources found; stating each year's computed dollar amount in the pre-renewal notice moots the question in practice.
+
+SOURCE LIST (ALL PUBLIC)
+
+B&P 7027.5, 5641.4, 5615, 5640, 5641, 7151, 7151.2, 7159, 7159.10, 17602 and Civil Code 1689.5: official texts at leginfo.legislature.ca.gov. 16 CCR 832.27: as reproduced on CSLB's C-27 classification page. LATC, Permitted Practices in California: latc.ca.gov/docs/misc/permitted_practices_in_california.pdf. CSLB, Home Improvement Contracts, Warnings and Exceptions: cslb.ca.gov consumer pages. AB 2863 chaptered text: leginfo.legislature.ca.gov. B&P 7027.1 and 7027.3 (license-number fraud; verified but ancillary): leginfo.legislature.ca.gov.
+
+DOCUMENTS THE OWNER SHOULD BRING TO THE MEETING
+
+The current design agreement template; the current maintenance agreement and a sample monthly invoice showing how ad-hoc repairs are billed; one recent executed design agreement (client identifiers redacted); the website services page text; the standard proposal cover letter. Counsel marks up against the questions above; nothing further should need to be looked up.
+
+========================================================================
+
+OPEN ITEMS THIS DOCUMENT COULD NOT SETTLE
+
+ - Whether 'to be performed and supervised by that contractor' in B&P
+   7027.5/5641.4 is judged by anticipation at contracting or by outcome;
+   no authority found either way
+ - Whether a design-only agreement is a home improvement contract under
+   the 7151.2/7151/CIV 1689.5 chain; the chain is assembled, not sourced
+ - Full diff of SB 517's 2026 amendments to B&P 7159, including any
+   changes to paragraph (7)'s Seven-Day Right to Cancel
+ - DCA Legal Guide K-10 identified but not retrieved; may bear on the
+   cancellation-trigger reconciliation
+ - Whether the $750 in 7159.10 is measured per visit, per month, or per
+   term for a recurring maintenance account
+ - Whether a pre-agreed escalation formula is a 'material change' under
+   B&P 17602 or whether stating the computed price in the annual notice
+   suffices
+ - CSLB guidance pages not yet updated against SB 517; their framing may
+   be stale

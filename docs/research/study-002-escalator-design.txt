@@ -1,0 +1,115 @@
+MAINTENANCE RENEWAL AND ESCALATOR DESIGN
+Produced by Study 002, 15 August 2026
+========================================================================
+
+RECOMMENDATION: MAINTENANCE RENEWAL AND PRICE ESCALATION DESIGN
+For GMZ Landscaping maintenance agreements. Prepared 2026-08-15. All dollar figures in the worked example are placeholders, not GMZ prices.
+
+SUMMARY OF THE RECOMMENDATION
+Renew every maintenance account on January 1. Escalate automatically each renewal by the June-over-June change in the San Francisco area consumer price index plus a fixed add-on, with two floors: the price never goes down, and the increase is never smaller than the state minimum wage step certified for that January. Send one notice per account each fall, in the legally required 15 to 45 day window, stating the computed new dollar price and how to cancel.
+
+WHICH INDEX TO REFERENCE
+Name the exact series, not a nickname. The clause should cite: BLS series CUURS49BSA0, Consumer Price Index for All Urban Consumers (CPI-U), San Francisco-Oakland-Hayward, all items, not seasonally adjusted; June index compared with the prior June.
+
+Why this one:
+1. It is the local index a client will accept. Its current 12-month change is 3.8 percent (June 2026 index 369.913 versus 356.460 in June 2025), confirmed in the BLS San Francisco release.
+2. Its coverage includes San Mateo County, so it covers most of GMZ's towns. BLS publishes nothing finer for San Mateo County alone. Note it does not cover Santa Clara County (Palo Alto, Los Altos), which is a known imperfection, not a fixable one.
+3. June is a month that actually exists for this index. The SF index is published only for even months (February, April, June, August, October, December), roughly six weeks after the fact. A clause naming an odd month can never be satisfied. The Los Gatos-Brightview contract shows the failure mode twice: it names a "San Francisco-Oakland-San Jose" index area that no longer matches any BLS title, and calls for "the CPI published on December 31," which does not exist. Fairfield's landscape maintenance contract, by contrast, pegs to the June SF print; that is the pattern to copy.
+4. June lines up with the state's own machinery. The minimum wage formula in Labor Code 1182.12(c) averages CPI-W over July 1 to June 30 and must be calculated by August 1. So by early August, GMZ knows both the June CPI change and the certified January wage step, months before renewal notices go out.
+
+Required fallback language: BLS publication can simply fail. The October 2025 observation of this very series is footnoted "Data unavailable due to the 2025 lapse in appropriations." The clause should say that if the June index is not published by September 30, the most recent published index of the same series is used, and if BLS discontinues or renames the series, the successor series or the U.S. city average CPI-U applies.
+
+WHY PLAIN LOCAL CPI UNDERPRICES THIS TRADE
+Three numbers, all current:
+1. Local all-items CPI: +3.8 percent (12 months ending June 2026).
+2. The trade's own price index, BLS series CUUR0000SEHP02, Gardening and lawncare services, U.S. city average: +12.3 percent over the same style of window (July 2026 index 344.925 versus 307.218 in July 2025).
+3. The certified state minimum wage step for January 1, 2027: +2.99 percent ($16.90 to $17.40).
+
+The gap between line 1 and line 2 is the problem. What clients pay for lawn and garden service nationally is rising at more than three times the local all-items rate. And the statutory wage floor understates GMZ's real labor market: May 2025 OEWS data for the SF metro puts the median landscaping worker at $23.10 per hour, about 37 percent above the state minimum, with working supervisors at a $37.02 median. Wage competition, not the minimum wage, sets GMZ's labor cost, and all-items CPI (rent, gasoline, groceries) tracks neither.
+
+So a plain "adjusts by local CPI" clause locks in roughly 3.8 percent this year while the trade's cost environment moved by double digits. Compounded over a few renewals, that is how a maintenance account quietly goes underwater.
+
+THE CORRECTED FORM
+Three candidate corrections, and the recommendation:
+
+1. Floor only: local CPI, but never less than a stated percentage. Simple, but in a high-inflation trade year the floor does nothing; it only protects against low-CPI years.
+2. Trade-index reference: peg directly to the gardening and lawncare series. Honest, but unusable as the sole peg. It is national, volatile, and would have demanded 12.3 percent this year, which Peninsula clients would likely reject. Keep it as the internal justification, not the contract peg.
+3. Index-plus with floors (recommended): local CPI plus a fixed add-on, with a floor at the minimum wage step and an upward-only ratchet.
+
+Recommended clause architecture, in plain terms:
+- Each January 1, the monthly price adjusts by the percentage change in the named June index over the prior June, plus [1.5] percentage points (add-on size is Xavier's call, see decisions).
+- The increase is never less than the minimum wage increase percentage certified by the Director of Finance for that January 1 (2.99 percent for 2027).
+- The price never decreases; if the formula yields a negative number, the price holds. This upward-only floor is client-tested language: the Los Gatos public contract uses exactly this ratchet ("If the CPI indicates a downward adjustment, compensation will remain at the base amount").
+- Optional cap: a stated maximum (for example 6 percent) makes the clause easier to sell and mirrors the state's own lesser-of-3.5-percent cap design in Labor Code 1182.12(c), which also supplies a copyable pattern for rounding and announcement timing.
+
+ALIGNING RENEWAL WITH THE JANUARY WAGE STEP
+Every certified minimum wage change takes effect January 1, announced by August 1. Renewing all accounts on January 1 means each year's price adjusts in the same month the labor floor steps, instead of eating a wage increase mid-term. The calendar works out cleanly:
+- Mid-July: June SF CPI publishes.
+- By August 1: Department of Finance certifies the January wage step (done July 31, 2026 for the 2027 step).
+- Early August: GMZ computes every account's new price. All inputs are known.
+- November 17 to December 17: renewal notices go out (the legal window for a January 1 renewal).
+- January 1: new price takes effect.
+Accounts currently renewing on other anniversaries should be migrated to January 1 at their next renewal, using a short prorated stub period if needed.
+
+WHAT CALIFORNIA'S AUTOMATIC RENEWAL LAW REQUIRES
+These accounts are consumer contracts that renew automatically, so Business and Professions Code 17602 (as amended by AB 2863) governs. Four requirements, quoted:
+
+1. Annual reminder notice, for contracts with an initial term of one year or longer, sent "at least 15 days and not more than 45 days before the automatic renewal offer or continuous service offer renews," disclosing the service, the renewal frequency and charges, and how to cancel.
+
+2. Notice before a price change. Before a material change to the terms, the business must give "clear and conspicuous notice of the material change and provide information regarding how to cancel in a manner that is capable of being retained by the consumer." Whether a pre-agreed formula increase counts as a material change is unsettled; the safe practice is to never apply the escalator silently. State the computed new dollar amount in the fall notice every year, which moots the question. One notice can lawfully carry both the renewal reminder and the new price.
+
+3. Cancellation channel. If a consumer accepted the agreement online, GMZ must "Allow a consumer to terminate the automatic renewal or continuous service exclusively online, at will, and without engaging any further steps that obstruct or delay the consumer's ability to terminate," including "A prominently located direct link or button." If GMZ signs on paper or by emailed signature, the online-exclusive duty is not triggered, but the agreement must still name an easy cancellation channel such as a phone number or email address. Practical implication: keep maintenance signup off any website checkout flow unless GMZ is prepared to build online cancellation.
+
+4. No grandfathering. AB 2863 provides: "The amendments made to this section by the act adding this subdivision shall only apply to a contract entered into, amended, or extended under this article on or after July 1, 2025." A renewal is an extension, so every one of the roughly two dozen existing accounts is pulled into the amended rules at its next rollover. The paperwork should be updated now, not only for new clients.
+
+WORKED EXAMPLE: A HYPOTHETICAL $1,000 PER MONTH ACCOUNT
+Placeholder amount only. Assume the recommended clause: June-over-June CUURS49BSA0 change plus 1.5 points, floored at the certified wage step, upward-only, rounded to the nearest dollar.
+
+Year 1 (renewal January 1, 2027):
+- June 2026 index change: +3.8 percent.
+- Formula: 3.8 + 1.5 = 5.3 percent.
+- Floor check: certified wage step is 2.99 percent; 5.3 is higher, so 5.3 applies.
+- New price: $1,000 x 1.053 = $1,053 per month.
+- Notice sent between November 17 and December 17, 2026, stating $1,053, the January 1 date, and how to cancel.
+- Comparison: plain CPI alone gives $1,038; the trade index alone would demand $1,123, which is the increase a client would refuse.
+
+Year 2 (renewal January 1, 2028), assuming inflation cools:
+- Assume June 2027 index change is +2.0 percent and the certified wage step is +3.1 percent (both hypothetical).
+- Formula: 2.0 + 1.5 = 3.5 percent. Floor check: 3.5 exceeds 3.1, so 3.5 applies.
+- New price: $1,053 x 1.035 = $1,090 per month.
+
+Stress cases the clause handles:
+- Negative CPI year: formula could go negative; the price holds at the prior amount.
+- Wage step outruns CPI: if CPI-plus computes below the certified step (say CPI +1.0 gives 2.5 percent against a 3.4 percent wage step), the wage-step floor governs.
+- Missing index: if the June print never publishes (as happened October 2025), the fallback uses the most recent published print.
+
+Two-year effect on the placeholder account: $1,000 to $1,090, about 9 percent cumulative, against roughly 7.7 percent under plain CPI in the same scenario, communicated in two predictable fall notices with an exit door each time.
+
+DECISIONS XAVIER STILL HAS TO MAKE
+1. The add-on size: how many points above local CPI (the example uses 1.5; anywhere in 1 to 2 is defensible given the 3.8 versus 12.3 gap), and whether to include a cap, and at what level.
+2. Whether to migrate all existing accounts to a January 1 renewal at next rollover, and how to price the stub months.
+3. The cancellation channel the agreement names (phone, email, or both), and whether maintenance signup will ever move online, which would trigger the online-exclusive cancellation duty.
+4. Whether commercial or HOA accounts, if GMZ ever takes them, get the same clause; the automatic renewal law would not govern those, so the notice mechanics could differ.
+5. Whether small ad-hoc repairs on maintenance accounts use the service-and-repair contract form (only valid at $750 or less, client-initiated, no payment until complete).
+6. Counsel review of the final clause and notice text before the first fall notice cycle, including the unsettled material-change question.
+7. Whether to check the Peninsula cities' own minimum wage ordinances, which can exceed the state floor and were not pulled in this study.
+
+========================================================================
+
+OPEN ITEMS THIS DOCUMENT COULD NOT SETTLE
+
+ - Peninsula city minimum wage ordinances above the state floor were not
+   researched; several GMZ towns may have their own, which would move the
+   wage-step floor for crews working there.
+ - Whether a pre-agreed escalation formula is a 'material change' under
+   B&P 17602 is legally unsettled; the recommended annual dollar-amount
+   notice sidesteps rather than resolves it.
+ - The SF-Oakland-Hayward index excludes Santa Clara County, so Palo Alto
+   and Los Altos accounts escalate on an index that does not technically
+   cover them; no finer BLS index exists.
+ - Exact add-on size, cap level, and rounding convention are business
+   decisions, not research questions.
+ - Year 2 of the worked example uses hypothetical CPI and wage-step
+   values, since neither is published yet.
+ - Treatment of any future commercial or HOA maintenance accounts, which
+   sit outside the consumer automatic renewal law.

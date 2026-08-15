@@ -1,0 +1,271 @@
+GMZ RESEARCH KNOWLEDGE BASE — EVIDENCE GAPS
+Study 002, compiled 15 August 2026
+========================================================================
+
+  1. No Attorney General opinion, CSLB newsletter article, or published
+     disciplinary decision addressing a design-only agreement by a C-27
+     licensee was found; whether 7027.5/5641.4's 'work to be performed and
+     supervised by that contractor' tolerates a paid design phase where
+     the client never builds, or takes the plans to another builder, is
+     unresolved in every primary and regulator text located. This is the
+     single question GMZ most needs construction counsel to answer.
+  2. B&P 7159 needs a complete pull by counsel: it was amended by Stats. 2025,
+     Ch. 585 (SB 517), effective 2026-01-01, which the original research
+     missed. The quoted (e)(6) trigger, notice text, senior five-day
+     substitution and (a)(2) carve-out were re-verified in the current
+     text, but the full scope of SB 517's changes was not diffed,
+     paragraph (7)'s Seven-Day Right to Cancel was not read, and the
+     statutory notice form's formatting requirements (type size, duplicate
+     copies) were not extracted verbatim. CSLB's undated consumer guidance
+     pages may predate the amendment.
+  3. Civil Code 1689.6 and 1689.7 (cancellation mechanics and notice form for
+     home solicitation contracts) were not fetched; DCA Legal Guide K-10
+     (dca.ca.gov/publications/legal_guides/k_10.pdf) surfaced in search as
+     the obvious next T1 pull for the cancellation reconciliation but was
+     not fetched.
+  4. 16 CCR 832.27 was read from CSLB's official classification page (re-
+     verified in audit, including the Authority/Reference notes); the
+     canonical govt.westlaw.com/calregs page was not fetched, so the
+     Register history (filed 6-1-88, operative 7-1-88, Register 88, No.
+     23) rests on the Cornell LII reproduction.
+  5. B&P 5640.1, named in the task, does not appear to exist: leginfo returned
+     no section text, and the Practice Act's exemption sections enumerate
+     as 5640, 5641, 5641.1 through 5641.6, 5642 and 5644, consistent with
+     the LATC Permitted Practices citations. The intended cite was
+     probably 5640 or one of the 5641.x exemptions, all of which were
+     fetched.
+  6. LATC's FAQ page (latc.ca.gov/consumers/faq.shtml) was never fetched; an
+     earlier assertion that it repeats the C-27 design rule was removed in
+     audit. Fetch it before citing it.
+  7. The LATC 'Permitted Practices in California' PDF is undated on its face
+     (September 2023 per XMP metadata) and disclaims legal effect; no
+     dated LATC enforcement action or meeting decision specifically
+     construing the 5641.4 contractor exemption was located (committee
+     minutes surfaced in search but were not fetched).
+  8. B&P 7027.1(b)'s full advertising-definition text was returned partially
+     paraphrased by the verification fetch; the finding's quote was
+     trimmed to verified phrases. Pull the full (b) text if the exact
+     definition matters for the website review.
+  9. No T1 or T2 source addresses pricing of a contractor's design phase, and
+     no tiered source states a design-fee percentage for residential
+     landscape work specifically: every residential percentage found
+     (5-20%, 10-20%, 6-15%) lives on rejected lead-generation or vendor
+     sites with no disclosed method, confirming Study 001's folklore
+     finding at a second attempt. The statutes read are silent on design
+     fees, so GMZ's pricing model is a business choice, not a compliance
+     question, on the texts located.
+ 10. ASLA publishes no fee benchmark or fee survey with disclosed methodology
+     that could be located; a trade-press claim about 'the latest ASLA
+     business survey' could not be traced to any ASLA document with
+     disclosed method and was discarded. The antitrust finding claims only
+     consistency with, not causation of, this absence.
+ 11. Palo Alto primary sources remain unreachable by automated fetch
+     (paloalto.gov PDFs and the amlegal-hosted municipal code both
+     returned 403), so Palo Alto tree findings rest on Canopy's nonprofit
+     summary (T3). Palo Alto also adopted a further tree-ordinance
+     amendment in 2024 (Ordinance 5612, per search results) whose effect
+     on the 11.5/15/18-inch thresholds is unverified, and the widely
+     repeated 'roughly tripled the number of protected trees' claim was
+     removed because it does not appear on the cited source and describes
+     the pre-2024 state. A human should pull current PAMC 8.10.020 before
+     anything client-facing is written.
+ 12. BAWSCA Lawn Be Gone page staleness: the fetched page is undated and links
+     documents referencing FY19-20 and FY20-21; the researcher's claimed
+     'FY 2026-27 program year' reference could not be reproduced. Confirm
+     current-year per-square-foot rates and any per-agency caps directly
+     with each agency before quoting totals to clients.
+ 13. The claim that artificial turf is ineligible for Lawn Be Gone (attributed
+     to Mid-Peninsula WD) and that Mid-Peninsula WD serves Belmont and
+     part of San Carlos were not verifiable on the fetched BAWSCA page;
+     the page links an Artificial Turf Fact Sheet without an eligibility
+     statement.
+ 14. Atherton's Tree Removal Procedure handout is undated, so the $750 fee,
+     19-day lead and hearing schedule may have changed; the heritage-tree
+     measurement height conflicts across sources (handout: 48 inches above
+     grade; secondary summaries of current AMC 8.10.020: 54 inches). The
+     code host was Cloudflare-blocked; confirm both with Atherton
+     Planning.
+ 15. Menlo Park heritage-tree root-pruning threshold: the cited city article
+     confirms the 25% canopy trigger but says nothing about roots. Check
+     Ch. 13.24 before relying on a root-work trigger.
+ 16. MWELO implementation status (state model applied as-is vs local ordinance)
+     was confirmed only for Menlo Park (local, Ch. 12.44). Redwood City,
+     Atherton, Woodside, Portola Valley, San Carlos, Belmont,
+     Hillsborough, Los Altos, Palo Alto and San Mateo County
+     unincorporated remain unverified; the state model applies by default
+     where no local ordinance was adopted, but which towns adopted
+     stricter versions is unknown.
+ 17. Cal Water's lawn-to-garden per-square-foot rebate rate is not published on
+     its public conservation page (re-confirmed in audit); the rate for
+     Bear Gulch and Mid-Peninsula district customers is unquantified, and
+     Cal Water district boundaries within GMZ's towns were not verified
+     from a primary source.
+ 18. Valley Water's minimum conversion area (75 sq ft per a support article)
+     does not appear on the main landscape-rebates page and remains
+     unconfirmed.
+ 19. Palo Alto rebate stacking (Valley Water Landscape Rebate plus BAWSCA Lawn
+     Be Gone) is asserted only by local press; BAWSCA's participating-
+     agency list does not include Palo Alto (re-confirmed), so treat
+     stacking as unverified until CPAU or BAWSCA confirms it.
+ 20. Business license / contractor registration requirements were verified only
+     for Redwood City. Palo Alto, Menlo Park, Atherton, Woodside, Portola
+     Valley, San Carlos, Belmont, Los Altos and Hillsborough were not
+     checked; several Peninsula towns require a license of out-of-town
+     contractors per job.
+ 21. Tree ordinances for Woodside, Los Altos, Hillsborough, San Carlos, Belmont
+     and Redwood City were not researched; only Atherton, Menlo Park, Palo
+     Alto and (partially) Portola Valley are covered.
+ 22. Portola Valley's exact Site Development Permit trigger (a 50-cubic-yard
+     figure appears in secondary code summaries) was not verified on the
+     fetched town page; only the 100/1,000 cy review tiers and fence rules
+     were confirmed.
+ 23. Fence height zoning limits (as opposed to building-permit exemptions) were
+     not captured for most towns; Redwood City's R-district fence
+     standards PDF and equivalents in Atherton, Hillsborough and Los Altos
+     remain unread. Redwood City's Building FAQ references the 2019
+     California Codes, so its currency should be confirmed with the
+     Building Division.
+ 24. Impervious surface / maximum hardscape coverage limits, a known constraint
+     in Woodside and Atherton zoning, were not located in a fetchable
+     primary source; only Portola Valley's definition of impervious
+     surfaces (including compacted gravel and rock areas) was captured.
+ 25. General transferability note: all permit findings are per-jurisdiction and
+     none transfer between towns; a small GMZ crew working three towns in
+     a week can face three different tree, fence and grading regimes on
+     otherwise identical scopes.
+ 26. California publishes no state A/E percentage fee curve: DGS SAM 6828
+     returned 404, search summaries indicate DGS prices A&E work by
+     detailed task analysis, and CSU's 'Determination of Fee' framework
+     has proposers state their own percentages without publishing values.
+     The nearest published state curves used here are Washington and
+     Delaware.
+ 27. The primary Chinowsky/Kingsley QBS study PDF could not be fetched (403 at
+     acec.ca; the ACEC Research Institute portal gates it); its figures
+     are carried via the 2018 QBS Canada/OAA report's page-cited
+     summaries, which the audit verified. The 2009 study date is
+     corroborated by ACEC-ecosystem search results only. If GMZ wants to
+     quote the study directly, obtain the PDF through ACEC or APWA.
+ 28. Primary DOJ documents for United States v. AIA (1972 and 1990) returned
+     401/403; the antitrust finding rests on trade press, and decree
+     language could not be quoted verbatim.
+ 29. The Federal Register text of the June 27, 2024 DFARS final rule (89 FR
+     53502, Case 2024-D019) remains unfetched (bot-blocked); the statute
+     and current DFARS text were fetched directly, so only the rule's
+     publication metadata rests on federalregister.gov search-result
+     metadata.
+ 30. Applicability limits on every fee curve found: all are public building or
+     civil schedules whose smallest tabulated size ($100K Delaware, $1M
+     Washington) sits at or above GMZ's typical project, each reverts to
+     'negotiated' below its floor, and each covers full basic services
+     including bidding and construction administration (31 percent of the
+     fee in Washington's split). The curves bound GMZ's bracket only by
+     direction (percentages rise as size falls) plus the stated phase-
+     split adjustment; no source publishes a design-only percentage curve.
+ 31. No peer-reviewed study of design cost share for landscape or site-work
+     projects specifically was found; the inverse-size and PE-ratio
+     evidence comes from highway and bridge research (NC, VA), which
+     transfers as a structural pattern, not as numbers.
+ 32. Fee-angle audit correction log: (1) Delaware's claimed 2-4 point
+     renovation premium 'in every bracket' was false (narrows to 1-2.5
+     points at $10M-$15M) and was corrected; mid-bracket values rest on a
+     single extraction pass and the page is undated. (2) The WA remodel
+     'three percentage points' was restated as the source's literal 'up to
+     three percent' with the points reading flagged as interpretation. (3)
+     The AIA antitrust causal claim about ASLA was softened to
+     consistency. (4) The DFARS finding was upgraded to high confidence on
+     direct statute verification. All other figures and quotes survived
+     verification unchanged.
+ 33. The Caltrans PE anchor is from the FY 2012-13 annual report; more recent
+     project delivery reports were not audited, so whether the three-year
+     PE average and the 20 percent target structure remain similar today
+     is unverified. Cite it as a historical statutory-target anchor, not a
+     current statistic.
+ 34. Escalator-angle audit result (2026-08-15): all 14 findings survived
+     verification; every source URL was fetched, every figure traced,
+     every quote checked verbatim. Corrections were refinements: the SF
+     bimonthly-schedule caveat was tightened (the even-month pattern comes
+     from series data, not the release text), the gardening CPI finding
+     now cites the directly verifiable timeseries page, the material-
+     change quote was extended to the full statutory phrase, and the
+     Fairfield and Los Gatos findings gained contractor/district
+     identification and the $878,860 five-year base figure.
+ 35. OEWS year-over-year wage movement could not be computed from primary
+     sources: the BLS API serves only the May 2025 vintage (requests for
+     2024 and 2026 return 'No Data Available'), archive routes failed, and
+     third-party pages quoting May 2024 figures were rejected under source
+     discipline.
+ 36. The exact current metro title for OEWS area 41860 could not be confirmed
+     from a fetched BLS page; findings reference the area code. The CPI
+     metro (San Francisco-Oakland-Hayward, covering Alameda, Contra Costa,
+     Marin, San Francisco and San Mateo counties) is a distinct
+     delineation from the OEWS metro and neither includes Santa Clara
+     County.
+ 37. The gardening and lawncare series (CUUR0000SEHP02) returns only scattered
+     2025 months (May, July, September; October footnoted unavailable), so
+     the +12.3% July-over-July print cannot be cross-checked against a
+     continuous monthly run; the arithmetic is exact on retrieved values
+     but treat the level with care.
+ 38. The San Francisco-area CPI-W series (the index family the Fairfield
+     precedent and the Labor Code formula use) was not pulled; only SF
+     CPI-U was retrieved. Fetch the SF CPI-W series and its latest
+     12-month change before drafting a CPI-W-pegged clause.
+ 39. No executed grounds-maintenance escalation clause from a San Mateo County
+     city was captured; the nearest verified precedents are Los Gatos
+     (Santa Clara County) and Fairfield (Solano County). Elk Grove's 2026
+     landscape maintenance RFP and an LA County parks COLA cap were
+     identified in search but not fetched, so they are not cited as
+     findings.
+ 40. B&P 17602 quotes were verified across three independent leginfo fetches
+     and all matched verbatim; however, subdivision lettering has not been
+     independently verified against a raw page render, so findings quote
+     text without asserting subdivision letters.
+ 41. Local city minimum wage ordinances on the Peninsula (e.g. Redwood City,
+     Menlo Park and Palo Alto set rates above the state floor with their
+     own CPI formulas) were not pulled; the state $17.40 figure
+     understates the binding wage floor in several GMZ service-area
+     cities. The DIR FAQ itself carves out employers covered by a higher
+     local minimum.
+ 42. No peer-reviewed evidence supports the specific 30-day or six-month
+     follow-up timing. The two-touch cadence is practitioner convention;
+     the literature supports post-purchase gratitude contact and the value
+     of retention generally, but no study tests contact timing for home
+     services.
+ 43. Carey et al. (1976): neither the effect magnitude (the circulated ~70%
+     purchase increase) nor the design details (jewelry store, three
+     telephone-call conditions) are verifiable from any fetchable source;
+     Sage and EBSCO are paywalled. Only the citation and Grant & Gino's
+     qualitative characterization are verified, and the design details
+     were stripped from the claim on audit.
+ 44. No peer-reviewed effect sizes exist for referral, follow-up, or review
+     economics in landscaping or home services specifically. Every
+     surviving study is banking, a social-network platform, restaurants,
+     or e-commerce; direction transfers to GMZ, magnitude does not.
+ 45. Kumar, Petersen & Leone (2010): the often-quoted 10-30% profit increase
+     from targeted referral campaigns appears only in secondary summaries;
+     the fetched peer-reviewed abstract contains no such figure and the
+     full text is paywalled. Treat any such magnitude as unverified.
+ 46. de Matos et al. (2007) meta-analysis: the number of pooled studies and
+     effect sizes is not disclosed in the fetched abstract; full text
+     paywalled, so magnitudes are unverified.
+ 47. Reichheld & Sasser (1990) original industry-by-industry defection figures
+     could not be fetched; only Bain's 2001 one-line summary was
+     verifiable, and it is consultancy-tier evidence with undisclosed
+     method.
+ 48. No published CLV framework compares a recurring maintenance account to a
+     one-time design/build client within contracting; Gupta, Lehmann &
+     Stuart (2004) is the nearest general framework and its retention >
+     margin > acquisition elasticity ordering is the usable takeaway.
+ 49. No peer-reviewed study links post-completion follow-up contact directly to
+     online review rates for local service firms; Burtch et al. (2018)
+     covers solicitation mechanics but in Chinese e-commerce, and platform
+     policies (Yelp and Google prohibit incentivized reviews) limit which
+     treatment arms are usable.
+ 50. Review-platform effects for contractors specifically (Houzz, Google
+     Business Profile) have no peer-reviewed causal literature comparable
+     to the Yelp restaurant studies; the vendor surveys that exist were
+     rejected under source discipline.
+ 51. Version caveat affecting four findings: the fetched files for Trusov et
+     al., Luca, Gupta et al., and Anderson & Magruder are pre-publication
+     or author-hosted versions rather than typeset journal articles.
+     Figures were verified against the fetched versions; typeset versions
+     may differ in minor details.

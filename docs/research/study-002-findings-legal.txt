@@ -1,0 +1,527 @@
+GMZ RESEARCH KNOWLEDGE BASE — FINDINGS (LEGAL PRIMARY TEXTS)
+Study 002, compiled 15 August 2026
+========================================================================
+
+The statutes and regulations behind the design agreement, contract and cancellation questions.
+
+One finding per block. QUOTE fields are verbatim source text and are never edited.
+Never cite T3 alone as settled fact. Never add a finding without a URL and date.
+
+========================================================================
+
+### bpc-7027-5-own-work-limit  [T1 / high]
+CLAIM: B&P 7027.5(a) grants a C-27 licensee design authority only for work
+  'to be performed and supervised by that contractor', so the statutory text
+  ties the design right to the contractor's own anticipated construction
+  rather than to design as a freestanding service.
+QUOTE (verbatim):
+  | (a) A landscape contractor working within the classification for which
+  | the license is issued may design systems or facilities for work to be
+  | performed and supervised by that contractor.
+SOURCE: California Business and Professions Code § 7027.5, leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7027.5
+PUBLISHED: Last amended Stats. 2012, Ch. 537, Sec. 1 (AB 1750), effective 2013-01-01; verified current 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: GMZ's paid design-only agreement: whether a design phase sold
+  under its own contract, where the client might not proceed to construction
+  or might take the plans elsewhere, sits inside the C-27 design authority.
+  Counsel must construe 'to be performed and supervised by that contractor'.
+CAVEAT: The statute nowhere addresses what happens if the designed work is
+  never built or is built by someone else; no case, AG opinion, or CSLB
+  guidance resolving that was found. Subdivision (e) further limits the
+  grant, verbatim per leginfo (verified 2026-08-15): 'Nothing in this
+  section authorizes a landscape contractor to engage in or perform
+  activities that require a license pursuant to the Professional Engineers
+  Act (Chapter 7 (commencing with Section 6700)).'
+
+### bpc-5641-4-la-act-exemption  [T1 / high]
+CLAIM: B&P 5641.4 exempts a licensed landscape contractor from the Landscape
+  Architects Practice Act for design of work the contractor will perform and
+  supervise, but forbids use of the title 'landscape architect'.
+QUOTE (verbatim):
+  | A landscape contractor licensed under the statutes of this state,
+  | insofar as they work within the classification for which the license is
+  | issued, may design systems and facilities for work to be performed and
+  | supervised by that landscape contractor and is exempt from this chapter,
+  | except that a landscape contractor shall not use the title "landscape
+  | architect" unless they hold a license as required under this chapter.
+SOURCE: California Business and Professions Code § 5641.4, leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=5641.4
+PUBLISHED: Last amended Stats. 2024, Ch. 482, Sec. 25 (SB 1452), effective 2025-01-01; verified current 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: The same 'performed and supervised by that contractor' limit
+  appears in both the Contractors' State License Law (7027.5) and the LA
+  Practice Act (5641.4); counsel can read them in pari materia. Also a hard
+  rule for GMZ marketing and the design agreement: never the words
+  'landscape architect' or 'landscape architectural'.
+CAVEAT: Recently amended (effective 2025); any older secondary summaries
+  citing pre-SB 1452 wording are out of date.
+
+### ccr-832-27-c27-definition-no-design-grant  [T1 / high]
+CLAIM: The C-27 classification definition in 16 CCR 832.27 describes only
+  construction-side activity (constructs, maintains, repairs, installs,
+  subcontracts, prepares and grades land) and assigns no design activity to
+  the contractor; the only occurrence of 'design' is the participle
+  'designed' describing the improved areas, so a C-27's design authority
+  rests entirely on B&P 7027.5 and 5641.4, not on the regulation.
+QUOTE (verbatim):
+  | A landscape contractor constructs, maintains, repairs, installs, or
+  | subcontracts the development of landscape systems and facilities for
+  | public and private gardens and other areas which are designed to
+  | aesthetically, architecturally, horticulturally, or functionally improve
+  | the grounds within or surrounding a structure or a tract or plot of
+  | land. In connection therewith, a landscape contractor prepares and
+  | grades plots and areas of land for the installation of any
+  | architectural, horticultural and decorative treatment or arrangement.
+SOURCE: 16 CCR § 832.27 as reproduced on CSLB's C-27 classification page (regulator publication)
+URL: https://cslb.ca.gov/About_Us/Library/Licensing_Classifications/Licensing_Classifications_Detail.aspx?Class=C27
+PUBLISHED: Regulation amendment filed 1988-06-01, operative 1988-07-01 (Register 88, No. 23) per Cornell LII reproduction; CSLB page itself undated, fetched 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: Scope description for GMZ's license classification; confirms
+  maintenance ('maintains, repairs') is squarely in-classification for the
+  recurring accounts line, and that the design agreement must lean on the
+  statutes, not the regulation.
+CAVEAT: Verified on CSLB's classification page 2026-08-15, which shows
+  'Authority cited: Sections 7008 and 7059, Reference: Sections 7058 and
+  7059 (Business and Professions Code)'. The canonical govt.westlaw CCR
+  portal was not fetched; the Register history rests on the Cornell LII
+  reproduction. Original claim wording ('the word design does not appear')
+  was corrected in audit: 'designed' does appear, but only describing the
+  areas, not as a contractor activity.
+
+### bpc-5615-la-practice-definition  [T1 / high]
+CLAIM: B&P 5615 defines the practice of landscape architecture to include
+  planning, design, preparation of drawings, construction documents and
+  specifications, and responsible construction observation for landscape
+  preservation, development and enhancement, which is the field the 5641.4
+  contractor exemption carves GMZ out of.
+QUOTE (verbatim):
+  | A person who practices landscape architecture within the meaning and
+  | intent of this article is a person who offers or performs professional
+  | services, for the purpose of landscape preservation, development and
+  | enhancement, such as consultation, investigation, reconnaissance,
+  | research, planning, design, preparation of drawings, construction
+  | documents and specifications, and responsible construction observation.
+SOURCE: California Business and Professions Code § 5615, leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=5615
+PUBLISHED: Last amended Stats. 2006, Ch. 564, Sec. 9, effective 2007-01-01; verified current 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: Baseline definition counsel needs to measure GMZ's design
+  deliverables against: everything GMZ's paid design step produces is inside
+  this definition unless the 5641.4 exemption covers it.
+CAVEAT: The core definitional sentence is verified verbatim; the section's
+  further enumerated activities (site planning, irrigation design,
+  collaboration on infrastructure, field observation, and the prohibition on
+  practicing architecture or engineering) were confirmed present but
+  returned summarized, not quoted.
+
+### bpc-5640-misdemeanor-title-protection  [T1 / high]
+CLAIM: Unlicensed practice of landscape architecture, or use of the title or
+  any words implying licensure, is a misdemeanor punishable by a fine of
+  $100 to $5,000 and/or up to six months in county jail under B&P 5640.
+FIGURE: $100-$5,000 fine; up to 6 months county jail
+QUOTE (verbatim):
+  | It is a misdemeanor, punishable by a fine of not less than one hundred
+  | dollars ($100) nor more than five thousand dollars ($5,000) or by
+  | imprisonment in a county jail not exceeding six months, or by both that
+  | fine and imprisonment, for a person to do any of the following without
+  | possessing a valid, unrevoked license as provided in this chapter: (a)
+  | Engage in the practice of landscape architecture. (b) Use the title or
+  | term "landscape architect," "landscape architecture," "landscape
+  | architectural," or any other titles, words, or abbreviations that would
+  | imply or indicate that they are a landscape architect, as defined in
+  | Section 5615.
+SOURCE: California Business and Professions Code § 5640, leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=5640
+PUBLISHED: Last amended Stats. 2024, Ch. 482, Sec. 23 (SB 1452), effective 2025-01-01; verified current 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: The penalty exposure that makes the wording of GMZ's website,
+  design agreement and proposals matter: 'landscape design by our licensed
+  landscape contractor' is safe; 'landscape architectural services' is a
+  misdemeanor.
+CAVEAT: Subdivisions (c) (use of a licensed LA's stamp) and (d) (advertising
+  or displaying signs suggesting licensure) extend the prohibition; audit
+  confirmed the four-subdivision structure and penalty amounts, with the
+  (a)/(b) text verified near-verbatim.
+
+### bpc-5641-unlicensed-designer-boundary  [T1 / high]
+CLAIM: B&P 5641 lets any unlicensed person prepare conceptual design
+  drawings and plant-selection plans for a single family dwelling, but
+  requires that construction documents, details, specifications, and grading
+  and drainage plans be prepared by 'a licensed professional as required by
+  law'.
+QUOTE (verbatim):
+  | This chapter shall not be deemed to prohibit any person from preparing
+  | drawings for the conceptual design and placement of tangible objects and
+  | landscape features or plans, drawings, and specifications for the
+  | selection, placement, or use of plants for a single family dwelling.
+  | Construction documents, details, or specifications for the tangible
+  | objects or landscape features, and alteration of site requiring grading
+  | and drainage plans shall be prepared by a licensed professional as
+  | required by law.
+SOURCE: California Business and Professions Code § 5641, leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=5641
+PUBLISHED: Last amended Stats. 2004, Ch. 691, Sec. 12, effective 2005-01-01; verified current 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: Draws the line between what unlicensed 'garden designers' on the
+  Peninsula may sell (conceptual only, single family dwellings) and what
+  GMZ's C-27 license adds (construction-level documents for its own work);
+  useful both for the design agreement's deliverables list and for
+  positioning against unlicensed competitors.
+CAVEAT: 'A licensed professional as required by law' is not defined in the
+  section; the LATC's Permitted Practices document reads the licensed-
+  professional universe to include C-27 contractors via 5641.4 (see latc-
+  permitted-practices-c27-construction-documents). The LATC document also
+  confirms the parallel exemptions for property owners (5641.1),
+  nurserypersons (5641.2), architects/engineers (5641.3), golf course
+  architects (5641.5) and irrigation consultants (5641.6).
+
+### latc-permitted-practices-c27-construction-documents  [T1 / high]
+CLAIM: The LATC's 'Permitted Practices in California' reference states that
+  a C-27 licensee 'may design systems and facilities for work to be
+  performed and supervised by that contractor which may include landscape
+  construction documents and landscape drawings with specifications and
+  details', while unlicensed persons 'may NOT prepare construction
+  documents, details, or specifications for tangible landscape objects or
+  landscape features' and 'may NOT prepare grading and drainage plans for
+  the alteration of sites'.
+QUOTE (verbatim):
+  | LANDSCAPE CONTRACTORS. Hold a C-27 (landscaping contractor) license. May
+  | design systems and facilities for work to be performed and supervised by
+  | that contractor which may include landscape construction documents and
+  | landscape drawings with specifications and details. Are exempt from the
+  | Landscape Architects Practice Act insofar as they are providing services
+  | in which they are licensed to do so. APPLICABLE REGULATION/STATUTES:
+  | Section 832.27 of the California Code of Regulations, Title 16, Division
+  | 8 and Section 5641.4 and 7027.5 of the BPC. ... [UNLICENSED PERSONS] May
+  | NOT prepare construction documents, details, or specifications for
+  | tangible landscape objects or landscape features. May NOT prepare
+  | grading and drainage plans for the alteration of sites.
+SOURCE: Landscape Architects Technical Committee, 'Permitted Practices in California' (regulator publication, PDF)
+URL: https://www.latc.ca.gov/docs/misc/permitted_practices_in_california.pdf
+PUBLISHED: September 2023 per the PDF's XMP metadata; undated on its face   SAMPLE:    GEO: California
+BEARS ON: The clearest regulator statement found that a C-27's design
+  deliverables may go all the way to construction documents with
+  specifications and details, i.e. GMZ's paid design package can be
+  construction-ready, provided the tie to GMZ-performed work holds.
+CAVEAT: Full PDF text extracted and quote verified verbatim in audit
+  2026-08-15. The document disclaims legal effect: 'While every effort has
+  been made to ensure the accuracy of this document, it does not have legal
+  effect. Should any difference or error occur, the law will take
+  precedence.' It is guidance, not regulation, and it does not address
+  design-only engagements where construction never follows. An earlier note
+  that LATC's FAQ page repeats the rule was removed in audit because that
+  page was never fetched.
+
+### bpc-7151-2-hic-definition-design-only-silence  [T1 / high]
+CLAIM: B&P 7151.2 defines 'home improvement contract' as an agreement
+  between a contractor and an owner or tenant 'for the performance of a home
+  improvement ... and includes all labor, services, and materials to be
+  furnished and performed thereunder', without expressly including or
+  excluding a design-only agreement.
+QUOTE (verbatim):
+  | "Home improvement contract" means an agreement, whether oral or written,
+  | or contained in one or more documents, between a contractor and an owner
+  | or between a contractor and a tenant, regardless of the number of
+  | residence or dwelling units contained in the building in which the
+  | tenant resides, if the work is to be performed in, to, or upon the
+  | residence or dwelling unit of the tenant, for the performance of a home
+  | improvement as defined in Section 7151, and includes all labor,
+  | services, and materials to be furnished and performed thereunder.
+SOURCE: California Business and Professions Code § 7151.2, leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7151.2
+PUBLISHED: Last amended Stats. 1991, Ch. 1160, Sec. 42; verified current 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: Whether GMZ's standalone paid design agreement must carry the full
+  7159 home-improvement-contract apparatus (statutory notices, cancellation
+  rights, 7159.5 deposit cap). The text is silent on design-only; the answer
+  turns on the definitional chain into 7151 and Civil Code 1689.5.
+CAVEAT: The section's second sentence extends the definition to salesperson
+  agreements 'for the sale, installation, or furnishing of home improvement
+  goods or services', which pulls in the 7151/1689.5 chain quoted in the
+  next finding. No statute, regulation, or published guidance expressly
+  classifying a contractor's design-only agreement was found.
+
+### bpc-7151-services-chain-civ-1689-5  [T1 / medium]
+CLAIM: B&P 7151 makes 'the furnishing of home improvement services' itself a
+  'home improvement', and defines those services through Civil Code 1689.5
+  as services 'bought in connection with the improvement of real property',
+  a chain broad enough that counsel could place a paid design agreement
+  inside the home-improvement-contract regime.
+QUOTE (verbatim):
+  | "Home improvement" shall also mean the installation of home improvement
+  | goods or the furnishing of home improvement services. For purposes of
+  | this chapter, "home improvement goods or services" means goods and
+  | services, as defined in Section 1689.5 of the Civil Code, which are
+  | bought in connection with the improvement of real property. [CIV
+  | 1689.5(d):] "Services" means work, labor and services, including, but
+  | not limited to, services furnished in connection with the repair,
+  | restoration, alteration, or improvement of residential premises, or
+  | services furnished in connection with the sale or repair of goods
+SOURCE: California Business and Professions Code § 7151 and Civil Code § 1689.5, leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7151
+PUBLISHED: BPC 7151 last amended Stats. 2021, Ch. 249, Sec. 1 (SB 757), effective 2022-01-01; CIV 1689.5 last amended Stats. 2020, Ch. 158, Sec. 4 (AB 2471), effective 2021-01-01; both verified current 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: The safest-practice conclusion for GMZ: because 'services bought
+  in connection with the improvement of real property' plausibly reaches a
+  design fee, drafting the design agreement to comply with 7159 (and
+  honoring the three-day cancel right) costs little and forecloses the
+  argument. Counsel should confirm.
+CAVEAT: 7151 also lists 'landscaping' and 'fences' expressly among home
+  improvements (verified). CIV 1689.5(d)'s exclusions cover attorneys, real
+  estate professionals, securities dealers, physicians, optometrists and
+  dentists, not design professionals. CIV 1689.5(a) sets the home
+  solicitation threshold at $25 or more 'made at other than appropriate
+  trade premises'; 1689.5(f) defines senior citizen as 'an individual who is
+  65 years of age or older'. The Civil Code section was fetched at https://l
+  eginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sec
+  tionNum=1689.5. The 'could place a design agreement inside the regime'
+  step is the researcher's inference, not stated in any source, hence medium
+  confidence.
+
+### bpc-7159-e6-cancel-trigger-and-notice  [T1 / high]
+CLAIM: Under B&P 7159(e)(6), the Three-Day (or Five-Day, for seniors) Right
+  to Cancel notice must be included in every home improvement contract
+  unless the contract was negotiated at the contractor's place of business,
+  is subject to the Seven-Day Right to Cancel, or is an alarm company
+  contract; the notice's operative text starts the clock when the buyer
+  receives a signed and dated copy of the contract containing the notice.
+FIGURE: 3 business days; 5 for buyers 65 or older
+QUOTE (verbatim):
+  | (A) The notice ... entitled "Three-Day Right to Cancel," or entitled
+  | "Five-Day Right to Cancel" for contracts with a senior citizen, shall be
+  | provided to the buyer unless the contract is: (i) Negotiated at the
+  | contractor's place of business. (ii) Subject to the "Seven-Day Right to
+  | Cancel," as set forth in paragraph (7). (iii) Subject to licensure under
+  | the Alarm Company Act... [B](i): "You, the buyer, have the right to
+  | cancel this contract within three business days. You may cancel by
+  | emailing, mailing, faxing, or delivering a written notice to the
+  | contractor at the contractor's place of business by midnight of the
+  | third business day after you received a signed and dated copy of the
+  | contract that includes this notice." (ii): References to "three" and
+  | "third" ... shall be changed to "five" and "fifth," respectively, for a
+  | buyer who is a senior citizen.
+SOURCE: California Business and Professions Code § 7159(e)(6), leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7159
+PUBLISHED: Last amended Stats. 2025, Ch. 585, Sec. 1.5 (SB 517), effective 2026-01-01; quoted provisions verified present in the current text 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: GMZ signs design and construction agreements at clients' homes on
+  the Peninsula, so the notice is required in both; because clients skew
+  65+, in Atherton, Hillsborough and Woodside especially, the Five-Day
+  variant will often be the correct one, and the cancellation clock runs
+  from delivery of the signed copy containing the notice.
+CAVEAT: Audit correction: 7159 was amended by SB 517 effective 2026-01-01,
+  which the original research missed (it recorded the date as unknown); the
+  (e)(6)(A) trigger, (B)(i) notice text, (B)(ii) senior substitution, and
+  (a)(2) service-and-repair carve-out were all re-verified in the current
+  post-SB 517 text, but what else SB 517 changed in the section was not
+  diffed. 7159 is long and was quoted by targeted extracts, not reproduced
+  end to end; counsel should pull the full current section, including
+  paragraph (7)'s Seven-Day Right to Cancel. 7159(a)(2), verified verbatim:
+  the section 'does not apply to service and repair contracts that are
+  subject to Section 7159.10, if the contract for the applicable services
+  complies with Sections 7159.10 to 7159.14, inclusive.'
+
+### cslb-cancel-framing-vs-statute  [T1 / high]
+CLAIM: CSLB's consumer guidance frames the three-day right as arising
+  'unless the contract is negotiated at the contractor's place of business,
+  and/or the contract price is under $25', importing the $25 threshold from
+  Civil Code 1689.5's home solicitation definition even though B&P
+  7159(e)(6)(A) itself contains no dollar threshold.
+FIGURE: $25 threshold (from CIV 1689.5(a), not from 7159)
+QUOTE (verbatim):
+  | Unless the contract is negotiated at the contractor's place of business,
+  | and/or the contract price is under $25, the buyer qualifies for a three-
+  | day right to cancel. ... Starting in 2021, seniors (those 65 and older)
+  | will have five days to cancel the following transactions: home
+  | solicitation contracts, home improvement contracts, Property Assessed
+  | Clean Energy assessment contracts, service and repair contracts, and
+  | seminar sales contracts (AB 2471).
+SOURCE: CSLB, 'Home Improvement Contracts — Warnings and Exceptions' (regulator publication)
+URL: https://www.cslb.ca.gov/Consumers/Hire_A_Contractor/Home_Improvement_Contracts/Warnings_And_Exceptions.aspx
+PUBLISHED: unknown (page undated, confirmed in audit 2026-08-15; references AB 2471, so post-2020)   SAMPLE:    GEO: California
+BEARS ON: The reconciliation counsel was asked for: the statutory trigger in
+  7159(e)(6)(A) is purely locational (negotiated at the contractor's place
+  of business or not), while CSLB's framing blends in the Home Solicitation
+  Sales Act's $25 floor; both sources are now quoted so the design
+  agreement's notice block can be drafted to satisfy the stricter reading.
+CAVEAT: Consumer-facing guidance, not law; where it diverges from 7159's
+  text, the statute controls. The page also states, verbatim: 'The right to
+  a three-day notice automatically is canceled the moment the contract is
+  signed and the contractor begins working on a "Service and Repair"
+  contract.' DCA Legal Guide K-10
+  (dca.ca.gov/publications/legal_guides/k_10.pdf) surfaced in search as a
+  further T1 reconciliation source but was not fetched. Guidance page not
+  yet updated against the SB 517 (2026) amendment of 7159, so treat its
+  framing as potentially stale.
+
+### bpc-7159-10-service-repair-conditions  [T1 / high]
+CLAIM: A 'service and repair contract' escaping full 7159 formalities must
+  satisfy all four of B&P 7159.10(a)(1)'s conditions: price $750 or less,
+  buyer-initiated contact, no selling beyond what the particular problem
+  reasonably requires, and no payment due or accepted until the work is
+  completed.
+FIGURE: $750 or less; payment only on completion
+QUOTE (verbatim):
+  | (A) The contract amount is seven hundred fifty dollars ($750) or less.
+  | (B) The prospective buyer initiated contact with the contractor to
+  | request the work. (C) The contractor does not sell the buyer goods or
+  | services beyond those reasonably necessary to take care of the
+  | particular problem that caused the buyer to contact the contractor. (D)
+  | No payment is due, or accepted by the contractor, until the work is
+  | completed.
+SOURCE: California Business and Professions Code § 7159.10, leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7159.10
+PUBLISHED: Last amended Stats. 2020, Ch. 158, Sec. 3 (AB 2471), effective 2021-01-01; verified current 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: New for the maintenance line beyond Study 001: small ad-hoc
+  repairs on GMZ's recurring accounts can use the service-and-repair form
+  only if the client called first, GMZ does not upsell beyond the presenting
+  problem, and GMZ collects nothing until done; CSLB's guidance page adds
+  that the three-day notice right is canceled the moment the contract is
+  signed and work begins on a service and repair contract.
+CAVEAT: Condition (D) means the service-and-repair route is incompatible
+  with any advance payment. Work exceeding $750 or contractor-solicited work
+  falls back into full 7159 territory.
+
+### bpc-7027-1-advertising-classification  [T1 / high]
+CLAIM: B&P 7027.1 makes it a misdemeanor, with a fine of $700 to $1,000, to
+  advertise for construction or work of improvement without holding a valid
+  license in the classification so advertised, and defines advertising to
+  include electronic transmission.
+FIGURE: $700-$1,000 fine
+QUOTE (verbatim):
+  | (a) It is a misdemeanor for any person to advertise for construction or
+  | work of improvement covered by this chapter unless that person holds a
+  | valid license under this chapter in the classification so advertised...
+  | (c) A violation of this section is punishable by a fine of not less than
+  | seven hundred dollars ($700) and not more than one thousand dollars
+  | ($1,000)...
+SOURCE: California Business and Professions Code § 7027.1, leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7027.1
+PUBLISHED: Last amended Stats. 1998, Ch. 599, Sec. 2, effective 1999-01-01; verified current 2026-08-15   SAMPLE:    GEO: California
+BEARS ON: The GMZ website is 'electronic transmission' advertising:
+  everything it offers (design, build, maintenance, fencing, irrigation)
+  must sit within the C-27 classification or be framed as subcontracted;
+  closes Study 001's open item on 7027.1.
+CAVEAT: Subdivision (b)'s advertising definition was verified to include
+  'any card, sign, or device', newspaper/magazine placement, and 'airwave or
+  any electronic transmission', but the audit fetch returned (b) partially
+  paraphrased, so the original finding's longer (b) quote was trimmed to the
+  phrases verified verbatim. The section targets unlicensed or misclassified
+  advertising; a valid C-27 advertising in-classification work is compliant.
+  Subdivision (d) lets the registrar cite via 7028.7 or 7099.10.
+
+### bpc-7027-3-license-number-fraud  [T1 / high]
+CLAIM: B&P 7027.3 punishes willful, intent-to-defraud use of a contractor's
+  license number that does not correspond to one's own currently valid
+  license with a fine up to $10,000 and/or up to one year's imprisonment,
+  and applies to licensed and unlicensed persons alike.
+FIGURE: Up to $10,000 fine; up to 1 year imprisonment
+QUOTE (verbatim):
+  | Any person, licensed or unlicensed, who willfully and intentionally
+  | uses, with intent to defraud, a contractor's license number that does
+  | not correspond to the number on a currently valid contractor's license
+  | held by that person, is punishable by a fine not exceeding ten thousand
+  | dollars ($10,000), or by imprisonment in state prison, or in county jail
+  | for not more than one year, or by both that fine and imprisonment.
+SOURCE: California Business and Professions Code § 7027.3, leginfo.legislature.ca.gov (official)
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7027.3
+PUBLISHED: Last amended Stats. 2001, Ch. 728, Sec. 54, effective 2002-01-01 (audit corrected from the original's 2002-01-02)   SAMPLE:    GEO: California
+BEARS ON: Closes Study 001's second open item: 7027.3 is a fraud statute
+  about misusing a license number, not about classification scope; for GMZ
+  it simply reinforces keeping the CSLB number accurate everywhere it
+  appears (which the site's one-fact-one-home rule already enforces).
+CAVEAT: Requires willfulness and intent to defraud; an innocent typo in a
+  license number is not within the section's terms, though it invites other
+  problems. Penalties are cumulative with other state law, and the registrar
+  may cite unlicensed violators.
+
+### arl-renewal-reminder-window  [T1 / high]
+CLAIM: Under Business and Professions Code 17602 as amended, a consumer
+  contract that renews automatically after an initial term of one year or
+  longer requires a renewal reminder notice at least 15 and not more than 45
+  days before renewal, disclosing the product or service, the renewal
+  frequency and charges, and how to cancel.
+FIGURE: reminder window 15-45 days pre-renewal
+QUOTE (verbatim):
+  | at least 15 days and not more than 45 days before the automatic renewal
+  | offer or continuous service offer renews
+SOURCE: California Business and Professions Code section 17602, official text at leginfo.legislature.ca.gov
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=17602
+PUBLISHED: last amended Stats. 2024, Ch. 515 (AB 2863), effective 2025-01-01   SAMPLE: not applicable (statute)   GEO: California statewide
+BEARS ON: The annual renewal notice GMZ must send on auto-renewing
+  maintenance agreements and the calendar slot in which the new-year price
+  must be communicated.
+CAVEAT: Audit 2026-08-15: the 15/45-day timing phrase re-verified verbatim
+  against a fresh leginfo fetch, and the amendment history (Stats. 2024, Ch.
+  515, Sec. 2, AB 2863) confirmed. Applies to consumer contracts, which
+  residential maintenance accounts are; it would not govern a commercial or
+  HOA account. The reminder window pairs naturally with the escalator: the
+  same annual notice can carry both the reminder and the computed CPI
+  adjustment.
+
+### arl-online-cancellation  [T1 / high]
+CLAIM: B&P 17602 requires that a consumer who accepted an automatic renewal
+  online be able to terminate exclusively online, at will, without
+  obstructing steps, including via a prominently located direct link or
+  button.
+QUOTE (verbatim):
+  | Allow a consumer to terminate the automatic renewal or continuous
+  | service exclusively online, at will, and without engaging any further
+  | steps that obstruct or delay the consumer's ability to terminate. ... A
+  | prominently located direct link or button which may be located within
+  | either a customer account or profile, or within either device or user
+  | settings.
+SOURCE: California Business and Professions Code section 17602, official text at leginfo.legislature.ca.gov
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=17602
+PUBLISHED: last amended Stats. 2024, Ch. 515 (AB 2863), effective 2025-01-01   SAMPLE: not applicable (statute)   GEO: California statewide
+BEARS ON: How GMZ structures maintenance-agreement signup and the
+  cancellation channel the agreement must name.
+CAVEAT: Audit 2026-08-15: both quoted fragments re-verified against a second
+  independent leginfo fetch, including the 'without engaging any further
+  steps that obstruct or delay' language and the full link-or-button
+  placement sentence; both match verbatim. The exclusively-online
+  cancellation duty attaches when the consumer accepted the offer online. If
+  GMZ signs maintenance agreements on paper or by emailed signature rather
+  than through a website flow, the online-exclusive mechanism is not
+  triggered, but a toll-free number, email address, or another cost-
+  effective, timely and easy-to-use mechanism is still required. Subdivision
+  lettering not independently verified beyond the fetched text.
+
+### arl-material-change-notice  [T1 / high]
+CLAIM: B&P 17602 requires that before a material change to the terms of an
+  accepted automatic renewal (a price escalation qualifies), the business
+  provide a clear and conspicuous notice of the change plus cancellation
+  information, in a manner capable of being retained by the consumer.
+QUOTE (verbatim):
+  | clear and conspicuous notice of the material change and provide
+  | information regarding how to cancel in a manner that is capable of being
+  | retained by the consumer
+SOURCE: California Business and Professions Code section 17602, official text at leginfo.legislature.ca.gov
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=17602
+PUBLISHED: last amended Stats. 2024, Ch. 515 (AB 2863), effective 2025-01-01   SAMPLE: not applicable (statute)   GEO: California statewide
+BEARS ON: Whether the escalator can operate silently: it should not; the
+  annual notice should state the computed new price.
+CAVEAT: Audit 2026-08-15: quote extended to the full statutory phrase,
+  verified across two independent leginfo fetches; the retention language is
+  'in a manner that is capable of being retained by the consumer' and the
+  claim wording was aligned to it. Even a formula-driven CPI increase
+  changes the amount charged; the conservative reading is that each year's
+  computed adjustment goes in the pre-renewal notice rather than being
+  applied silently. Whether a pre-agreed formula escapes 'material change'
+  is unsettled; drafting the annual notice to state the new dollar amount
+  moots the question.
+
+### arl-ab2863-applicability  [T1 / high]
+CLAIM: AB 2863 (Stats. 2024, Ch. 515, approved September 24, 2024) applies
+  its amendments to the automatic renewal law to contracts entered into,
+  amended, or extended on or after July 1, 2025, so every GMZ maintenance
+  agreement renewing after that date is covered by the amended requirements.
+FIGURE: operative 2025-07-01
+QUOTE (verbatim):
+  | The amendments made to this section by the act adding this subdivision
+  | shall only apply to a contract entered into, amended, or extended under
+  | this article on or after July 1, 2025.
+SOURCE: AB 2863 (2023-2024), chaptered text at leginfo.legislature.ca.gov
+URL: https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202320240AB2863
+PUBLISHED: approved 2024-09-24 (Chapter 515)   SAMPLE: not applicable (statute)   GEO: California statewide
+BEARS ON: Compliance status of GMZ's existing ~24 recurring maintenance
+  accounts as they roll over.
+CAVEAT: Audit 2026-08-15: chaptered bill fetched; Chapter 515, September 24,
+  2024 approval, and the quoted July 1, 2025 applicability provision
+  verified verbatim (the identical sentence appears in both Section 1
+  (17601) and Section 2 (17602) of the bill). Because an automatic renewal
+  is an extension, legacy maintenance agreements do not stay grandfathered:
+  each renewal cycle after July 1, 2025 pulls the contract into the amended
+  regime.

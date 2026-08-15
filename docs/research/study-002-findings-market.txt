@@ -1,0 +1,1259 @@
+GMZ RESEARCH KNOWLEDGE BASE — FINDINGS (LOCAL, FEES, ESCALATOR, ACQUISITION)
+Study 002, compiled 15 August 2026
+========================================================================
+
+Town rules and rebates, fee anchors, index numbers, and referral and retention research.
+
+One finding per block. QUOTE fields are verbatim source text and are never edited.
+Never cite T3 alone as settled fact. Never add a finding without a URL and date.
+
+========================================================================
+
+### lawn-be-gone-per-agency-rates  [T1 / medium]
+CLAIM: BAWSCA's Lawn Be Gone! turf-replacement rebate page lists agency-set
+  rates in GMZ's San Mateo County towns: $2.00/sq ft in Redwood City,
+  $3.00/sq ft in Menlo Park, $4.00/sq ft in Mid-Peninsula Water District,
+  and $1.00/sq ft in Hillsborough, plus a $300 flat rain-garden rebate where
+  participating, and the client must receive a Notice to Proceed from the
+  water provider before any lawn is removed; Palo Alto is not on the
+  participating-agency list.
+FIGURE: $1.00-$4.00 per sq ft by agency; +$300 rain garden
+QUOTE (verbatim):
+  | To receive the rebate, you must submit an application and receive a
+  | Notice to Proceed from your water provider before removing your lawn.
+SOURCE: BAWSCA Water Conservation Program, Lawn Be Gone! (bayareaconservation.org)
+URL: https://bayareaconservation.org/rebates/lawn
+PUBLISHED: unknown (page undated; linked documents reference FY19-20 and FY 20-21)   SAMPLE: n/a (program terms)   GEO: BAWSCA member agencies, San Mateo County, CA
+BEARS ON: The 'your water supplier pays you to replace your lawn' sales
+  claim: GMZ can cite a town-specific rate in proposals, but must sequence
+  jobs so the client holds a Notice to Proceed before demo day, or the
+  rebate is forfeited.
+CAVEAT: Rates and quote verified on the fetched page 2026-08-15, but the
+  page is undated and its linked documents reference FY19-20/FY 20-21, so
+  the displayed rates may lag the current fiscal year; confirm the current-
+  year rate with the specific agency before quoting a dollar figure to a
+  client. Per-agency maximum caps are not stated on the page. That Mid-
+  Peninsula WD covers Belmont and part of San Carlos, and that artificial
+  turf is ineligible, were not verified on this page. The researcher's
+  earlier 'FY 2026-27' reference could not be reproduced.
+
+### valley-water-landscape-rebate-terms  [T1 / high]
+CLAIM: Valley Water's Landscape Rebate Program for Santa Clara County pays
+  $2/sq ft for lawn conversion with a $3,000 default cap for single-family
+  residential (a $6,000 cost-share cap in some areas), requires a completed
+  pre-inspection and a written Notice to Proceed before any lawn removal or
+  material purchase, and states current funding lasts until June 30, 2027 or
+  until depleted.
+FIGURE: $2/sq ft base; $3,000 SFR default cap ($6,000 cost-share cap in some
+  areas); funding through 2027-06-30 or until depleted
+QUOTE (verbatim):
+  | Do not begin removal of your lawn/pool or the purchase of materials for
+  | your project until you have received a written Notice to Proceed from
+  | Valley Water.
+SOURCE: Santa Clara Valley Water District, Landscape Rebates
+URL: https://www.valleywater.org/saving-water/rebates-surveys/landscape-rebates
+PUBLISHED: unknown (page undated; states funding through June 30, 2027; fetched 2026-08-15)   SAMPLE: n/a (program terms)   GEO: Santa Clara County, CA (includes Los Altos and Palo Alto addresses)
+BEARS ON: Rebate line in Los Altos and Palo Alto proposals and the job-
+  sequencing rule GMZ must follow: the lawn must still be in place at pre-
+  inspection, so design-phase scheduling has to leave the turf untouched
+  until the NTP arrives.
+CAVEAT: Projects started before the written NTP are permanently ineligible.
+  A 75 sq ft minimum conversion area reported in a Valley Water support
+  article does not appear on the main program page and remains unconfirmed.
+
+### cal-water-lawn-to-garden-preapproval  [T1 / medium]
+CLAIM: Cal Water's lawn-to-garden turf rebate requires pre-approval before
+  the project begins, requires at least 3 approved plants per 100 sq ft
+  converted, excludes artificial turf, and does not publish its per-square-
+  foot rate on the public conservation page; the rate is only accessible
+  through its customer Conservation Portal.
+FIGURE: 3 approved plants per 100 sq ft; $/sq ft rate not published on
+  public page
+QUOTE (verbatim):
+  | Pre-approval is required prior to beginning your project. ... 3 approved
+  | plants per 100 square foot converted is required. ... Artificial turf
+  | does not qualify for this rebate.
+SOURCE: California Water Service, Rebates and Conservation Programs
+URL: https://www.calwater.com/conservation-rebates/
+PUBLISHED: unknown (page undated; fetched 2026-08-15)   SAMPLE: n/a (program terms)   GEO: Cal Water service areas overlapping GMZ territory
+BEARS ON: GMZ cannot quote a rebate dollar figure to Cal Water-served
+  clients from public pages; the honest sales move is to have the client
+  open a Conservation Portal account during the design phase.
+CAVEAT: The missing rate is the finding: no per-sq-ft figure is publicly
+  published. Which specific GMZ towns fall in Cal Water's Bear Gulch and
+  Mid-Peninsula districts was not verified from a primary source.
+
+### menlo-park-local-welo-ch1244  [T1 / high]
+CLAIM: Menlo Park enforces its own water-efficient landscaping ordinance
+  (Municipal Code Chapter 12.44), applying to all new landscapes exceeding
+  500 sq ft and rehabilitated landscapes exceeding 1,000 sq ft associated
+  with projects requiring city review and approval, with a landscape plan
+  showing planting by species, hydrozone and WUCOLS classification, an
+  irrigation plan, and post-construction Certificate of Completion and
+  Landscape Audit Report completed by a licensed auditor or the designer.
+FIGURE: 500 sq ft (new) / 1,000 sq ft (rehabilitated) thresholds;
+  Prescriptive A requires 75% of proposed planting at low water use (average
+  WUCOLS 0.3)
+QUOTE (verbatim):
+  | These reports must be completed by a licensed auditor or the designer.
+  | ... Proposed planting by species, hydro-zone and Water Use
+  | Classification of Landscape Species (WUCOLS).
+SOURCE: City of Menlo Park, Water-efficient landscaping ordinance (Public Works Engineering Division)
+URL: https://www.menlopark.gov/Government/Departments/Public-Works/Engineering-Division/Water-efficient-landscaping-ordinance
+PUBLISHED: unknown (city page undated; underlying Ordinance 1015 adoption date not confirmed from a primary source)   SAMPLE: n/a (regulation)   GEO: Menlo Park, CA
+BEARS ON: Scope and price of GMZ's paid design step in Menlo Park: the
+  audit-report and WUCOLS documentation duties belong in the design
+  agreement, and the 1,000 sq ft rehabilitated threshold differs from the
+  impression that 500 sq ft always triggers documentation.
+CAVEAT: The city page summarizes Chapter 12.44; the codified chapter text
+  (eCode360) is bot-blocked and was not read verbatim. Applicability is
+  limited to projects requiring city review and approval, so a landscape-
+  only job needing no city permit may fall outside it; confirm with the city
+  for permit-free scopes.
+
+### atherton-heritage-tree-permit-process  [T1 / medium]
+CLAIM: In Atherton, a tree 48 inches or more in circumference (measured 48
+  inches above grade) outside the Building or Dwelling Area is permit-
+  protected; inside the Building or Dwelling Area only native oaks (Quercus)
+  of 48 inches or more remain protected, and four listed species (three
+  acacias and Ailanthus altissima) are never heritage trees. A non-
+  dead/dangerous removal requires Planning Commission approval with a non-
+  refundable $750 application fee, a tree survey and arborist report, filing
+  19 days before the hearing, and, at the Commission's discretion,
+  replacement planting per removed tree of three 15-gallon trees, or two
+  24-inch box trees, or one 15-gallon plus one 36-inch box tree.
+FIGURE: 48 in. circumference at 48 in. above grade; $750 fee; 19-day filing
+  lead; discretionary replacement up to 3 trees per tree removed; $2,000
+  minimum deposit if environmental assessment required; permit void if
+  unused within one year
+QUOTE (verbatim):
+  | The tree, located anywhere on the lot, smaller than 48" in
+  | circumference, when measured 48" above grade [may be removed without a
+  | permit] ... All other trees cannot be removed unless a permit has been
+  | issued to the property owner or tree professional. ... Non-refundable
+  | $750.00 application fee.
+SOURCE: Town of Atherton, Tree Removal Procedure (official town handout, DocumentCenter)
+URL: https://www.athertonca.gov/DocumentCenter/View/502/Tree-Removal-Procedure
+PUBLISHED: unknown (undated town handout implementing AMC Chapter 8.10)   SAMPLE: n/a (regulation/procedure)   GEO: Atherton, CA
+BEARS ON: Schedule and contingency on Atherton design/build jobs: one
+  protected tree in the layout adds a month-plus Planning Commission cycle
+  (fourth Wednesday monthly), $750+, and an arborist retainer; the design
+  agreement should surface this before construction pricing.
+CAVEAT: The handout is undated, so the $750 fee and procedure details may
+  have changed. Measurement-height conflict: this handout says 48 inches
+  above grade while secondary summaries of current AMC 8.10.020 say 54
+  inches; the code host was Cloudflare-blocked, so confirm with Atherton
+  Planning. Dead or dangerous trees follow a separate Town Arborist/Building
+  Official permit path.
+
+### menlo-park-heritage-tree-definition  [T1 / high]
+CLAIM: Menlo Park defines a heritage tree as any California-native oak
+  (Quercus) with trunk circumference of 31.4 inches (10 in. diameter) or
+  more, or any other tree at 47.1 inches circumference (15 in. diameter) or
+  more, measured 54 inches above natural grade, and requires a city permit
+  before removal or before pruning exceeding 25 percent of the canopy, with
+  required arborist reports prepared by a consulting arborist from the
+  city's approved list.
+FIGURE: Oaks: 31.4 in. circumference (10 in. dia.); other trees: 47.1 in.
+  (15 in. dia.); measured at 54 in. above natural grade; permit at >25%
+  canopy pruning
+QUOTE (verbatim):
+  | All trees other than oaks which have a trunk with a circumference of
+  | 47.1 inches (diameter of fifteen (15) inches) or more, measured fifty-
+  | four (54) inches above natural grade. ... An oak tree (Quercus) which is
+  | native to California and has a trunk with a circumference of 31.4 inches
+  | (diameter of ten (10) inches) or more, measured at fifty-four (54)
+  | inches above natural grade.
+SOURCE: City of Menlo Park, city news 'Preserve or remove? The Heritage Tree Ordinance' (quoting Municipal Code Ch. 13.24)
+URL: https://www.menlopark.gov/News-articles/City-news/20230327-Preserve-or-remove-The-Heritage-Tree-Ordinance-and-emergency-removal-permits
+PUBLISHED: 2023-03-27   SAMPLE: n/a (regulation)   GEO: Menlo Park, CA
+BEARS ON: Menlo Park job scoping: a 10-inch oak is a small tree, so ordinary
+  planting-bed redesigns can trip the ordinance; GMZ must budget for an
+  arborist from the city's approved list, not its own preferred one.
+CAVEAT: Definition quoted from the city's own 2023 article summarizing Ch.
+  13.24; the codified chapter (eCode360) was bot-blocked and not read
+  verbatim. A root-pruning threshold (the researcher's original 'or roots'
+  clause) was not confirmed by the cited article; check Ch. 13.24 before
+  relying on a root-work trigger.
+
+### palo-alto-protected-tree-thresholds  [T3 / low]
+CLAIM: Per Canopy's summary of Palo Alto's Tree Protection Ordinance as
+  updated in June 2022 (the first substantive change since 2002), coast live
+  oak, valley oak, blue oak, California black oak, bigleaf maple and
+  California incense cedar are protected at 11.5 in. trunk diameter, coast
+  redwood at 18 in., and all other non-invasive, non-high-water-use species
+  at 15 in.
+FIGURE: 11.5 in. dia. (listed natives), 18 in. (redwood), 15 in. (all other
+  species)
+SOURCE: Canopy (Palo Alto urban-forestry nonprofit), Palo Alto Tree Protection Ordinance summary
+URL: https://canopy.org/tree-info/trees-in-palo-alto/palo-alto-tree-protection-ordinance/
+PUBLISHED: unknown (describes ordinance update of June 2022; page undated)   SAMPLE: n/a (regulation summary)   GEO: Palo Alto, CA
+BEARS ON: Palo Alto design/build scoping: at a 15-inch all-species
+  threshold, most established residential lots contain protected trees, so
+  tree disclosure belongs in GMZ's Palo Alto design intake checklist.
+CAVEAT: No T1 was fetchable: paloalto.gov PDFs and the amlegal-hosted PAMC
+  returned 403s in this audit, matching the researcher's report. Materially,
+  search results indicate a 2024 amendment (Ordinance 5612) following a 2023
+  council effort to pare the rules back, and its effect on these thresholds
+  is unverified; the Canopy page may be stale. The original 'roughly tripled
+  the number of protected trees' clause was removed because it does not
+  appear on the cited source. Verify against current PAMC 8.10 before
+  putting any threshold in client-facing material.
+
+### smc-unincorporated-grading-exemption-250cy  [T1 / high]
+CLAIM: In unincorporated San Mateo County, grading qualifies for a permit
+  exemption only when it meets the criteria of Section 8603 of the county
+  Grading Regulations, including that total cut and fill amounts total 250
+  cubic yards or less; exemptions are processed either over-the-counter at
+  no fee or as a formal exemption with a fee of roughly $720 to $1,700 and
+  2-4 weeks processing.
+FIGURE: 250 cubic yards total cut+fill exemption ceiling; formal exemption
+  fee ~$720-$1,700; 2-4 weeks
+QUOTE (verbatim):
+  | grading operations that would involve cut and fill amounts that total
+  | 250 cubic yards or less
+SOURCE: County of San Mateo Planning and Building, Grading Permit Exemption
+URL: https://www.smcgov.org/planning/grading-permit-exemption
+PUBLISHED: unknown (page undated; fetched 2026-08-15)   SAMPLE: n/a (regulation)   GEO: Unincorporated San Mateo County, CA (includes pockets such as Emerald Hills, North Fair Oaks and West Menlo Park)
+BEARS ON: Whether a hillside cut-and-fill job on an unincorporated parcel
+  carries a county permit line item; GMZ intake should confirm incorporation
+  status of the address, since a Redwood City mailing address can be an
+  unincorporated parcel.
+CAVEAT: The page says Section 8603 criteria go beyond the 250 cy ceiling
+  ('including, but not limited to') without enumerating them; the
+  unincorporated-pocket list is background knowledge, not verified on this
+  page. Reported staff-vs-hearing review tiers above 1,000 cy were not
+  verified and are excluded.
+
+### portola-valley-sdp-and-fence-permits  [T1 / high]
+CLAIM: Portola Valley reviews Site Development Permit grading in tiers:
+  under 100 cubic yards reviewed generally by the Town Engineer, Town
+  Geologist and Town Planner; 100 to 1,000 cubic yards, or cuts/fills
+  exceeding 5 feet, reviewed by those staff plus other site development
+  committee members and the ASCC; over 1,000 cubic yards (or vegetation
+  removal) adds the Planning Commission. Fences 6 ft or under need no
+  building permit, but any fence regardless of height within building
+  setbacks, on a property line or adjacent to a trail easement needs a town
+  fence permit, and the town counts compacted gravel and rock areas as
+  impervious surface.
+FIGURE: Review tiers at 100 cy and 1,000 cy or 5 ft cuts/fills; 6 ft fence
+  building-permit line
+QUOTE (verbatim):
+  | A building permit is not required to build any fence 6' or less in
+  | height. However, when a fence, regardless of height, is to be built
+  | within your property's building setbacks, on your property line, or
+  | adjacent to a trail easement, a fence permit is required.
+SOURCE: Town of Portola Valley, Planning FAQs
+URL: https://www.portolavalley.net/departments/planning-building-department/resource-center/general-information-and-handouts/planning-faqs
+PUBLISHED: unknown (page undated; references Resolution No. 500-1974)   SAMPLE: n/a (regulation summary)   GEO: Portola Valley, CA
+BEARS ON: Fence and hillside work pricing in Portola Valley: a property-line
+  fence, the most common kind, needs a permit even at 4 ft, and compacted
+  gravel counts as impervious surface, which affects patio and path design
+  math.
+CAVEAT: A 50-cubic-yard SDP trigger appearing in secondary code summaries
+  was not verified on the fetched town page; confirm the exact trigger in
+  PVMC Ch. 15.12 before quoting it.
+
+### woodside-retaining-wall-permit-trigger  [T1 / high]
+CLAIM: Woodside requires a building permit for any retaining wall over 4
+  feet in height measured from the bottom of the footing to the top of the
+  wall, or supporting a surcharge regardless of height, citing CBC 105.2
+  (Building 4) and CRC R105.2 (Building 3); free-standing walls that fall
+  under the building-permit threshold may still need Planning Department
+  approval.
+FIGURE: 4 ft from bottom of footing; any height with surcharge
+QUOTE (verbatim):
+  | Retaining walls that are over 4 feet (1219 mm) in height measured from
+  | the bottom of the footing to the top of the wall ... or supporting a
+  | surcharge
+SOURCE: Town of Woodside, Retaining Wall Submittal Requirements Checklist
+URL: https://www.woodsideca.gov/198/Retaining-Wall-Submittal-Requirements-Ch
+PUBLISHED: unknown (page undated; fetched 2026-08-15)   SAMPLE: n/a (regulation)   GEO: Woodside, CA (rule derives from statewide CBC/CRC exemption thresholds, so the same baseline applies in GMZ's other towns absent local amendment)
+BEARS ON: Hardscape estimating: the 4 ft measurement is from the bottom of
+  the footing, not the exposed face, so a wall that looks like 3 ft can
+  still need a permit, and any wall holding back a slope or driveway
+  (surcharge) needs one at any height.
+CAVEAT: The Planning Department approval path for sub-threshold free-
+  standing walls is stated on this page but its exact scope (fences, gates,
+  wall heights by zone) was not detailed there.
+
+### redwood-city-permit-exemptions-cbc1052  [T1 / high]
+CLAIM: Redwood City requires a building permit for all work not exempted by
+  CBC 105.2 and names fences 7 feet tall and under among typical exempt
+  residential items, directing applicants to CBC 105.2 for the full
+  exemption list.
+FIGURE: 7 ft fence building-permit exemption
+QUOTE (verbatim):
+  | typical residential items such as fences 7' tall and under, painting,
+  | flooring, and similar finish work ... Please review the entirety of CBC
+  | 105.2 for all work exempt from permits.
+SOURCE: City of Redwood City, Building FAQs
+URL: https://www.redwoodcity.org/departments/community-development-department/building-inspection-code-enforcement/building-faqs
+PUBLISHED: unknown (page undated; FAQ text references the 2019 California Codes, suggesting it predates the current code cycle)   SAMPLE: n/a (regulation)   GEO: Redwood City, CA
+BEARS ON: Fence line pricing in GMZ's home town: standard 6 ft fencing needs
+  no building permit, but zoning height limits in setback areas apply
+  separately from the building-permit exemption.
+CAVEAT: The building-permit exemption is not a zoning clearance; Redwood
+  City's R-district fence standards govern allowed heights by location on
+  the lot and were not fetched. The FAQ's reference to the 2019 California
+  Codes means the page may not reflect the current code edition, though the
+  fence exemption in CBC 105.2 has been stable across editions.
+
+### redwood-city-business-license-contractors  [T1 / high]
+CLAIM: Redwood City Municipal Code Section 32.105 bars transacting any
+  business in the city without a Business License Tax Certificate,
+  explicitly including self-employed persons and independent contractors;
+  out-of-town businesses with under $50,000 of Redwood City revenue pay a
+  flat rate equivalent to one full-time employee plus base tax and the state
+  CASp fee, payment is due July 1 (delinquent after July 31), and
+  delinquency carries a 10% per month penalty to a 100% maximum plus a $150
+  excess delinquency penalty for each prior year.
+FIGURE: Due July 1, delinquent after July 31; 10%/month penalty to 100% plus
+  $150 per prior year; $50,000 out-of-town revenue threshold
+QUOTE (verbatim):
+  | no person shall transact or operate any business in the City of Redwood
+  | City until a Business License Tax Certificate is obtained ... Self-
+  | employed persons and independent contractors are also required to obtain
+  | a Business License Tax Certificate.
+SOURCE: City of Redwood City, Business License Tax Frequently Asked Questions
+URL: https://www.redwoodcity.org/departments/administrative-services/finance/taxes-assessments-fees/business-licensing/business-license-tax-frequently-asked-questions
+PUBLISHED: unknown (page undated; fetched 2026-08-15)   SAMPLE: n/a (regulation)   GEO: Redwood City, CA
+BEARS ON: GMZ's compliance baseline in its home city, and a template for the
+  unanswered question: each of the other nine towns likely has an equivalent
+  rule for out-of-town contractors that this study did not verify.
+CAVEAT: The out-of-town flat-rate detail describes businesses based
+  elsewhere working in Redwood City; GMZ, based in Redwood City, pays under
+  the resident schedule. The other nine towns' license rules were not
+  checked.
+
+### far-6-percent-design-production-cap  [T1 / high]
+CLAIM: Federal civilian procurement caps the fee for production and delivery
+  of design documents at 6 percent of estimated construction cost, and the
+  cap applies only to that narrow production slice of A/E services, not to
+  the full scope (studies, preliminary engineering, construction-phase
+  support are outside the cap).
+FIGURE: 6 percent of estimated construction cost
+QUOTE (verbatim):
+  | For architect-engineer services for public works or utilities, the
+  | contract price or the estimated cost and fee for production and delivery
+  | of designs, plans, drawings, and specifications shall not exceed 6
+  | percent of the estimated cost of construction of the public work or
+  | utility, excluding fees.
+SOURCE: FAR 15.404-4(c)(4)(i)(B), Acquisition.gov (implementing 10 U.S.C. 3322(b) and 41 U.S.C. 3905)
+URL: https://www.acquisition.gov/far/15.404-4
+PUBLISHED: current FAR text as fetched 2026-08-15   SAMPLE: n/a (regulation)   GEO: United States (federal civilian contracts)
+BEARS ON: The design-agreement fee percentage and the FAQ answer about
+  design fees: the oft-quoted federal 6 percent is a cap on drawings-
+  production only, on public works vastly larger than a Peninsula residence,
+  so it is not a comparable ceiling for GMZ's full design service.
+CAVEAT: Applies to public works or utilities at federal scale; the capped
+  scope is much narrower than a residential design engagement that includes
+  site analysis, client meetings, MWELO documentation and permit support.
+  Misreading 6 percent as 'what design costs' understates every published
+  full-service curve. Audit note: quote re-verified verbatim against the raw
+  acquisition.gov page 2026-08-15, and the paragraph path (c)(4)(i)(B)
+  confirmed in the raw HTML under '(c) Contracting officer
+  responsibilities'.
+
+### dfars-10-percent-milcon-cap-2024  [T1 / high]
+CLAIM: Congress raised the Department of Defense statutory design-production
+  fee cap from 6 percent to 10 percent of estimated project cost (Pub. L.
+  118-31, div. B, title XXVIII, section 2881(a), NDAA FY2024, enacted
+  December 22, 2023, amending 10 U.S.C. 7540, 8612 and 9540), implemented in
+  DFARS 236.606-70 by a final rule at 89 FR 53502 (June 27, 2024, DFARS Case
+  2024-D019, effective date delayed to September 16, 2024), a legislative
+  acknowledgment that 6 percent had become too low even on very large
+  military construction projects.
+FIGURE: 10 percent of the project's estimated cost (raised from 6 percent)
+QUOTE (verbatim):
+  | The fee for any service under this section may not be more than 10
+  | percent of the estimated cost, as determined by the Secretary, of the
+  | project to which it applies.
+SOURCE: 10 U.S.C. 7540(b) (Army; parallel provisions at 8612 and 9540), U.S. House Office of the Law Revision Counsel; implemented in DFARS 236.606-70, Acquisition.gov
+URL: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section7540&num=0&edition=prelim
+PUBLISHED: statute amended December 22, 2023 (Pub. L. 118-31 sec. 2881(a)); DFARS final rule June 27, 2024, effective September 16, 2024; both texts fetched or corroborated 2026-08-15   SAMPLE: n/a (statute and regulation)   GEO: United States (Army, Navy, Air Force contracts)
+BEARS ON: Defending a design fee above the folk '6 percent': the trend in
+  published federal caps is upward, and the cap still covers only design-
+  document production on projects orders of magnitude larger than GMZ's.
+CAVEAT: Audit upgrade: the statute text and its amendment note ('Pub. L.
+  118-31 substituted 10 percent for 6 percent') were fetched directly from
+  uscode.house.gov, and the current DFARS 236.606-70 text confirming 10
+  percent was fetched from acquisition.gov, so the core fact no longer rests
+  on search snippets. The Federal Register rule text itself remains
+  unfetched (bot-blocked); the 89 FR 53502 citation, June 27, 2024 date and
+  September 16, 2024 effective date come from federalregister.gov result
+  metadata. Military construction scale does not transfer to residential
+  work.
+
+### brooks-act-qbs-policy-text  [T1 / high]
+CLAIM: Federal law requires design services to be procured on
+  qualifications, with price negotiated afterward at a fair and reasonable
+  level, the federal government's own policy is that design is not selected
+  on price.
+QUOTE (verbatim):
+  | The policy of the Federal Government is to publicly announce all
+  | requirements for architectural and engineering services and to negotiate
+  | contracts for architectural and engineering services on the basis of
+  | demonstrated competence and qualification for the type of professional
+  | services required and at fair and reasonable prices.
+SOURCE: 40 U.S.C. 1101 (Brooks Act policy), U.S. House Office of the Law Revision Counsel
+URL: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title40-section1101&num=0&edition=prelim
+PUBLISHED: recodified Aug 21, 2002 (Pub. L. 107-217); originally added by Pub. L. 92-582, Oct 27, 1972   SAMPLE: n/a (statute)   GEO: United States (federal)
+BEARS ON: How GMZ positions the paid design step in client conversations and
+  the portfolio's design-services page: lead with qualifications and scope,
+  present the percentage as the negotiated compensation for a defined scope,
+  mirroring the federal model.
+CAVEAT: Governs federal agencies, not private residential clients; it is a
+  framing anchor, not a fee benchmark. Audit note: quote verified verbatim
+  against uscode.house.gov 2026-08-15.
+
+### wa-ofm-fee-curve-1m-macc  [T1 / high]
+CLAIM: Washington State's published A/E fee schedule sets full basic-
+  services design fees (design-bid-build columns) at its smallest tabulated
+  project size, $1,000,000 MACC, of 12.09 percent (Schedule A, complex),
+  10.65 percent (Schedule B, whose building-type list includes 'Residences')
+  and 9.21 percent (Schedule C, simple), falling to 6.86/5.89/4.91 percent
+  at $100,000,000, a published curve in which the percentage rises steadily
+  as project size falls.
+FIGURE: 9.21% to 12.09% at $1,000,000 MACC; 4.91% to 6.86% at $100,000,000
+  MACC (design-bid-build)
+QUOTE (verbatim):
+  | The actual contracts for basic services payable to the A/E shall be a
+  | negotiated fixed amount or percentage of the maximum allowable
+  | construction cost (MACC) of the projects, not including fees, licenses,
+  | permits, sales taxes, contingencies, and change orders caused by A/E
+  | errors or omissions or change orders which do not require design
+  | consultant services.
+SOURCE: Washington State Office of Financial Management, 2025-27 Capital Budget Instructions, Chapter 9: A&E Fee Guidelines and Fee Schedule (basis: 2014 OFM-coordinated study with 2022 update involving the Washington Council of the AIA, ACEC of Washington and state agencies)
+URL: https://ofm.wa.gov/wp-content/uploads/sites/default/files/public/budget/instructions/capital/2025-27/Ch9AEfees.pdf
+PUBLISHED: June 2024, effective July 1, 2025   SAMPLE: guideline derived from a disclosed 2014 study and 2022 update, not a survey n   GEO: Washington State public building projects
+BEARS ON: The core bracket for GMZ's 10-15 percent design pricing: at the
+  smallest size any state curve tabulates ($1M), the published full-service
+  fee for residence-class work is already 10.65 percent, and OFM explicitly
+  declines to extend the curve below $1M ('For projects under $1,000,000,
+  the fee must be based on expected services and cost of work'), i.e., the
+  percentage logic weakens, not strengthens, downward, GMZ's typical
+  projects sit below every tabulated point.
+CAVEAT: Public building projects in Washington, not California residential
+  landscapes; the percentage buys full basic services including bidding and
+  construction administration (see phase-split finding). Below $1M the
+  guideline abandons the curve entirely rather than publishing higher
+  percentages. Audit note: all six percentages, the verbatim quote, the
+  under-$1M language, and the placement of 'Residences' in Schedule B
+  (confirmed by column coordinates in the PDF) verified 2026-08-15; the
+  table also carries separate, slightly different GC/CM columns, the cited
+  figures are the design-bid-build columns.
+
+### wa-ofm-phase-split-design-share  [T1 / high]
+CLAIM: In Washington's published basic-services fee, the design phases
+  (schematic design 18 + design development 20 + construction document 31)
+  account for 69 percent of the fee, while bidding (2), construction (27)
+  and project closeout (2) account for 31 percent, so a design-only
+  engagement corresponds to roughly two-thirds of any full-service fee
+  percentage.
+FIGURE: Schematic design 18%, design development 20%, construction document
+  31%, bidding 2%, construction 27%, project closeout 2% of the basic
+  services fee
+SOURCE: Washington State OFM, 2025-27 Capital Budget Instructions, Chapter 9 (Percent of Basic Services Fee breakdown)
+URL: https://ofm.wa.gov/wp-content/uploads/sites/default/files/public/budget/instructions/capital/2025-27/Ch9AEfees.pdf
+PUBLISHED: June 2024, effective July 1, 2025   SAMPLE: guideline, not a survey   GEO: Washington State public building projects
+BEARS ON: Making an honest comparison in GMZ's design-fee rationale: GMZ's
+  design agreement is design-only (construction is a separate contract), so
+  the comparable published number is about 0.69 x the full-service curve,
+  roughly 7.3 percent of MACC at $1M for residence-class work (derived
+  arithmetic, not a published figure), before applying the small-project and
+  existing-conditions premiums that published schedules acknowledge.
+CAVEAT: The 7.3 percent is a derivation from two published numbers, stated
+  as such; the 69/31 split itself is the published finding (the document
+  labels the 27 percent phase 'Construction', i.e., construction-phase
+  services). GMZ's design step may also include services (planting design
+  detail, MWELO documentation) the OFM phases do not itemize. Audit note:
+  all six phase percentages verified in the PDF 2026-08-15.
+
+### wa-ofm-remodel-premium-landscape-extra  [T1 / high]
+CLAIM: Washington's fee guideline allows remodel-project fees to be
+  increased 'by up to three percent' above the schedule for basic services,
+  citing existing-conditions factors (age and character of the building,
+  availability and accuracy of existing plans, extent of program revisions),
+  and it lists the 'Landscape Consultant' as a specialty consultant outside
+  A/E basic services whose cost is additional to the curve, with specialty
+  consultants normally capped at 50 percent of the basic A/E fee.
+FIGURE: up to three percent above schedule for remodels (source wording;
+  read in context as roughly 3 points on the schedule percentage, but the
+  document does not say 'percentage points'); specialty consultants normally
+  not greater than 50% of the basic A/E fee
+QUOTE (verbatim):
+  | Generally, when program changes are significant or, if warranted by
+  | other conditions, fees noted under those schedules may be increased by
+  | up to three percent for basic services.
+SOURCE: Washington State OFM, 2025-27 Capital Budget Instructions, Chapter 9 (Remodel design; specialty consultants list)
+URL: https://ofm.wa.gov/wp-content/uploads/sites/default/files/public/budget/instructions/capital/2025-27/Ch9AEfees.pdf
+PUBLISHED: June 2024, effective July 1, 2025   SAMPLE: guideline, not a survey   GEO: Washington State public building projects
+BEARS ON: Two GMZ points: (1) renovation of an existing landscape (the
+  normal Peninsula case, mature plantings, unknown irrigation, existing
+  hardscape) is the published premium case, not the base case; (2) even
+  inside a building fee, landscape design is priced as an addition to the
+  curve, so a landscape-specific design fee is not bounded by the building
+  curve.
+CAVEAT: Audit correction: the source text says 'increased by up to three
+  percent', not 'three percentage points'; because the fees being increased
+  are themselves schedule percentages, the percentage-point reading is the
+  natural one, but it is an interpretation, so quote the source wording if
+  this is ever cited publicly. The premium is written for building remodels;
+  the landscape-consultant classification reflects building-project scope
+  allocation, not a statement about residential landscape design pricing.
+  Quote and 50% cap sentence verified verbatim 2026-08-15.
+
+### delaware-dfm-small-bracket-renovation-fee  [T1 / medium]
+CLAIM: Delaware's published state A/E fee schedule, in its smallest
+  tabulated bracket (up to $500,000 construction cost, above a 'to be
+  negotiated' floor at $100,000), sets full basic-services fees of 7.5-9.0
+  percent for new construction and 9.5-13.0 percent for renovation depending
+  on complexity schedule; the renovation premium is 2-4 percentage points in
+  that smallest bracket and narrows to 1-2 points at the largest tabulated
+  bracket (up to $15,000,000), and the schedule reverts to 'to be
+  negotiated' both below $100,000 and above $15,000,000.
+FIGURE: $100K-$500K bracket: 7.5%-9.0% new, 9.5%-13.0% renovation;
+  renovation premium 2-4 points there, 1-2 points at the $15M bracket; under
+  $100K and over $15M: negotiated
+SOURCE: Delaware Division of Facilities Management, Architectural & Engineering Fee Schedule (fees cover all basic services per AIA Document B101-2017 including construction administration)
+URL: https://dfm.delaware.gov/profsrv/fee-schedule.shtml
+PUBLISHED: unknown (page undated; references AIA B101-2017; fetched 2026-08-15)   SAMPLE: n/a (published state schedule)   GEO: Delaware state facilities
+BEARS ON: The closest published bracket to GMZ's actual project sizes: at
+  $100K-$500K construction, a state government pays up to 13 percent for
+  full-service design on complex renovation work, placing GMZ's 10-15
+  percent design fee for small, complex, existing-site residential work
+  inside the published public-sector band rather than above it. The premium
+  narrowing with size also supports the small-project-premium argument: the
+  renovation surcharge is largest exactly where GMZ operates.
+CAVEAT: Audit correction: the original claim that renovation runs 2-4 points
+  above new 'in every bracket' was false, at the $10M and $15M brackets the
+  premium is 1.0-2.5 points (e.g., Schedule C at $15M: 6.5 vs 5.5).
+  Smallest-bracket and largest-bracket values were confirmed by two
+  independent fetch passes that agreed; mid-bracket values rest on a single
+  extraction pass. The page carries no date, so currency is unverified;
+  building projects, and the percentage includes construction-phase services
+  (a design-only comparison should be scaled down, then adjusted back up for
+  the sub-$100K sizes where Delaware itself abandons the schedule).
+
+### caltrans-pe-under-20-percent-target  [T1 / high]
+CLAIM: Caltrans reported preliminary engineering (all project development
+  from project study report through construction contract award) at 19.7
+  percent of contract allotments and right-of-way capital for STIP projects
+  awarded FY 2012-13, a 19.4 percent three-year average (FY 2010-11: 19.3%,
+  FY 2011-12: 18.9%), against a Government Code target that the three-year
+  average not exceed 20 percent.
+FIGURE: 19.7% (FY 2012-13); 19.4% three-year average; statutory target <
+  20%; $3,394.6M construction and $657.6M PE over three years
+QUOTE (verbatim):
+  | According to the Government Code, the average cost of P.E. for the
+  | report year and two previous years shall not exceed the 20 percent
+  | target.
+SOURCE: Caltrans, FY 2012-13 Annual Project Delivery Report to the California State Legislature (reporting under Government Code sections 14524.16 and 14525.5)
+URL: https://dot.ca.gov/-/media/dot-media/programs/legislative-affairs/documents/f0004418-cos-annual-pdreport-legislature-fy1213-a11y.pdf
+PUBLISHED: report covers FY 2012-13; accessible PDF created July 30, 2019 per file metadata   SAMPLE: all programmed STIP projects awarded FY 2010-11 through FY 2012-13 ($3,394.6M construction, $657.6M PE over three years)   GEO: California state highway program
+BEARS ON: California's own legislature accepts pre-construction engineering
+  costing just under 20 percent of construction on public projects, a state-
+  specific upper anchor showing GMZ's 10-15 percent design fee is well
+  inside what California government itself pays for pre-construction work.
+CAVEAT: PE here includes environmental clearance, right-of-way engineering
+  and departmental overhead, a broader scope than a residential landscape
+  design contract; highway projects do not transfer to residential scale,
+  and the figure is what delivery costs the state, not a negotiated design
+  fee. The data is FY 2012-13 era; use it as a historical statutory-target
+  anchor, not a current statistic, newer annual reports were not audited.
+  Audit note: all figures and the quote verified verbatim in the PDF
+  2026-08-15.
+
+### ncdot-pe-ratio-bridges-roadways  [T1 / high]
+CLAIM: University research on North Carolina DOT projects let 2001-2009
+  found a mean preliminary-engineering cost ratio of 27.8 percent of
+  estimated construction cost across 461 bridge projects (95% CI 26.0-29.6%)
+  and 11.7 percent across 188 roadway projects, and reported that the most
+  frequent PE budgeting percentage cited in the literature is ten percent of
+  estimated construction costs, with a 25-DOT survey (WSDOT 2002) averaging
+  10.3 percent and ranging 4-20 percent.
+FIGURE: 27.8% mean PE ratio (461 bridge projects); 11.7% (188 roadway
+  projects); literature mode 10%; DOT survey mean 10.3%, range 4-20% (n=25)
+SOURCE: Liu, Hummer, Rasdorf (North Carolina State University) and Hollar (East Carolina University), 'Preliminary Engineering Cost Trends for Highway Projects,' FHWA/NC/2010-10, NCDOT Research and Development Group
+URL: https://connect.ncdot.gov/projects/research/RNAProjDocs/2010-10FinalReport.pdf
+PUBLISHED: October 21, 2011   SAMPLE: 461 bridge projects and 188 roadway projects (NCDOT, let 2001-2009); DOT survey n=25 (WSDOT 2002)   GEO: North Carolina (surveys national)
+BEARS ON: Bracketing GMZ's percentage: technically complex projects
+  (bridges) carry design/engineering shares near 28 percent, and the general
+  planning figure across DOTs centers on 10 percent, so 10-15 percent for
+  complex small-site design is between the general-case center and the
+  complex-case mean in disclosed-sample research.
+CAVEAT: PE includes planning and environmental work beyond design drawings;
+  public infrastructure, 2001-2009 data, and figures are agency delivery
+  costs rather than fees a client pays a designer. Audit note: every figure,
+  the author affiliations and the October 21, 2011 report date verified in
+  the PDF 2026-08-15; the 10.3%/4-20%/n=25 figures are the report's account
+  of the 2002 WSDOT survey, not the authors' own sample.
+
+### pe-percentage-inverse-to-project-size  [T1 / high]
+CLAIM: A published cost curve derived from 30 completed Virginia DOT roadway
+  projects (updated with 135 more for statewide verification; a parallel
+  bridge curve from 23 projects) found preliminary-engineering cost ratios
+  of 8 to 20 percent of construction cost and that the percentage is
+  inversely related to construction cost, the disclosed-provenance version
+  of 'small projects carry higher design percentages.'
+FIGURE: 8 to 20 percent of construction cost, inversely related to project
+  size
+QUOTE (verbatim):
+  | The resulting ratio of PE costs to construction costs ranged from eight
+  | to twenty percent.  PE costs were found to be inversely related to
+  | construction costs.
+SOURCE: FHWA/NC/2010-10 final report (NC State University for NCDOT), summarizing the VDOT estimating-tool studies (Kyte et al. 2004a, 2004b)
+URL: https://connect.ncdot.gov/projects/research/RNAProjDocs/2010-10FinalReport.pdf
+PUBLISHED: October 21, 2011 (summarizing 2004 VDOT studies)   SAMPLE: 30 completed VDOT roadway projects, curve updated with 135 additional projects; bridge curve from 23 projects   GEO: Virginia
+BEARS ON: The single most useful defensive point for GMZ's fee page and FAQ:
+  every published curve found (WA OFM schedule, Delaware brackets, VDOT
+  curve) rises as project size falls, so comparing a small residential
+  design fee to percentages quoted for large projects is a category error
+  the sources themselves warn against.
+CAVEAT: Highway PE, not landscape design; the 20 percent upper end occurs at
+  the small end of public roadway projects, which are still larger than most
+  residential landscape jobs, the published curves simply stop before
+  reaching GMZ's project sizes. Audit note: quote verified verbatim in the
+  PDF 2026-08-15; this is the NC report's secondhand summary of the VDOT
+  studies, which were not fetched directly.
+
+### qbs-2009-cost-growth-vs-design-fee  [T2 / medium]
+CLAIM: The Chinowsky (Univ. of Colorado) and Kingsley (Georgia Tech) QBS
+  study distributed by ACEC/APWA (2009), analyzing 41 predominantly public
+  design-bid-build projects across 23 states, found change-order cost growth
+  of 3 percent of final construction cost on QBS-procured projects versus an
+  industry average the report characterizes as accepted to be about 10
+  percent, with construction schedule growth of 8.7 percent versus an ~10
+  percent industry average and an average design fee in the sample of
+  $441,500, evidence that qualified design earns back multiples of any
+  plausible fee difference in avoided construction cost growth.
+FIGURE: 3% cost growth (QBS) vs ~10% accepted industry average; schedule
+  growth 8.7% vs ~10%; average design fee $441,500
+SOURCE: QBS Canada publication hosted by the Ontario Association of Architects (written by Ben Shelton, edited by Cal Harrison), 'Qualifications-Based Selection (QBS): Best Practice for Architecture, Engineering and Construction Management/General Contractor Procurement in Canada', reporting Chinowsky & Kingsley, 'An Analysis of Issues Pertaining to Qualifications-Based Selection' with page-level citations (pp. 20-21)
+URL: https://www.oaa.on.ca/oaa/assets/images/bloaags/text/final_qbs_report_sep_1_2018.pdf
+PUBLISHED: August 2018 (underlying study 2009 per external corroboration; the QBS Canada report's footnotes cite the ACEC-hosted PDF without a year)   SAMPLE: 41 predominantly public design-bid-build projects in 23 states   GEO: United States (23 states)
+BEARS ON: Reframing what GMZ's design fee buys in proposals and the FAQ: the
+  defensible argument is not 'everyone charges 10-15 percent' but 'a 7-point
+  swing in construction cost growth dwarfs a few points of design fee', the
+  Brooks Act logic applied at residential scale.
+CAVEAT: Primary study PDF (acec.ca) was not fetchable (403); all figures
+  verified 2026-08-15 in the QBS Canada report text, which cites the study
+  by page number, and the report itself says the ~10 percent industry-
+  average baseline is 'accepted to be' the average, i.e., a
+  characterization, not a measured control group. n=41 is small, projects
+  are public and far larger than residential work. The 2009 date of the
+  underlying study is corroborated by ACEC-ecosystem sources found in
+  search, not by the report's own footnotes.
+
+### aia-antitrust-decrees-no-published-benchmarks  [T3 / medium]
+CLAIM: The DOJ obtained antitrust consent decrees against the AIA in 1972
+  (eliminating its fee schedule, in place since the 1860s, and its
+  restrictions on competitive bidding) and again in 1990 (after the
+  president of AIA Chicago circulated fee-setting documents, prohibiting
+  architects from discussing fees with one another), legal history
+  consistent with the observed absence of any association-published
+  'industry standard' design-fee percentage.
+SOURCE: Chris Gannon, AIA (principal, Shams Gannon Architecture), 'Opinion: Antitrust Law and the Remaking of the Profession,' Texas Architect Magazine, Vol. 76 Issue 2
+URL: https://magazine.texasarchitects.org/2026/05/22/opinion-antitrust-law-and-the-remaking-of-the-profession/
+PUBLISHED: May 22, 2026   SAMPLE: n/a (legal history)   GEO: United States
+BEARS ON: Explains Study 001's 'folklore' result and disciplines GMZ's own
+  copy: the site and proposals should never claim an 'industry standard
+  percentage' exists, the defensible framing is GMZ's published scope for a
+  stated fee, benchmarked against government fee schedules (which are
+  publications by buyers, not seller price-fixing).
+CAVEAT: Audit correction: the original claim asserted the decrees are 'why'
+  no association including ASLA publishes a fee percentage, that causal
+  extension to ASLA is the researcher's inference, not in the source, and is
+  restated here as consistency, not causation. Trade-press tier; DOJ primary
+  documents (justice.gov) returned 401/403 and the decree language could not
+  be quoted verbatim. The 1972/1990 decree facts, the 1860s fee-schedule
+  vintage and the AIA Chicago trigger were verified in the fetched article
+  2026-08-15.
+
+### extension-evidence-thin-fee-structures  [T1 / high]
+CLAIM: The best university-extension statement found on residential
+  landscape design pricing says only that 'Some professionals charge by the
+  hour, while others charge by the project,' with no percentages, university
+  and extension sources validate the fee-structure taxonomy but publish no
+  fee levels for residential landscape design.
+SOURCE: University of Florida IFAS Extension, Florida-Friendly Landscaping program, 'Hiring a Design Professional' (FFL Minute radio transcript, Episode #169)
+URL: http://ffl.ifas.ufl.edu/resources/ffl-minute-radio/2020-archive/october-2020/hiring-a-design-professional/
+PUBLISHED: October 22, 2020   SAMPLE: n/a (qualitative extension guidance)   GEO: Florida (extension guidance)
+BEARS ON: Confirms for the FAQ drafting that GMZ cannot cite an extension or
+  university source for a residential design-fee percentage; any percentage
+  GMZ states must be presented as GMZ's own pricing for a defined scope,
+  which the government fee-schedule anchors then contextualize.
+CAVEAT: A one-paragraph radio transcript; it is included as honest
+  documentation that this is the strongest extension-tier evidence located,
+  not as a benchmark. Audit note: the quoted sentence verified verbatim at
+  the page 2026-08-15.
+
+### ca-min-wage-2027-certified  [T1 / high]
+CLAIM: The California Director of Finance certified on July 31, 2026 that
+  the statewide minimum wage rises 2.99 percent, from the current $16.90 to
+  $17.40 per hour for all employers on January 1, 2027, based on the U.S.
+  CPI-W averaging period July 1, 2025 to June 30, 2026.
+FIGURE: $16.90/hr now; $17.40/hr effective 2027-01-01; +2.99%
+QUOTE (verbatim):
+  | This year, the Department of Finance calculates the average U.S. CPI-W
+  | for the 12-month period from July 1, 2025 to June 30, 2026 increased by
+  | 2.99 percent compared to the 12-month period from July 1, 2024 to June
+  | 30, 2025. As a result, pursuant to section 1182.12(c), the minimum wage
+  | shall increase by 2.99 percent to $17.40 per hour and shall be
+  | implemented for all employers on January 1, 2027.
+SOURCE: California Department of Finance, Minimum Wage Increase, Director of Finance Determination and Certification (letter signed /s/ Joe Stephenshaw, Director)
+URL: https://dof.ca.gov/media/docs/whats-new/Minimum-Wage-Increase-Notification-Governor-and-Legislative-Letter.pdf
+PUBLISHED: 2026-07-31   SAMPLE: not applicable (administrative certification)   GEO: California statewide
+BEARS ON: The maintenance renewal escalator: labor floor steps +2.99% on
+  2027-01-01, a known-in-advance input for any renewal priced before
+  January.
+CAVEAT: Audit 2026-08-15: PDF fetched and text extracted; letter date,
+  signer, quote (verbatim), both wage figures, the 2.99 percent, and the
+  CPI-W averaging periods all verified against the document. Corroborated by
+  DIR News Release 2026-66 (dated Aug 13, 2026, fetched: 'California's
+  statewide minimum wage will increase to $17.40 per hour' Jan 1, 2027; also
+  states the 2027 exempt salary threshold of $72,384). The DIR minimum wage
+  FAQ (fetched; page marked December 2025) still shows only $16.90 and does
+  not yet mention $17.40; the FAQ lags the certification. Local ordinances
+  can exceed the state floor; several Peninsula cities set their own minimum
+  wages, which were not pulled in this study.
+
+### labor-code-1182-12c-formula  [T1 / high]
+CLAIM: Labor Code 1182.12(c) sets the annual minimum wage escalator as the
+  lesser of 3.5 percent and the change in the non-seasonally-adjusted U.S.
+  CPI-W (July-June average over prior July-June average), rounded to the
+  nearest ten cents, calculated by the Director of Finance on or before
+  August 1 and effective the following January 1, with no decrease if CPI is
+  negative.
+FIGURE: cap 3.5%; rounding $0.10; calc by Aug 1; effective Jan 1
+QUOTE (verbatim):
+  | The calculation shall increase the minimum wage by the lesser of 3.5
+  | percent and the rate of change in the averages of the most recent July 1
+  | to June 30, inclusive, period over the preceding July 1 to June 30,
+  | inclusive, period for the United States Bureau of Labor Statistics
+  | nonseasonally adjusted United States Consumer Price Index for Urban Wage
+  | Earners and Clerical Workers (U.S. CPI-W). The result shall be rounded
+  | to the nearest ten cents ($0.10). Each adjusted minimum wage increase
+  | calculated under this subdivision shall take effect on the following
+  | January 1.
+SOURCE: California Labor Code section 1182.12 (Stats. 2016, Ch. 4, SB 3), official text at leginfo.legislature.ca.gov
+URL: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1182.12
+PUBLISHED: last amended Stats. 2016, Ch. 4 (SB 3), effective 2017-01-01   SAMPLE: not applicable (statute)   GEO: California statewide
+BEARS ON: Escalation clause architecture: the state's own escalator (lesser-
+  of formula, defined averaging window, cap, rounding, announcement date) is
+  a directly copyable drafting pattern, and its Aug 1 announcement date
+  means each January's floor is knowable before fall renewal notices go out.
+CAVEAT: Audit 2026-08-15: leginfo fetched; the lesser-of-3.5-percent phrase,
+  the $0.10 rounding rule, the following-January-1 effective date, the
+  August 1 calculation deadline, and the no-decrease-on-negative-CPI
+  provision were all confirmed against the section text, and the amendment
+  history (Stats. 2016, Ch. 4, Sec. 3, SB 3) matches. Quote is assembled
+  from the operative sentences of subdivision (c); the subdivision also
+  provides that on a negative CPI 'there shall be no increase or decrease in
+  the minimum wage.' The statute uses national CPI-W, not the Bay Area
+  index, so GMZ's statutory labor floor and a Bay Area CPI clause move on
+  different indexes.
+
+### cpi-gardening-lawncare-latest  [T1 / high]
+CLAIM: BLS series CUUR0000SEHP02, 'Gardening and lawncare services in U.S.
+  city average, all urban consumers, not seasonally adjusted' (Dec
+  1997=100), stood at 344.925 in July 2026 versus 307.218 in July 2025, a
+  12.3 percent 12-month increase (May-over-May: +10.8 percent).
+FIGURE: index 344.925 (Jul 2026); +12.3% 12-month
+SOURCE: BLS series CUUR0000SEHP02, data.bls.gov timeseries page; values cross-checked against the BLS Public Data API v2 (api.bls.gov/publicAPI/v2/timeseries/data/)
+URL: https://data.bls.gov/timeseries/CUUR0000SEHP02
+PUBLISHED: retrieved 2026-08-15; latest observation July 2026   SAMPLE: not applicable (price index)   GEO: U.S. city average (national)
+BEARS ON: Choice of escalator index: this is the trade-specific series Study
+  001 pointed at, and its current 12-month print (12.3%) versus SF all-items
+  (3.8%) quantifies how much index choice matters in the renewal clause.
+CAVEAT: Audit 2026-08-15: series title, Dec 1997=100 base period, and every
+  cited value re-verified from two independent BLS routes (timeseries page
+  and API): Jul 2026 344.925, Jul 2025 307.218 (+12.27% = +12.3%), May 2026
+  329.081, May 2025 296.976 (+10.8%). The sources return only scattered 2025
+  months (May, July, September) and October 2025 is footnoted 'Data
+  unavailable due to the 2025 lapse in appropriations,' so the +12.3% print
+  cannot be cross-checked against a full run of adjacent months. It is a
+  national, not-seasonally-adjusted consumer-services index and is far more
+  volatile than all-items CPI; using it as a sole escalator peg would have
+  produced a double-digit increase this year that Peninsula clients would
+  likely reject.
+
+### cpi-sf-all-items-latest  [T1 / high]
+CLAIM: BLS series CUURS49BSA0, San Francisco-Oakland-Hayward all-items CPI-U
+  (not seasonally adjusted), stood at 369.913 in June 2026 versus 356.460 in
+  June 2025, a 3.8 percent 12-month increase, matching the 3.8 percent BLS
+  states in its San Francisco area CPI release for the 12 months ending June
+  2026.
+FIGURE: index 369.913 (Jun 2026); +3.8% 12-month
+QUOTE (verbatim):
+  | The San Francisco area all items CPI-U increased 3.8 percent for the 12
+  | months ending in June.
+SOURCE: BLS Public Data API v2, series CUURS49BSA0; corroborated by BLS West region San Francisco area CPI news release (www.bls.gov/regions/west/news-release/consumerpriceindex_sanfrancisco.htm)
+URL: https://api.bls.gov/publicAPI/v2/timeseries/data/
+PUBLISHED: retrieved 2026-08-15; latest observation June 2026   SAMPLE: not applicable (price index)   GEO: San Francisco-Oakland-Hayward, CA metro area (Alameda, Contra Costa, Marin, San Francisco, San Mateo counties)
+BEARS ON: The default escalator peg for a maintenance renewal clause: the
+  local all-items index a client will accept, currently running just above
+  the 2.99% statewide minimum wage step.
+CAVEAT: Audit 2026-08-15: API values re-fetched and verified (Jun 2026
+  369.913 / Jun 2025 356.460 = +3.77%, rounds to +3.8%), and the news
+  release's stated 3.8 percent confirmed verbatim; a quote field was added
+  from that release. Recent 12-month changes recomputed from retrieved
+  values: Feb 2026 +2.5%, Apr 2026 +3.8%, Jun 2026 +3.8%. The metro CPI
+  covers the whole SF-Oakland-Hayward area (the release lists San Mateo
+  County among the five covered counties, so it does include the Peninsula,
+  but not Santa Clara County); BLS publishes no finer-grained index for San
+  Mateo County alone.
+
+### cpi-sf-bimonthly-schedule  [T1 / high]
+CLAIM: The San Francisco area CPI is published bimonthly, with observations
+  existing only for even-numbered months (February, April, June, August,
+  October, December), and the August 2026 index is scheduled for release
+  September 11, 2026.
+FIGURE: 6 prints/year (even months)
+QUOTE (verbatim):
+  | The August 2026 Consumer Price Index for the San Francisco area is
+  | scheduled to be released on September 11, 2026.
+SOURCE: BLS West Information Office, Consumer Price Index, San Francisco Area news release (June 2026 data)
+URL: https://www.bls.gov/regions/west/news-release/consumerpriceindex_sanfrancisco.htm
+PUBLISHED: covers June 2026 data; release page fetched 2026-08-15   SAMPLE: not applicable (publication schedule)   GEO: San Francisco-Oakland-Hayward, CA metro area
+BEARS ON: Clause drafting mechanics: which month's index the renewal formula
+  names, and when the annual renewal notice can be computed.
+CAVEAT: Audit 2026-08-15: the scheduled-release quote verified verbatim.
+  Precision fix: the release itself says only that the index 'is published
+  bi-monthly'; the even-month pattern is established by the retrieved series
+  data (CUURS49BSA0 observations exist only for Feb/Apr/Jun/Aug/Oct/Dec),
+  not stated explicitly in the release. A renewal clause pegged to this
+  index must reference an even month and allow roughly six weeks of
+  publication lag; a clause naming an odd month (e.g. 'the January index')
+  can never be satisfied.
+
+### cpi-publication-failure-risk  [T1 / high]
+CLAIM: BLS index publication can fail outright: for both CUUR0000SEHP02 and
+  CUURS49BSA0 the October 2025 observation is footnoted 'Data unavailable
+  due to the 2025 lapse in appropriations,' so an escalation clause pegged
+  to a single named month's index needs a stated fallback.
+FIGURE: Oct 2025 observation missing in both series
+QUOTE (verbatim):
+  | Data unavailable due to the 2025 lapse in appropriations
+SOURCE: BLS Public Data API v2, footnote code X on series CUUR0000SEHP02 and CUURS49BSA0
+URL: https://api.bls.gov/publicAPI/v2/timeseries/data/
+PUBLISHED: footnote observed 2026-08-15 on the October 2025 reference period   SAMPLE: not applicable   GEO: national and SF metro series
+BEARS ON: Escalation clause drafting: include a fallback (e.g. 'the most
+  recent published index' or a named substitute) for months BLS does not
+  publish.
+CAVEAT: Audit 2026-08-15: footnote re-fetched and verified verbatim on the
+  October 2025 observation of both series (footnote code X, value '-'). The
+  Los Gatos precedent illustrates the companion risk: its clause names a CPI
+  area BLS restructured, leaving the contract pointing at an index title
+  that no longer matches BLS publications.
+
+### oews-sf-37-3011-may2025  [T1 / high]
+CLAIM: May 2025 OEWS estimates for the San Francisco metro area (OEWS area
+  code 41860) show landscaping and groundskeeping workers (SOC 37-3011) at a
+  median hourly wage of $23.10, mean hourly $26.19, employment 12,270.
+FIGURE: median $23.10/hr; mean $26.19/hr; employment 12,270
+SOURCE: BLS Occupational Employment and Wage Statistics, May 2025, via BLS Public Data API v2 (series OEUM004186000000037301108, ...03, ...01)
+URL: https://api.bls.gov/publicAPI/v2/timeseries/data/
+PUBLISHED: May 2025 reference (OEWS vintage published spring 2026); retrieved 2026-08-15   SAMPLE: estimate covers 12,270 employed in occupation; OEWS is an establishment survey   GEO: San Francisco metro area (OEWS area 41860, includes East Bay)
+BEARS ON: Setting the labor-cost assumption inside the maintenance escalator
+  and sanity-checking crew wage budgets at renewal.
+CAVEAT: Audit 2026-08-15: all three series re-fetched from the BLS API and
+  values verified exactly ($23.10 median, $26.19 mean, 12,270 employment,
+  annual 2025 = latest; the API confirms no 2024 vintage is served). Median
+  $23.10 is 36.7% above the 2026 state minimum of $16.90, so GMZ competes
+  for labor well above the statutory floor and minimum wage steps understate
+  actual wage pressure. Figures cover the whole multi-county metro (the
+  exact current metro title for area 41860 could not be verified from a
+  fetched page; the API returns values only), are employer-reported, exclude
+  the self-employed, and include public-sector groundskeepers, so they do
+  not map one-to-one onto a four-person Peninsula residential crew.
+
+### oews-sf-37-1012-may2025  [T1 / high]
+CLAIM: May 2025 OEWS estimates for the San Francisco metro area (OEWS area
+  code 41860) show first-line supervisors of landscaping, lawn service, and
+  groundskeeping workers (SOC 37-1012) at a median hourly wage of $37.02,
+  mean hourly $37.29, employment 1,570.
+FIGURE: median $37.02/hr; mean $37.29/hr; employment 1,570
+SOURCE: BLS Occupational Employment and Wage Statistics, May 2025, via BLS Public Data API v2 (series OEUM004186000000037101208, ...03, ...01)
+URL: https://api.bls.gov/publicAPI/v2/timeseries/data/
+PUBLISHED: May 2025 reference (OEWS vintage published spring 2026); retrieved 2026-08-15   SAMPLE: estimate covers 1,570 employed in occupation   GEO: San Francisco metro area (OEWS area 41860, includes East Bay)
+BEARS ON: Pricing the lead-worker share of a maintenance crew-hour and the
+  wage assumption behind any renewal increase justified to clients.
+CAVEAT: Audit 2026-08-15: all three series re-fetched and values verified
+  exactly ($37.02, $37.29, 1,570). The supervisor-to-worker median ratio is
+  1.60 ($37.02 vs $23.10; recomputed 1.6026). Same transferability limits as
+  the 37-3011 finding; in a two-person truck-team model the working lead
+  sits somewhere between the two occupations rather than cleanly in 37-1012.
+
+### escalation-precedent-los-gatos  [T1 / high]
+CLAIM: The Town of Los Gatos's executed landscape services agreement with
+  Brightview Landscape Services, Inc. (dated for identification June 21,
+  2022; term July 1, 2022 through June 30, 2027; year-one compensation
+  capped at $175,772, five-year base amount $878,860) contains an upward-
+  only annual CPI escalator pegged to a named metro CPI-U index with a floor
+  at the base amount.
+FIGURE: year-one cap $175,772; 5-year term; total base $878,860; upward-only
+  annual CPI adjustment
+QUOTE (verbatim):
+  | Compensation for year one shall not exceed $175,772. Compensation for
+  | future years shall be adjusted upward annually for the remaining term of
+  | this agreement by the change, if any, in the San Francisco-Oakland-San
+  | Jose Metropolitan Area Consumer Price Index for All Urban Consumers, all
+  | items (CPI). The adjustment shall be based upon the CPI published on
+  | December 31 of the preceding year. If the CPI indicates a downward
+  | adjustment, compensation will remain at the base amount.
+SOURCE: Town of Los Gatos, Agreement for Services with Brightview Landscape Services, Inc. (public record, town document portal)
+URL: https://weblink.losgatosca.gov/WebLink/0/edoc/1744962/Attachment%201%20-%20Agreement%20for%20Services%20-%20Brightview%20Landscape%20Services%202022.pdf
+PUBLISHED: 2022-06-21 (dated for identification)   SAMPLE: one executed contract   GEO: Los Gatos, CA (Santa Clara County)
+BEARS ON: Drafting precedent for the maintenance renewal escalator: proof
+  that public agencies in the region accept automatic upward-only CPI
+  adjustment, and a caution on index-naming precision.
+CAVEAT: Audit 2026-08-15: PDF fetched and text extracted; the CPI clause
+  verified verbatim (section 2.6), the June 21, 2022 identification date,
+  the July 1, 2022 to June 30, 2027 term, the $175,772 year-one cap, and an
+  additional detail the original finding omitted: the agreement states a
+  total five-year base amount of $878,860 'prior to any increase adjustments
+  for CPI.' Two drafting lessons, one positive and one negative: the upward-
+  only ratchet with a base-amount floor is client-tested language, but the
+  clause names the 'San Francisco-Oakland-San Jose' CPI area, which does not
+  match the current BLS area title (San Francisco-Oakland-Hayward, series
+  CUURS49BSA0), and no CPI 'published on December 31' exists since the SF
+  index prints only for even months with a lag. A GMZ clause should name the
+  exact series ID and a fallback. Public-agency scale (six-figure annual
+  contract, competitively bid, prevailing-wage work under Labor Code 1720 et
+  seq.) differs from a residential account.
+
+### escalation-precedent-fairfield  [T1 / high]
+CLAIM: The City of Fairfield's executed landscape maintenance agreement with
+  New Image Landscape Company for Landscaping and Lighting Maintenance
+  District No. 13 (North Cordelia), initial term January 1, 2022 through
+  December 31, 2023, permits up to two 24-month extension terms with a
+  negotiated compensation adjustment capped at the June San Francisco-
+  Oakland-Hayward CPI-W (not seasonally adjusted, all items), requiring
+  mutual written agreement.
+FIGURE: adjustment cap: June SF-Oakland-Hayward CPI-W; extensions up to 2 x
+  24 months
+QUOTE (verbatim):
+  | This Agreement may be extended for up to two (2) additional terms of up
+  | to twenty-four (24) months each term with the same terms and conditions
+  | including a negotiated compensation adjustment not to exceed the June
+  | San Francisco-Oakland-Hayward Consumer Price Index for Urban Wage
+  | Earners and Clerical Workers (not seasonally adjusted for all items)
+  | upon mutual written Agreement of both parties.
+SOURCE: City of Fairfield, Contractor Services Agreement with New Image Landscape Company, Landscaping and Lighting Maintenance District No. 13 - North Cordelia (public agenda attachment)
+URL: https://fairfield.novusagenda.com/agendapublic/AttachmentViewer.ashx?AttachmentID=6565&ItemID=4069
+PUBLISHED: unknown (execution date line blank in document; executed via DocuSign; initial term begins 2022-01-01)   SAMPLE: one executed contract   GEO: Fairfield, CA (Solano County)
+BEARS ON: Alternative escalator architecture: cap-at-CPI-W with mutual
+  agreement, and the case for aligning the contract index with the index
+  that drives wage costs.
+CAVEAT: Audit 2026-08-15: PDF fetched and text extracted; the extension/CPI
+  clause (section 8, TERM) verified verbatim, and the January 1, 2022 to
+  December 31, 2023 initial term confirmed. The audit adds identification
+  the original finding lacked: the contractor is New Image Landscape Company
+  (Fremont, CA) and the covered work is Landscaping and Lighting Maintenance
+  District No. 13, North Cordelia. Notable for pegging to the June CPI-W
+  print, the same index family and a similar summer reference point as the
+  Labor Code 1182.12 minimum wage formula, so contract price and wage floor
+  move on related measures. It is a cap-with-negotiation model, weaker for
+  the contractor than Los Gatos's automatic adjustment. Solano County
+  market, not the Peninsula.
+
+### referred-customer-clv-premium  [T1 / high]
+CLAIM: Customers acquired through a bank's pay-per-referral program had a
+  six-year customer lifetime value approximately 40 euros (about 16%) higher
+  than demographically comparable nonreferred customers (nonreferred base
+  253 euros), rising to approximately 25% when their roughly 20 euro lower
+  acquisition cost is included, implying about a 60% return over six years
+  on the 25 euro referral reward.
+FIGURE: +16% CLV (EUR 40 on EUR 253 base); ~25% net of acquisition costs;
+  ~60% ROI on EUR 25 reward
+SOURCE: Schmitt, Skiera & Van den Bulte, "Referral Programs and Customer Value," Journal of Marketing 75(1): 46-59
+URL: https://faculty.wharton.upenn.edu/wp-content/uploads/2012/04/Schmitt-Skiera-vandenBulte-2011-Referral-Programs-Customer-Value.pdf
+PUBLISHED: 2011-01   SAMPLE: Original sample 5,181 referred + 4,633 nonreferred customers acquired in 2006; purified analysis sample 9,495 after outlier deletion; tracked ~33 months, CLV projected over six years   GEO: Germany (one leading retail bank, anonymous)
+BEARS ON: Whether GMZ formalizes a referral program and what a referral
+  thank-you or reward is economically worth
+CAVEAT: All figures verified verbatim in the full text on audit (40 euros,
+  253 euro base, 16%, 20 euro acquisition-cost gap, 25%, ~60% ROI on the 25
+  euro reward, sample counts). Single German retail bank, consumer accounts
+  with EUR-scale margins; direction transfers to a four-person Peninsula
+  design/build firm, magnitude does not. The paper itself warns the
+  differential is not uniform: it was absent for low-margin customers and
+  customers over 55, so a GMZ program should be selective, not blanket.
+
+### referred-margin-erodes-loyalty-persists  [T1 / high]
+CLAIM: Referred customers' contribution margin advantage (7.6 cents/day,
+  ~25% above the 30 cents/day nonreferred baseline, 27.74 euros/year) eroded
+  by 8.4 cents/year and disappeared after about 857 days (~29 months), while
+  their retention advantage (churn hazard ~18% lower after demographic
+  controls; 33-month survival 82.0% vs 79.2%) showed no statistically
+  significant erosion over time.
+FIGURE: +25% daily margin, gone by ~857 days (~29 months); churn hazard -18%
+  [exp(-.198)-1]; 82.0% vs 79.2% retention at 33 months
+SOURCE: Schmitt, Skiera & Van den Bulte, "Referral Programs and Customer Value," Journal of Marketing 75(1): 46-59
+URL: https://faculty.wharton.upenn.edu/wp-content/uploads/2012/04/Schmitt-Skiera-vandenBulte-2011-Referral-Programs-Customer-Value.pdf
+PUBLISHED: 2011-01   SAMPLE: 9,495 customers (purified sample; fixed-effects margin model on 9,495 fixed-effects estimates)   GEO: Germany (one leading retail bank)
+BEARS ON: Why the durable payoff of a referred client is loyalty, not spend:
+  supports steering referred design/build clients toward recurring
+  maintenance accounts rather than expecting permanently larger projects
+CAVEAT: Every figure verified verbatim in the full text on audit, including
+  the erosion rate (23.1 cents per 1,000 days = 8.4 cents/year) and the
+  857-day calculation (.198/.000231). Banking relationship with continuous
+  monthly margins; a design/build project is lumpier. The loyalty finding
+  maps most cleanly to GMZ's recurring maintenance accounts. Note the -18%
+  hazard effect is multiplicative on a small baseline hazard, which is why
+  the absolute survival gap is only 2.8 points at 33 months.
+
+### referral-loyalty-hinges-on-referrer  [T1 / high]
+CLAIM: Referred customers' churn hazard is about 40% lower than nonreferred
+  customers only while their referrer remains a customer; once the referrer
+  defects, the referred customer's churn hazard flips to about 280% higher
+  than nonreferred, and the authors' stated management recommendation is to
+  recruit referrers among customers acquired at least six months earlier who
+  exhibit high margins and are unlikely to churn.
+FIGURE: -40% churn hazard while referrer stays [exp(-.48)-1]; +280% after
+  referrer churns [exp(-.48+1.82)-1]
+SOURCE: Van den Bulte, Bayer, Skiera & Schmitt, "How Customer Referral Programs Turn Social Capital into Economic Capital," Journal of Marketing Research 55(1): 132-146
+URL: https://faculty.wharton.upenn.edu/wp-content/uploads/2017/07/VdB-et-al.-JMR-2018.pdf
+PUBLISHED: 2018-02   SAMPLE: 1,799 single-referral referrer-referral dyads (49% of all referrals acquired in the January-October 2006 window) + 3,663 randomly drawn nonreferred customers; observed 33 months (January 2006-September 2008)   GEO: Germany (same retail bank as the 2011 study)
+BEARS ON: Which clients GMZ should ask for referrals (established,
+  satisfied, long-tenure maintenance accounts) and why losing a referrer
+  endangers the clients they brought in: retention calls to a referrer
+  protect two relationships, not one
+CAVEAT: Verified verbatim from extracted full text on audit, including both
+  hazard calculations and the six-month recommendation sentence. Correction
+  from the draft: referrals were acquired January-October 2006, not
+  February-October. One bank, single-referral dyads only; the bank confirmed
+  the included dyads are unrelated to margin or churn, but 51% of referrals
+  in the window are excluded. In a Peninsula neighbor network the social-
+  enrichment mechanism plausibly operates, but no home-services replication
+  exists.
+
+### wom-elasticity-vs-paid  [T1 / high]
+CLAIM: Word-of-mouth referrals showed a long-run elasticity of new-customer
+  signups of 0.53, roughly 20 times the elasticity of the firm's marketing
+  events (0.026) and 30 times that of media appearances (0.017), with WOM
+  effects on signups remaining significantly different from zero for about
+  three weeks versus a few days for traditional marketing; the authors
+  compute an implied referral value of about 75 cents per year and
+  explicitly frame it as an upper bound for incentive spending.
+FIGURE: Long-run WOM elasticity 0.53 vs 0.026 (events) and 0.017 (media);
+  carryover ~3 weeks; ~USD 0.75/referral/year (explicit upper bound)
+SOURCE: Trusov, Bucklin & Pauwels, "Effects of Word-of-Mouth Versus Traditional Marketing," Journal of Marketing 73(5): 90-102 (fetched copy is the April 2008 working-paper version, Robert H. Smith School WP RHS-06-060, hosted at UCLA)
+URL: https://www.anderson.ucla.edu/documents/areas/fac/marketing/bucklin_effects.pdf
+PUBLISHED: 2009-09 (published); fetched file dated 2008-04-24   SAMPLE: 36 weeks of daily signup and referral data from one anonymous social networking site (2005)   GEO: United States (Internet platform)
+BEARS ON: The evidence behind treating referrals as GMZ's primary
+  acquisition channel ahead of paid media
+CAVEAT: All figures verified in the extracted text on audit, including the
+  upper-bound framing of the 75-cent figure. Note the URL serves the pre-
+  publication working-paper version, not the typeset Journal of Marketing
+  article; figures in the fetched version match the claim. A free, ad-funded
+  social platform with electronically tracked invitations is structurally
+  unlike hiring a contractor; take the direction (WOM outperforms paid, with
+  longer carryover), not the ratios. The 75-cent figure is the platform's ad
+  economics and does not transfer.
+
+### crv-clv-different-customers  [T3 / medium]
+CLAIM: In applications at a telecommunications company and a financial
+  services firm covering thousands of customers, the customers with the
+  highest customer lifetime value were generally not the customers with the
+  highest customer referral value, and the abstract states both companies
+  reaped returns on marketing investments greater than 12-fold, more than
+  double the normal marketing ROI for their industries.
+FIGURE: >12-fold reported marketing ROI from CLV+CRV targeting
+SOURCE: Kumar, Petersen & Leone, "How Valuable Is Word of Mouth?," Harvard Business Review 85(10): 139-146
+URL: https://pure.psu.edu/en/publications/how-valuable-is-word-of-mouth/
+PUBLISHED: 2007-10   SAMPLE: "Thousands of customers" at two firms; exact n not disclosed in the fetched record   GEO: United States (telecom and financial services)
+BEARS ON: GMZ should ask its proven referrers for referrals, not just its
+  biggest-budget clients: track who actually refers, separately from project
+  size
+CAVEAT: Re-verified on audit: the Penn State Pure record's abstract contains
+  the >12-fold and double-industry-ROI language and the telecom/financial-
+  services setting. HBR is practitioner literature, not peer review, and the
+  full text remains paywalled; the figure rests on the abstract only. The
+  peer-reviewed companion is the 2010 Journal of Marketing paper (separate
+  finding).
+
+### referral-campaign-field-experiments  [T1 / medium]
+CLAIM: Four field experiments with firms in financial services and retailing
+  found that profitability from referral marketing is maximized by managing
+  customers jointly on customer lifetime value and customer referral value
+  and by targeting campaigns using the behavioral drivers of referral value,
+  per the peer-reviewed abstract.
+SOURCE: Kumar, Petersen & Leone, "Driving Profitability by Encouraging Customer Referrals: Who, When, and How," Journal of Marketing 74(5): 1-17
+URL: https://pure.psu.edu/en/publications/driving-profitability-by-encouraging-customer-referrals-who-when-
+PUBLISHED: 2010-09   SAMPLE: Four field experiments; per-experiment n not disclosed in fetched abstract   GEO: United States (financial services, retailing)
+BEARS ON: Design of any GMZ referral push: who gets asked and when
+CAVEAT: Re-verified on audit: the fetched abstract matches the claim word
+  for word in substance and contains no profit-lift percentage. The widely
+  quoted 10-30% profit-lift figure for these experiments appears only in
+  secondary summaries and could not be verified; treat any such magnitude as
+  unverified. Full text paywalled.
+
+### thank-you-call-experiment-1976  [T1 / medium]
+CLAIM: The oldest peer-reviewed antecedent for a post-completion thank-you
+  call is Carey, Clicque, Leighton & Milton (1976), 'A Test of Positive
+  Reinforcement of Customers,' Journal of Marketing 40: 98-100, which Grant
+  & Gino (2010, JPSP) cite among a number of experiments showing that when
+  helpers are thanked by the beneficiaries of their help, they are more
+  willing to help those beneficiaries again.
+SOURCE: Carey, Clicque, Leighton & Milton (1976), Journal of Marketing 40: 98-100, as cited in Grant & Gino 2010, Journal of Personality and Social Psychology 98(6): 946-955
+URL: https://cdn.prod.website-files.com/59faaf5b01b9500001e95457/5bc3d079898dce3a41bde64c_grant_gino_jpsp_2010.pdf
+PUBLISHED: 1976 (original); 2010-06 (citing source, the one actually fetched)   SAMPLE: Not verifiable; the original two-page note is paywalled (Sage returned 403)   GEO: United States
+BEARS ON: The closest peer-reviewed support for GMZ's recommended 30-day
+  post-completion thank-you/check-in call
+CAVEAT: Corrected on audit: the draft claim's details (retail jewelry store,
+  three scripted telephone-call conditions) do NOT appear in the fetched
+  Grant & Gino text and are unverifiable from any fetched source, so they
+  have been stripped from the claim. What the fetched source verifies is the
+  citation itself (reference list confirms Journal of Marketing, 40, 98-100,
+  1976) and the sentence: 'A number of experiments have shown that when
+  helpers are thanked by the beneficiaries of their help, helpers are more
+  willing to help these beneficiaries again (Carey, Clicque, Leighton, &
+  Milton, 1976; ...)'. The widely circulated ~70% purchase-increase figure
+  is likewise unverified and deliberately not asserted. Support is
+  qualitative direction only, via a citing source.
+
+### service-recovery-paradox-meta  [T1 / high]
+CLAIM: A meta-analysis of service-recovery studies found the cumulative mean
+  effect of the service recovery paradox (a well-recovered failure producing
+  higher satisfaction than no failure) significant and positive for
+  satisfaction but nonsignificant for repurchase intentions, word of mouth,
+  and corporate image.
+FIGURE: Positive significant cumulative effect on satisfaction;
+  nonsignificant on repurchase intent, WOM, image
+SOURCE: de Matos, Henrique & Rossi, "Service Recovery Paradox: A Meta-Analysis," Journal of Service Research 10(1): 60-77
+URL: https://researchportal.ulisboa.pt/en/publications/service-recovery-paradox-a-meta-analysis/
+PUBLISHED: 2007-08   SAMPLE: Meta-analysis; study/effect-size count not disclosed in the fetched abstract (full text paywalled)   GEO: Multi-country pooled studies; moderator analysis covers hotel, restaurant, and other service categories
+BEARS ON: Why the 30-day and six-month calls should actively surface
+  problems: fixing a surfaced complaint restores satisfaction, but a failure
+  well recovered cannot be counted on to generate more repurchase or
+  referrals than doing the job right, so recovery is a floor, not a growth
+  strategy
+CAVEAT: Re-verified on audit: the fetched abstract states the
+  satisfaction/repurchase/WOM/image split exactly as claimed, and confirms
+  moderators (cross-sectional vs longitudinal design, student vs nonstudent
+  subjects, service category) influence the satisfaction effect. Underlying
+  pool is hospitality-heavy; no landscaping or contracting studies.
+  Confidence is high for what the abstract states, but the effect-size
+  magnitudes remain unverified behind the paywall.
+
+### yelp-half-star-sellouts  [T1 / high]
+CLAIM: Using a regression discontinuity around Yelp's half-star rounding
+  thresholds, an extra half-star rating caused San Francisco restaurants to
+  sell out 19 percentage points (49%) more frequently, with larger impacts
+  when alternate information about the business is more scarce; restaurants
+  without external accreditation (no Michelin star or Chronicle Top 100
+  listing) sold out 20-30 percentage points more frequently per extra half-
+  star, while externally accredited restaurants showed no significant
+  effect.
+FIGURE: +19 percentage points (49%) sellout frequency per extra displayed
+  half-star; 20-30 pp for restaurants without external accreditation, ~0 for
+  accredited
+SOURCE: Anderson & Magruder, "Learning from the Crowd: Regression Discontinuity Estimates of the Effects of an Online Review Database," The Economic Journal 122(563): 957-989 (fetched copy is the author-hosted manuscript)
+URL: https://anderson.are.berkeley.edu/pdf/Anderson%20and%20Magruder%202012.pdf
+PUBLISHED: 2012-09   SAMPLE: 328 San Francisco restaurants with matched Yelp and online-reservation data (full Yelp sample 3,953 restaurants); reservation availability recorded July-October 2010   GEO: San Francisco, CA
+BEARS ON: Why GMZ's review profile matters most exactly where it operates:
+  the effect is strongest when the buyer has little other information, which
+  is the position of a homeowner hiring an unfamiliar contractor
+CAVEAT: Verified from extracted full text on audit. One word corrected: the
+  abstract says 'alternate information', not 'alternative information'. The
+  headline 19 pp figure is the 7:00 pm pooled estimate; 6:00 pm (11 pp) and
+  8:00 pm (15 pp) estimates are smaller and weaker. Restaurants are a
+  frequent, low-ticket purchase; a landscape project is rare and high-
+  ticket, so the buyer does more diligence beyond the star display. Fetched
+  file is the author-hosted manuscript, not the journal typeset version.
+
+### yelp-one-star-revenue  [T1 / high]
+CLAIM: A one-star increase in displayed Yelp rating leads to a 5-9 percent
+  increase in restaurant revenue, and the effect is driven by independent
+  restaurants; ratings do not affect restaurants with chain affiliation,
+  consistent with online reviews substituting for traditional reputation.
+FIGURE: +5-9% revenue per one-star Yelp increase; no effect for chain-
+  affiliated restaurants
+SOURCE: Luca, "Reviews, Reputation, and Revenue: The Case of Yelp.com," Harvard Business School Working Paper 12-016
+URL: https://www.hbs.edu/ris/Publication%20Files/12-016_a7e4a5a2-03f9-490d-b093-8f951238dba2.pdf
+PUBLISHED: 2011-09 (working paper; fetched copy is copyright 2011, 2016)   SAMPLE: Yelp reviews (60,000+ covering ~70% of operational Seattle restaurants as of 2009) matched to Washington State Department of Revenue revenue records for all Seattle restaurants, 2003-2009   GEO: Seattle / Washington State
+BEARS ON: The independent-business result is the transferable part for GMZ:
+  reputation platforms matter precisely for independents without a brand, so
+  systematically converting satisfied clients into reviews is channel-
+  building, not vanity
+CAVEAT: Verified from extracted full text on audit: the 5-9% figure, the
+  independent-vs-chain split, and the WA Department of Revenue data source
+  all appear verbatim. University working paper, never journal-published in
+  this form (T1 under this study's rules as a university publication, but
+  not peer-reviewed; the peer-reviewed cousin is Anderson & Magruder 2012).
+  The draft's 'revised 2016-03' precision was not confirmable from the
+  document, which shows only copyright 2011, 2016. Restaurant revenue
+  dynamics do not translate into a landscaping revenue elasticity.
+
+### review-solicitation-experiment  [T1 / high]
+CLAIM: In a randomized field experiment with 2,000 customers of a Chinese
+  online children's-apparel retailer on TMall, combining a financial
+  incentive with a social-norm message nearly tripled the share of customers
+  writing a review versus a 4% no-intervention baseline, and the resulting
+  reviews were approximately 50% longer than the ~52-character (~10 word)
+  control baseline; financial incentives mainly drove review volume while
+  social-norm information had the greater effect on review length.
+FIGURE: Review authorship nearly tripled vs 4% baseline; review length +~50%
+  vs ~52-character baseline
+SOURCE: Burtch, Hong, Bapna & Griskevicius, "Stimulating Online Reviews by Combining Financial Incentives and Social Norms," Management Science 64(5): 2065-2082
+URL: https://carlsonschool.umn.edu/sites/carlsonschool.umn.edu/files/2018-10/burtch_hong_bapna_griskevicius_2018_1.pdf
+PUBLISHED: 2018-05   SAMPLE: 2,000 customers (field experiment, TMall children's-apparel retailer, China; incentive ¥10 ≈ US$1.50) + Amazon Mechanical Turk replication + archival Amazon review study   GEO: China (field study); US (AMT replication and Amazon archival data)
+BEARS ON: How GMZ asks for reviews at the 30-day call: an ask that mentions
+  that other clients have left reviews (norm) measurably improves response,
+  and pairing a small gesture with the ask outperforms either alone
+CAVEAT: Verified from extracted full text on audit, including footnotes 2
+  and 3 (4% baseline; ~52 English characters ≈ 10 words) and the sentiment
+  result: the experiments showed no treatment-induced sentiment bias, but
+  the paper's large-scale archival analysis of Amazon reviews 'does indicate
+  that financial incentives lead to more positive reviews in that setting'.
+  Yelp and Google prohibit incentivized reviews, so GMZ should use the norm
+  message, not payment. E-commerce apparel in China; magnitudes do not
+  transfer.
+
+### retention-elasticity-clv-framework  [T1 / high]
+CLAIM: In a published CLV valuation framework applied to five firms,
+  improving customer retention by 1% improves customer and firm value by
+  3-7% (retention elasticity 3-7), versus a margin elasticity of about 1 and
+  an acquisition-cost elasticity of only 0.02-0.3; a 1% improvement in
+  retention has almost five times greater impact on customer value than a
+  comparable change in the discount rate.
+FIGURE: Retention elasticity 3-7 vs margin ~1 vs acquisition cost 0.02-0.3;
+  retention ~5x the impact of discount rate
+SOURCE: Gupta, Lehmann & Stuart, "Valuing Customers," Journal of Marketing Research 41(1): 7-18 (fetched copy is the Columbia-hosted working-paper version)
+URL: https://business.columbia.edu/sites/default/files-efs/pubfiles/534/Valuing_Customers--JMR_2003.pdf
+PUBLISHED: 2004-02 (published); fetched working-paper version undated on cover   SAMPLE: Five publicly traded firms: Capital One, Amazon, Ameritrade, eBay, E*Trade (quarterly public data through March 2002)   GEO: United States
+BEARS ON: The published framework for valuing GMZ's recurring maintenance
+  accounts against one-time project clients: effort that keeps a recurring
+  account (the six-month call) has several times the value leverage of
+  equivalent effort shaving acquisition cost
+CAVEAT: Verified verbatim on audit from the Columbia-hosted working paper:
+  'improving customer retention by 1% is likely to improve customer and firm
+  value by 3-7%... margin elasticity is about 1 and acquisition elasticity
+  is only 0.02-0.3... 1% improvement in retention has almost five times
+  greater impact on customer value' (than discount rate). Subscription-style
+  firms with huge customer bases; the elasticity ordering (retention >
+  margin > acquisition) is the transferable insight, not the multiples.
+
+### retention-profit-consultancy-claim  [T3 / medium]
+CLAIM: The frequently quoted retention-profit multiplier traces to
+  Bain/Reichheld consultancy analysis, whose fetchable form states: "In
+  financial services, for example, a 5% increase in customer retention
+  produces more than a 25% increase in profit," with return customers
+  referring others explicitly listed among the mechanisms.
+FIGURE: 5% retention increase -> >25% profit increase (financial services;
+  consultancy analysis, method undisclosed)
+SOURCE: Reichheld, "Prescription for Cutting Costs," Bain & Company brief (lineage: Reichheld & Sasser, "Zero Defections," HBR 68(5): 105-111, 1990)
+URL: https://media.bain.com/Images/BB_Prescription_cutting_costs.pdf
+PUBLISHED: 2001-10 (PDF creation date 2001-10-24 per metadata; cites Loyalty Rules!, Sept 2001)   SAMPLE: Not disclosed   GEO: United States, multi-industry consultancy client base
+BEARS ON: If GMZ's client-facing or internal documents quote the famous
+  5%-retention line, this is its honest provenance: consultancy analysis
+  with undisclosed method, not peer-reviewed research; the peer-reviewed
+  substitute is Gupta et al. 2004
+CAVEAT: Verified verbatim on audit: the quoted sentence appears exactly in
+  the fetched brief, which also states 'return customers refer others to
+  your company' among the mechanisms. Publication date upgraded from
+  'unknown' to October 2001 based on PDF metadata. The original 1990 HBR
+  industry-by-industry figures (bank branches, insurance brokerage, auto-
+  service) remain paywalled and are not asserted as verified.

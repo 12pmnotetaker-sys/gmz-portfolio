@@ -1,0 +1,352 @@
+GMZ RESEARCH KNOWLEDGE BASE
+Study 002: Deeper research down the threads Study 001 opened
+Compiled 15 August 2026
+
+========================================================================
+
+WHAT THIS IS
+
+Study 002 follows the specific threads Study 001 left open: the design-
+authority statutes read verbatim, the local rules in GMZ's ten towns, design-
+fee anchors from published government fee schedules, the exact index numbers
+for a maintenance escalator, and the peer-reviewed referral and retention
+literature. Same source tiers, same rules. It also produced three finished
+work products, filed alongside this report: a one-visit counsel brief, a
+maintenance renewal and escalator design, and a water-rebate sales reference.
+
+  66 verified findings: 61 T1, 1 T2, 4 T3
+  43 findings carry verbatim statute or regulation text
+  51 evidence gaps
+  6 themes
+  3 work products
+
+========================================================================
+
+EXECUTIVE SUMMARY
+
+Three habits change immediately. First, the words "landscape architect,"
+"landscape architecture" and "landscape architectural" never appear in GMZ's
+marketing, proposals or design agreement: using them without that license is a
+misdemeanor with a fine up to $5,000, while "landscape design by a licensed
+landscape contractor" is safe. Second, every agreement signed at a client's
+kitchen table, design or construction, carries the statutory right-to-cancel
+notice, and because clients in Atherton, Hillsborough and Woodside often
+qualify as seniors, the five day version will often be the correct one; the
+clock runs from delivery of the signed copy containing the notice. Third, on
+any rebate job, no lawn comes out and no materials are bought until the client
+holds a written Notice to Proceed from their water supplier; starting early
+forfeits the rebate permanently.
+
+Study 001 established that a licensed landscape contractor may sign the MWELO
+design plan but could not say how far the design authority reaches. Study 002
+pulled the statutes verbatim. The authority comes from two parallel sections,
+one in the contractors' law and one in the landscape architects' law, and both
+tie it to work "to be performed and supervised by that contractor." The
+regulator's own reference document then says in writing that a C-27's design
+deliverables may include construction documents with specifications and
+details. So GMZ's paid design package can be construction ready, not concept
+only, which is exactly what separates it from what unlicensed garden designers
+may legally sell.
+
+What no source of any tier resolves, still, is the design-only case: what
+happens when the client pays for design and never builds, or takes the plans
+to another builder. No case, Attorney General opinion or licensing board
+guidance addresses it. Whether the "performed and supervised" limit is judged
+by what the parties anticipated at signing or by what actually happened
+afterward is the single question GMZ most needs a California construction
+attorney to answer, and the counsel brief assembles everything needed to ask
+it in one visit.
+
+Whether the standalone design agreement is itself a home improvement contract
+is also nowhere stated. The definitional chain, home improvement contract to
+home improvement services to services bought in connection with the
+improvement of real property, plausibly reaches a design fee. The safe and
+cheap answer is to draft the design agreement to comply with the home
+improvement contract rules anyway: include the cancellation notice, honor the
+cancel window, respect the deposit cap. Study 002 also added something new for
+the maintenance line: small ad hoc repairs can use the lighter service-and-
+repair contract form only when all four conditions hold, price $750 or less,
+the client called first, no selling beyond the presenting problem, and no
+money collected until the work is done.
+
+Study 002 corrected the record as well as extending it. The largest
+correction: the home improvement contract statute was amended effective
+January 2026, which Study 001 missed; every provision GMZ relies on was re-
+verified in the current text, but counsel should still review what else the
+amendment changed. Smaller corrections came out of the audit: the C-27
+regulation's wording, a Delaware fee bracket overstatement, and the famous "6
+percent design fee," which turns out to be a narrow federal cap on producing
+drawings for public works, not a price for design.
+
+On the design fee itself, the honest position is now well documented. No
+industry standard percentage exists in any source worth citing, and antitrust
+history explains why no association publishes one. What does exist is a
+consistent pattern in government fee schedules: the percentage rises as the
+project shrinks. Washington pays 10.65 percent for full design services on
+residence-class work at its smallest published size; Delaware pays up to 13
+percent on small complex renovations; the Department of Defense just raised
+its cap from 6 to 10 percent; California's own highway program accepts pre-
+construction costs near 20 percent of construction. GMZ's 10 to 15 percent
+sits inside the published public band, and the stronger client argument is the
+one the federal government itself uses: qualified design is selected on
+qualifications, and the research suggests avoided construction cost growth
+dwarfs a few points of design fee.
+
+The maintenance renewal escalator can now be drafted with real numbers. The
+2027 minimum wage is certified at $17.40, a 2.99 percent step known before any
+fall renewal notice goes out. The local all-items index is running 3.8 percent
+while the gardening services index is running 12.3 percent, so the choice of
+index is the pricing decision. The clause must name the exact index series and
+a fallback, because the government skipped publishing a month during the 2025
+shutdown, and it must reference an even month, because the local index prints
+only six times a year. The annual renewal notice, legally required 15 to 45
+days before renewal on auto-renewing accounts, should state the computed new
+dollar amount rather than letting the formula run silently. Two executed
+public contracts, Los Gatos and Fairfield, supply tested clause language and
+one cautionary tale about naming an index that no longer exists.
+
+Every permit, tree and rebate fact is strictly per town, and none transfers. A
+crew working three towns in one week can face three different tree regimes,
+three fence rules and three rebate programs on identical scopes. Study 002
+captured verified rules for several towns, but many of the source pages are
+undated, Palo Alto's tree thresholds rest on a nonprofit summary because the
+city's own pages block automated retrieval, and a 2024 Palo Alto amendment of
+unknown effect is outstanding. The practical product is a per-town intake
+checklist, not a general rule.
+
+On referrals, reviews and retention, the directions are solid and the
+magnitudes are borrowed from other industries. Referred customers are more
+valuable and more loyal, but the loyalty depends on the referrer staying a
+client, so the right people to ask are established, satisfied maintenance
+accounts, and keeping a referrer keeps two relationships. Retention effort has
+several times the value leverage of acquisition effort, which favors the
+recurring accounts. Review asks work best mentioning that other clients have
+left reviews, and never with payment, which the platforms prohibit. The 30-day
+and six-month call timing is practitioner convention; no study tests it.
+
+What remains open, beyond the design-only question: local minimum wage
+ordinances in GMZ's towns, which likely exceed the state floor; business
+license rules in the nine towns besides Redwood City; MWELO status in every
+jurisdiction except Menlo Park; and Cal Water's rebate rate, which is not
+published anywhere public. Those are phone calls and account lookups, not
+research problems, and several of the remaining questions can only be settled
+by GMZ's own records.
+
+========================================================================
+
+THEMES
+
+
+1. THE C-27 DESIGN AUTHORITY NOW STANDS ON QUOTED TEXT, AND IT REACHES CONSTRUCTION DOCUMENTS   [support: strong]
+
+Both B&P 7027.5 and B&P 5641.4 grant design authority in identical terms
+limited to work performed and supervised by that contractor, the C-27
+regulation itself grants no design activity, the LATC's own reference states a
+C-27's deliverables may include construction documents with specifications and
+details, B&P 5641 confines unlicensed designers to conceptual work for single
+family dwellings, and B&P 5640 makes unlicensed use of the protected titles a
+misdemeanor. The frame is complete and verbatim; only the design-only edge
+case remains unresolved.
+
+  What it means for GMZ:
+  Sell the design step as a construction-ready deliverable, which unlicensed
+  competitors cannot legally offer. Recite in the design agreement that the
+  plans are prepared for work GMZ will perform and supervise. Ban the
+  protected titles from every page and proposal. Take the design-only
+  question to counsel before leaning harder on the two-agreement structure.
+
+  Supported by: bpc-7027-5-own-work-limit, bpc-5641-4-la-act-exemption, ccr-832-27-c27-definition-no-design-grant, bpc-5615-la-practice-definition, bpc-5640-misdemeanor-title-protection, bpc-5641-unlicensed-designer-boundary, latc-permitted-practices-c27-construction-documents
+
+2. TREAT THE DESIGN AGREEMENT AS A HOME IMPROVEMENT CONTRACT UNTIL COUNSEL SAYS OTHERWISE   [support: moderate]
+
+No statute or guidance says whether a contractor's design-only agreement is a
+home improvement contract, but the definitional chain from 7151.2 through 7151
+into Civil Code 1689.5 plausibly reaches a design fee. The cancellation-notice
+trigger in 7159(e)(6) is locational, CSLB's guidance blends in a $25 threshold
+from the Home Solicitation Sales Act, and the service-and-repair carve-out for
+small jobs has four strict conditions including no payment until completion.
+Advertising and license-number statutes close Study 001's two open items.
+
+  What it means for GMZ:
+  Drafting the design agreement to full 7159 compliance costs little and
+  forecloses the classification argument. Include the right-to-cancel notice
+  in both agreements signed at the client's home, defaulting to the five-day
+  version for clients 65 and over. Use the service-and-repair form on
+  maintenance-account repairs only when all four conditions hold, and never
+  collect in advance on one.
+
+  Supported by: bpc-7151-2-hic-definition-design-only-silence, bpc-7151-services-chain-civ-1689-5, bpc-7159-e6-cancel-trigger-and-notice, cslb-cancel-framing-vs-statute, bpc-7159-10-service-repair-conditions, bpc-7027-1-advertising-classification, bpc-7027-3-license-number-fraud
+
+3. THE FEE PERCENTAGE IS DEFENSIBLE BY GOVERNMENT CURVES, NOT BY AN INDUSTRY STANDARD   [support: strong]
+
+No association publishes a design-fee benchmark, a fact consistent with the
+AIA antitrust decrees, and no tiered source states a residential landscape
+percentage. What exists instead is uniform: every published government fee
+schedule rises as project size falls, Washington's residence-class schedule
+starts at 10.65 percent at its smallest tabulated size, Delaware reaches 13
+percent on small complex renovations, the folk 6 percent is a narrow federal
+drawings-production cap that Congress just raised to 10 percent for defense
+work, and Brooks Act policy selects design on qualifications with QBS research
+showing large avoided cost growth.
+
+  What it means for GMZ:
+  Never claim an industry standard exists. Present the fee as GMZ's price
+  for a defined scope, contextualized by public fee schedules that are buyer
+  publications, not seller price-fixing. Remember the honest comparison: GMZ
+  sells design only, roughly two thirds of a full-service fee, on
+  renovation-type sites smaller than any published curve reaches, both of
+  which push the defensible percentage up, not down.
+
+  Supported by: far-6-percent-design-production-cap, dfars-10-percent-milcon-cap-2024, brooks-act-qbs-policy-text, wa-ofm-fee-curve-1m-macc, wa-ofm-phase-split-design-share, wa-ofm-remodel-premium-landscape-extra, delaware-dfm-small-bracket-renovation-fee, caltrans-pe-under-20-percent-target, ncdot-pe-ratio-bridges-roadways, pe-percentage-inverse-to-project-size, qbs-2009-cost-growth-vs-design-fee, aia-antitrust-decrees-no-published-benchmarks
+
+4. THE MAINTENANCE ESCALATOR CAN BE DRAFTED NOW, WITH THE INDEX NAMED EXACTLY   [support: strong]
+
+Every input is in hand: the certified 2027 wage step (+2.99 percent to
+$17.40), the statutory escalator formula worth copying (lesser-of cap, defined
+window, rounding, announcement date), current prints for the local all-items
+index (3.8 percent) versus the trade index (12.3 percent), local wage
+benchmarks, the automatic renewal law's 15-to-45-day notice and cancellation
+duties applying to every account as it rolls over after July 2025, and two
+executed public escalation clauses. The failure modes are documented too: a
+skipped publication month and a contract naming an index that no longer
+exists.
+
+  What it means for GMZ:
+  Peg to the SF metro all-items index by exact series ID, reference an even
+  month, state a fallback for unpublished months, and make the adjustment
+  upward-only with a floor as Los Gatos does. Because a plain cost-of-living
+  escalator underruns this trade's cost curve, pair it with a floor or wage-
+  step add-on. Send each year's computed dollar amount inside the required
+  renewal notice window rather than applying the formula silently.
+
+  Supported by: ca-min-wage-2027-certified, labor-code-1182-12c-formula, cpi-gardening-lawncare-latest, cpi-sf-all-items-latest, cpi-sf-bimonthly-schedule, cpi-publication-failure-risk, oews-sf-37-3011-may2025, oews-sf-37-1012-may2025, arl-renewal-reminder-window, arl-online-cancellation, arl-material-change-notice, arl-ab2863-applicability
+
+5. TEN TOWNS, TEN RULEBOOKS: PERMITS, TREES AND REBATES ARE STRICTLY PER JURISDICTION   [support: moderate]
+
+Verified town-level rules now exist for turf rebate rates and their Notice-to-
+Proceed sequencing, Menlo Park's local water ordinance with its designer audit
+duties, heritage tree definitions in Atherton and Menlo Park down to the inch,
+grading and retaining wall triggers, fence permit lines, and Redwood City's
+business license. But sources are frequently undated, Palo Alto rests on a
+nonprofit summary, and none of it transfers between towns.
+
+  What it means for GMZ:
+  Build a per-town intake checklist: incorporation status of the address,
+  water supplier, tree survey against that town's thresholds, permit
+  triggers for walls, fences and grading. Put tree and permit contingencies
+  into the design agreement, where an Atherton heritage tree can add a month
+  and $750 before construction pricing. Sequence every rebate job so the
+  pre-inspection happens with the lawn still in place.
+
+  Supported by: lawn-be-gone-per-agency-rates, valley-water-landscape-rebate-terms, cal-water-lawn-to-garden-preapproval, menlo-park-local-welo-ch1244, atherton-heritage-tree-permit-process, menlo-park-heritage-tree-definition, palo-alto-protected-tree-thresholds, smc-unincorporated-grading-exemption-250cy, portola-valley-sdp-and-fence-permits, woodside-retaining-wall-permit-trigger, redwood-city-permit-exemptions-cbc1052, redwood-city-business-license-contractors
+
+6. REFERRALS AND RETENTION: THE DIRECTION IS PROVEN, THE MAGNITUDES ARE BORROWED   [support: moderate]
+
+Peer-reviewed work shows referred customers are worth more and stay longer,
+that their loyalty collapses if their referrer leaves, that retention effort
+has several times the value leverage of acquisition effort, that reviews
+matter most for independent firms and unfamiliar buyers, and that norm-based
+review asks measurably work. Every study is banking, restaurants, platforms or
+e-commerce; nothing measures home services, and the follow-up call timing has
+no evidence at all.
+
+  What it means for GMZ:
+  Ask for referrals selectively: established maintenance accounts at least
+  six months in, satisfied and unlikely to leave. Treat a lapsing referrer
+  as two at-risk relationships. Steer referred design/build clients toward
+  the maintenance book, where the loyalty advantage actually lives. At the
+  follow-up call, mention that other clients have left reviews; never pay
+  for one. Quote none of the borrowed percentages to clients.
+
+  Supported by: referred-customer-clv-premium, referred-margin-erodes-loyalty-persists, referral-loyalty-hinges-on-referrer, wom-elasticity-vs-paid, crv-clv-different-customers, referral-campaign-field-experiments, thank-you-call-experiment-1976, service-recovery-paradox-meta, yelp-half-star-sellouts, yelp-one-star-revenue, review-solicitation-experiment, retention-elasticity-clv-framework
+
+========================================================================
+
+WORK PRODUCTS (filed separately in this folder)
+
+
+GMZ Landscaping Inc., One-Visit Counsel Brief: Design Agreement, Home Improvement Contract Coverage, Cancellation Rights, Plan License, Maintenance Contracts
+A brief for a California construction attorney assembling, with verbatim
+statutory text, every question Study 002 could frame but not close: whether
+the design-only agreement sits inside the C-27 design authority, whether it is
+a home improvement contract, which cancellation notice applies where, what
+license the client gets in a paid plan set, and how the maintenance contracts
+are classified. Built so counsel confirms or corrects each position in one
+sitting instead of researching from scratch.
+  Open items:
+   - Whether 'to be performed and supervised by that contractor' in B&P
+     7027.5/5641.4 is judged by anticipation at contracting or by outcome;
+     no authority found either way
+   - Whether a design-only agreement is a home improvement contract under
+     the 7151.2/7151/CIV 1689.5 chain; the chain is assembled, not sourced
+   - Full diff of SB 517's 2026 amendments to B&P 7159, including any
+     changes to paragraph (7)'s Seven-Day Right to Cancel
+   - DCA Legal Guide K-10 identified but not retrieved; may bear on the
+     cancellation-trigger reconciliation
+   - Whether the $750 in 7159.10 is measured per visit, per month, or per
+     term for a recurring maintenance account
+   - Whether a pre-agreed escalation formula is a 'material change' under
+     B&P 17602 or whether stating the computed price in the annual notice
+     suffices
+   - CSLB guidance pages not yet updated against SB 517; their framing may
+     be stale
+
+Maintenance Renewal and Escalator Design
+A drafting package for the annual price adjustment on the roughly 24 recurring
+accounts: an upward-only adjustment pegged to the SF metro all-items index
+named by exact series ID with an even-month reference and a published-index
+fallback, paired with a floor or wage-step add-on because the local index
+underruns this trade's costs. Delivery rides inside the legally required
+15-to-45-day renewal notice, which states each year's computed dollar amount,
+with a worked example and the Los Gatos and Fairfield clauses as tested
+precedent.
+  Open items:
+   - Peninsula city minimum wage ordinances above the state floor were not
+     researched; several GMZ towns may have their own, which would move
+     the wage-step floor for crews working there.
+   - Whether a pre-agreed escalation formula is a 'material change' under
+     B&P 17602 is legally unsettled; the recommended annual dollar-amount
+     notice sidesteps rather than resolves it.
+   - The SF-Oakland-Hayward index excludes Santa Clara County, so Palo
+     Alto and Los Altos accounts escalate on an index that does not
+     technically cover them; no finer BLS index exists.
+   - Exact add-on size, cap level, and rounding convention are business
+     decisions, not research questions.
+   - Year 2 of the worked example uses hypothetical CPI and wage-step
+     values, since neither is published yet.
+   - Treatment of any future commercial or HOA maintenance accounts, which
+     sit outside the consumer automatic renewal law.
+
+Water Rebate Sales Asset: Turf-Replacement Rebates Across GMZ's Ten Peninsula Towns
+A town-by-town sheet mapping each of the ten service-area towns to its turf-
+replacement rebate route and published rate where one exists: BAWSCA agency
+rates in San Mateo County, Valley Water terms for Los Altos and Palo Alto
+addresses, and check-with-your-supplier flags where rates or boundaries are
+unverified. Its operational core is the sequencing rule every route shares:
+the client must hold a written Notice to Proceed before any lawn removal, so
+design-phase scheduling leaves the turf untouched.
+  Open items:
+   - Per-agency maximum caps for the San Mateo County (BAWSCA Lawn Be
+     Gone!) agencies are not stated on the program page; each cap must be
+     confirmed with the individual agency before a client conversation.
+   - Whether Mid-Peninsula Water District ($4.00/sq ft) actually serves
+     specific San Carlos and Belmont addresses was not verified from a
+     primary source; supplier lookup by address is required.
+   - Which of Atherton, Woodside and Portola Valley fall inside Cal
+     Water's Bear Gulch district was not verified from a primary source,
+     so those three towns are listed as check-with-your-supplier.
+   - Cal Water's per-square-foot rebate rate is not published on its
+     public page; it is only visible inside a customer Conservation Portal
+     account, so no dollar figure can be quoted for Cal Water-served
+     clients.
+   - The BAWSCA Lawn Be Gone! page is undated and links documents
+     referencing FY19-20 and FY20-21, so the listed rates ($2.00 Redwood
+     City, $3.00 Menlo Park, $1.00 Hillsborough, $4.00 Mid-Peninsula WD)
+     may lag the current fiscal year.
+   - Whether the City of Palo Alto's municipal utility runs its own
+     landscape rebate program in addition to the Valley Water program was
+     not checked; only the Valley Water route is confirmed for Palo Alto
+     addresses.
+   - The 75 sq ft minimum conversion area sometimes reported for the
+     Valley Water program does not appear on the main program page and
+     remains unconfirmed.
