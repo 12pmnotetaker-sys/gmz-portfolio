@@ -4,9 +4,8 @@ short: 'How long the price holds'
 phase: firm-price
 serviceLine: design-build
 order: 30
-published: false
-needsDecision: true
-decisionNote: 'Confirm the price-validity window before this publishes: whether thirty days from issue is the standing rule, what the printed expiry date is measured from, and what GMZ does when a client comes back after it lapses. Nothing on this is currently written down, and the draft stated thirty days as settled policy.'
+published: true
+needsDecision: false
 ---
 
 Until the date printed on the face of the bid. We normally set that at thirty days from the day we issue it, and after that we re-check material prices before we honor the number.
