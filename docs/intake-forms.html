@@ -1,0 +1,1242 @@
+<title>GMZ Intake Pack</title>
+
+<style>
+  :root {
+    --paper: #f7f8f4;
+    --form: #ffffff;
+    --sunk: #eef1e8;
+    --ink: #191d16;
+    --ink-soft: #4d5648;
+    --ink-faint: #79826f;
+    --rule: #d5dbcb;
+    --hair: #e6eade;
+
+    --green: #2e7d32;
+    --green-deep: #1b5e20;
+    --green-wash: #e6f1e4;
+
+    --stop: #8a5a00;
+    --stop-wash: #f7edd8;
+
+    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    --page: 60rem;
+    --gutter: clamp(1rem, 4vw, 2.75rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --paper: #101309;
+      --form: #181c13;
+      --sunk: #1f241a;
+      --ink: #e9ede0;
+      --ink-soft: #aeb6a2;
+      --ink-faint: #828a75;
+      --rule: #333a2b;
+      --hair: #262c1e;
+
+      --green: #8ecb8f;
+      --green-deep: #b0e0b0;
+      --green-wash: #1d2a1b;
+
+      --stop: #dba746;
+      --stop-wash: #2a2211;
+    }
+  }
+
+  :root[data-theme='dark'] {
+    --paper: #101309;
+    --form: #181c13;
+    --sunk: #1f241a;
+    --ink: #e9ede0;
+    --ink-soft: #aeb6a2;
+    --ink-faint: #828a75;
+    --rule: #333a2b;
+    --hair: #262c1e;
+
+    --green: #8ecb8f;
+    --green-deep: #b0e0b0;
+    --green-wash: #1d2a1b;
+
+    --stop: #dba746;
+    --stop-wash: #2a2211;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    line-height: 1.16;
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--green-deep);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  .shell {
+    max-width: var(--page);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    padding-block-end: 4rem;
+  }
+
+  /* ---- masthead ---- */
+  .top {
+    padding-block: clamp(2.25rem, 6vw, 4rem) 1.75rem;
+    border-block-end: 2px solid var(--ink);
+  }
+
+  .kicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .kicker .stamp {
+    padding: 0.12em 0.5em;
+    border: 1px solid var(--stop);
+    border-radius: 2px;
+    background: var(--stop-wash);
+    color: var(--stop);
+  }
+
+  .top h1 {
+    font-size: clamp(2rem, 5.5vw, 3rem);
+    margin-block: 0.6rem 0.7rem;
+  }
+
+  .top .standfirst {
+    max-width: 42rem;
+    font-size: 1.12rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---- sections ---- */
+  section {
+    padding-block-start: clamp(2.5rem, 6vw, 3.75rem);
+  }
+
+  .head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    padding-block-end: 0.5rem;
+    margin-block-end: 1.15rem;
+    border-block-end: 1px solid var(--rule);
+  }
+
+  .head .stage {
+    flex: none;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--green);
+  }
+
+  .head h2 {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+  }
+
+  .lede {
+    max-width: 44rem;
+    color: var(--ink-soft);
+    margin-block-end: 1.4rem;
+  }
+
+  .note {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.95rem 1.15rem;
+    background: var(--form);
+    border: 1px solid var(--rule);
+    border-inline-start: 3px solid var(--green);
+    border-radius: 0 3px 3px 0;
+    max-width: 44rem;
+  }
+
+  .note.is-stop {
+    border-inline-start-color: var(--stop);
+  }
+
+  .note h3 {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .note p {
+    font-size: 0.95rem;
+  }
+
+  /* ---- form blocks ---- */
+  .form {
+    background: var(--form);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .form + .form {
+    margin-block-start: 1rem;
+  }
+
+  .form__band {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.4rem 1rem;
+    padding: 0.6rem 1.1rem;
+    background: var(--sunk);
+    border-block-end: 1px solid var(--rule);
+  }
+
+  .form__band strong {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .form__band span {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--ink-faint);
+  }
+
+  .fields {
+    display: grid;
+    gap: 0;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 44rem) {
+    .fields.two {
+      grid-template-columns: 1fr 1fr;
+    }
+    .fields.two > .f.wide {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .f {
+    padding: 0.75rem 1.1rem;
+    border-block-start: 1px solid var(--hair);
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+  }
+
+  .fields > .f:first-child {
+    border-block-start: 0;
+  }
+
+  @media (min-width: 44rem) {
+    .fields.two > .f:nth-child(2) {
+      border-block-start: 0;
+    }
+    .fields.two > .f:nth-child(odd) {
+      border-inline-end: 1px solid var(--hair);
+    }
+  }
+
+  .f label {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .f .hint {
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+  }
+
+  .f .opts {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .f .val {
+    font-family: var(--mono);
+    font-size: 0.92rem;
+    color: var(--green-deep);
+    overflow-wrap: anywhere;
+  }
+
+  .f .val.prose {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .f.flag {
+    background: var(--stop-wash);
+  }
+  .f.flag label {
+    color: var(--stop);
+  }
+  .f.flag .val {
+    color: var(--stop);
+    font-weight: 600;
+  }
+
+  .req {
+    display: inline-block;
+    margin-inline-start: 0.35em;
+    color: var(--green);
+  }
+
+  /* ---- example wrapper ---- */
+  .example {
+    padding-block-start: 2.25rem;
+  }
+
+  .example__label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.8rem;
+    margin-block-end: 0.75rem;
+  }
+
+  .example__label h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .example__label .tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.12em 0.5em;
+    border-radius: 2px;
+    background: var(--green-wash);
+    color: var(--green-deep);
+    white-space: nowrap;
+  }
+
+  .example__label .tag.alt {
+    background: var(--sunk);
+    color: var(--ink-faint);
+  }
+
+  .verdict {
+    margin-block-start: 0.85rem;
+    padding: 0.85rem 1.1rem;
+    border: 1px dashed var(--rule);
+    border-radius: 3px;
+    background: var(--sunk);
+    font-size: 0.95rem;
+  }
+
+  .verdict strong {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--green-deep);
+    display: block;
+    margin-block-end: 0.25rem;
+  }
+
+  ul.tight {
+    margin: 0;
+    padding-inline-start: 1.15rem;
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  ul.tight li {
+    font-size: 0.95rem;
+  }
+
+  .foot {
+    margin-block-start: 3rem;
+    padding-block-start: 1.1rem;
+    border-block-start: 1px solid var(--rule);
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    max-width: 44rem;
+  }
+
+  @media print {
+    body {
+      background: #fff;
+      color: #000;
+    }
+    .form,
+    .note,
+    .verdict {
+      break-inside: avoid;
+    }
+    section {
+      break-before: auto;
+    }
+  }
+</style>
+
+<div class="shell">
+  <header class="top">
+    <div class="kicker">
+      <span>GMZ Landscaping Inc.</span>
+      <span>Intake pack v1</span>
+      <span class="stamp">Draft for review</span>
+    </div>
+    <h1>Lead intake, client side and ours</h1>
+    <p class="standfirst">
+      Two forms. The client fills the first, in their own words. Whoever takes the call fills the
+      second, and by the end of it the lead is either a booked visit or a polite no. Both are built
+      so the answers land where the estimate later needs them.
+    </p>
+  </header>
+
+  <section>
+    <div class="head">
+      <span class="stage">WHY</span>
+      <h2>Four rules the forms are built on</h2>
+    </div>
+    <div class="note">
+      <h3>Never ask a client to prescribe the work</h3>
+      <p>
+        Field research on service trades found that a customer who volunteers a confident but wrong
+        self-diagnosis gets quoted more, not less, and a correct one buys them nothing. So the
+        client form asks what is wrong and what they want out of the space. It never asks what
+        should be installed. That is what the paid design step is for.
+      </p>
+    </div>
+    <div class="note" style="margin-block-start: 0.75rem">
+      <h3>Budget is the qualification gate, and it is asked early</h3>
+      <p>
+        A band, not a number, with "not sure yet" allowed. It is the one field that decides whether
+        a truck leaves the yard, and asking it on the form is kinder than discovering the mismatch
+        after the drive.
+      </p>
+    </div>
+    <div class="note" style="margin-block-start: 0.75rem">
+      <h3>The service line is decided once, at intake</h3>
+      <p>
+        Design build or maintenance, chosen before anything is priced, because the two lines carry
+        different rates and different agreements. A lead that reads as both is two leads. The staff
+        form makes that call explicit and records why.
+      </p>
+    </div>
+    <div class="note is-stop" style="margin-block-start: 0.75rem">
+      <h3>Three gates that cost real money if missed</h3>
+      <p>
+        A client aged 65 or over gets five days to cancel rather than three. New landscape over
+        roughly 500 square feet with a permit pulls in the state water documentation package and a
+        third-party irrigation audit nobody at GMZ can sign. And on any rebate job, turf removed
+        before the water agency's written go-ahead is permanently ineligible. All three sit on the
+        staff form as hard stops.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <span class="stage">FORM 1</span>
+      <h2>What the client fills in</h2>
+    </div>
+    <p class="lede">
+      Goes on the website contact page, and doubles as the script when someone calls. Nine minutes
+      to fill honestly. Nothing on it asks for a measurement.
+    </p>
+
+    <div class="form">
+      <div class="form__band"><strong>You</strong><span>required</span></div>
+      <div class="fields two">
+        <div class="f">
+          <label>Name<span class="req">*</span></label>
+        </div>
+        <div class="f">
+          <label>Best phone<span class="req">*</span></label>
+        </div>
+        <div class="f"><label>Email</label></div>
+        <div class="f">
+          <label>Best time to reach you</label
+          ><span class="opts">Morning · Afternoon · Evening · Any</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="form__band"><strong>The property</strong></div>
+      <div class="fields two">
+        <div class="f">
+          <label>Town<span class="req">*</span></label>
+          <span class="opts"
+            >Redwood City · Atherton · Menlo Park · Palo Alto · Woodside · San Carlos · Belmont ·
+            Portola Valley · Los Altos · Hillsborough · Somewhere else</span
+          >
+        </div>
+        <div class="f">
+          <label>Your relationship to it<span class="req">*</span></label>
+          <span class="opts">I own it · I rent · I manage it for someone · HOA or association</span>
+        </div>
+        <div class="f wide">
+          <label>Is the property subject to an HOA, architectural review or design review?</label>
+          <span class="opts">Yes · No · Not sure</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="form__band"><strong>What you want</strong><span>your words, not ours</span></div>
+      <div class="fields">
+        <div class="f">
+          <label>What are you hoping the space will be like?<span class="req">*</span></label>
+          <span class="hint">Describe how you want to use it, not what should be built.</span>
+        </div>
+        <div class="f">
+          <label>What is not working now?<span class="req">*</span></label>
+          <span class="hint"
+            >Standing water, dead lawn, no privacy, unusable slope, nowhere to sit.</span
+          >
+        </div>
+        <div class="f">
+          <label>Roughly which parts of the property?</label>
+          <span class="opts"
+            >Front · Back · Side yard · Driveway or entry · Whole property · Not sure yet</span
+          >
+        </div>
+        <div class="f">
+          <label>Anything you already know is involved</label>
+          <span class="opts"
+            >Planting · Patio or paving · Wall or steps · Fence or gate · Irrigation · Drainage ·
+            Lighting · Lawn · Regular upkeep · Not sure, that is what I need help with</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="form__band"><strong>Timing and budget</strong></div>
+      <div class="fields two">
+        <div class="f">
+          <label>When would you like this done?<span class="req">*</span></label>
+          <span class="opts"
+            >As soon as possible · Next 3 months · 3 to 6 months · Later this year · Just
+            exploring</span
+          >
+        </div>
+        <div class="f">
+          <label>Any hard date behind it?</label>
+          <span class="hint">An event, a house sale, a permit clock, family arriving.</span>
+        </div>
+        <div class="f wide">
+          <label>What range are you planning around?<span class="req">*</span></label>
+          <span class="opts"
+            >Under $15k · $15k to $40k · $40k to $75k · $75k to $150k · Over $150k · Ongoing
+            maintenance only · Not sure yet, help me understand</span
+          >
+          <span class="hint"
+            >A band, not a commitment. It tells us whether we are the right fit before anyone drives
+            out.</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="form__band"><strong>Decisions and what exists already</strong></div>
+      <div class="fields two">
+        <div class="f">
+          <label>Who else is part of this decision?</label>
+          <span class="hint">Partner, family, HOA board, property manager.</span>
+        </div>
+        <div class="f">
+          <label>Do you already have plans or drawings?</label>
+          <span class="opts"
+            >Yes, from an architect · Yes, from a designer · A rough sketch of my own · No</span
+          >
+        </div>
+        <div class="f wide">
+          <label>Photos of the space</label>
+          <span class="hint"
+            >Three or four wide shots tell us more than any description. Include the problem
+            areas.</span
+          >
+        </div>
+        <div class="f wide">
+          <label>How did you hear about us?<span class="req">*</span></label>
+          <span class="opts"
+            >A neighbour or friend · Saw a crew working · Web search · Yelp, Google or Nextdoor · We
+            have worked together before · Other</span
+          >
+        </div>
+        <div class="f wide"><label>Anything else we should know</label></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <span class="stage">FORM 2</span>
+      <h2>What GMZ fills in</h2>
+    </div>
+    <p class="lede">
+      Internal. Filled on the phone before any visit is booked, then finished at the site walk.
+      Every field here is one the estimate or the contract later needs, so filling it once saves
+      asking twice.
+    </p>
+
+    <div class="form">
+      <div class="form__band"><strong>Lead record</strong><span>fill on first contact</span></div>
+      <div class="fields two">
+        <div class="f"><label>Lead ref</label></div>
+        <div class="f"><label>Date received</label></div>
+        <div class="f"><label>Taken by</label></div>
+        <div class="f">
+          <label>Channel</label
+          ><span class="opts">Referral · Crew seen working · Web form · Phone · Repeat client</span>
+        </div>
+        <div class="f wide">
+          <label>Property address</label
+          ><span class="hint">Internal only. The website says the town.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="form__band"><strong>Phone screen</strong><span>about fifteen minutes</span></div>
+      <div class="fields two">
+        <div class="f"><label>Scope in their words</label></div>
+        <div class="f"><label>Scope as we read it</label></div>
+        <div class="f">
+          <label>Budget band stated</label
+          ><span class="opts">Band · Refused to state · Genuinely does not know</span>
+        </div>
+        <div class="f"><label>Timeline / hard date</label></div>
+        <div class="f"><label>Decision makers, and will they be at the visit?</label></div>
+        <div class="f flag">
+          <label>Client aged 65 or over?</label
+          ><span class="hint"
+            >If yes: five-day cancellation, not three. Note it on every agreement.</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="form__band">
+        <strong>Routing</strong><span>decide once, before anything is priced</span>
+      </div>
+      <div class="fields two">
+        <div class="f wide">
+          <label>Service line</label>
+          <span class="opts"
+            >Design / build · Maintenance · Both, split into two leads · Service call ·
+            Decline</span
+          >
+        </div>
+        <div class="f"><label>Reason for the routing</label></div>
+        <div class="f">
+          <label>Route fit, if maintenance</label
+          ><span class="hint"
+            >Which existing day does this sit near? Openings are the route days, not any day.</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="form__band">
+        <strong>The five that stop a firm number</strong
+        ><span>all five, or the estimate is a guess</span>
+      </div>
+      <div class="fields two">
+        <div class="f"><label>1. Client name and property address</label></div>
+        <div class="f">
+          <label>2. Scope list</label><span class="hint">Which items are in. Not dimensions.</span>
+        </div>
+        <div class="f">
+          <label>3. Material tier on the big-ticket items</label
+          ><span class="opts">Budget · Mid · Premium · Two options to price</span>
+        </div>
+        <div class="f">
+          <label>4. Demo and haul-off</label
+          ><span class="opts">In · Out · Client handling · Unknown</span>
+        </div>
+        <div class="f wide">
+          <label>5. Who designed it</label
+          ><span class="opts"
+            >GMZ from scratch · Building to an architect's plans · Client already bought plans · No
+            design needed</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="form__band">
+        <strong>Compliance gates</strong><span>check before quoting, not after</span>
+      </div>
+      <div class="fields two">
+        <div class="f flag">
+          <label
+            >New landscape 500 sq ft or more, or rehab 2,500 sq ft or more, with a permit?</label
+          >
+          <span class="hint"
+            >If yes: state water documentation package, and a third-party irrigation audit GMZ
+            cannot perform on its own job. Carry that cost in the estimate.</span
+          >
+        </div>
+        <div class="f flag">
+          <label>Rebate in play? Water supplier and turf sq ft</label>
+          <span class="hint"
+            >No lawn comes out until the client holds the agency's written Notice to Proceed. Turf
+            removed early is permanently ineligible.</span
+          >
+        </div>
+        <div class="f wide">
+          <label>Permit flags for this town</label>
+          <span class="opts"
+            >Retaining wall height · Grading · Change to how water leaves the property · Electrical
+            · Gas · Tree removal or heritage tree · Fence height · Impervious surface limit · None
+            expected</span
+          >
+        </div>
+        <div class="f">
+          <label>Town-specific rules checked</label
+          ><span class="hint"
+            >Every town differs. Name the page or the person you checked with.</span
+          >
+        </div>
+        <div class="f">
+          <label>Contract form this will need</label
+          ><span class="opts"
+            >Home improvement contract · Service and repair · Maintenance agreement · Design
+            agreement</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="form__band"><strong>Site walk</strong><span>fill on the property</span></div>
+      <div class="fields two">
+        <div class="f"><label>Visit date and who attended</label></div>
+        <div class="f">
+          <label>Measured, or estimated by eye?</label
+          ><span class="hint"
+            >A measured take-off is what earns a firm number. Say which this was.</span
+          >
+        </div>
+        <div class="f">
+          <label>Access</label
+          ><span class="opts"
+            >Gate width · Long carry · Slope · Parking · Staging area · Equipment can reach the work
+            · Hand carry only</span
+          >
+        </div>
+        <div class="f">
+          <label>Hazards and 811</label
+          ><span class="opts"
+            >Overhead lines · Buried utilities, 811 needed · Slope or footing · Dogs · Irritant
+            planting</span
+          >
+        </div>
+        <div class="f"><label>Existing irrigation and drainage condition</label></div>
+        <div class="f"><label>Soil, grade and where water currently goes</label></div>
+        <div class="f wide">
+          <label>Photos taken</label
+          ><span class="hint">Wide shots, problem areas, access route, meter and controller.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="form__band"><strong>Verdict</strong><span>every lead ends here</span></div>
+      <div class="fields two">
+        <div class="f wide">
+          <label>Outcome</label>
+          <span class="opts"
+            >Design agreement proposed · Maintenance quote to follow · Service call booked ·
+            Declined, referred out · Client went quiet</span
+          >
+        </div>
+        <div class="f"><label>Next action and date</label></div>
+        <div class="f">
+          <label>Hours and miles spent on this lead so far</label
+          ><span class="hint"
+            >Log it. Ninety days of this settles whether phone qualification is worth the
+            habit.</span
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <span class="stage">WORKED</span>
+      <h2>Three leads, both forms each</h2>
+    </div>
+    <p class="lede">
+      Matched pairs: what the client sent, and what the person taking it wrote down. Names and
+      addresses are invented.
+    </p>
+
+    <!-- EXAMPLE A -->
+    <div class="example">
+      <div class="example__label">
+        <h3>A. Atherton, whole back garden</h3>
+        <span class="tag">Design / build</span>
+        <span class="tag alt">Qualifies</span>
+      </div>
+
+      <div class="form">
+        <div class="form__band">
+          <strong>Client form</strong><span>submitted via website, 14 Aug</span>
+        </div>
+        <div class="fields two">
+          <div class="f"><label>Name</label><span class="val">Margaret Ellison</span></div>
+          <div class="f"><label>Best phone</label><span class="val">(650) 555-0148</span></div>
+          <div class="f"><label>Town</label><span class="val">Atherton</span></div>
+          <div class="f"><label>Relationship</label><span class="val">I own it</span></div>
+          <div class="f"><label>HOA or design review</label><span class="val">Not sure</span></div>
+          <div class="f"><label>Timing</label><span class="val">3 to 6 months</span></div>
+          <div class="f wide">
+            <label>What you are hoping for</label
+            ><span class="val prose"
+              >We want to actually use the back garden. Right now nobody goes out there. Somewhere
+              to sit and eat with a few people, and it should look like something in winter too, not
+              just April.</span
+            >
+          </div>
+          <div class="f wide">
+            <label>What is not working</label
+            ><span class="val prose"
+              >Half of it is lawn that never looks right and the far corner stays wet into May.
+              There is an old brick patio that has sunk on one side. Two big oaks we would not
+              touch.</span
+            >
+          </div>
+          <div class="f"><label>Parts of the property</label><span class="val">Back</span></div>
+          <div class="f">
+            <label>Already know is involved</label
+            ><span class="val">Patio or paving · Planting · Drainage · Lighting</span>
+          </div>
+          <div class="f">
+            <label>Hard date</label
+            ><span class="val">Daughter's wedding reception here next June</span>
+          </div>
+          <div class="f"><label>Budget range</label><span class="val">$75k to $150k</span></div>
+          <div class="f"><label>Others deciding</label><span class="val">My husband</span></div>
+          <div class="f"><label>Existing plans</label><span class="val">No</span></div>
+          <div class="f">
+            <label>How they heard</label><span class="val">A neighbour or friend</span>
+          </div>
+          <div class="f wide">
+            <label>Anything else</label
+            ><span class="val prose"
+              >The neighbour two doors down had you do their front two years ago and said to
+              call.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="form">
+        <div class="form__band">
+          <strong>Staff form</strong><span>screened by Lili, 14 Aug · site walk 19 Aug</span>
+        </div>
+        <div class="fields two">
+          <div class="f"><label>Channel</label><span class="val">Referral, past client</span></div>
+          <div class="f"><label>Service line</label><span class="val">Design / build</span></div>
+          <div class="f wide">
+            <label>Routing reason</label
+            ><span class="val prose"
+              >Discrete scope with an end date. Drainage and hardscape both in, so build wins
+              outright.</span
+            >
+          </div>
+          <div class="f">
+            <label>Budget band stated</label
+            ><span class="val">$75k to $150k, stated without hesitating</span>
+          </div>
+          <div class="f">
+            <label>Hard date</label
+            ><span class="val">Reception mid-June. Real, and it sets the sequence.</span>
+          </div>
+          <div class="f">
+            <label>Decision makers</label><span class="val">Both owners, both at the walk</span>
+          </div>
+          <div class="f flag">
+            <label>65 or over?</label
+            ><span class="val">Yes, both. FIVE-DAY cancellation on every agreement.</span>
+          </div>
+          <div class="f">
+            <label>Material tier</label
+            ><span class="val">Premium on the terrace. Stone, not concrete paver.</span>
+          </div>
+          <div class="f">
+            <label>Demo and haul-off</label
+            ><span class="val">In. Old brick patio out, roughly 300 sq ft.</span>
+          </div>
+          <div class="f">
+            <label>Who designed it</label><span class="val">GMZ from scratch</span>
+          </div>
+          <div class="f flag">
+            <label>Water ordinance</label
+            ><span class="val"
+              >TRIGGERED. New landscape well over 500 sq ft and a permit is coming for the drainage.
+              Documentation package plus third-party irrigation audit. Audit cost in the
+              estimate.</span
+            >
+          </div>
+          <div class="f flag">
+            <label>Rebate</label
+            ><span class="val"
+              >Turf removal roughly 1,400 sq ft. Client applies, NOTICE TO PROCEED before any demo
+              day is scheduled.</span
+            >
+          </div>
+          <div class="f wide">
+            <label>Permit flags</label
+            ><span class="val"
+              >Change to how water leaves the property. Heritage tree ordinance: two mature oaks, no
+              removal but root zone protection needed. Atherton design review to confirm.</span
+            >
+          </div>
+          <div class="f">
+            <label>Access</label
+            ><span class="val"
+              >Side gate 42 in. Skid steer will not pass. Hand carry or remove a fence panel.</span
+            >
+          </div>
+          <div class="f">
+            <label>Hazards / 811</label
+            ><span class="val">811 before drainage trenching. Oak root zones flagged.</span>
+          </div>
+          <div class="f">
+            <label>Measured?</label><span class="val">Yes, wheeled at the walk</span>
+          </div>
+          <div class="f">
+            <label>Hours and miles</label
+            ><span class="val">1.5 hr phone and prep, 2.0 hr on site, 14 mi round trip</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="verdict">
+        <strong>Outcome</strong>
+        Design agreement proposed at the walk, signed copy left with them and the five-day
+        cancellation period explained out loud. Next action: measured survey booked 26 Aug. The June
+        date drives everything, so specimen stone gets ordered the week the construction contract is
+        signed, not later.
+      </div>
+    </div>
+
+    <!-- EXAMPLE B -->
+    <div class="example">
+      <div class="example__label">
+        <h3>B. San Carlos, weekly upkeep</h3>
+        <span class="tag">Maintenance</span>
+        <span class="tag alt">Qualifies, route permitting</span>
+      </div>
+
+      <div class="form">
+        <div class="form__band">
+          <strong>Client form</strong><span>phoned in, transcribed 15 Aug</span>
+        </div>
+        <div class="fields two">
+          <div class="f"><label>Name</label><span class="val">Dan Whitfield</span></div>
+          <div class="f"><label>Best phone</label><span class="val">(650) 555-0207</span></div>
+          <div class="f"><label>Town</label><span class="val">San Carlos</span></div>
+          <div class="f"><label>Relationship</label><span class="val">I own it</span></div>
+          <div class="f"><label>Timing</label><span class="val">As soon as possible</span></div>
+          <div class="f">
+            <label>Parts of the property</label><span class="val">Whole property</span>
+          </div>
+          <div class="f wide">
+            <label>What you are hoping for</label
+            ><span class="val prose"
+              >Honestly I just want it to stop being a job I do badly on Sundays. Front kept tidy
+              because of the street, back is mostly lawn and a few beds.</span
+            >
+          </div>
+          <div class="f wide">
+            <label>What is not working</label
+            ><span class="val prose"
+              >Our last gardener stopped showing up in June and it has got away from us. Beds are
+              full of weeds, hedge is over the fence line.</span
+            >
+          </div>
+          <div class="f">
+            <label>Already know is involved</label
+            ><span class="val">Regular upkeep · Lawn · Planting</span>
+          </div>
+          <div class="f">
+            <label>Budget range</label><span class="val">Ongoing maintenance only</span>
+          </div>
+          <div class="f"><label>Others deciding</label><span class="val">Just me</span></div>
+          <div class="f">
+            <label>How they heard</label><span class="val">Saw a crew working</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form">
+        <div class="form__band">
+          <strong>Staff form</strong><span>screened by Xavier, 15 Aug · walk 21 Aug</span>
+        </div>
+        <div class="fields two">
+          <div class="f">
+            <label>Channel</label><span class="val">Crew seen working, Belmont route</span>
+          </div>
+          <div class="f"><label>Service line</label><span class="val">Maintenance</span></div>
+          <div class="f wide">
+            <label>Routing reason</label
+            ><span class="val prose"
+              >Recurring upkeep, no build words anywhere in the scope. Straight to the maintenance
+              book.</span
+            >
+          </div>
+          <div class="f">
+            <label>Route fit</label
+            ><span class="val">Sits near two existing San Carlos stops. Thursday.</span>
+          </div>
+          <div class="f">
+            <label>Cadence discussed</label
+            ><span class="val">Weekly to start, biweekly once caught up</span>
+          </div>
+          <div class="f flag"><label>65 or over?</label><span class="val">No</span></div>
+          <div class="f wide">
+            <label>Catch-up work needed first</label
+            ><span class="val"
+              >Yes. Overgrowth reset before a normal cadence is possible. Quoted separately from the
+              standing visit, not absorbed into it.</span
+            >
+          </div>
+          <div class="f">
+            <label>Contract form</label
+            ><span class="val">Maintenance agreement. Reset is a separate service call.</span>
+          </div>
+          <div class="f wide">
+            <label>Scope fence agreed out loud</label
+            ><span class="val prose"
+              >In: mow, edge, blow down hard surfaces, bed weeding, seasonal pruning, monthly
+              irrigation walk. Out: tree work above ladder height, pest treatment, irrigation
+              repairs beyond a head swap, hauling client debris.</span
+            >
+          </div>
+          <div class="f">
+            <label>Irrigation condition</label
+            ><span class="val"
+              >Conventional controller, two zones not running. Repair quoted separately.</span
+            >
+          </div>
+          <div class="f">
+            <label>Access</label
+            ><span class="val">Street parking fine, side gate unlocked, no dog</span>
+          </div>
+          <div class="f">
+            <label>Hours and miles</label
+            ><span class="val">0.3 hr phone, 0.6 hr walk, 9 mi round trip</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="verdict">
+        <strong>Outcome</strong>
+        Maintenance quote to follow, Thursday route. Agreement will carry the renewal date, the
+        notice period and the annual price review on its face. Reset visit quoted as a separate
+        service call so the standing price is not distorted by one bad summer.
+      </div>
+    </div>
+
+    <!-- EXAMPLE C -->
+    <div class="example">
+      <div class="example__label">
+        <h3>C. Palo Alto, sprinklers and a tidy-up</h3>
+        <span class="tag">Service call</span>
+        <span class="tag alt">Too small for a crew</span>
+      </div>
+
+      <div class="form">
+        <div class="form__band">
+          <strong>Client form</strong><span>submitted via website, 15 Aug</span>
+        </div>
+        <div class="fields two">
+          <div class="f"><label>Name</label><span class="val">Priya Raghavan</span></div>
+          <div class="f"><label>Best phone</label><span class="val">(650) 555-0361</span></div>
+          <div class="f"><label>Town</label><span class="val">Palo Alto</span></div>
+          <div class="f"><label>Relationship</label><span class="val">I rent</span></div>
+          <div class="f"><label>Timing</label><span class="val">As soon as possible</span></div>
+          <div class="f">
+            <label>Parts of the property</label><span class="val">Front · Side yard</span>
+          </div>
+          <div class="f wide">
+            <label>What you are hoping for</label
+            ><span class="val prose"
+              >Get the sprinklers working again before the plants die, and have someone cut back the
+              overgrown side so we can get the bins through.</span
+            >
+          </div>
+          <div class="f wide">
+            <label>What is not working</label
+            ><span class="val prose"
+              >One section of sprinklers stopped coming on about three weeks ago. Everything on that
+              side is browning off. The side path is basically impassable.</span
+            >
+          </div>
+          <div class="f">
+            <label>Already know is involved</label
+            ><span class="val">Irrigation · Regular upkeep</span>
+          </div>
+          <div class="f">
+            <label>Budget range</label><span class="val">Not sure yet, help me understand</span>
+          </div>
+          <div class="f">
+            <label>Others deciding</label><span class="val">My landlord pays for repairs</span>
+          </div>
+          <div class="f"><label>How they heard</label><span class="val">Web search</span></div>
+        </div>
+      </div>
+
+      <div class="form">
+        <div class="form__band">
+          <strong>Staff form</strong><span>screened by Lili, 15 Aug · no site walk</span>
+        </div>
+        <div class="fields two">
+          <div class="f"><label>Channel</label><span class="val">Web form, search</span></div>
+          <div class="f"><label>Service line</label><span class="val">Service call</span></div>
+          <div class="f wide">
+            <label>Routing reason</label
+            ><span class="val prose"
+              >A dead zone and a half day of cutting back. Nowhere near a build crew's day, and not
+              a standing account either. Routed as a short service call while a truck is in Palo
+              Alto.</span
+            >
+          </div>
+          <div class="f flag">
+            <label>Who is the client?</label
+            ><span class="val"
+              >Tenant, not owner. Landlord authorises and pays. Get that in writing before a truck
+              rolls, or the invoice has nobody to go to.</span
+            >
+          </div>
+          <div class="f">
+            <label>Route fit</label><span class="val">Tuesday, Palo Alto side of the route</span>
+          </div>
+          <div class="f">
+            <label>Budget band stated</label
+            ><span class="val">Genuinely does not know. Fine at this size.</span>
+          </div>
+          <div class="f flag"><label>65 or over?</label><span class="val">No</span></div>
+          <div class="f wide">
+            <label>Contract form</label
+            ><span class="val prose"
+              >Service and repair form only if it lands at $750 or less, the client asked us first,
+              we sell nothing beyond the presenting problem, and no money is taken until the work is
+              done. Otherwise it is a full home improvement contract. Confirm the total before
+              choosing the form.</span
+            >
+          </div>
+          <div class="f">
+            <label>Scope as we read it</label
+            ><span class="val"
+              >Diagnose the dead zone, likely valve or solenoid. Cut back side yard for access. Half
+              day, two-person truck.</span
+            >
+          </div>
+          <div class="f">
+            <label>Hours and miles</label><span class="val">0.4 hr phone, no visit yet</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="verdict">
+        <strong>Outcome</strong>
+        Service call booked for the Tuesday run, subject to written landlord authorisation.
+        Diagnosis first, then a price for the repair before anything is replaced. If the landlord
+        wants the property kept up afterwards, it becomes a maintenance conversation with the owner
+        rather than the tenant.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <span class="stage">NEXT</span>
+      <h2>What is still yours to set</h2>
+    </div>
+    <ul class="tight">
+      <li>
+        The budget bands above are placeholders. They should bracket your real work, and the lowest
+        band should sit where a build crew stops being the right answer.
+      </li>
+      <li>
+        Whether the client form is a web form, a paper sheet, or both. It is written to work as
+        either.
+      </li>
+      <li>
+        Who owns the lead record and looks at it daily. This is the one item that fails quietly if
+        nobody is named.
+      </li>
+      <li>
+        The hours-and-miles field is deliberate. Ninety days of it answers whether phone
+        qualification pays, which no published research can tell you.
+      </li>
+    </ul>
+  </section>
+
+  <p class="foot">
+    GMZ Landscaping Inc. &middot; CSLB License #636636 &middot; Internal working document, not for
+    distribution. The compliance gates on Form 2 summarise statutory requirements and are not legal
+    advice; the contract forms themselves are reviewed by qualified counsel before use.
+  </p>
+</div>
