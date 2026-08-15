@@ -1,17 +1,18 @@
 ---
-question: 'Is the concept really free, or is there a catch?'
+question: 'Is the concept free?'
 short: 'Is the concept free'
 phase: planning-budget
 serviceLine: design-build
 sorePoint: design-fee
 order: 60
-published: false
-needsDecision: true
-decisionNote: "Confirm two things before this publishes: (1) whether the concept and planning budget stay complimentary or become a small paid first phase of the design agreement, and if paid, the fee, since no figure exists and none may be invented; (2) whether the site consultation stays free, which this answer also states. This is the canonical decision on the free concept and free visit: the same statements appear in 'Does the site visit cost anything', 'Ballpark over the phone', 'Why do I have to pay for a design' and 'Maintenance client, new project', and all of them move together."
+published: true
+needsDecision: false
 ---
 
-It is complimentary today, and there is no catch attached to it. Before you buy any design work, GMZ will walk your property, put together a concept for what could happen there, and give you a planning budget to go with it. You are not billed for that and you are not obliged to go further.
+The visit is. The concept is not.
 
-What is not free is the design itself. The measured plans, the material selections and the drawings a crew can actually build from are paid work, under their own signed design agreement. That step is priced as a percentage of construction, in a band of 10 to 15 percent. The design fee is not credited back against the construction price, and we say so plainly because most people assume the opposite. It pays for design time, which is real time by real people, and it has value whether or not GMZ ends up building the project.
+Someone comes out, walks the property with you, looks at what is there and talks through what you want. That costs you nothing and commits you to nothing, and it is where most of the useful conversation happens.
 
-The concept exists so you can decide whether this project is worth designing at all. If the answer is no, you have spent nothing.
+What comes after it is paid work. The written concept and the planning budget that goes with it are the first phase of the design agreement: a considered look at what could happen on your property, and a range to plan around, put on paper by someone who has stood on the site. It is a short phase, priced on its own, and you can stop there. You see the fee in writing before you agree to it.
+
+We do it this way on purpose. A concept given away costs the person receiving it nothing, so it tends to be treated as worth nothing, and the temptation is to produce it quickly rather than properly. Paying for it means the time behind it is real and the number attached to it can be defended. What it is still not is a bid. A price you can commit to comes after a measured plan and chosen materials.
