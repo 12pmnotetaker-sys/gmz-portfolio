@@ -5,9 +5,8 @@ phase: building
 serviceLine: design-build
 sorePoint: timeline
 order: 10
-published: false
-needsDecision: true
-decisionNote: 'Confirm what GMZ publishes about lead time: whether a current booking window goes on the site at all, who updates it and how often, and whether the stated rule is that a start date is held only by a signed contract and deposit.'
+published: true
+needsDecision: false
 ---
 
 It changes month to month, so ask us and we will give you the real date rather than a comfortable one. We check the work already committed against the calendar before we promise a start, which is why we do not post a booking window on the website: a number published there is wrong by the time most people read it.

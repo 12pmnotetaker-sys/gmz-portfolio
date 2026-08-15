@@ -5,9 +5,8 @@ phase: getting-started
 serviceLine: both
 sorePoint: timeline
 order: 20
-published: false
-needsDecision: true
-decisionNote: 'Decide whether to publish a typical scheduling window for site visits, for example "usually within two weeks." No such commitment exists today, so this answer promises a real date on the call instead of a lead time. If a window is published it has to be one the schedule can actually hold.'
+published: true
+needsDecision: false
 ---
 
 It depends on the week, and you will get an actual date rather than a promise that someone will call you back. Tell us your town and what you want done, and you will hear what is genuinely open. Landscape work here runs on the weather, so spring books up faster than late fall.

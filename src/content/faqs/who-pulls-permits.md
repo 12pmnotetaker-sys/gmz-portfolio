@@ -4,8 +4,8 @@ short: 'Permits and who pays'
 phase: firm-price
 serviceLine: design-build
 order: 50
-published: false
-needsDecision: true
+published: true
+needsDecision: false
 decisionNote: "Confirm: (a) that GMZ files permits and manages inspections as standard rather than case by case, and (b) that permit fees are passed through to the client as a separate line at the town's cost rather than carried in the price. Neither is currently written down."
 ---
 
