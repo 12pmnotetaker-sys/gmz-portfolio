@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { canonicalPath } from './src/data/canonical.ts';
 
 // The canonical production origin. Used for absolute URLs in the sitemap,
 // canonical link tags and Open Graph tags. Update this once the real domain
@@ -24,7 +25,17 @@ export default defineConfig({
       // signal, and /straight-answers deliberately carries the same content
       // as /faq: it is the link to hand someone, not the page that should
       // win a search.
-      filter: (page) => !NOINDEX.some((path) => new URL(page).pathname.replace(/\/$/, '') === path),
+      filter: (page) => !NOINDEX.some((path) => canonicalPath(new URL(page).pathname) === path),
+
+      // `build.format: 'directory'` makes Astro hand the sitemap `/about/`,
+      // while the canonical tag on that page claims `/about`. Offering a URL
+      // the page itself disavows is a contradictory signal, so both forms come
+      // from canonicalPath and cannot drift apart.
+      serialize: (item) => {
+        const url = new URL(item.url);
+        url.pathname = canonicalPath(url.pathname);
+        return { ...item, url: url.href };
+      },
     }),
   ],
   image: {

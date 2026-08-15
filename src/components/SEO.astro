@@ -1,5 +1,6 @@
 ---
 import { company, site } from '@data/site';
+import { canonicalUrl } from '@data/canonical';
 
 interface Props {
   title?: string;
@@ -15,7 +16,7 @@ const { title, description, image, type = 'website', noindex = false } = Astro.p
 
 const pageTitle = title ? site.titleTemplate.replace('%s', title) : site.title;
 const pageDescription = description ?? site.description;
-const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site ?? site.url);
+const canonical = canonicalUrl(Astro.url.pathname, Astro.site ?? site.url);
 const socialImage = new URL(image ?? site.ogImage, Astro.site ?? site.url);
 
 /**
