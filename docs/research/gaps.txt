@@ -1,0 +1,313 @@
+GMZ RESEARCH KNOWLEDGE BASE — EVIDENCE GAPS
+Study 001, compiled 15 August 2026
+========================================================================
+
+These are questions the research could NOT answer from any tiered source.
+Several are things the trade repeats as settled fact. They are recorded here
+so nobody, human or agent, fills them in from memory or from a marketing page.
+
+Where a gap matters to a live decision, the cheapest fix is usually GMZ's own
+records rather than more searching. Ninety days of logged leads settles the
+qualification question. One month of truck GPS settles drive time. The
+callback history settles warranty.
+
+========================================================================
+
+  1. Whether a design only agreement written by a licensed California
+     contractor is a home improvement contract under B&P 7151.2, and so
+     subject to the deposit cap and mandated contents. Unresolved by
+     statute text and by any regulator guidance found. Requires a
+     California construction attorney, not more research.
+  2. Whether B&P 7027.5's design authority reaches a design only engagement the
+     client may take to another builder. The statute ties design to work
+     the contractor performs and supervises. Sections 7027.1, 7027.3 and
+     16 CCR 832.27 were not read and should be, then reviewed by counsel.
+  3. Conflict between two verified California sources on when the three day
+     cancellation right attaches. The licensing board conditions it on
+     where the contract was negotiated; B&P 7159 states the notice as
+     required contract content. Counsel should reconcile before any
+     agreement form is standardised.
+  4. Typical design fee as a percentage of construction cost for residential
+     landscape design build. Every figure located (10 to 20 percent, 6 to
+     15, 8 to 15) traces to cost aggregator or contractor marketing pages.
+     Would require a trade survey with a disclosed sample, which does not
+     appear to exist.
+  5. Whether initial consultations are charged, and typical amounts. No tiered
+     source discloses it. The circulating $100 to $300 range traces to
+     homeowner cost aggregator pages.
+  6. How common it is to credit a design fee toward construction. Genuinely
+     unmeasured; no survey of any tier asks the question.
+  7. How common phased design agreements with explicit go or no go gates are in
+     residential work. Unmeasured. The nearest analogue is capital project
+     front end planning research on projects over $1.5 billion, whose
+     magnitudes do not transfer.
+  8. The Project Definition Rating Index threshold of under 200 for adequate
+     scope definition. Not present on the accessible CII page; the
+     underlying report is paywalled. Requires buying RS213-1 or a CII
+     implementation resource.
+  9. Close rates by process type in landscaping. The circulating 63 versus 38
+     percent same day estimate figures are unsourced and are not in the
+     association report they are attributed to. The roughly 55 percent
+     industry average traces to an outsourced finance firm's marketing
+     page.
+ 10. The value of qualifying leads before a site visit. No study of any tier
+     quantifies it for residential contracting. Requires the firm's own
+     ninety day lead log.
+ 11. Whether publishing a minimum project size or a starting price changes the
+     mix or quality of inbound leads for a residential contractor. Nothing
+     at any tier. The only reliable route is to publish a minimum, tag
+     leads before and after, and compare qualified lead rate over a fixed
+     window.
+ 12. Whether published FAQ or process content affects contractor selection or
+     inquiry to consultation conversion. Appears unstudied for home
+     services. Every inference here from regulator guidance to site
+     content is an inferential leap and should be labelled as one.
+ 13. Whether publishing a coarse budget band on a project page affects lead
+     quality. Unevidenced. The healthcare price transparency literature is
+     the nearest analogue and transfers poorly.
+ 14. Whether disclosing design fee as a percentage of construction helps or
+     hurts, which is how this firm sells design. No source at any tier
+     addresses disclosure practice or buyer response for that structure.
+ 15. How homeowners actually choose between competing residential bids. The
+     peer reviewed contractor selection literature covers public and
+     commercial procurement with formal weighted tender evaluation, a
+     different buyer under different rules. One relevant ASCE paper
+     returned HTTP 403 and was not read.
+ 16. No California or Peninsula specific consumer research at any tier on how
+     homeowners select landscape contractors or what they want to see
+     before making contact. The licensing board brochure is prescriptive
+     guidance, not consumer research. This is the largest transferability
+     problem in the base.
+ 17. No post 2015 tiered measurement of consumer trust in online reviews. The
+     Pew data was fielded in late 2015, before the FTC's 2023 review
+     manipulation rulemaking. Direction of any shift is unknown.
+ 18. Section numbering in the adopted 2025 state water ordinance. The DWR PDF
+     is a rulemaking redline carrying prior and adopted text, so
+     applicability appears under both an old and a new section number. Any
+     section cited to a client or agency should be confirmed against the
+     codified 23 CCR text.
+ 19. Adoption and effective dates of the water ordinance text used here. The
+     PDF carries no adoption date on its face and interleaves 2015 and
+     newly numbered sections, so which text governs a given job date is
+     not resolvable from that file.
+ 20. The new section 494 Certificate of Completion Package under the
+     prescriptive and performance compliance options. Referenced in the
+     adopted text but its body is absent from the fetched document.
+     Confirm against the codified regulation before finalising a closeout
+     packet.
+ 21. Operative water ordinance thresholds in Redwood City, San Mateo County and
+     neighbouring cities. Local agencies may adopt stricter ordinances, so
+     the 500 and 2,500 square foot figures are a floor. Requires reading
+     each local ordinance and its forms.
+ 22. USDA hardiness zone for the actual towns served, which the caliper based
+     tree establishment rule depends on. Confirm against the current USDA
+     map before adopting a caliper based warranty term.
+ 23. Local Peninsula minimum wage ordinances were not checked. Several San
+     Mateo County cities exceed the state rate. Requires checking each
+     city's ordinance directly.
+ 24. Currency of several statutory texts. Pages for CCP 337.1, CCP 337.15, B&P
+     7091 and Civil Code 896 were fetched without capturing an enactment
+     or amendment date, so those findings cannot show their own age.
+ 25. The eCFR source notes for 16 CFR Parts 239 and 255 could not be read
+     because the URL redirects to an interstitial. Part 255's 2023
+     revision date came from the FTC press release. Part 239 is cited
+     undated.
+ 26. Whether 16 CFR Part 239, the warranty advertising guides, applies to
+     construction service warranties rather than consumer product
+     warranties. Its own examples concern returning goods in original
+     packaging. A California construction attorney is the right source.
+ 27. Typical workmanship warranty terms offered by landscape contractors: no
+     survey at any acceptable tier reports what share offer a written
+     warranty or for how long. Everything located was anecdotal trade
+     copy.
+ 28. Plant establishment and replacement guarantee norms. The one year is
+     standard claim cannot be traced to any source disclosing a sample or
+     method. The one year figure surviving here rests on regulation, not
+     on evidence of practice.
+ 29. Callback and rework rates specific to landscape design build: nothing at
+     any tier. All rework research covers vertical building construction.
+     The firm's own callback history is the only available source.
+ 30. Callback and rework economics for firms under about ten employees: nothing
+     found. The rework literature samples large contractors and production
+     builders.
+ 31. Rework cost as a share of contract value. The 0.38 and 0.76 percent
+     figures traced to a society news article with no disclosed sample and
+     were dropped. The underlying peer reviewed study exists and should be
+     obtained through a library.
+ 32. Secondhand rework ranges of 2 to 6 percent and 3.15 percent appear in a
+     literature review that was read directly, but neither original paper
+     could be fetched. Recorded as unverified secondhand citations only.
+ 33. The often quoted claim that rework averages 5 percent of total project
+     cost was not confirmed against any primary publication and is not
+     cited.
+ 34. The relationship between documented handover and dispute frequency: no
+     empirical study at any tier. The nearest proxy is the licensing
+     board's insufficient evidence closure rate, which is suggestive
+     rather than a study of the question.
+ 35. Licensing board complaint data broken out by licence classification. The
+     enforcement report does not disaggregate, so there is no California
+     figure for complaints against C-27 landscaping contractors
+     specifically.
+ 36. Willingness to pay for a builder provided maintenance program: the full
+     text returned HTTP 403, so the roughly $27 a month figure was struck.
+     Requires library access to the article.
+ 37. Whether offering a written warranty changes which contractor a homeowner
+     hires. The only tiered study found measures stated willingness to pay
+     for new home warranties, not selection.
+ 38. Residential maintenance churn or retention rate: nothing at T1 or T2. The
+     only candidates are commercial weighted trade press that could not be
+     fetched. The firm's own account history over three years would answer
+     it.
+ 39. The break even between a price increase and the risk of losing a recurring
+     account: no published empirical answer in any field service industry.
+     Derivable from the firm's own gross margin per account and
+     replacement acquisition cost, which is more trustworthy anyway.
+ 40. Distribution of actual annual increases applied by landscape maintenance
+     firms, and the retention effect of a given increase size. Unmeasured.
+     The marketing literature establishes direction only and its sample
+     sizes remain behind paywalls.
+ 41. Drive time as a share of the landscape maintenance workday: no measured
+     figure at any tier. The circulating wrench time benchmarks trace to
+     field service software marketing. One month of truck GPS or
+     timesheets would produce a better number than anything published.
+ 42. Cost per stop as a function of route density in a real residential grounds
+     maintenance operation. The routing literature is analytical or
+     simulated and has never been calibrated on this trade.
+ 43. Route density effect on the crew day rather than on driving. Every source
+     addresses travel distance or time; none addresses the share of a crew
+     day that is drive time, which is the ratio that decides whether
+     density yields another billable stop.
+ 44. No producer price index exists for landscaping services. The nearest
+     output price measure, the gardening and lawncare consumer price item,
+     is thinly published with no annual average after 2023, so the 4.8
+     percent escalation benchmark cannot be extended from a government
+     source.
+ 45. No Bay Area price index exists for landscape maintenance services
+     specifically. Comparing the national gardening item against the local
+     all items index mixes geographies and periods and is indicative only.
+ 46. No survey at any tier isolates firms under twenty employees or under $1M
+     revenue. The largest software surveys publish no size breakdown and
+     sample commercial contractors; the one disclosed association sample
+     of 142 firms is spread thin across bands and regions.
+ 47. No independent, non vendor measurement of outcomes from business
+     management platform adoption exists. No controlled study, no before
+     and after design, no third party replication. Only a vendor comparing
+     its own customers with non customers, uncontrolled for size.
+ 48. No source at any tier reports failure or abandonment rates for business
+     management software among small contractors, nor any switching cost
+     figure: no implementation hours, migration cost, productivity loss or
+     cost of a failed adoption. The only hard switching cost documented is
+     one vendor's auto renewing annual contract with 60 day notice.
+ 49. Total cost of ownership cannot be established for any vendor from public
+     information. One onboarding fee is referenced but never quantified,
+     another vendor's per user and implementation rates are unpublished
+     and its tier prices contradict each other on its own page, a third
+     publishes nothing, and every top tier is quote only.
+ 50. One vendor's Grow tier price could not be pinned down: two direct fetches
+     of the same page returned incompatible numbers. Must be confirmed
+     directly from the vendor before any cost comparison.
+ 51. One vendor's supposed $1M revenue entry point is not on its own page,
+     which names no minimum, and traces only to a competitor's comparison
+     page. Its real minimum viable customer size is undocumented.
+ 52. No source addresses whether any platform models selling design as a
+     separate paid step priced as a share of construction. This is
+     arguably the most decision relevant software question and can only be
+     answered by direct product evaluation.
+ 53. No source directly measures whether firms keep a separate estimating tool
+     alongside a platform. The tool count figures are the nearest proxy
+     and do not name which categories are duplicated or separate platform
+     users from non users.
+ 54. The most quoted job costing statistic in the trade, 46 percent using job
+     costing software alongside a 60 percent estimate accuracy figure,
+     traces to a commissioned survey that does not disclose the landscape
+     subset's sample or selection method. Not cited.
+ 55. A digital adoption survey reporting that about half name training and
+     implementation as the biggest barrier was rejected: it discloses a
+     respondent count but nothing about selection, screening or field
+     dates, and draws on the vendor's own customer base. The underlying
+     idea, that implementation capacity rather than price decides success
+     for a small firm, remains plausible and unevidenced.
+ 56. Two trade publications' industry reports remain unfetchable, returning
+     empty bodies on repeated attempts. Their circulating figures on
+     technology reliance, retention, net margin and difficulty raising
+     prices exist only in search extractions. Someone should open those
+     pages in a real browser and read the methodology box.
+ 57. One trade publication's service mix breakdown, showing design build
+     offered by 62 percent of surveyed companies, discloses no sample size
+     or recruitment method anywhere and fails even the lowest tier.
+ 58. The remodelers' cost of doing business study segments design build against
+     general remodelers, which would be the closest analogue to whether
+     selling design separately pays, but no sample size is disclosed
+     publicly and the segmentation is behind a paid publication.
+ 59. The association's financial benchmark report is the one industry benchmark
+     that discloses its sample and segments gross profit by design build
+     versus maintenance, but those figures sit behind the paywall. If it
+     is bought, read the respondent profile appendix first.
+ 60. A consumer survey on homeowner use of lawn and landscape services could
+     not be fetched from the primary source, which returned HTTP 403.
+     Trade press discloses enough method to qualify it, but it is nine
+     years old and measures service usage rather than published practice.
+ 61. The advocacy summary attaching specific margins to the peer reviewed
+     delivery study carries no publication date and its headline faster
+     delivery figure is undefined on the page. It should not be quoted
+     without the underlying foundation report.
+ 62. Sample sizes for both cited marketing papers remain unknown. Publisher
+     sites returned HTTP 403 or CAPTCHA. Only abstracts were reachable, so
+     both support direction only, never a magnitude.
+ 63. A cited restaurant rating study appeared only in search snippets;
+     publisher pages returned HTTP 403 or no article content. Deliberately
+     not cited.
+ 64. The government bulk wage files are not retrievable from this environment,
+     returning bot blocks on repeated attempts. All current wage figures
+     were re sourced through the public data API. Anyone re verifying
+     should use the API or a browser rather than command line downloads.
+ 65. The entire labour cost section was anchored to a superseded wage release
+     in earlier drafts. The current release moved the local premium over
+     national from about 27 percent to about 23 percent and the crew lead
+     premium from about 49 to about 60 percent. Any downstream calculation
+     built on the older release needs re running.
+ 66. No verified prior year California or national wage baseline exists here,
+     because the state and national bulk files are blocked. The earlier
+     California median figure could not be traced and was removed.
+ 67. Structure of residential maintenance agreements: no T1 or T2 evidence on
+     typical term length, cancellation notice or renewal mechanism. What
+     exists is public agency commercial contracts, which are one sided by
+     design, plus California statutory constraints. The gap between them
+     is where this firm has to make its own policy choice.
+ 68. Whether the automatic renewal law applies to a bespoke, in person signed
+     residential service agreement with a licensed contractor is not
+     settled by the bill text, and it was not checked for later
+     amendments. Counsel should confirm before any auto renewing
+     maintenance agreement is issued.
+ 69. Licensing board consumer pages carry no publication or last updated date
+     and cite no code sections, so their currency cannot be established
+     from the page itself. The underlying statutes should be read directly
+     before any guidance is relied on.
+ 70. One board publication remains unreachable at its short URL, returning HTTP
+     404. The equivalent guidance is now sourced from the printed
+     brochure, so nothing of substance is lost.
+ 71. No T1 source exists for the software adoption question at all. Searches
+     for peer reviewed or extension work on business management software
+     among landscape contractors returned nothing landscape specific.
+     Every adoption, pricing and outcome figure here is T2 or T3, and all
+     but one T3 source is published by a company selling the software
+     being measured.
+ 72. No California or Peninsula specific data on contractor software adoption,
+     pricing or practice exists at any tier. The census firm size data is
+     the only California specific evidence in that section, and it says
+     nothing about software.
+ 73. Nothing in this base is specific to the San Francisco Peninsula, to four
+     person firms, or to California landscape contractors as a class,
+     outside the regulatory findings. Every quantitative finding is
+     national, from another sector, or both, and none of the local ones is
+     about sales process.
+ 74. A note on tooling, recorded because an earlier audit reached conclusions
+     by invoking it: the claim that PDF text extraction was broken in this
+     environment is false. Extraction works, and the strongest finding in
+     the set was recovered that way. Any earlier conclusion excused by
+     broken PDF tooling should be re checked.
+ 75. A gap closed and recorded so it is not reopened: the self diagnosis field
+     experiment was previously listed as blocked by a paywall. A free full
+     text working paper version exists, giving country, sample size and
+     absolute effect. The paywall blocked only the journal version, not
+     the evidence.

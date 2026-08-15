@@ -1,0 +1,429 @@
+GMZ RESEARCH KNOWLEDGE BASE
+Study 001: Landscape design-build business process, systems and economics
+Compiled 15 August 2026
+
+========================================================================
+
+WHAT THIS IS
+
+A tiered-source review of how the landscape design-build trade operates, run
+to test GMZ's current process against evidence rather than opinion. Every
+finding carries its source, that source's tier, its date and its sample size.
+Marketing pages, contractor blogs and any survey that would not disclose its
+method were rejected and are not in here.
+
+SOURCE TIERS
+
+  T1 (peer-reviewed / university extension / government)
+  T2 (association research, sample disclosed)
+  T3 (trade or vendor survey, method disclosed)
+ A T1 government statistic and a T3 vendor survey are not the same kind of
+fact. Nothing in this base should move a decision on T3 evidence alone.
+
+WHAT WAS FOUND
+
+  71 verified findings: 50 T1, 4 T2, 17 T3
+  75 evidence gaps, where no tiered source could be found
+  7 themes
+  3 tests of decisions already made
+
+========================================================================
+
+EXECUTIVE SUMMARY
+
+The strongest evidence in this set is legal, and it is the part that should
+change how the company operates first. California law, not marketing theory,
+already decides most of what can be promised, published, signed and collected.
+The down payment on a home improvement contract is capped at $1,000 or ten
+percent of the price, whichever is less. The contract contents are dictated,
+including approximate start and finish dates, signed change orders before the
+covered work starts, and a three day cancellation notice, five days for
+clients aged 65 and over. The license number has to appear in all advertising,
+which includes the website. None of that is optional and none of it is a
+matter of taste.
+
+The second thing worth acting on is that the state's own water ordinance makes
+a paid design step defensible. On new landscape of 500 square feet or more, or
+a 2,500 square foot renovation, where a permit or plan check is involved, a
+documentation package is required, and the design plan may be signed by a
+licensed landscape contractor rather than a landscape architect. That is a
+regulated deliverable the company can produce and sign itself. It is the
+closest thing in this whole body of evidence to a reason a client has to pay
+for design as its own step. Local cities may set their own thresholds and
+nobody has checked Redwood City or San Mateo County.
+
+Where the design question is genuinely unsettled is whether a design only
+agreement, one the client could carry to another builder, is inside what a
+landscape contractor's license allows, and whether that agreement is itself a
+home improvement contract subject to the deposit cap. The statute grants
+design authority for work the contractor will perform and supervise. No source
+of any tier answers the design only case. That is a question for a California
+construction attorney, and it is the single highest value unanswered question
+here.
+
+The third finding that should change behaviour is about closeout, not sales.
+Two regulators, the state licensing board and the FTC, independently tell
+homeowners to collect at least three bids, check recent similar work, verify
+testimonials and get everything in writing. So every lead arrives inside a
+comparison the buyer has been coached to run. And when things go wrong, the
+licensing board's own numbers show that roughly half of the licensee
+complaints closed before any field investigation closed for insufficient
+evidence. Whoever holds the paperwork holds the advantage. That argues for
+dated substantial completion records, signed releases from subcontractors and
+suppliers, and photographs, more than it argues for any change to the website.
+
+On money, the reliable numbers are about wages and prices, not about profit.
+Field wages in this metro area run about 23 percent above the national median
+for the same work, and a crew lead costs about 60 percent more per hour than a
+field hand. Consumer prices for gardening and lawncare services rose about 4.8
+percent a year from 2019 to 2023, while the local all items index rose closer
+to 2 to 3.8 percent. A plain cost of living escalator in a maintenance
+agreement has been a real price cut for this trade. The state minimum wage
+rises every January on a published schedule, which argues for aligning
+maintenance renewals with the calendar year.
+
+Geography is the other reliable lever. The routing mathematics is solid and
+old: doubling the number of stops inside the same service area cuts driving
+per stop by about 29 percent, and travel out from the yard grows faster with
+volume than travel between stops does. That is an argument for grouping stops
+by day and for treating distance from Redwood City as a separate pricing input
+from distance between clients. It is also why a single unqualified site visit
+is the worst trip the company makes, since it gets no density benefit at all.
+
+Now the honest part. Almost nothing here is about a four person residential
+firm on the Peninsula. The census data confirms the shape of the business is
+normal, since about 63 percent of California landscaping employers have fewer
+than five people and 90 percent fewer than twenty, but every survey that
+reports profit, software use or close rates samples commercial contractors
+that are much larger, and most of those surveys are published by companies
+selling the software being measured. There is no independent measurement
+anywhere of whether buying a business management platform improves anything.
+The one vendor comparison that claims it does compares its own customers to
+non customers with no control for firm size, which is exactly the pattern
+selection alone would produce.
+
+Several things people repeat as facts are folklore and should be treated that
+way. The typical design fee as a share of construction cost, the standard
+consultation charge, the share of firms that credit design toward
+construction, close rates by process, plant warranty norms, callback rates for
+landscape work, and drive time as a share of the crew day, none of these could
+be traced to any source that discloses how it was measured. In several cases
+the widely quoted numbers trace to cost aggregator pages or software
+marketing. They are not in this base and should not be added without a source
+that says who was asked and how.
+
+The practical consequence is that a few decisions have to be settled with the
+company's own records rather than with research. Ninety days of logged leads
+with source, stated budget, whether a visit happened, hours and miles used,
+and outcome would settle the qualification question faster than any study. One
+month of truck GPS would produce a better drive time number than anything
+published. The company's own callback history over the last several years
+would settle the warranty question. Those measurements are cheap, and there is
+no published substitute for any of them.
+
+========================================================================
+
+THEMES
+
+
+1. CALIFORNIA LAW ALREADY WRITES MOST OF THE RULES   [support: strong]
+
+The strongest and most transferable evidence in the set is statutory and
+regulatory, and it is specific to California residential work. Contract
+contents, the deposit ceiling, the cancellation window, the license number in
+advertising, and the narrow service and repair exception are all fixed by law
+rather than by preference. Two independent limitation clocks run behind them,
+four years on written contracts and ten years on latent defects, plus the
+licensing board's own separate discipline window.
+
+  What it means for GMZ:
+  Set the deposit, cancellation notice, change order rule and license number
+  once, in one place, and treat them as compliance objects rather than copy.
+  Date substantial completion on every job, because the ten year latent
+  clock starts from documentary events. Do not publish a site wide payment
+  schedule or lead time, because those are per job contract terms.
+
+  Supported by: bpc-7159-home-improvement-contract-contents, bpc-7159-5-down-payment-cap, ca-7159-required-boldface-notices, ca-three-day-right-to-cancel-kitchen-table, bpc-7030-5-license-number-in-all-advertising, bpc-7159-10-service-repair-750-conditions, ccp-337-1-patent-four-year-bar-excludes-owner-occupied-single-unit-residence, ccp-337-15-ten-year-latent-repose, bpc-7091-cslb-discipline-window-4-and-10-years, ca-automatic-renewal-law-ab2863, cslb-statutory-waiver-and-release-forms
+
+2. THE PAID DESIGN STEP HAS A REGULATORY FOOTHOLD AND AN UNSETTLED LEGAL EDGE   [support: moderate]
+
+The state water ordinance turns a permit ready plan set into a required
+deliverable above 500 square feet of new landscape, and it lets a licensed
+landscape contractor sign the design plan, which is what makes an in house
+paid design step workable at four people. What no source resolves is whether a
+design only agreement the client may take elsewhere sits inside a contractor's
+licensing authority, or whether that agreement is itself a home improvement
+contract subject to the deposit cap.
+
+  What it means for GMZ:
+  Sell design as the regulated, signed, permit ready deliverable, and carry
+  the third party irrigation audit cost in the estimate because the designer
+  and installer cannot perform it. Get counsel to answer the design only
+  question before the two agreement structure is leaned on harder, and add a
+  limited licence clause covering what a client may do with a paid plan set.
+
+  Supported by: mwelo-500sqft-documentation-package-trigger, mwelo-contractor-may-sign-design-plan, mwelo-certificate-of-completion-six-elements, mwelo-auditor-must-not-be-the-designer-or-installer, ca-landscape-contractor-may-design-only-what-it-builds, ca-5641-unlicensed-conceptual-vs-construction-documents, bpc-7159-5-down-payment-cap, wsba-design-work-product-limited-license, front-end-planning-alignment-payoff
+
+3. THE BUYER ARRIVES INSIDE A THREE BID COMPARISON, AND TRUSTS WHAT CAN BE CHECKED   [support: moderate]
+
+Two regulators independently coach homeowners to collect several bids, compare
+like for like, check recent similar projects and verify testimonials.
+Separately, reviews are widely read but roughly half of readers doubt them,
+and endorsement rules require testimonials to be honest, current and typical.
+The things a firm can publish that reviews cannot supply are the checkable
+ones: a licence number, named towns, a written process.
+
+  What it means for GMZ:
+  Publish how scope is defined and what the design step contains, since
+  comparability is what the buyer has been told to look for. Store an
+  approval date beside the approved flag on testimonials and re confirm at
+  intervals, and publish a representative spread of projects rather than
+  only the smoothest ones.
+
+  Supported by: cslb-brochure-three-bids-references-similar-projects, ftc-tells-buyers-to-collect-multiple-estimates, ftc-endorsements-honest-opinion-and-continuing-approval, ftc-endorsements-must-be-typical-experience, ftc-substantiation-required-before-publication, reviews-widely-read-but-half-distrusted, asla-repeat-clients-win-work
+
+4. DOCUMENTS DECIDE DISPUTES, AND THE DISPUTES WILL BE COSMETIC   [support: moderate]
+
+The largest handover defect study found no structural defects at handover and
+overwhelmingly surface, tolerance and functionality items, some surfacing only
+after the client lives with the work. California's licensing board resolves
+complaints at intake, where about half of the pre investigation closures were
+for insufficient evidence, and most single item landscape disputes fall under
+the mandatory arbitration ceiling. The state's own establishment definitions
+supply a defensible one year anchor.
+
+  What it means for GMZ:
+  Build a closeout packet around the state's own certificate of completion
+  list, add a scheduled 30 to 60 day return visit, and collect statutory
+  releases from every subcontractor and supplier. Write the warranty term
+  with exclusions before any warranty language reaches the website, since
+  advertising a guarantee requires publishing its limits alongside it.
+
+  Supported by: forcada-2016-defects-shift-from-structural-to-finish-at-handover, cslb-complaint-volume-and-intake-outcomes-fy2324, cslb-arbitration-thresholds-25k-and-50k, cslb-statutory-waiver-and-release-forms, civ-896-g12-landscaping-must-survive-one-year, mwelo-defines-establishment-period-as-one-year, uf-ifas-tree-establishment-scales-with-trunk-caliper, bpc-7159-home-improvement-contract-requires-no-warranty, ftc-warranty-guarantee-must-disclose-details-and-limits, cfr-239-3-satisfaction-guarantee-limits
+
+5. RECURRING MAINTENANCE IS A PRICING AND GEOGRAPHY PROBLEM   [support: moderate]
+
+Local wages, the trade's own price index and the routing mathematics all point
+the same way. Field labour here runs well above national, a crew lead costs
+about 60 percent more per hour than a field hand, gardening and lawncare
+service prices have outrun the local cost of living index, and doubling stop
+density in a fixed area cuts driving per stop by about 29 percent. Turnover,
+not headcount growth, is the structural labour problem.
+
+  What it means for GMZ:
+  A plain cost of living escalator is a below market escalator for this
+  trade, so it needs a floor or an add on. Group stops by day so each truck
+  makes one round trip from the yard, price distance from the yard
+  separately from distance between clients, and align renewals with the
+  January minimum wage step.
+
+  Supported by: oews-sf-metro-landscape-wages-may-2025, oews-bay-area-wage-premium-and-supervisor-rate, cpi-gardening-lawncare-escalation, bay-area-cpi-escalator-reality, ca-minimum-wage-trajectory, bhh-square-root-law-route-density, daganzo-vrp-linehaul-term, bls-ooh-grounds-maintenance-outlook, public-agency-maintenance-contract-structure, susb-receipts-per-employee-by-size, aspire-thrive-recurring-maintenance-revenue-share
+
+6. ALMOST EVERY NUMBER ABOUT THE TRADE DESCRIBES A BIGGER FIRM   [support: strong]
+
+Census data confirms a four to six person firm is the modal California
+landscaping business, but the surveys that report profit, software use,
+revenue mix and close rates sample commercial contractors with no small firm
+breakout, and most are published by companies selling what is being measured.
+The one benchmark that discloses its sample has 142 self selected firms
+nationally, which leaves very few cells comparable to a small coastal
+residential shop.
+
+  What it means for GMZ:
+  Treat any survey mean as describing the other half of the industry's money
+  until it shows a size breakdown, and add roughly a fifth to a quarter to
+  any national labour figure before it means anything locally. Use design
+  build delivery research for its direction only, since it says schedule and
+  accountability rather than lower price.
+
+  Supported by: firm-size-distribution-us, susb-ca-landscaping-firm-size, nalp-financial-benchmark-2025, houzz-soi-2025-landscape-revenue, aspire-thrive-recurring-maintenance-revenue-share, end-to-end-platform-adoption, dbb-vs-db-fhwa-schedule-and-cost, revisiting-project-delivery-212-projects, db-margin-sizes-dbia-summary
+
+7. SOFTWARE: HALF THE TRADE IS NOT ON A PLATFORM, AND NOBODY HAS MEASURED WHETHER IT HELPS   [support: weak]
+
+The adoption numbers come from vendors, the pricing tiers that matter are
+gated above the cheap entry prices, total cost of ownership cannot be computed
+for any vendor from public information, and two apparently independent
+shortlist names are now one company. The only outcome evidence is a vendor
+comparing its own customers with non customers and controlling for nothing.
+
+  What it means for GMZ:
+  Staying off a platform is not an outlier position. If job costing is the
+  reason to buy, price the tier that actually includes it and confirm the
+  tier boundary in writing, budget for an unquantified onboarding fee, and
+  treat an auto renewing annual contract with 60 day notice as the real
+  switching cost. No vendor is documented as modelling design sold as a
+  share of construction, which has to be checked by product demonstration.
+
+  Supported by: end-to-end-platform-adoption, tool-sprawl, function-adoption-back-office-first, estimating-and-job-costing-gaps, platform-margin-claims-unreliable, lmn-granum-pricing, singleops-pricing, jobber-pricing-job-costing-tier, arborgold-contract-lock, aspire-no-published-pricing, vendor-consolidation-granum
+
+========================================================================
+
+DECISIONS TESTED AGAINST THE EVIDENCE
+
+
+------------------------------------------------------------------------
+DECISION: No written workmanship warranty. Nothing published, nothing signed,
+the owner returns if something he installed fails.
+
+VERDICT: EVIDENCE IS MIXED   (evidence strength: moderate)
+
+PLAIN ANSWER:
+Two of the three arguments go your way, and the third one does not. Nobody can
+tell you what share of firms like yours put a term in writing, because that
+number does not exist in any source worth citing. Nobody can show you that a
+written warranty wins jobs either, so anyone promising it will lift your close
+rate is guessing. Where you are wrong is the legal reasoning. Staying silent
+does not shorten anything.
+
+WHAT THE LAW ACTUALLY DOES:
+California's home improvement contract statute never uses the words warranty
+or guarantee, so what you offer is a business choice. But the contract itself
+must be written and signed, so the four year written contract clock is what
+runs, not the two year one for handshake deals. The four year cutoff for
+obvious defects is expressly switched off for owner occupied single family
+homes, which is most of your work. Buried work carries ten years. The
+licensing board has its own four and ten year window that nothing you sign can
+touch. So the unwritten position runs to the outer limits and defines nothing
+inside them.
+
+COST OF DOING NOTHING:
+Every callback is negotiated from zero with a client you want to keep on the
+maintenance book, because nothing excludes under watering, freeze, rodent
+damage, third party alteration or lapsed maintenance. You cannot put a
+warranty reserve into an estimate for an obligation you have never defined, so
+callbacks come out of the current job's margin. And at the licensing board,
+where about half the complaints closed before investigation closed for
+insufficient evidence, these are decided on documents you do not have.
+
+RECOMMENDATION:
+Write a one year workmanship term with explicit exclusions, and a separate one
+year plant establishment term with trees handled by trunk size or carved out.
+Anchor the numbers to Civil Code 896(g)(7) and (g)(12) and the state water
+ordinance establishment definition rather than trade folklore. Date
+substantial completion on every job. Have California counsel review it, and
+keep it off the website until the term, the exclusions and the duration all
+exist together, because advertising a guarantee obliges you to publish its
+limits.
+
+WHAT WOULD CHANGE THIS VERDICT:
+Your own callback history. If the real rate of return and repair events over
+the last several years is close to zero, the exposure and reserve arguments
+shrink to noise and the answer becomes leave it verbal and document the
+closeout instead. Also a tiered survey of small residential contractors
+showing written terms are near universal here, which would harden the
+recommendation, or one showing written terms raise claim frequency, which
+would reverse it.
+
+Supported by: bpc-7159-home-improvement-contract-requires-no-warranty, ccp-337-1-patent-four-year-bar-excludes-owner-occupied-single-unit-residence, ccp-337-15-ten-year-latent-repose, bpc-7091-cslb-discipline-window-4-and-10-years, civ-896-g12-landscaping-must-survive-one-year, mwelo-defines-establishment-period-as-one-year, uf-ifas-tree-establishment-scales-with-trunk-caliper, forcada-2016-defects-shift-from-structural-to-finish-at-handover, cslb-complaint-volume-and-intake-outcomes-fy2324, cslb-arbitration-thresholds-25k-and-50k, ftc-warranty-guarantee-must-disclose-details-and-limits, usher-burgett-consumers-value-extended-home-warranty
+
+------------------------------------------------------------------------
+DECISION: No minimum project size and no starting price on the website.
+Callers find out on the phone whether they are in range.
+
+VERDICT: NO GOOD EVIDENCE EITHER WAY   (evidence strength: absent)
+
+PLAIN ANSWER:
+Nothing measures this. Not weak evidence, none. Every source that spoke to it
+directly was a lead vendor or a marketing agency. Anyone quoting a percentage
+for how much a published minimum cuts tire kickers is quoting a blog. Your own
+numbers are the only way to settle it.
+
+WHAT THE NEAREST EVIDENCE SAYS:
+The best research on publishing prices at all comes from healthcare, and it
+found the tools are mostly ignored, with small effects among the few who use
+them. So a published number is a weak instrument either way. The more
+interesting result is that under price transparency the well regarded
+providers priced up rather than down. That route is closed to you right now,
+because the site's projects, photos and testimonials are still placeholders. A
+floor published above an empty portfolio is just a bare number.
+
+COST OF DOING NOTHING:
+Your buyers are told by both the licensing board and the FTC to collect at
+least three bids and compare like for like. You supply nothing comparable, so
+the comparison happens using the two firms that did say something, usually on
+price. All the qualification work stays on your phone and your windshield as
+an untracked tax. And the one route by which disclosure helps a good firm
+stays shut while the site is stubs.
+
+RECOMMENDATION:
+Keep the no published minimum for now, because spare capacity makes an
+unqualified visit nearly free and the market has been soft, but treat that as
+right for a reason that expires. As the next two or three real projects land,
+replace the silence with a coarse budget band on completed work plus a
+published fixed price and deliverable list for the design step. Never publish
+a company wide starting price, because price and dates are per job contract
+terms, and because the FTC requires a documented basis before an objective
+claim runs.
+
+WHAT WOULD CHANGE THIS VERDICT:
+Ninety days logging every inbound lead: source, stated budget or refusal to
+state one, whether a visit happened, hours and miles used, outcome. Under
+about one in five out of range and short visits means drop the question. A
+third or more of your windshield time means a coarse published band pays for
+itself. Also note this flips when the book fills, so it needs a review date
+rather than standing as settled policy.
+
+Supported by: published-prices-alone-move-little-behaviour, cslb-brochure-three-bids-references-similar-projects, ftc-tells-buyers-to-collect-multiple-estimates, credence-goods-liability-beats-verifiability, consumer-self-diagnosis-can-raise-quoted-price, ftc-substantiation-required-before-publication, bpc-7159-home-improvement-contract-contents, houzz-soi-2025-landscape-revenue, oews-bay-area-wage-premium-and-supervisor-rate
+
+------------------------------------------------------------------------
+DECISION: Free site visit, plus a quick concept and a planning budget at no
+charge, bounded at about an hour of effort and scaled to property size.
+
+VERDICT: EVIDENCE IS MIXED   (evidence strength: weak)
+
+PLAIN ANSWER:
+The free visit holds up. The free take away does not. How common it is to
+charge for a consultation, and what charging does to lead quality, are both
+unmeasured by any source worth citing, so nobody should tell you to start
+charging at the door, including me.
+
+WHY THE VISIT IS FINE:
+The credence goods research says the party who defines the problem controls
+the price, and that a homeowner who arrives with a confident wrong self
+assessment gets quoted the most. Getting on site early and free is how you
+become the one defining the scope. That is direction only, from taxi meters
+and laptop repairs, so no number transfers.
+
+WHY THE FREE CONCEPT AND BUDGET IS NOT:
+A concept with a budget is a scope definition, and your own licensing board
+tells homeowners to obtain three comparable bids. You are solving the
+comparability problem for the buyer, for free, and handing the answer to two
+competitors who never left their yard. When the trade drafts around design
+work that was paid for, it attaches a limited licence restricting use to that
+project. Your free version carries none of that. The unpriced budget number is
+also an undocumented representation you will be held to.
+
+ON SCALED TO PROPERTY SIZE:
+Wrong scalar. Design effort scales with how complicated the program is, not
+lot area. California hands you a better line: 500 square feet of new
+landscape, or 2,500 renovated, with a permit or plan check, triggers the
+regulated documentation package. Scaling free effort to property size puts
+your biggest giveaways on exactly the jobs where the paid design step is most
+defensible.
+
+COST OF DOING NOTHING:
+You pay an owner hour plus a full single stop round trip from the yard, the
+worst travel to productive time ratio in the business with no route density
+benefit at all, roughly three times per job won. On the two that do not close
+you have also given a competitor your scope definition and your budget number.
+Your free hour is your only design sales capacity, so every unqualified trip
+is a paid design conversation you did not have.
+
+RECOMMENDATION:
+Keep the site visit free. Stop handing over the written concept and the
+planning budget. End every visit either in a signed design agreement or in a
+declined lead, and answer price curiosity with a coarse budget band on
+completed projects rather than a job specific number produced in an hour.
+Remember the three business day cancellation window, five days for clients 65
+and over, sits in front of any kitchen table signature anyway.
+
+WHAT WOULD CHANGE THIS VERDICT:
+Thirty logged visits with lead source, whether a concept and budget were
+handed over, and whether a design agreement was signed. If cold web leads
+convert close to referrals, the free concept is doing real work. A six month
+test withholding the written concept while keeping the visit free would settle
+it directly. And if the maintenance book already supplies most design work,
+the question shrinks, because visits to known accounts are cheap and pre
+qualified.
+
+Supported by: consumer-self-diagnosis-can-raise-quoted-price, credence-goods-uninformed-buyers-pay-more, cslb-brochure-three-bids-references-similar-projects, ftc-tells-buyers-to-collect-multiple-estimates, wsba-design-work-product-limited-license, ca-5641-unlicensed-conceptual-vs-construction-documents, ca-landscape-contractor-may-design-only-what-it-builds, mwelo-500sqft-documentation-package-trigger, mwelo-contractor-may-sign-design-plan, daganzo-vrp-linehaul-term, oews-bay-area-wage-premium-and-supervisor-rate, cslb-complaint-volume-and-intake-outcomes-fy2324, ca-three-day-right-to-cancel-kitchen-table, houzz-soi-2025-landscape-revenue

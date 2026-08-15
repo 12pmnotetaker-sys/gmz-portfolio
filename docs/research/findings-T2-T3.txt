@@ -1,0 +1,423 @@
+GMZ RESEARCH KNOWLEDGE BASE — FINDINGS (T2T3)
+Study 001, compiled 15 August 2026
+========================================================================
+
+One finding per block. Fields are stable so agents can parse them.
+T1 = government / statute / academic / extension.  T2 = association research.
+T3 = trade or vendor survey.  Never cite T3 alone as settled fact.
+Never add a finding without a source URL and a date.
+
+========================================================================
+
+### nalp-financial-benchmark-2025  [T2 / medium]
+CLAIM: The 2025 Financial Benchmark Report, compiled by Industry Insights
+  from confidential surveys submitted by 142 organizations representing 344
+  locations covering FY2024, reports that the typical company saw 8.5
+  percent sales growth in 2024 versus 15.7 percent in 2022, a 13 percent
+  median change in contract value per installation job and a median customer
+  count up 13 percent to 355 clients per firm, and breaks gross profit out
+  by work type including design build, with breakdowns by revenue size,
+  profitability and region.
+FIGURE: 142 organizations / 344 locations; 8.5% sales growth (typical company); +13% median contract value per installation job; 355 median clients
+SOURCE: National Association of Landscape Professionals, Financial Benchmark Report announcement (data collected by Industry Insights)
+URL: https://blog.landscapeprofessionals.org/gain-competitive-insights-with-the-2025-financial-benchmark-report/
+PUBLISHED: 2025-10-14   SAMPLE: 142 organizations representing 344 locations, FY2024 data, confidential surveys   GEO: US national
+BEARS ON: The only landscape industry benchmark located that discloses its
+  sample and segments gross profit by design build versus maintenance. If an
+  outside yardstick is wanted for the two service lines, this is the one
+  worth buying into and participating in.
+CAVEAT: Merges two duplicate entries describing the same report. 142 self
+  selected firms nationally, skewed toward companies large enough to submit
+  full financial statements, so not a probability sample; a four person
+  Peninsula firm will land in a thin or absent cell. The design build gross
+  profit figures are behind the paywall and unseen, so nothing about design
+  build margins can be quoted from it. The 8.5 percent is quoted as the
+  typical company, not explicitly a median. An assertion elsewhere that
+  firms above $10M performed strongest is unsupported by the page.
+
+### front-end-planning-alignment-payoff  [T2 / low]
+CLAIM: Construction Industry Institute research summary RS213-1 reports that
+  projects with better aligned teams during front end planning performed
+  approximately 10 percent better on costs and over 16 percent better on
+  schedules.
+FIGURE: ~10% better cost; >16% better schedule
+SOURCE: Construction Industry Institute, Front End Planning: Break the Rules, Pay the Price (RS213-1)
+URL: https://www.construction-institute.org/front-end-planning-break-the-rules-pay-the-price
+PUBLISHED: 2006-11-01   SAMPLE: 17 case studies from projects over $1.5B; sample behind the 10%/16% figures not disclosed   GEO: US national, capital projects
+BEARS ON: The nearest evidence for a phased design agreement with a scope
+  definition gate before construction is authorised: define scope to a
+  standard, then commit. It is the reasoning behind charging for the
+  definition phase separately.
+CAVEAT: Twenty years old, with no sample size disclosed behind the two
+  headline percentages. The population is industrial and capital projects
+  worth over $1.5 billion. The mechanism may transfer to a residential yard;
+  the magnitudes must not be quoted as though they do. A Project Definition
+  Rating Index threshold attributed to this page could not be found on it
+  and is recorded as a gap.
+
+### reviews-widely-read-but-half-distrusted  [T2 / low]
+CLAIM: Online reviews are widely consulted but only about half of readers
+  believe them: 82 percent of US adults say they at least sometimes read
+  online customer ratings or reviews before purchasing items for the first
+  time, with 40 percent doing so always or almost always; among those who
+  read online reviews, 51 percent say they generally give an accurate
+  picture of product quality, while 48 percent say it is often hard to tell
+  whether online reviews are truthful and unbiased.
+FIGURE: 82% read at least sometimes; 40% always/almost always; among review readers, 51% accurate vs 48% hard to tell
+SOURCE: Pew Research Center, Online reviews and ratings, in Online Shopping and E-Commerce
+URL: https://www.pewresearch.org/internet/2016/12/19/online-reviews/
+PUBLISHED: 2016-12 (fielded 2015-11/2015-12)   SAMPLE: 4,787 American Trends Panel respondents; margin of error ±1.94 percentage points   GEO: US national
+BEARS ON: Explains why a contractor's own published content still matters in
+  a review dominated market. The things a firm can publish that reviews
+  cannot supply are the independently checkable ones: a licence number,
+  named towns, a written process, references on request.
+CAVEAT: Fielded in late 2015, so the data is over ten years old and the
+  percentages should not be quoted as current. The 51 and 48 percent figures
+  are shares of review readers, not of all adults. Covers first time
+  purchases of products generally, not selection of a licensed contractor
+  for a five figure construction project. Pew fits none of the tiers cleanly
+  and is placed at T2 on the strength of a disclosed probability panel
+  method.
+
+### usher-burgett-consumers-value-extended-home-warranty  [T2 / low]
+CLAIM: A survey of 162 US adults reported greater perceived value in
+  extended new home warranties together with a stated willingness to pay for
+  them, and a positive association with a builder provided preventative
+  maintenance program.
+FIGURE: n=162 US adults
+SOURCE: Usher & Burgett, Consumer Perception and Willingness to Pay for Extended New Home Warranties, The Professional Constructor 44(1), Article 9
+URL: https://open.clemson.edu/aic-journal/vol44/iss1/9/
+PUBLISHED: 2019   SAMPLE: 162 US adults   GEO: US national
+BEARS ON: The only tiered evidence located bearing on whether a warranty
+  influences buyer behaviour. It points toward a warranty plus a paid
+  maintenance plan being a saleable package rather than a giveaway.
+CAVEAT: It does not establish that a warranty changes contractor choice,
+  only that consumers say they value one. A dollar figure previously
+  attached to this study was struck because the full text returned HTTP 403.
+  The subject is new home warranties from production builders, not landscape
+  remodel work; n=162 is small, recruitment unverified, and the study is
+  seven years old. The journal is association refereed rather than an
+  indexed scholarly journal.
+
+### houzz-soi-2025-landscape-revenue  [T3 / medium]
+CLAIM: Revenue for landscaping and outdoor service firms declined 6.5
+  percent in 2024, the second largest drop among seven industry groups after
+  specialty interior services at -7.2 percent, and those firms expect 9.1
+  percent growth in 2025.
+FIGURE: -6.5% revenue in 2024 (2nd largest of 7 groups); +9.1% projected for 2025
+SOURCE: Houzz, 2025 U.S. Houzz State of the Industry
+URL: https://www.houzz.com/magazine/2025-u-s-houzz-state-of-the-industry-stsetivw-vs~180175249
+PUBLISHED: 2025   SAMPLE: 1,537 US residential renovation businesses on Houzz; fielded 7 November to 15 December 2024   GEO: US national
+BEARS ON: Context for how hard the qualification step should work. In a year
+  when landscape firms' revenue fell, the instinct is to chase every lead;
+  the counter argument is that a soft market is when an unqualified site
+  visit costs the most.
+CAVEAT: Surveys businesses on the vendor's own platform, so the frame over
+  samples marketing active firms and under samples referral driven ones.
+  Promotional purpose. The 9.1 percent is a self reported expectation
+  collected in late 2024, not an outcome, and is now checkable against
+  reality.
+
+### aspire-thrive-recurring-maintenance-revenue-share  [T3 / low]
+CLAIM: In a vendor survey of 1,015 commercial landscape contractors, 59
+  percent said the majority of their revenue comes from recurring
+  maintenance services, 35 percent of contractors attribute revenue to
+  repeat clients and 26 percent cite referrals, 70 percent planned to raise
+  wages in 2025 with 44 percent of those by at least 4 percent, and pay gaps
+  between maintenance and construction crews are often $4 to $5 per hour.
+FIGURE: 59% majority revenue from recurring maintenance; $4-$5/hr maintenance vs construction crew pay gap; 70% planned wage rises
+SOURCE: Aspire Software / Thrive Analytics 2025 landscape industry survey, GlobeNewswire release
+URL: https://www.globenewswire.com/news-release/2025/10/07/3162574/0/en/New-Aspire-Software-Data-Shows-Commercial-Landscape-Contractors-Focus-on-Client-Retention-Operational-Efficiency-and-Smarter-Tech-Investments.html
+PUBLISHED: 2025-10   SAMPLE: 1,015 commercial landscape contractors, fielded 2 to 23 May 2025; selection and recruitment method not disclosed   GEO: US national
+BEARS ON: Corroborates that recurring maintenance is where the revenue base
+  of this industry sits, and puts a rough number on the maintenance versus
+  construction crew pay discount.
+CAVEAT: The 35 and 26 percent figures are shares of respondents, not shares
+  of revenue, and must not be read as a 61 percent revenue base. A software
+  vendor's survey of its own market: commercial rather than residential
+  respondents, undisclosed selection, and a sponsor selling to firms large
+  enough to run multiple systems. The pay gap is hedged as often, with no
+  distribution, so it is not a rate input.
+
+### end-to-end-platform-adoption  [T3 / medium]
+CLAIM: In a vendor commissioned survey of commercial landscape contractors,
+  55 percent currently used an end to end business management solution and
+  31 percent said they planned to invest in one in 2025.
+FIGURE: 55% currently use; 31% plan to invest
+SOURCE: Aspire Software / Thrive Analytics, 2026 Commercial Landscape Industry Report (press release)
+URL: https://www.barchart.com/story/news/35280148/new-aspire-software-data-shows-commercial-landscape-contractors-focus-on-client-retention-operational-efficiency-and-smarter-tech-investments
+PUBLISHED: 2025-10   SAMPLE: over 1,000 commercial landscaping business owners and executives; fielded 2 to 23 May 2025   GEO: US national
+BEARS ON: The best available answer to what fraction of the trade is
+  actually on a platform. Roughly half are not, so staying off one is not an
+  outlier position.
+CAVEAT: Published by a platform vendor whose commercial interest is in
+  making adoption look both widespread and incomplete. The sample is
+  commercial landscape contractors with no size breakdown; commercial
+  focused firms skew substantially larger than a four crew residential
+  design build shop. Treat the 55 percent as describing a different
+  population.
+
+### tool-sprawl  [T3 / medium]
+CLAIM: 62 percent of surveyed commercial landscape contractors use seven or
+  more separate software solutions for end to end operations, and 29 percent
+  use ten or more.
+FIGURE: 62% use 7+ solutions; 29% use 10+
+SOURCE: Aspire Software / Thrive Analytics, 2026 Commercial Landscape Industry Report (press release)
+URL: https://www.barchart.com/story/news/35280148/new-aspire-software-data-shows-commercial-landscape-contractors-focus-on-client-retention-operational-efficiency-and-smarter-tech-investments
+PUBLISHED: 2025-10   SAMPLE: over 1,000; fielded 2 to 23 May 2025   GEO: US national
+BEARS ON: Suggests a platform purchase should be budgeted as an addition to
+  the stack rather than a replacement for it, unless retirement of specific
+  named tools is written into the decision. That is an inference, not a
+  finding.
+CAVEAT: The figure is across all surveyed contractors, not across platform
+  users, so it does not show that platform adoption failed to eliminate
+  point tools. Vendor published, and the framing exists to sell
+  consolidation. Solutions is undefined and may count a bank portal or fuel
+  card. Firms running seven plus tools are likely far larger.
+
+### function-adoption-back-office-first  [T3 / medium]
+CLAIM: Among 1,015 surveyed commercial landscape professionals, 72 percent
+  run accounting on software and 67 percent run invoicing; the source
+  publishes no corresponding figure for estimating or job costing.
+FIGURE: accounting 72%, invoicing 67%
+SOURCE: Aspire Software, 2026 State of the Commercial Landscape Industry report summary (vendor blog)
+URL: https://www.youraspire.com/blog/landscape-industry-insights-report
+PUBLISHED: 2025-07   SAMPLE: n=1,015 commercial landscape professionals, fielded 2 to 23 May 2025   GEO: US national
+BEARS ON: Confirms software adoption is anchored in back office functions.
+  It does NOT establish that field and estimating adoption is lower, because
+  the source reports no number for them.
+CAVEAT: Absence of a figure is not a low figure. Vendor published. A
+  separate set of numbers circulating in search results attributed to a
+  later report could not be traced to any fetchable source and conflicts
+  with this pair; it is not cited.
+
+### estimating-and-job-costing-gaps  [T3 / low]
+CLAIM: Among surveyed non-Aspire commercial landscaping professionals, 43
+  percent reported lacking estimating tools and 35 percent reported lacking
+  job costing capabilities.
+FIGURE: 43% lack estimating tools; 35% lack job costing capabilities
+SOURCE: Aspire 2026 Technology Trends Report (Thrive Analytics), reported in Landscape Management
+URL: https://www.landscapemanagement.net/aspires-2026-technology-trends-report-why-integrated-platforms-are-key-to-landscaping-margins/
+PUBLISHED: 2026-04   SAMPLE: more than 500 commercial landscaping professionals; field dates not disclosed   GEO: US national
+BEARS ON: The closest available answer on how many firms job cost against
+  estimates at all. A firm whose existing estimating system already closes
+  the estimate to actual loop is ahead of roughly a third of this
+  population, which weakens the case that a platform fills a capability
+  hole.
+CAVEAT: Vendor published, and the population is described as non-Aspire
+  enterprise users, a category the article never defines, so the denominator
+  is unknown. More than 500 is a floor, not a count, and no field dates are
+  disclosed. Lacking capability is self reported and is not the same as does
+  not job cost. Directional only.
+
+### platform-margin-claims-unreliable  [T3 / low]
+CLAIM: The vendor reports that manual tool users had no profit margins above
+  15 percent, spreadsheet users clustered at 4 to 7 percent with only 9
+  percent above 11 percent, while one in five of its own users reported
+  margins above 11 percent, presented without any control for firm size,
+  revenue or maturity.
+FIGURE: spreadsheet users cluster 4-7%, 9% above 11%; vendor's users 20% above 11%; manual tool users none above 15%
+SOURCE: Aspire 2026 Technology Trends Report (Thrive Analytics), reported in Landscape Management
+URL: https://www.landscapemanagement.net/aspires-2026-technology-trends-report-why-integrated-platforms-are-key-to-landscaping-margins/
+PUBLISHED: 2026-04   SAMPLE: more than 500 commercial landscaping professionals; field dates not disclosed   GEO: US national
+BEARS ON: Record this as the argument the firm will be sold, and as the
+  reason not to believe it. If any vendor claims a platform lifts margin,
+  this is the underlying evidence, and it does not support a causal reading.
+CAVEAT: A vendor measuring its own customers against non customers with no
+  size control, no revenue control and no baseline. Selection alone would
+  produce this pattern, since firms that can afford and staff a platform are
+  larger and more mature than firms on spreadsheets. Do not treat as
+  evidence that adopting a platform raises margin.
+
+### lmn-granum-pricing  [T3 / high]
+CLAIM: LMN by Granum lists $297 a month for Starter (1 office or crew lead
+  licence plus 5 crew licences) and $648 a month for Professional (3 office
+  plus 15 crew licences), both plus an unquantified one time onboarding fee,
+  and Real-Time Job Costing is a Professional tier feature that is NOT
+  included in Starter.
+FIGURE: $297/mo Starter; $648/mo Professional; Enterprise starts at 100 users, quote only; onboarding fee referenced but not published
+SOURCE: Granum (LMN) published pricing page
+URL: https://granum.com/lmn/pricing/
+PUBLISHED: 2026-08   SAMPLE: n/a — vendor list price, fetched 2026-08-15   GEO: US national
+BEARS ON: If closing the estimate to actual loop is the reason to buy, the
+  relevant price is $648 a month, not $297, roughly 2.2 times the figure an
+  earlier draft put in front of the decision. Starter includes budgeting,
+  estimating, scheduling, crew app, invoicing and basic reporting, and lists
+  no CRM.
+CAVEAT: Vendor self published list price, not independent research, and list
+  price is not transaction price. The one time onboarding fee is never
+  quantified, so first year total cost cannot be computed from public
+  information. For scale, $297/mo is $3,564/yr and $648/mo is $7,776/yr,
+  against a California sub 20 employee mean of about $553K that is not this
+  firm's revenue. Feature tier boundaries move; confirm job costing
+  inclusion in writing before purchase.
+
+### singleops-pricing  [T3 / medium]
+CLAIM: SingleOps by Granum lists $220, $385 and $550 per month (Essential,
+  Plus, Premier) with a 9 percent annual discount and additional office or
+  sales users at $55, $115 and $150 per month, but Granum positions
+  SingleOps as its tree care and arborist product, not its landscaping
+  product.
+FIGURE: $220 / $385 / $550 per month; annual $200 / $350 / $500; additional office or sales users $55 / $115 / $150 per month
+SOURCE: Granum (SingleOps) published pricing page
+URL: https://granum.com/singleops/pricing/
+PUBLISHED: 2026-08   SAMPLE: n/a — vendor list price, fetched 2026-08-15   GEO: US national
+BEARS ON: Probably does not belong in a design build landscaping shortlist
+  at all. What survives as useful is the per seat escalation pattern: at
+  $115 to $150 a month per extra office user, adding a second estimator can
+  cost more than a full tier step.
+CAVEAT: Vendor self published list price. Because the product is aimed at
+  arborists, its estimating model is unlikely to fit landscape design build
+  work, so it should not be price compared against the landscaping product
+  as though the two were interchangeable. The pricing page does not state
+  how many users each base tier includes.
+
+### jobber-pricing-job-costing-tier  [T3 / medium]
+CLAIM: Jobber gates job costing above its two cheapest tiers: neither Core
+  nor Connect includes it, and it appears only from the Grow tier upward.
+FIGURE: Tier boundary verified. Corroborated prices: Core $49/mo month to month ($29 annual), Connect $139 ($99), Plus $499 ($399). The Grow tier price could not be established
+SOURCE: Jobber published pricing page
+URL: https://www.getjobber.com/pricing/
+PUBLISHED: 2026-08   SAMPLE: n/a — vendor list price, fetched 2026-08-15   GEO: US national
+BEARS ON: The cheap entry price that makes this attractive to a small firm
+  is exactly the tier that does not do job costing. If closing the estimate
+  to actual loop is the reason to buy, the entry level price is irrelevant
+  to the decision.
+CAVEAT: Two direct fetches returned incompatible Grow prices and third party
+  aggregators give a third, so no Grow price is stated here. Vendor self
+  published. It is a general home services product, not landscape specific,
+  so its estimating model may not accommodate a paid design step priced as a
+  share of construction.
+
+### arborgold-contract-lock  [T3 / medium]
+CLAIM: Arborgold requires an annual contract with automatic renewal and at
+  least 60 days written notice to cancel, and publishes neither per user
+  rates nor implementation fees.
+FIGURE: Annual contract required; agreements auto renew; minimum 60 days cancellation notice; per user and implementation pricing unpublished
+SOURCE: Arborgold published pricing page
+URL: https://arborgold.com/pricing/
+PUBLISHED: 2026-08   SAMPLE: n/a — vendor page, fetched 2026-08-15   GEO: US national
+BEARS ON: Contract term is the switching cost variable that matters most for
+  a small firm with no capacity to run a parallel pilot. A required auto
+  renewing annual commitment with 60 day notice makes a bad fit a 12 to 14
+  month mistake rather than a monthly one. This is the only hard switching
+  cost fact documented anywhere in this research.
+CAVEAT: The page shows two price columns whose monthly versus annual
+  labelling is internally contradictory, so tier pricing is unresolved and
+  must be confirmed directly. Because per user and implementation costs are
+  unpublished, total cost of ownership cannot be determined at all. Vendor
+  self published.
+
+### aspire-no-published-pricing  [T3 / high]
+CLAIM: Aspire publishes no dollar pricing; its plans page states only that
+  pricing varies based on company size, complexity, and what solution best
+  fits your business, that a single license fee is billed monthly, and that
+  there is no limit to the number of users.
+FIGURE: No price published; no minimum company size or revenue threshold stated on the page
+SOURCE: Aspire Landscape Management Software Plans (vendor page)
+URL: https://www.youraspire.com/aspire-plans
+PUBLISHED: 2026-08   SAMPLE: n/a — vendor page, fetched 2026-08-15   GEO: US national
+BEARS ON: It cannot be cost compared without entering a sales process. An
+  unlimited user licence model pays off at headcounts a four person firm
+  does not have, so the pricing structure itself is aimed at a larger firm
+  even though the vendor states no minimum.
+CAVEAT: A widely repeated $1M revenue entry point is not on this page and
+  traces only to a competitor's comparison page; it is struck entirely and
+  recorded as a gap. What is confirmed is only the absence of published
+  pricing, which is itself decision relevant.
+
+### vendor-consolidation-granum  [T3 / high]
+CLAIM: LMN, SingleOps and Greenius merged under the single Granum brand,
+  merger announced November 2024 and brand launched October 2025, with all
+  three products continuing separately.
+FIGURE: 3 landscape and arborist software products under 1 owner; merger announced 2024-11, brand launched 2025-10
+SOURCE: Landscape Management, LMN, SingleOps and Greenius merge to form new Granum brand
+URL: https://www.landscapemanagement.net/lmn-singleops-and-greenius-merge-to-form-new-granum-brand/
+PUBLISHED: 2025-10   SAMPLE: n/a — trade press report of a corporate transaction   GEO: North America
+BEARS ON: Vendor concentration risk. Two apparently independent shortlist
+  entries are one company, so a comparison between them is not a competitive
+  one. Post merger product consolidation is a live risk, compounded by the
+  annual contract lock in seen elsewhere in this market.
+CAVEAT: The company states all three products continue with the same
+  functionality and support, so this is a branding consolidation on the
+  public record and is not evidence of a roadmap merge. No source discloses
+  financial terms. Old pricing URLs for two of the products now redirect to
+  the merged brand, independently confirmed.
+
+### db-margin-sizes-dbia-summary  [T3 / low]
+CLAIM: An industry association summary page states that, against design bid
+  build, design build projects showed 0.3 percent less unit cost, 3.8
+  percent less cost growth, schedule growth 1.7 percent less, construction
+  36 percent faster and overall delivery 102 percent faster.
+FIGURE: 102% faster delivery; 36% faster construction; 3.8% less cost growth; 1.7% less schedule growth; 0.3% lower unit cost
+SOURCE: Design-Build Institute of America, New Research Shows Design-Build Continues to Deliver Project Most Efficiently
+URL: https://dbia.org/new-research-shows-design-build-continues-to-deliver-project-most-efficiently/
+PUBLISHED: unknown (no publication date appears on the page)   SAMPLE: 212 projects (53 DBB, 79 CMR, 80 DB); completions 2008-2013; 62% public, 38% private   GEO: US national, building construction
+BEARS ON: The specific numbers commonly attached to the peer reviewed
+  delivery finding. Recorded separately and at a lower tier precisely
+  because they come from an advocacy organisation's promotional page, not
+  from the paper.
+CAVEAT: The association exists to promote design build and this page is
+  promotional; it summarises third party university research rather than its
+  own. No date appears on the page. The 102 percent faster figure is
+  undefined there and cannot be interpreted: it is not a 102 percent
+  schedule saving, and quoting it loosely will mislead.
+
+### wsba-model-residential-db-bundles-design  [T3 / medium]
+CLAIM: A bar association construction law section's Model Residential
+  Design-Build Contract (Lump Sum) puts design and construction in a single
+  lump sum, with the owner supplying design criteria and the design builder
+  constructing to plans the owner approved; it contains no separate design
+  fee and no design phase agreement, and the owner's only exit is a general
+  termination for convenience paying for work executed to date.
+SOURCE: Washington State Bar Association Construction Law Section, Model Residential Design-Build Contract (Lump Sum)
+URL: https://www.wsba.org/docs/default-source/legal-community/sections/con2/resources/con_resources_lump_sum_design-build_contract.pdf?sfvrsn=fb5f3bf1_3
+PUBLISHED: 2014-03-20 (PDF creation date; no date in the document body)   SAMPLE: n/a   GEO: Washington State
+BEARS ON: A two agreement model with a paid design step is not what this
+  model form contemplates, so a design agreement cannot be lifted off this
+  shelf; it has to be drafted. Clients advised by counsel may not recognise
+  the structure.
+CAVEAT: A bar section model form is a primary legal document, not research
+  of any tier, and provides zero evidence about what firms actually do; the
+  tier placement is a courtesy. Washington law, not California, 12 years
+  old, and the document states it does not constitute legal advice.
+  Termination for convenience does give the owner an exit, though not a
+  designated post design gate.
+
+### wsba-design-work-product-limited-license  [T3 / medium]
+CLAIM: Section 1.2.3 of that model contract deems all drawings,
+  specifications and electronic data furnished to the owner to be the design
+  builder's property, grants the owner a limited license to use such Work
+  Product solely for the Project to which this Design-Build Contract
+  pertains, and requires the owner to defend and indemnify the design
+  builder against claims arising from use of the work product on another
+  project or on the same project after the design builder is terminated
+  prior to Substantial Completion.
+SOURCE: Washington State Bar Association Construction Law Section, Model Residential Design-Build Contract (Lump Sum), § 1.2.3
+URL: https://www.wsba.org/docs/default-source/legal-community/sections/con2/resources/con_resources_lump_sum_design-build_contract.pdf?sfvrsn=fb5f3bf1_3
+PUBLISHED: 2014-03-20   SAMPLE: n/a   GEO: Washington State
+BEARS ON: The most portable clause for a design agreement: what a client may
+  and may not do with a paid plan set if they do not build with the firm. It
+  is the contractual half of the question the California licensing statute
+  raises.
+CAVEAT: A model form is not research. Model language from another state;
+  enforceability in California, and its interaction with California consumer
+  contract law, would need review before use.
+
+### asla-repeat-clients-win-work  [T3 / low]
+CLAIM: An industry report drawing on over 300 firm leaders states that 61
+  percent of landscape architecture firms win new projects through repeat
+  clients and that the West Coast comprises 25 percent of all firms.
+FIGURE: 61% win new work through repeat clients; 25% of firms on the West Coast
+SOURCE: American Society of Landscape Architects, Landscape Architecture Industry Report 2024
+URL: https://www.asla.org/resources/practitioners/industry-report-2024
+PUBLISHED: 2024   SAMPLE: over 300 firm leaders; recruitment method and fielding dates not disclosed   GEO: US national
+BEARS ON: If repeat and referral relationships dominate lead generation for
+  design led firms, existing maintenance accounts are the highest quality
+  design build lead source already owned, and qualifying them costs nothing.
+CAVEAT: The population is landscape architecture firms, a different licensed
+  profession with different clients and project types from a landscape
+  contractor. The 61 percent describes firms' reported channel mix, not any
+  measured effect of relying on repeat clients. Only the public key findings
+  page was read. The 25 percent describes the distribution of surveyed
+  firms, not market share.
