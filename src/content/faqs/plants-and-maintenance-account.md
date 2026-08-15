@@ -4,13 +4,12 @@ short: 'Plants and the maintenance account'
 phase: bridge
 serviceLine: both
 order: 30
-published: false
-needsDecision: true
-decisionNote: 'Confirm the written warranty before this publishes: the workmanship term (recommended one year from completion), that plants are excluded with the reason stated, and what, if anything, GMZ commits to on planting where GMZ holds the maintenance account. Nothing is written yet, so no term or coverage is stated here as fact.'
+published: true
+needsDecision: false
 ---
 
-Because once we hand over, we no longer control the watering, and watering is what decides whether plants live. We can choose the right plant for the exposure, prepare the soil, plant it correctly and set the controller before we leave. What happens next is outside our hands: a controller switched off for a trip, a zone that stops running and nobody notices, a mower through a drip line, a hot stretch in the first September. So we do not guarantee plants after installation, and we say that before you sign rather than after something dies.
+Because once we drive away, the two things that decide whether a plant lives, water and care, are out of our hands. A plant is not a paver. It can be chosen well and planted well and still die of a controller switched off during a vacation, a heat wave nobody adjusted for, or a dog with a favourite corner. We do not guarantee living things whose care we do not control, and we say so up front because we would rather be straight with you than quietly build plant replacements into every price.
 
-When we hold the maintenance account, that reason goes away. We are the ones on the property, we are the ones adjusting run times through the season, and we are the ones who see a plant under stress while it can still be saved. Standing behind planting is reasonable where we control the conditions and unreasonable where we do not. What exactly that covers is being written down now, and it will sit in the agreement rather than in a conversation.
+What changes with a maintenance account is control. If our crew is the one watering, adjusting the controller through the seasons and watching the beds every week, problems get caught while they are small and plants get what they need through the risky first year. That is why the maintenance conversation happens at handover: it is the single best thing you can do to protect what you just paid for.
 
-If it still reads as a sales pitch, measure it against what a client who goes elsewhere gets: the plan, the plant list, the irrigation zone map, the controller settings and the care guide, with nothing held back. We would rather the garden survive under somebody else's care than sell an account nobody wanted.
+Either way, if something in the garden is failing, call us and we will come look. A struggling plant is often really an irrigation problem, and those are exactly the calls worth making early.

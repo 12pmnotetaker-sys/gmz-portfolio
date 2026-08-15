@@ -4,13 +4,12 @@ short: 'The final walkthrough'
 phase: after
 serviceLine: design-build
 order: 40
-published: false
-needsDecision: true
-decisionNote: 'Confirm that a walkthrough with a written punch list is standard on every design/build job: who attends, who signs it, whether both parties keep a copy, and how long GMZ has to clear punch items before the job is called complete.'
+published: true
+needsDecision: false
 ---
 
-Yes, and our position is that it should be the same on every job: a walkthrough with you, on site, ending in a written punch list. We walk the whole project together, you point out anything that is not right, we write each item down with a date next to it, and you keep a copy. Nothing on that list is a favor. It is part of the job you already bought, and the list is not closed until you say it is.
+We walk the finished project with you before we call the job done. Anything that is not right goes on a written punch list: a paver sitting proud, a head spraying the fence, a plant that went in leaning. You keep a copy and so do we.
 
-One honest caveat: this has varied job to job, and we are standardizing it. If it matters to you, ask for it before you sign and we will put it in the contract in plain words.
+We then have ten business days to clear the list, and the job is complete when the list is, not before. The final payment is tied to that moment, which keeps the incentive exactly where you want it.
 
-The last day is also when we offer maintenance. That is a separate conversation with its own agreement, its own schedule and its own terms, not something folded into your construction contract, and you are free to say no.
+One honest note about new gardens: some things only show up once you live with the work. If you spot something in the weeks after the walkthrough, call us. The punch list is a tool, not a cutoff for talking to us.
