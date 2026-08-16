@@ -229,3 +229,100 @@ G6. Whether public agency maintenance scope is comparable to residential scope a
     all is unresolved. Municipal work here is medians, parks and mowing on large
     contiguous sites. Residential garden maintenance differs in task mix, site
     size and access.
+
+========================================================================
+WORKSTREAM 3 - DESIGN FEE ANCHORS AND THE PAID CONCEPT PHASE
+Added 2026-08-16
+
+Scoping note recorded first, because it changes the effort this workstream
+needs. Study 002 already answered the primary question of this workstream. It
+established the published fee curve (Washington OFM and Delaware A/E schedules),
+the phase-weight breakdown, the remodel premium, the treatment of landscape
+design as a specialty consultant priced outside the building curve, and it
+disposed of the folk "6 percent" figure. Workstream 3 as planned assumed that
+ground was open. It is not. What follows is the one derivation that had not
+been made, and one gap re-confirmed.
+
+------------------------------------------------------------------------
+
+### concept-phase-share-of-design-fee  [DERIVED from T1 / high]
+CLAIM (DERIVED, NOT PUBLISHED): Using Washington OFM's published breakdown of a
+  basic-services fee by phase, a concept-only first phase corresponds to
+  approximately 26 percent of a design-only engagement, and the remaining
+  measured-survey-and-drawings phase to approximately 74 percent.
+DERIVATION:
+    published phase weights, percent of the basic services fee
+      schematic design            18
+      design development          20
+      construction documents      31
+      bidding                      2
+      construction                27
+      project closeout             2
+                                 ---
+                                 100
+    a design-only engagement is the first three phases:  18 + 20 + 31 = 69
+      concept phase share       = 18 / 69 = 26.1 percent
+      later design phase share  = 51 / 69 = 73.9 percent
+MAPPING JUSTIFICATION: The AIA schematic design phase is the phase that
+  establishes general scope, conceptual design and scale, and produces a
+  preliminary estimate of construction cost. A "concept plus planning budget"
+  first phase is the same deliverable pair under a different name, which is why
+  the 18-point weight is the right one to use. The second phase, measured survey
+  through construction-ready drawings, maps to design development plus
+  construction documents.
+WHY IT MATTERS: The open business decision is what a paid concept phase should
+  cost relative to the whole design fee. This gives a published-schedule anchor
+  for that ratio: roughly one quarter, not one half and not a token. It anchors
+  the ratio only. It does not set the absolute figure, which depends on the
+  design fee itself.
+CAVEAT: This is arithmetic on two published numbers and is stated as a
+  derivation, in the same way Study 002 stated its 0.69 design-only derivation.
+  The 69/31 split is the published finding; the 18/69 ratio is not published
+  anywhere. Washington public building projects are also not California
+  residential landscapes, and the phases are named for building work.
+SOURCE: Washington State OFM, 2025-27 Capital Budget Instructions, Chapter 9
+  (Percent of Basic Services Fee breakdown), as recorded in Study 002 finding
+  wa-ofm-phase-split-design-share
+URL: https://ofm.wa.gov/wp-content/uploads/sites/default/files/public/budget/instructions/capital/2025-27/Ch9AEfees.pdf
+PUBLISHED: June 2024, effective 2025-07-01   SAMPLE: guideline, not a survey
+  GEO: Washington State public building projects
+
+------------------------------------------------------------------------
+
+### ca-no-published-ae-fee-curve  [T1 / high]
+CLAIM: California publishes no state A/E basic-services fee curve equivalent to
+  Washington's or Delaware's. The Department of General Services determines
+  architectural and engineering fees by a detailed task analysis of each
+  participating design discipline rather than by a published percentage-of-
+  construction schedule. The Division of the State Architect publishes fee
+  schedules tiered by construction cost, but those are plan review and
+  certification fees, not design fees.
+WHY IT MATTERS: Every fee-curve anchor available to GMZ is from another state.
+  There is no California-specific published percentage to cite in a proposal or
+  an FAQ answer, and none is likely to appear. Out-of-state schedules have to be
+  cited as what they are.
+STATUS: Re-confirms Study 002's recorded gap rather than closing it. Study 002
+  noted the DGS fee page returned 404 and that search summaries indicated
+  task-analysis pricing; that indication is now confirmed against DGS's own
+  Architectural and Engineering page.
+SOURCE: California Department of General Services, Real Estate Services Division,
+  Project Management and Development Branch, Architectural and Engineering
+URL: https://www.dgs.ca.gov/RESD/About/Project-Management-and-Development-Branch/Architectural-and-Engineering
+PUBLISHED: accessed 2026-08-16   SAMPLE: agency practice statement   GEO: California
+
+========================================================================
+ADDITIONAL GAPS, WORKSTREAM 3
+
+G7. No California published A/E fee curve exists (see finding above). All
+    percentage anchors in this knowledge base are Washington and Delaware.
+
+G8. How private design/build firms split a paid concept phase from design
+    development is still unevidenced. Study 002 recorded that no T1 or T2 source
+    addresses pricing of a contractor's design phase at all, which makes the
+    split a business choice rather than a benchmarked one. The 26 percent figure
+    above is a public-sector analogy, not observed private practice.
+
+G9. Whether a paid concept phase suppresses lead volume, and by how much, is
+    unevidenced. Study 001 gap 11 recorded the same problem for publishing a
+    starting price: it can only be answered by measuring GMZ's own qualified
+    lead rate before and after the change.

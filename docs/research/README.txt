@@ -59,7 +59,11 @@ STUDIES IN THIS BASE
        Compiled 2026-08-15. 66 findings (61 T1, 1 T2, 4 T3),
        51 recorded gaps, 6 themes, 3 work products.
 
-  003  Public agency landscape maintenance pricing  [IN PROGRESS]
-       Compiled 2026-08-16. 7 findings (7 T1), 6 recorded gaps.
-       Workstream 1 of the pricing research plan only. Workstreams 2 and 3,
-       published competitor rates and design fee anchors, are not started.
+  003  Pricing: public agency maintenance rates, and design fee anchors
+       [IN PROGRESS]
+       Compiled 2026-08-16. 9 findings (8 T1, 1 derived from T1),
+       9 recorded gaps.
+       Workstreams 1 and 3 of the pricing research plan. Workstream 2,
+       published residential competitor rates, is not started.
+       Workstream 3 was largely answered already by Study 002; only one
+       derivation and one gap re-confirmation were added.
