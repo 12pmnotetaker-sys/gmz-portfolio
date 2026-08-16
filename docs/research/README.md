@@ -20,6 +20,14 @@ ephemeral container.
   with the real index numbers
 - `study-002-rebate-reference.txt` — per-town turf-replacement rebate reference
 - `study-002-raw.json` — the unprocessed workflow output
+- `study-003-findings-market.txt` — Study 003, in progress: public agency
+  landscape maintenance pricing. 7 findings and 6 gaps, including a derived
+  all-in rate per man-hour from a public bid price sheet, and the prevailing
+  wage determination that governs routine landscape maintenance
 - `README.txt` — the knowledge base rules (uploaded to Drive)
+
+Study 003 covers Workstream 1 of the pricing research plan only. It has no
+report or gaps file of its own yet; the gaps are recorded at the foot of the
+findings file until the study is finished.
 
 Nothing here is part of the website build.

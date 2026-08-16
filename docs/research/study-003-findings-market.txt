@@ -1,0 +1,231 @@
+GMZ RESEARCH KNOWLEDGE BASE
+Study 003: Workstream 1 - public agency landscape maintenance pricing
+Compiled 16 August 2026
+
+House rules apply. Every finding carries a source, a URL, a tier and a date.
+Nothing internal to GMZ appears in this file: no costs, no margins, no rates,
+no crew counts. The comparison of these figures against GMZ's own floor is a
+separate internal document and is deliberately not recorded here.
+
+========================================================================
+
+### pw-landscape-maintenance-classification  [T1 / high]
+CLAIM: California maintains a distinct prevailing wage classification,
+  "Landscape Maintenance Laborer," which by its own terms "Applies Only to
+  Routine Landscape Maintenance Work, Not New Landscape Construction." In
+  determination NC-LML-2026-1 the basic hourly rate is $16.90 in every
+  Northern California county listed, which is the California state minimum
+  wage. Total hourly rates including employer payments are $17.59 in San Mateo
+  County (routine work), $17.24 in Santa Clara County and $17.24 in San
+  Francisco. Overtime is $26.04, $25.69 and $25.69 respectively.
+WHY IT MATTERS: The statutory wage floor for public agency landscape
+  maintenance sits roughly 24 percent BELOW the OEWS median wage for
+  landscaping workers in this metro ($23.10/hr, May 2025, recorded in Study
+  002). Public agency maintenance work is therefore NOT inflated by prevailing
+  wage, as would be assumed by analogy with construction. A contractor serving
+  public agencies may lawfully staff routine maintenance at a labour cost below
+  the open market rate. Municipal maintenance pricing is consequently a
+  conservative comparable, not a generous one.
+CAVEAT: This applies to routine maintenance only. New landscape CONSTRUCTION
+  for a public agency falls under the ordinary construction craft
+  determinations, which are multiples of this rate. Municipal maintenance data
+  and municipal construction data are therefore skewed in opposite directions
+  and must never be compared with each other without separate adjustment.
+SOURCE: California Department of Industrial Relations, General Prevailing Wage
+  Determination NC-LML-2026-1, Landscape Maintenance Laborer, Northern California
+URL: https://www.dir.ca.gov/OPRL/2026-1/PWD/Determinations/Northern/NC-LML.pdf
+PUBLISHED: issued 2026-02-22, nominal expiration 2026-03-31, effective until
+  superseded   SAMPLE: statewide determination   GEO: Northern California counties
+
+------------------------------------------------------------------------
+
+### losgatos-bid-tab-2022  [T1 / high]
+CLAIM: The Town of Los Gatos received two responsive bids for its landscape
+  maintenance RFP, opened 2 June 2022, on identical scope:
+      BrightView Landscape Services      $167,402.00
+      Monarch Landscape Companies        $236,849.10
+  The winning bid was 29.3 percent below the only other bid. Allocation across
+  the four bid tables differed sharply between the two bidders: on Table A
+  (Medians and Facilities) Monarch bid $26,921.70 against BrightView's
+  $61,770.00, while on Table C (Mowing) Monarch bid $119,206.39 against
+  BrightView's $67,056.00.
+WHY IT MATTERS: Dispersion between two bidders on identical scope is large, and
+  the allocation across line items is inconsistent between them. Individual line
+  items are therefore not comparable across bidders; only contract totals and
+  derived blended rates are.
+SOURCE: Town of Los Gatos, Attachment 2, Landscape Maintenance RFP Bid Proposal
+  Results, 6/2/2022 (public record, town document portal)
+URL: https://weblink.losgatosca.gov/WebLink/0/edoc/1744963/x.pdf
+PUBLISHED: 2022-06-02   SAMPLE: two bids, one solicitation   GEO: Los Gatos, CA
+  (Santa Clara County)
+
+------------------------------------------------------------------------
+
+### losgatos-blended-rate-2022  [T1 / high]
+CLAIM: BrightView's winning bid priced every line item at a near-uniform blended
+  rate of approximately $45.70 per man-hour, all-in. The bid price sheet carries
+  a "Total Hours" column against each priced item, allowing the rate to be
+  derived directly. Across all 21 priced line items the total is $167,402 over
+  3,664 man-hours, a blended $45.69 per man-hour. Individual items range only
+  from $44.67 to $47.38 per man-hour.
+  The Town's bid price sheet states that unit prices "include all labor,
+  equipment, fees of any kind, overhead, insurance, fuel, materials, surcharges,
+  disposal fees, and any other costs," so this rate is the client's total price,
+  not a labour cost.
+WHY IT MATTERS: This is a directly observed, all-in market price per man-hour for
+  routine landscape maintenance performed by a national contractor in Santa Clara
+  County. It is the unit that a per-crew-day or per-truck-day figure can be
+  compared against.
+INFERENCE, NOT MEASURED: Monarch's man-hour estimates were not published. If
+  Monarch assumed comparable hours, its bid implies roughly $64.64 per man-hour.
+  Treat as an inference about the losing bid, not a finding.
+SOURCE: Town of Los Gatos, Attachment 1 (Agreement) and BrightView Landscape
+  Services Business Proposal of 27 May 2022, Attachment D Bid Price Sheet
+URL: https://weblink.losgatosca.gov/WebLink/0/edoc/1744965/x.pdf
+PUBLISHED: 2022-05-27   SAMPLE: one winning bid, 21 priced line items
+  GEO: Los Gatos, CA (Santa Clara County)
+
+------------------------------------------------------------------------
+
+### losgatos-per-visit-prices-2022  [T1 / high]
+CLAIM: Per-service-visit prices and man-hours per visit, from the same bid price
+  sheet. Frequencies are as bid.
+
+  Medians and facilities, 16 locations as one item:
+    $2,059 per service, 45.0 man-hours per service
+    12 services Sep-Feb (2/month), 18 services Mar-Aug (3/month)
+  Add/alternate locations, 13 locations as one item, quarterly:
+    $1,181 per service, 26.0 man-hours per service
+  Mowing, 12 parks, 44 services per year each:
+    Blossom Hill Park      $297    6.50 hrs
+    Oak Meadow Park        $208    4.59 hrs
+    Live Oak Manor         $184    4.02 hrs
+    La Rinconada Park      $178    3.89 hrs
+    Bachman Park           $173    3.77 hrs
+    Howes Play Lot         $139    3.05 hrs
+    Oak Hill Play Lot      $105    2.32 hrs
+    Civic Center           $102    2.23 hrs
+    Plaza Park              $43    0.95 hrs
+    Belgatos Park           $41    0.91 hrs
+    Pageant Grounds         $28    0.59 hrs
+    Los Gatos Youth Rec     $26    0.57 hrs
+  Landscape and lighting districts, 6 locations, 26 services per year each:
+    Kennedy Meadows        $457   10.00 hrs
+    Santa Rosa Heights     $457   10.00 hrs
+    Vasona Heights         $206    4.50 hrs
+    Hillbrook               $69    1.50 hrs
+    Blackwell Dr            $67    1.50 hrs
+    Gemini Ct               $46    1.00 hrs
+
+WHY IT MATTERS: The per-visit price scales almost perfectly with man-hours and
+  not at all with the number of stops. A 34-minute stop is priced at $26 and a
+  10-hour stop at $457, both at the same rate per hour. The bidder applied no
+  premium for small stops, which is only viable where stops are geographically
+  clustered and drive time between them is negligible.
+SOURCE: BrightView Landscape Services Business Proposal of 27 May 2022,
+  Attachment D Bid Price Sheet, Tables A to D
+URL: https://weblink.losgatosca.gov/WebLink/0/edoc/1744965/x.pdf
+PUBLISHED: 2022-05-27   SAMPLE: 21 priced line items, one bidder
+  GEO: Los Gatos, CA (Santa Clara County)
+
+------------------------------------------------------------------------
+
+### losgatos-extra-work-rates-2022  [T1 / medium]
+CLAIM: The same bid price sheet carries separate labour rates for emergency and
+  after-hours work, which the Town required to "reflect prevailing wages," across
+  four categories (Foreman, Flagger, Laborer, Operator). The straight-time rates
+  bid were $48.60, $55, $105 and $115, each with an overtime rate at exactly 1.5x
+  ($73, $82.50, $157.50 and $175).
+  Unit prices for incidental work were also bid: turf removal and replacement at
+  $3.45 per square foot ($51,750 based on 15,000 sq ft), and PVC repairs and valve
+  replacements at $300, $450 and $550 each.
+CONFIDENCE NOTE: The mapping of each straight-time rate to its labour category
+  could not be read reliably from the PDF's text layer; the four rate pairs are
+  certain, the category assignment is not. Recorded as a set rather than a mapping.
+WHY IT MATTERS: Extra and after-hours work is priced well above the $45.70
+  blended contract rate, in some categories more than double it. Contracted
+  routine work and call-out work are priced as different products.
+SOURCE: BrightView Landscape Services Business Proposal of 27 May 2022,
+  Attachment D Bid Price Sheet
+URL: https://weblink.losgatosca.gov/WebLink/0/edoc/1744965/x.pdf
+PUBLISHED: 2022-05-27   SAMPLE: one bidder   GEO: Los Gatos, CA (Santa Clara County)
+
+------------------------------------------------------------------------
+
+### losgatos-contract-terms-2022  [T1 / high]
+CLAIM: The executed agreement runs 1 July 2022 through 30 June 2027. Preventative
+  maintenance is capped at $167,402 annually and unanticipated maintenance at
+  $8,370 annually, for a total not to exceed $175,772 annually and a five-year
+  base of $878,860 before CPI adjustment. Compensation in later years adjusts
+  upward annually for CPI. The contractor pays the Town $100 per location per
+  scheduled service in liquidated damages for every missed service, in addition
+  to the monthly payment being reduced by the cost of that service.
+WHY IT MATTERS: The liquidated damages figure is an independent signal of what
+  the buyer considers a single visit to be worth, and the CPI ratchet is a
+  working precedent for escalation language.
+SOURCE: Town of Los Gatos, Agreement for Services with BrightView Landscape
+  Services, Inc.
+URL: https://weblink.losgatosca.gov/WebLink/0/edoc/1744962/Attachment%201%20-%20Agreement%20for%20Services%20-%20Brightview%20Landscape%20Services%202022.pdf
+PUBLISHED: 2022-06-21 (dated for identification)   SAMPLE: one executed contract
+  GEO: Los Gatos, CA (Santa Clara County)
+
+------------------------------------------------------------------------
+
+### fairfield-contract-value-2022  [T1 / medium]
+CLAIM: The City of Fairfield's landscape maintenance agreement with New Image
+  Landscape Company for Landscaping and Lighting Maintenance District No. 13
+  (North Cordelia) is capped at $313,804 annually, or $627,608 across the initial
+  24-month term beginning 1 January 2022. The agreement carries a detailed
+  frequency specification: mow weekly, edge weekly, spot weed control weekly,
+  leaf and litter removal weekly on lawns and biweekly on shrub, tree and ground
+  cover areas, complete irrigation system checks monthly, irrigation repairs
+  within 24 working hours, shrub pruning three times per year (April, July,
+  October), pond inspection twice per week. Unsatisfactory maintenance not
+  corrected on re-inspection carries a $75 deduction from the month's billing.
+WHY IT MATTERS: Useful as a scope-of-work benchmark for what a public agency
+  specifies and enforces. Its price is NOT comparable per unit: the agreement
+  states no acreage and no site count, so no denominator can be derived.
+GEO CAVEAT: Solano County, not the Peninsula. Weaker geographic comparability
+  than the Los Gatos record.
+SOURCE: City of Fairfield, Contractor Services Agreement with New Image Landscape
+  Company, LLMD No. 13 North Cordelia (public agenda attachment)
+URL: https://fairfield.novusagenda.com/agendapublic/AttachmentViewer.ashx?AttachmentID=6565&ItemID=4069
+PUBLISHED: execution date line blank, initial term begins 2022-01-01
+  SAMPLE: one executed contract   GEO: Fairfield, CA (Solano County)
+
+========================================================================
+GAPS RECORDED
+
+G1. No Peninsula agency bid tabulation was retrieved. The Los Gatos record is
+    Santa Clara County; San Mateo County agencies were searched without success
+    in the time spent. The City of Palo Alto's 2018 award staff report was
+    located but its document server returns HTTP 403 to automated retrieval, so
+    it could not be read. Retrieval by hand or by public records request remains
+    open.
+
+G2. All price evidence in this study is commercial and municipal. No residential
+    per-visit or per-hour price from a Peninsula competitor was obtained. The
+    residential market remains unevidenced, consistent with Study 001 gaps 44 and
+    45 which recorded that no producer price index and no Bay Area price index
+    exist for landscape maintenance services.
+
+G3. Only one bid tabulation was obtained, with two bidders. A single solicitation
+    is not a market. The 29.3 percent spread between the two bids suggests
+    dispersion is wide, which means more solicitations are needed before any
+    central tendency should be asserted.
+
+G4. Monarch Landscape Companies' man-hour estimates were not published, so its
+    implied rate per man-hour cannot be measured, only inferred from an assumption
+    about hours.
+
+G5. Los Gatos figures are from 2022 and carry a CPI ratchet. They have not been
+    escalated to 2026 in this file. Study 002 recorded the local index at +3.8
+    percent for the twelve months to June 2026 and the national gardening and
+    lawncare services index at +12.3 percent over a comparable window; which of
+    those better approximates four years of drift on this contract is not
+    established.
+
+G6. Whether public agency maintenance scope is comparable to residential scope at
+    all is unresolved. Municipal work here is medians, parks and mowing on large
+    contiguous sites. Residential garden maintenance differs in task mix, site
+    size and access.

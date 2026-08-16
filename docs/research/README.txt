@@ -53,3 +53,13 @@ STUDIES IN THIS BASE
        Compiled 2026-08-15. 71 findings (50 T1,
        4 T2, 17 T3),
        75 recorded gaps, 3 decisions tested.
+
+  002  Legal primary texts, the Peninsula local layer, design-fee anchors,
+       escalator index numbers, acquisition economics
+       Compiled 2026-08-15. 66 findings (61 T1, 1 T2, 4 T3),
+       51 recorded gaps, 6 themes, 3 work products.
+
+  003  Public agency landscape maintenance pricing  [IN PROGRESS]
+       Compiled 2026-08-16. 7 findings (7 T1), 6 recorded gaps.
+       Workstream 1 of the pricing research plan only. Workstreams 2 and 3,
+       published competitor rates and design fee anchors, are not started.
