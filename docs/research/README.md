@@ -20,15 +20,17 @@ ephemeral container.
   with the real index numbers
 - `study-002-rebate-reference.txt` — per-town turf-replacement rebate reference
 - `study-002-raw.json` — the unprocessed workflow output
-- `study-003-findings-market.txt` — Study 003, in progress: pricing. 9 findings
-  and 9 gaps, covering an all-in rate per man-hour derived from a public bid
-  price sheet, the prevailing wage determination that governs routine landscape
-  maintenance, and the phase weighting behind a paid concept phase
+- `study-003-findings-market.txt` — Study 003: pricing. 11 findings and 12
+  gaps, covering an all-in rate per man-hour derived from a public bid price
+  sheet, the prevailing wage determination that governs routine landscape
+  maintenance, the phase weighting behind a paid concept phase, and the one
+  Peninsula competitor found publishing a price list
 - `README.txt` — the knowledge base rules (uploaded to Drive)
 
-Study 003 covers Workstreams 1 and 3 of the pricing research plan. Workstream 2,
-published residential competitor rates, is not started. The study has no report
-or gaps file of its own yet; gaps are recorded in sections at the foot of the
-findings file until it is finished.
+Study 003 covers all three workstreams of the pricing research plan. It has no
+report file of its own yet; findings and gaps are grouped by workstream inside
+the findings file. It also raises an unsettled rules question about whether a
+seller's own published price page may be cited, given that rule 2 rejects
+marketing pages outright.
 
 Nothing here is part of the website build.

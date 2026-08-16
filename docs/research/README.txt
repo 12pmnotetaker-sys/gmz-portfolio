@@ -59,11 +59,13 @@ STUDIES IN THIS BASE
        Compiled 2026-08-15. 66 findings (61 T1, 1 T2, 4 T3),
        51 recorded gaps, 6 themes, 3 work products.
 
-  003  Pricing: public agency maintenance rates, and design fee anchors
-       [IN PROGRESS]
-       Compiled 2026-08-16. 9 findings (8 T1, 1 derived from T1),
-       9 recorded gaps.
-       Workstreams 1 and 3 of the pricing research plan. Workstream 2,
-       published residential competitor rates, is not started.
+  003  Pricing: public agency maintenance rates, design fee anchors, and
+       published competitor rates
+       Compiled 2026-08-16. 11 findings (8 T1, 1 derived from T1, 1 T3,
+       1 self-published asking price), 12 recorded gaps.
+       All three workstreams of the pricing research plan are covered.
        Workstream 3 was largely answered already by Study 002; only one
-       derivation and one gap re-confirmation were added.
+       derivation and one gap re-confirmation were added. Workstream 2
+       found that published competitor rates barely exist, and raises a
+       rules question about whether a seller's own price page may be
+       cited at all. That question is open and is stated in the file.

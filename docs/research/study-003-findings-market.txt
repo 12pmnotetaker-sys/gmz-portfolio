@@ -326,3 +326,123 @@ G9. Whether a paid concept phase suppresses lead volume, and by how much, is
     unevidenced. Study 001 gap 11 recorded the same problem for publishing a
     starting price: it can only be answered by measuring GMZ's own qualified
     lead rate before and after the change.
+
+========================================================================
+WORKSTREAM 2 - PUBLISHED RESIDENTIAL RATES FROM NAMED COMPETITORS
+Added 2026-08-16
+
+A rules question is raised at the foot of this section and should be settled
+before these findings are relied on. Knowledge base rule 2 rejects marketing
+pages outright. A competitor's own price page is a marketing page. The
+argument for admitting it anyway, and the label used here, are set out below.
+
+------------------------------------------------------------------------
+
+### peninsula-published-rates-are-rare  [T3 / medium]
+CLAIM: Residential landscape maintenance firms serving the Peninsula almost
+  never publish prices. Of seven firm or marketplace sources approached on
+  2026-08-16, four firm websites could be read, and only one of those four
+  published any dollar figure. The other three published no rate of any kind
+  and directed enquiries to a free quote.
+    Bloom & Lawn Landscaping (Menlo Park / Daly City)   no published price
+    Green Foliage Unlimited (Redwood City, Menlo Park)  no published price
+    Petrus Landscape (Atherton, Woodside, Palo Alto)    no published price
+    Modified Landscape Design                           PUBLISHES, see below
+  Three further sources could not be read at all: Madriz Gardening Service
+  returned 404, Landscaping Bay Area returned 500, and the YourGreenPal
+  marketplace listing returned 403 to automated retrieval.
+WHY IT MATTERS: The plan's Workstream 2 assumed a body of published competitor
+  rates existed to survey. It does not. Quote-on-request is the near-universal
+  practice in this trade and market, which is itself worth knowing: a published
+  starting figure would make GMZ unusual among its immediate competitors rather
+  than merely transparent.
+CAVEAT: Four readable sites is a small and non-random sample, taken from one
+  search pass. It supports "rare", not a rate.
+SOURCE: Direct retrieval of each firm's own website
+PUBLISHED: captured 2026-08-16   SAMPLE: 7 approached, 4 readable
+  GEO: San Francisco Peninsula
+
+------------------------------------------------------------------------
+
+### modified-landscape-design-published-prices-2026  [ASKING PRICE, self-published / medium]
+CLAIM: Modified Landscape Design publishes a full price list. Its stated service
+  area is Atherton, Menlo Park, Palo Alto, Redwood City, San Carlos and Woodside,
+  which overlaps six of the ten towns GMZ names.
+
+  DESIGN, priced as a FIXED FEE BY SCOPE TIER, not as a percentage of
+  construction value:
+    Silver    $1,500   3D design, one review meeting, one revision;
+                       irrigation and plant design; landscape lighting design
+    Gold      $2,500   as Silver, two meetings and two revisions, plus hardscape
+                       design (walkways, patios, driveways, retaining walls to 3 ft)
+    Platinum  $3,500   as Gold, three meetings and three revisions, plus outdoor
+                       living design (fire pit, BBQ, outdoor kitchen)
+    Terms     50 percent on contract signing, 50 percent on completion
+    Revisions beyond the package limit: $195 per hour
+
+  MAINTENANCE:
+    Premium Landscape Management Program, $1,500+ per quarter, comprising
+    quarterly bed maintenance, quarterly fertilization and weed control,
+    touch-up mulching twice a year, a fall clean-up with mulching, a spring
+    clean-up with mulching, and quarterly annual flower planting.
+
+WHY IT MATTERS, DESIGN: This is an observed private-practice alternative to the
+  percentage-of-construction model that every published government schedule uses.
+  The tiering ladder is by scope breadth, and hardscape is the step that moves a
+  client from the lowest tier to the middle one. The $195 per hour revision rate
+  is a published design hourly rate from a firm working in GMZ's towns.
+WHY IT MATTERS, PHASE SPLIT: This firm does not split concept from design
+  development at all. It sells one package and splits the payment 50/50 across
+  signing and completion. That is a different structure from the phased model,
+  and it means no observed private-practice concept/design-development ratio was
+  found. Gap G8 stands.
+CAVEAT, MAINTENANCE: The maintenance figure is NOT comparable to a weekly or
+  biweekly route. The published frequencies are quarterly and seasonal, so this
+  is a horticultural management programme rather than a mow-and-blow route, and
+  the visit count behind the quarterly figure is not stated.
+CAVEAT, GENERALLY: These are ASKING prices, self-published by the seller. They
+  are evidence of what this firm advertises on this date and nothing more. No
+  closing price, no discount practice and no volume behind them is known.
+SOURCE: Modified Landscape Design, published pricing page
+URL: https://modifiedlandscapedesign.com/pricing/
+PUBLISHED: captured 2026-08-16   SAMPLE: one firm   GEO: Atherton, Menlo Park,
+  Palo Alto, Redwood City, San Carlos, Woodside
+
+------------------------------------------------------------------------
+
+RULES QUESTION RAISED BY THIS WORKSTREAM
+
+Rule 2 rejects "marketing pages, contractor blogs, SEO articles" outright. The
+finding above is taken from a marketing page. It has been recorded anyway,
+under the label "ASKING PRICE, self-published" rather than a T tier, on this
+reasoning:
+
+  A cost-guide article claiming "landscape maintenance in the Bay Area costs
+  $200 to $700 a month" is a claim ABOUT the market by someone with no standing
+  to make it. That is what rule 2 exists to exclude, and several such articles
+  were found and discarded in this pass.
+
+  A named firm publishing its own price is a primary record of one seller's
+  asking price. It is not a claim about the market; it is an observable fact
+  about that seller, in the same way a published rate card or a bid price sheet
+  is.
+
+Xavier's call. If the distinction is accepted, the label above should become a
+standing category in the rules. If it is not, this finding should be struck and
+Workstream 2 recorded as returning nothing.
+
+========================================================================
+ADDITIONAL GAPS, WORKSTREAM 2
+
+G10. No residential per-visit or per-hour rate was obtained from any Peninsula
+     competitor. The single firm that publishes gives a quarterly programme
+     price whose visit count is not stated, so no per-visit or per-hour figure
+     can be derived from it. Study 001 gaps 44 and 45 remain open.
+
+G11. Closing prices remain entirely unevidenced. Everything in this workstream
+     is an asking price. The gap between asking and closing in this trade is
+     unknown and cannot be researched from outside; it would have to come from
+     GMZ's own lost-bid records.
+
+G12. Three sources could not be retrieved (404, 500 and 403). Whether any of
+     them publishes rates is unresolved rather than answered.
