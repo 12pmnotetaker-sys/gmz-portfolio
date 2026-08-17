@@ -81,23 +81,28 @@ index) is in that same file. FAQ queries are in `src/data/content.ts`.
 the patterns the design repeats. Anything used by one component stays in that
 component's scoped `<style>`. See DESIGN-HANDOFF.md for the full map.
 
-## Placeholder content
+## Media
 
-These are stubs and are marked as such:
+The photography is real: 81 WebP images under `src/assets/`, and 7 clips in
+`public/media/`. `ASSETS.md` reports the status of every slot and is regenerated
+by `npm run placeholders`.
 
-- `src/assets/portfolio/**`, `src/assets/about/**`, `src/assets/brand/apld-logo.png`
-  — all 81 images are generated placeholders. `ASSETS.md` is the drop-in list,
-  with the design's exact filenames so a real photo needs no renaming.
-- `public/media/` is empty. The 7 local walkthrough videos are outstanding, and
-  the clips that need them are marked `pending: true`, which renders the
-  design's own "to come" panel.
-- `src/assets/brand/gmz-logo.svg` is a generated wordmark, not the GMZ mark.
-  Replacing that one file updates the header, drawer, footer and veil.
-- `public/favicon.svg`, `public/og-default.jpg` — generated placeholders.
+**Strip metadata on anything new.** The photographs that landed carried GPS
+coordinates identifying client home addresses, and they were removed on ingest.
+Astro strips metadata from the derivatives it serves, but a committed source
+file keeps its own, and git history is permanent: a later deletion does not
+remove it. On a site already indexed by street name, exact coordinates would be
+a much sharper version of that exposure. Review before committing, not after.
 
-Four walkthroughs are live Google Drive embeds rather than placeholders. They
-work only while those Drive files stay link-shared, and nothing at build time can
-check that. Copy them into `public/media/` when the files are to hand.
+Still generated rather than real:
+
+- `src/assets/brand/gmz-logo.svg` is a wordmark, not the GMZ mark. Replacing
+  that one file updates the header, drawer, footer and veil.
+- `public/favicon.svg`, `public/og-default.jpg`.
+
+Six walkthroughs are live Google Drive embeds. They work only while those Drive
+files stay link-shared, and nothing at build time can check that. Copy them into
+`public/media/` when the files are to hand.
 
 ## Open questions for GMZ
 

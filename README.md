@@ -13,11 +13,13 @@ implemented. Seven projects, the drawing-sheet index, the tabbed drawing
 viewer, the drag-to-compare slider, the full-screen viewer, the walkthroughs
 page and the unlock veil are all in place and building.
 
-**Every photograph is still a placeholder.** The layout and the crops are
-correct, but the images are generated plates, not project photography. See
-[ASSETS.md](./ASSETS.md) for the drop-in list: 81 images and 7 videos, each one
-named exactly as the design names it, so a real file can be copied in without
-renaming anything.
+**The photography is real.** All 81 images and all 7 walkthrough clips are in
+the repo: WebP capped at 2560px on the long edge, deduplicated, and stripped of
+all metadata before they landed. [ASSETS.md](./ASSETS.md) is the current status
+of every slot.
+
+What is still a placeholder: the GMZ logo (`src/assets/brand/gmz-logo.svg` is a
+generated wordmark), `public/favicon.svg` and `public/og-default.jpg`.
 
 ## Getting started
 
@@ -180,12 +182,14 @@ will point at the default.
 ## Before this goes live
 
 - [ ] Confirm the production domain and set `SITE_URL`
-- [ ] Replace the placeholder photography, all 81 images ([ASSETS.md](./ASSETS.md))
-- [ ] Add the 7 local walkthrough videos to `public/media/`
+- [x] Replace the placeholder photography, all 81 images ([ASSETS.md](./ASSETS.md))
+- [x] Add the 7 local walkthrough videos to `public/media/`
 - [ ] Replace `src/assets/brand/gmz-logo.svg` with the real GMZ mark
 - [ ] Replace `public/favicon.svg` and `public/og-default.jpg`
-- [ ] Copy the four Google Drive walkthroughs into `public/media/` so the site
-      does not depend on Drive sharing staying on
+- [ ] Copy the six remaining Google Drive walkthroughs into `public/media/` so
+      the site does not depend on Drive sharing staying on
+- [ ] Review the photography once more for anything a client would not want
+      shown, since git history keeps whatever is committed
 - [ ] Wire up and **test** the contact form
 - [ ] Decide whether "Thirty years on the same ground" should track the founding
       year, which is now 32 years ago

@@ -12,6 +12,7 @@
  * ASSETS.md, which is the drop-in checklist for whoever is replacing them.
  */
 import { mkdir, writeFile, access } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 
@@ -35,103 +36,108 @@ const SHAPES = {
  */
 const MANIFEST = [
   // ---- About page ----------------------------------------------------
-  ['about', 'about-portrait-magnolia.png', 'tall', 'Liliana, design and drawings'],
-  ['about', 'about-portrait-garden.jpg', 'tall', 'A garden in flower'],
-  ['about', 'about-ranunculus.jpg', 'tall', 'Ranunculus under the shade frames'],
+  ['about', 'about-portrait-magnolia.webp', 'tall', 'Liliana, design and drawings'],
+  ['about', 'about-portrait-garden.webp', 'tall', 'A garden in flower'],
+  ['about', 'about-ranunculus.webp', 'tall', 'Ranunculus under the shade frames'],
 
   // ---- Brand ---------------------------------------------------------
-  ['brand', 'apld-logo.png', 'logo', 'APLD member logo'],
+  ['brand', 'apld-logo.webp', 'logo', 'APLD member logo'],
 
   // ---- Menlo Oaks: conceptual, drawings only -------------------------
-  ['portfolio/menlo-oaks', 'menlo-oaks-p3.png', 'wide', 'Patio'],
-  ['portfolio/menlo-oaks', 'menlo-oaks-p5.png', 'wide', 'Outdoor kitchen'],
-  ['portfolio/menlo-oaks', 'menlo-oaks-p4.png', 'wide', 'Play area'],
-  ['portfolio/menlo-oaks', 'menlo-oaks-p7.png', 'wide', 'Side yard'],
-  ['portfolio/menlo-oaks', 'menlo-oaks-p2.png', 'wide', 'Site plan'],
-  ['portfolio/menlo-oaks', 'menlo-oaks-p6.png', 'wide', 'Lawn alternative'],
+  ['portfolio/menlo-oaks', 'menlo-oaks-p3.webp', 'wide', 'Patio'],
+  ['portfolio/menlo-oaks', 'menlo-oaks-p5.webp', 'wide', 'Outdoor kitchen'],
+  ['portfolio/menlo-oaks', 'menlo-oaks-p4.webp', 'wide', 'Play area'],
+  ['portfolio/menlo-oaks', 'menlo-oaks-p7.webp', 'wide', 'Side yard'],
+  ['portfolio/menlo-oaks', 'menlo-oaks-p2.webp', 'wide', 'Site plan'],
+  ['portfolio/menlo-oaks', 'menlo-oaks-p6.webp', 'wide', 'Lawn alternative'],
 
   // ---- Marlowe: two options drawn, one built -------------------------
-  ['portfolio/marlowe', 'marlowe-hero.jpg', 'card', 'Index card image'],
-  ['portfolio/marlowe', 'marlowe-design-courtyard.jpg', 'wide', 'Design, the courtyard'],
-  ['portfolio/marlowe', 'marlowe-design-lounge.jpg', 'wide', 'Design, the lounge'],
-  ['portfolio/marlowe', 'marlowe-design-oaks.jpg', 'wide', 'Design, under the oaks'],
-  ['portfolio/marlowe', 'marlowe-alt-a-dining.png', 'alt', 'Option A, dining under the sail'],
-  ['portfolio/marlowe', 'marlowe-alt-a-courtyard.png', 'alt', 'Option A, the courtyard'],
-  ['portfolio/marlowe', 'marlowe-alt-a-path.png', 'alt', 'Option A, the path through'],
-  ['portfolio/marlowe', 'marlowe-alt-a-entry.png', 'alt', 'Option A, at the doors'],
-  ['portfolio/marlowe', 'marlowe-alt-c-overall.png', 'alt', 'Option C, the courtyard'],
-  ['portfolio/marlowe', 'marlowe-alt-c-firetable.png', 'alt', 'Option C, the fire table'],
-  ['portfolio/marlowe', 'marlowe-alt-c-lounge.png', 'alt', 'Option C, the sunken lounge'],
-  ['portfolio/marlowe', 'marlowe-alt-c-dining.png', 'alt', 'Option C, dining by the mantel'],
-  ['portfolio/marlowe', 'marlowe-alt-c-fireplace.png', 'alt', 'Option C, the mantel wall'],
-  ['portfolio/marlowe', 'marlowe-built-entry.jpg', 'card', 'Built, the entry'],
-  ['portfolio/marlowe', 'marlowe-entry-full.jpg', 'full', 'Built, the entry (large)'],
-  ['portfolio/marlowe', 'marlowe-built-courtyard.jpg', 'card', 'Built, the courtyard'],
-  ['portfolio/marlowe', 'marlowe-built-courtyard2.jpg', 'card', 'Built, across the gravel'],
-  ['portfolio/marlowe', 'marlowe-courtyard2-full.jpg', 'full', 'Built, across the gravel (large)'],
-  ['portfolio/marlowe', 'marlowe-kitchen-built.jpg', 'card', 'Built, the outdoor kitchen'],
-  ['portfolio/marlowe', 'marlowe-kitchen-built-full.jpg', 'full', 'Built, the kitchen (large)'],
-  ['portfolio/marlowe', 'marlowe-pots.jpg', 'card', 'Built, pots by the pergola'],
-  ['portfolio/marlowe', 'marlowe-pots-full.jpg', 'full', 'Built, pots by the pergola (large)'],
-  ['portfolio/marlowe', 'marlowe-built-lounge.jpg', 'card', 'Built, the lounge'],
-  ['portfolio/marlowe', 'marlowe-built-dining2.jpg', 'card', 'Built, dining'],
-  ['portfolio/marlowe', 'marlowe-dining2-full.jpg', 'full', 'Built, dining (large)'],
-  ['portfolio/marlowe', 'marlowe-oaks-built-v2.jpg', 'card', 'Built, under the oaks'],
-  ['portfolio/marlowe', 'marlowe-oaks-built-full.jpg', 'full', 'Built, under the oaks (large)'],
-  ['portfolio/marlowe', 'marlowe-fountain-wide.jpg', 'card', 'Built, the fountain'],
-  ['portfolio/marlowe', 'marlowe-before-courtyard.jpg', 'wide', 'Compare, courtyard before'],
-  ['portfolio/marlowe', 'marlowe-oaks-before.jpg', 'wide', 'Compare, under the oaks before'],
+  ['portfolio/marlowe', 'marlowe-hero.webp', 'card', 'Index card image'],
+  ['portfolio/marlowe', 'marlowe-design-courtyard.webp', 'wide', 'Design, the courtyard'],
+  ['portfolio/marlowe', 'marlowe-design-lounge.webp', 'wide', 'Design, the lounge'],
+  ['portfolio/marlowe', 'marlowe-design-oaks.webp', 'wide', 'Design, under the oaks'],
+  ['portfolio/marlowe', 'marlowe-alt-a-dining.webp', 'alt', 'Option A, dining under the sail'],
+  ['portfolio/marlowe', 'marlowe-alt-a-courtyard.webp', 'alt', 'Option A, the courtyard'],
+  ['portfolio/marlowe', 'marlowe-alt-a-path.webp', 'alt', 'Option A, the path through'],
+  ['portfolio/marlowe', 'marlowe-alt-a-entry.webp', 'alt', 'Option A, at the doors'],
+  ['portfolio/marlowe', 'marlowe-alt-c-overall.webp', 'alt', 'Option C, the courtyard'],
+  ['portfolio/marlowe', 'marlowe-alt-c-firetable.webp', 'alt', 'Option C, the fire table'],
+  ['portfolio/marlowe', 'marlowe-alt-c-lounge.webp', 'alt', 'Option C, the sunken lounge'],
+  ['portfolio/marlowe', 'marlowe-alt-c-dining.webp', 'alt', 'Option C, dining by the mantel'],
+  ['portfolio/marlowe', 'marlowe-alt-c-fireplace.webp', 'alt', 'Option C, the mantel wall'],
+  ['portfolio/marlowe', 'marlowe-built-entry.webp', 'card', 'Built, the entry'],
+  ['portfolio/marlowe', 'marlowe-entry-full.webp', 'full', 'Built, the entry (large)'],
+  ['portfolio/marlowe', 'marlowe-built-courtyard.webp', 'card', 'Built, the courtyard'],
+  ['portfolio/marlowe', 'marlowe-built-courtyard2.webp', 'card', 'Built, across the gravel'],
+  ['portfolio/marlowe', 'marlowe-courtyard2-full.webp', 'full', 'Built, across the gravel (large)'],
+  ['portfolio/marlowe', 'marlowe-kitchen-built.webp', 'card', 'Built, the outdoor kitchen'],
+  ['portfolio/marlowe', 'marlowe-kitchen-built-full.webp', 'full', 'Built, the kitchen (large)'],
+  ['portfolio/marlowe', 'marlowe-pots.webp', 'card', 'Built, pots by the pergola'],
+  ['portfolio/marlowe', 'marlowe-pots-full.webp', 'full', 'Built, pots by the pergola (large)'],
+  ['portfolio/marlowe', 'marlowe-built-lounge.webp', 'card', 'Built, the lounge'],
+  ['portfolio/marlowe', 'marlowe-built-dining2.webp', 'card', 'Built, dining'],
+  ['portfolio/marlowe', 'marlowe-dining2-full.webp', 'full', 'Built, dining (large)'],
+  ['portfolio/marlowe', 'marlowe-oaks-built-v2.webp', 'card', 'Built, under the oaks'],
+  ['portfolio/marlowe', 'marlowe-oaks-built-full.webp', 'full', 'Built, under the oaks (large)'],
+  ['portfolio/marlowe', 'marlowe-fountain-wide.webp', 'card', 'Built, the fountain'],
+  ['portfolio/marlowe', 'marlowe-before-courtyard.webp', 'wide', 'Compare, courtyard before'],
+  ['portfolio/marlowe', 'marlowe-oaks-before.webp', 'wide', 'Compare, under the oaks before'],
 
   // ---- Viewridge: six retaining walls, built -------------------------
-  ['portfolio/viewridge', 'viewridge-aerial.jpg', 'card', 'Built, from above'],
-  ['portfolio/viewridge', 'viewridge-aerial-full.jpg', 'full', 'Built, from above (large)'],
-  ['portfolio/viewridge', 'viewridge-steps.jpg', 'card', 'Built, the steps'],
-  ['portfolio/viewridge', 'viewridge-steps-full.jpg', 'full', 'Built, the steps (large)'],
-  ['portfolio/viewridge', 'viewridge-backyard.jpg', 'wide', 'Drawing, backyard view'],
-  ['portfolio/viewridge', 'viewridge-massing-1.jpg', 'wide', 'Drawing, massing study 1'],
-  ['portfolio/viewridge', 'viewridge-massing-2.jpg', 'wide', 'Drawing, top view'],
-  ['portfolio/viewridge', 'viewridge-massing-3.jpg', 'wide', 'Drawing, massing study 3'],
-  ['portfolio/viewridge', 'viewridge-planting.jpg', 'wide', 'Drawing, planting rendering'],
-  ['portfolio/viewridge', 'viewridge-side-before.jpg', 'wide', 'Still, the side run before'],
+  ['portfolio/viewridge', 'viewridge-aerial.webp', 'card', 'Built, from above'],
+  ['portfolio/viewridge', 'viewridge-aerial-full.webp', 'full', 'Built, from above (large)'],
+  ['portfolio/viewridge', 'viewridge-steps.webp', 'card', 'Built, the steps'],
+  ['portfolio/viewridge', 'viewridge-steps-full.webp', 'full', 'Built, the steps (large)'],
+  ['portfolio/viewridge', 'viewridge-backyard.webp', 'wide', 'Drawing, backyard view'],
+  ['portfolio/viewridge', 'viewridge-massing-1.webp', 'wide', 'Drawing, massing study 1'],
+  ['portfolio/viewridge', 'viewridge-massing-2.webp', 'wide', 'Drawing, top view'],
+  ['portfolio/viewridge', 'viewridge-massing-3.webp', 'wide', 'Drawing, massing study 3'],
+  ['portfolio/viewridge', 'viewridge-planting.webp', 'wide', 'Drawing, planting rendering'],
+  ['portfolio/viewridge', 'viewridge-side-before.webp', 'wide', 'Still, the side run before'],
 
   // ---- Fox Hill: stone stairs, built ---------------------------------
-  ['portfolio/fox-hill', 'foxhill-stair.jpg', 'card', 'Built, the stairs'],
-  ['portfolio/fox-hill', 'foxhill-stair-full.jpg', 'full', 'Built, the stairs (large)'],
-  ['portfolio/fox-hill', 'foxhill-stair-lit.jpg', 'card', 'Built, the stairs at dusk'],
-  ['portfolio/fox-hill', 'foxhill-stair-lit-full.jpg', 'full', 'Built, the stairs at dusk (large)'],
-  ['portfolio/fox-hill', 'foxhill-lawn.jpg', 'card', 'Built, the rear lawn'],
-  ['portfolio/fox-hill', 'foxhill-lawn-full.jpg', 'full', 'Built, the rear lawn (large)'],
-  ['portfolio/fox-hill', 'foxhill-dahlias.jpg', 'card', 'Built, the cutting garden'],
-  ['portfolio/fox-hill', 'foxhill-dahlias-full.jpg', 'full', 'Built, the cutting garden (large)'],
-  ['portfolio/fox-hill', 'foxhill-lamp.jpg', 'card', 'Built, the lamp bed'],
-  ['portfolio/fox-hill', 'foxhill-lamp-full.jpg', 'full', 'Built, the lamp bed (large)'],
-  ['portfolio/fox-hill', 'foxhill-stump.jpg', 'card', 'Built, the rock garden'],
-  ['portfolio/fox-hill', 'foxhill-stump-full.jpg', 'full', 'Built, the rock garden (large)'],
-  ['portfolio/fox-hill', 'foxhill-pots.jpg', 'card', 'Built, pots at the door'],
-  ['portfolio/fox-hill', 'foxhill-pots-full.jpg', 'full', 'Built, pots at the door (large)'],
-  ['portfolio/fox-hill', 'foxhill-top.jpg', 'wide', 'Drawing, top view'],
-  ['portfolio/fox-hill', 'foxhill-stair-before-wide.jpg', 'wide', 'Compare, the stair before'],
-  ['portfolio/fox-hill', 'foxhill-stair-after-wide.jpg', 'wide', 'Compare, the stair after'],
+  ['portfolio/fox-hill', 'foxhill-stair.webp', 'card', 'Built, the stairs'],
+  ['portfolio/fox-hill', 'foxhill-stair-full.webp', 'full', 'Built, the stairs (large)'],
+  ['portfolio/fox-hill', 'foxhill-stair-lit.webp', 'card', 'Built, the stairs at dusk'],
+  [
+    'portfolio/fox-hill',
+    'foxhill-stair-lit-full.webp',
+    'full',
+    'Built, the stairs at dusk (large)',
+  ],
+  ['portfolio/fox-hill', 'foxhill-lawn.webp', 'card', 'Built, the rear lawn'],
+  ['portfolio/fox-hill', 'foxhill-lawn-full.webp', 'full', 'Built, the rear lawn (large)'],
+  ['portfolio/fox-hill', 'foxhill-dahlias.webp', 'card', 'Built, the cutting garden'],
+  ['portfolio/fox-hill', 'foxhill-dahlias-full.webp', 'full', 'Built, the cutting garden (large)'],
+  ['portfolio/fox-hill', 'foxhill-lamp.webp', 'card', 'Built, the lamp bed'],
+  ['portfolio/fox-hill', 'foxhill-lamp-full.webp', 'full', 'Built, the lamp bed (large)'],
+  ['portfolio/fox-hill', 'foxhill-stump.webp', 'card', 'Built, the rock garden'],
+  ['portfolio/fox-hill', 'foxhill-stump-full.webp', 'full', 'Built, the rock garden (large)'],
+  ['portfolio/fox-hill', 'foxhill-pots.webp', 'card', 'Built, pots at the door'],
+  ['portfolio/fox-hill', 'foxhill-pots-full.webp', 'full', 'Built, pots at the door (large)'],
+  ['portfolio/fox-hill', 'foxhill-top.webp', 'wide', 'Drawing, top view'],
+  ['portfolio/fox-hill', 'foxhill-stair-before-wide.webp', 'wide', 'Compare, the stair before'],
+  ['portfolio/fox-hill', 'foxhill-stair-after-wide.webp', 'wide', 'Compare, the stair after'],
 
   // ---- Hamilton: yard rebuild, built ---------------------------------
-  ['portfolio/hamilton', 'hamilton-after-1.jpg', 'card', 'Built, the back yard'],
-  ['portfolio/hamilton', 'hamilton-after-2.jpg', 'card', 'Built, the side yard'],
-  ['portfolio/hamilton', 'hamilton-before-1.jpg', 'wide', 'Compare, the back yard before'],
-  ['portfolio/hamilton', 'hamilton-before-2.jpg', 'wide', 'Compare, the side yard before'],
+  ['portfolio/hamilton', 'hamilton-after-1.webp', 'card', 'Built, the back yard'],
+  ['portfolio/hamilton', 'hamilton-after-2.webp', 'card', 'Built, the side yard'],
+  ['portfolio/hamilton', 'hamilton-before-1.webp', 'wide', 'Compare, the back yard before'],
+  ['portfolio/hamilton', 'hamilton-before-2.webp', 'wide', 'Compare, the side yard before'],
 
   // ---- Castle Lane: concept only -------------------------------------
-  ['portfolio/castle-lane', 'castle-ln-1.png', 'wide', 'Drawing, front yard'],
-  ['portfolio/castle-lane', 'castle-ln-2.png', 'wide', 'Drawing, side yard'],
-  ['portfolio/castle-lane', 'castle-ln-3.png', 'wide', 'Drawing, backyard'],
-  ['portfolio/castle-lane', 'castle-ln-4.png', 'wide', 'Drawing, site plan'],
+  ['portfolio/castle-lane', 'castle-ln-1.webp', 'wide', 'Drawing, front yard'],
+  ['portfolio/castle-lane', 'castle-ln-2.webp', 'wide', 'Drawing, side yard'],
+  ['portfolio/castle-lane', 'castle-ln-3.webp', 'wide', 'Drawing, backyard'],
+  ['portfolio/castle-lane', 'castle-ln-4.webp', 'wide', 'Drawing, site plan'],
 
   // ---- Los Charros: dry hillside, built ------------------------------
-  ['portfolio/los-charros', 'loscharros-slope-after.png', 'card', 'Built, the bank after'],
-  ['portfolio/los-charros', 'loscharros-before.png', 'card', 'Built, the bank before'],
-  ['portfolio/los-charros', 'loscharros-creek.jpg', 'tall', 'Photograph, the dry creek'],
-  ['portfolio/los-charros', 'loscharros-after.jpg', 'tall', 'Photograph, grasses and boulders'],
-  ['portfolio/los-charros', 'loscharros-planting-day.png', 'tall', 'Photograph, planting day'],
-  ['portfolio/los-charros', 'loscharros-render.jpg', 'wide', 'Drawing, the render'],
+  ['portfolio/los-charros', 'loscharros-slope-after.webp', 'card', 'Built, the bank after'],
+  ['portfolio/los-charros', 'loscharros-before.webp', 'card', 'Built, the bank before'],
+  ['portfolio/los-charros', 'loscharros-creek.webp', 'tall', 'Photograph, the dry creek'],
+  ['portfolio/los-charros', 'loscharros-after.webp', 'tall', 'Photograph, grasses and boulders'],
+  ['portfolio/los-charros', 'loscharros-planting-day.webp', 'tall', 'Photograph, planting day'],
+  ['portfolio/los-charros', 'loscharros-render.webp', 'wide', 'Drawing, the render'],
 ];
 
 /**
@@ -200,10 +206,10 @@ for (const [dir, file, shape, label] of MANIFEST) {
 
   const spec = SHAPES[shape];
   const svg = Buffer.from(plate(spec, file, label));
-  const png = file.toLowerCase().endsWith('.png');
-  const buffer = await sharp(svg)
-    [png ? 'png' : 'jpeg'](png ? { compressionLevel: 9 } : { quality: 72 })
-    .toBuffer();
+  const format = path.extname(file).slice(1).toLowerCase();
+  const options = { webp: { quality: 72 }, png: { compressionLevel: 9 }, jpeg: { quality: 72 } };
+  const encoder = format === 'jpg' ? 'jpeg' : format;
+  const buffer = await sharp(svg)[encoder](options[encoder]).toBuffer();
 
   await writeFile(outFile, buffer);
   written += 1;
@@ -247,21 +253,29 @@ const RATIO_LABEL = {
   logo: 'wide logo',
 };
 
-const doc = `# Assets still needed
+const presentVideos = VIDEOS.filter(([f]) => existsSync(path.join(ROOT, 'public/media', f)));
+const missingVideos = VIDEOS.filter(([f]) => !existsSync(path.join(ROOT, 'public/media', f)));
+const outstanding = MANIFEST.length - kept;
 
-Every image below is currently a generated placeholder. The filenames are the
-ones the Claude Design project uses, so a real photograph can be copied from
-that project straight into the folder named here, keeping its name, and it will
-be picked up with no other change.
+const doc = `# Assets
 
-Do not delete a placeholder without putting the real file in its place: every
-path is validated at build time, so \`npm run build\` fails on a missing image
-rather than shipping a broken one.
+Status of every photograph and clip the portfolio design references. Regenerate
+this file with \`npm run placeholders\`.
 
-\`npm run placeholders\` is safe to re-run at any point. It only writes files
-that are not already there, so it never overwrites a real photograph.
+| | Present | Outstanding |
+| --- | --- | --- |
+| Images | ${kept} | ${outstanding} |
+| Video | ${presentVideos.length} | ${missingVideos.length} |
 
-Total: **${MANIFEST.length} images** and **${VIDEOS.length} videos**.
+${
+  outstanding === 0 && missingVideos.length === 0
+    ? `**All photography and video is real.** No placeholders remain. The\nfilenames below are the ones the Claude Design project uses, so a replacement\nphotograph keeps its name and needs no other change.`
+    : `The filenames below are the ones the Claude Design project uses, so a real\nphotograph can be copied straight into the folder named here, keeping its name,\nand it will be picked up with no other change.`
+}
+
+Every path is validated at build time, so \`npm run build\` fails on a missing
+image rather than shipping a broken one. \`npm run placeholders\` only writes
+files that are not already there, so it can never overwrite a real photograph.
 
 ## Images
 
@@ -272,46 +286,49 @@ ${[...byDir.entries()]
   .map(
     ([dir, items]) =>
       `### \`${dir}/\` (${items.length})\n\n` +
-      `| File | Ratio | Slot |\n| --- | --- | --- |\n` +
-      items.map((i) => `| \`${i.file}\` | ${RATIO_LABEL[i.shape]} | ${i.label} |`).join('\n'),
+      `| File | Ratio | Slot | |\n| --- | --- | --- | --- |\n` +
+      items
+        .map((i) => {
+          const here = existsSync(path.join(ROOT, 'src/assets', dir, i.file));
+          return `| \`${i.file}\` | ${RATIO_LABEL[i.shape]} | ${i.label} | ${here ? 'real' : '**placeholder**'} |`;
+        })
+        .join('\n'),
   )
   .join('\n\n')}
 
-## Videos
+## Video
 
-These go in \`public/media/\`. They are not placeholdered: a project whose
-footage is missing renders the design's own "to come" panel, which is honest
-about the gap rather than showing an empty frame.
+These live in \`public/media/\` and are referenced from a project's Markdown as
+\`file: <name>\`. The path is checked at build time, the same as an image.
 
-To wire one up, drop the file in \`public/media/\` and change \`pending: true\`
-to \`file: <name>\` on that clip in the project's Markdown file.
+A clip that is not yet in the repo is marked \`pending: true\` instead, which
+renders the design's own "to come" panel rather than an empty frame.
 
-| File | Clip |
-| --- | --- |
-${VIDEOS.map(([f, l]) => `| \`${f}\` | ${l} |`).join('\n')}
+| File | Clip | |
+| --- | --- | --- |
+${VIDEOS.map(([f, l]) => `| \`${f}\` | ${l} | ${existsSync(path.join(ROOT, 'public/media', f)) ? 'present' : '**outstanding**'} |`).join('\n')}
 
 ## Google Drive embeds
 
-Four walkthroughs play from Google Drive because GMZ has no local copy of the
-footage. They are referenced by file id in the project Markdown, under
-\`walkthrough.drive\` and on individual clips.
+Six walkthroughs still play from Google Drive because GMZ has no local copy of
+the footage. They are referenced by file id in the project Markdown and in
+\`src/data/portfolio.ts\`, under \`drive:\`.
 
 These depend on the Drive files staying link-shared. Nothing at build time can
 check that, so if a walkthrough goes blank on the live site, check the sharing
-on the Drive file first. Replacing them with local mp4s under \`public/media/\`
-removes that dependency and is worth doing when the files are to hand.
+on the Drive file first. Copying them into \`public/media/\` removes that
+dependency and is worth doing when the files are to hand.
 
-## The logo
+## Still generated
 
-\`src/assets/brand/gmz-logo.svg\` is a generated wordmark, not the real mark.
-The design draws the green tree-badge logo from Google Drive. Replacing this
-one file updates the header, the mobile menu, the footer and the unlock veil,
-because all four read the same asset.
-
-\`public/favicon.svg\` and \`public/og-default.jpg\` are also placeholders.
+- \`src/assets/brand/gmz-logo.svg\` is a wordmark, not the real GMZ mark. The
+  design draws the green tree-badge logo from Google Drive. Replacing this one
+  file updates the header, the mobile menu, the footer and the unlock veil,
+  because all four read the same asset.
+- \`public/favicon.svg\` and \`public/og-default.jpg\`.
 `;
 
 await writeFile(path.join(ROOT, 'ASSETS.md'), doc);
 
-console.log(`placeholders: ${written} written, ${kept} already real`);
-console.log(`ASSETS.md: ${MANIFEST.length} images, ${VIDEOS.length} videos listed`);
+console.log(`images: ${kept} real, ${written} placeholder(s) written`);
+console.log(`video: ${presentVideos.length} of ${VIDEOS.length} present`);

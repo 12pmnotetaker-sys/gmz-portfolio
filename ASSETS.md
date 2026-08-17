@@ -1,18 +1,20 @@
-# Assets still needed
+# Assets
 
-Every image below is currently a generated placeholder. The filenames are the
-ones the Claude Design project uses, so a real photograph can be copied from
-that project straight into the folder named here, keeping its name, and it will
-be picked up with no other change.
+Status of every photograph and clip the portfolio design references. Regenerate
+this file with `npm run placeholders`.
 
-Do not delete a placeholder without putting the real file in its place: every
-path is validated at build time, so `npm run build` fails on a missing image
-rather than shipping a broken one.
+|        | Present | Outstanding |
+| ------ | ------- | ----------- |
+| Images | 81      | 0           |
+| Video  | 7       | 0           |
 
-`npm run placeholders` is safe to re-run at any point. It only writes files
-that are not already there, so it never overwrites a real photograph.
+**All photography and video is real.** No placeholders remain. The
+filenames below are the ones the Claude Design project uses, so a replacement
+photograph keeps its name and needs no other change.
 
-Total: **81 images** and **7 videos**.
+Every path is validated at build time, so `npm run build` fails on a missing
+image rather than shipping a broken one. `npm run placeholders` only writes
+files that are not already there, so it can never overwrite a real photograph.
 
 ## Images
 
@@ -21,165 +23,163 @@ so a replacement close to that shape needs no art direction.
 
 ### `about/` (3)
 
-| File                          | Ratio | Slot                              |
-| ----------------------------- | ----- | --------------------------------- |
-| `about-portrait-magnolia.png` | 4:5   | Liliana, design and drawings      |
-| `about-portrait-garden.jpg`   | 4:5   | A garden in flower                |
-| `about-ranunculus.jpg`        | 4:5   | Ranunculus under the shade frames |
+| File                           | Ratio | Slot                              |      |
+| ------------------------------ | ----- | --------------------------------- | ---- |
+| `about-portrait-magnolia.webp` | 4:5   | Liliana, design and drawings      | real |
+| `about-portrait-garden.webp`   | 4:5   | A garden in flower                | real |
+| `about-ranunculus.webp`        | 4:5   | Ranunculus under the shade frames | real |
 
 ### `brand/` (1)
 
-| File            | Ratio     | Slot             |
-| --------------- | --------- | ---------------- |
-| `apld-logo.png` | wide logo | APLD member logo |
+| File             | Ratio     | Slot             |      |
+| ---------------- | --------- | ---------------- | ---- |
+| `apld-logo.webp` | wide logo | APLD member logo | real |
 
 ### `portfolio/menlo-oaks/` (6)
 
-| File                | Ratio | Slot             |
-| ------------------- | ----- | ---------------- |
-| `menlo-oaks-p3.png` | 16:9  | Patio            |
-| `menlo-oaks-p5.png` | 16:9  | Outdoor kitchen  |
-| `menlo-oaks-p4.png` | 16:9  | Play area        |
-| `menlo-oaks-p7.png` | 16:9  | Side yard        |
-| `menlo-oaks-p2.png` | 16:9  | Site plan        |
-| `menlo-oaks-p6.png` | 16:9  | Lawn alternative |
+| File                 | Ratio | Slot             |      |
+| -------------------- | ----- | ---------------- | ---- |
+| `menlo-oaks-p3.webp` | 16:9  | Patio            | real |
+| `menlo-oaks-p5.webp` | 16:9  | Outdoor kitchen  | real |
+| `menlo-oaks-p4.webp` | 16:9  | Play area        | real |
+| `menlo-oaks-p7.webp` | 16:9  | Side yard        | real |
+| `menlo-oaks-p2.webp` | 16:9  | Site plan        | real |
+| `menlo-oaks-p6.webp` | 16:9  | Lawn alternative | real |
 
 ### `portfolio/marlowe/` (30)
 
-| File                             | Ratio       | Slot                               |
-| -------------------------------- | ----------- | ---------------------------------- |
-| `marlowe-hero.jpg`               | 3:2         | Index card image                   |
-| `marlowe-design-courtyard.jpg`   | 16:9        | Design, the courtyard              |
-| `marlowe-design-lounge.jpg`      | 16:9        | Design, the lounge                 |
-| `marlowe-design-oaks.jpg`        | 16:9        | Design, under the oaks             |
-| `marlowe-alt-a-dining.png`       | 4:3         | Option A, dining under the sail    |
-| `marlowe-alt-a-courtyard.png`    | 4:3         | Option A, the courtyard            |
-| `marlowe-alt-a-path.png`         | 4:3         | Option A, the path through         |
-| `marlowe-alt-a-entry.png`        | 4:3         | Option A, at the doors             |
-| `marlowe-alt-c-overall.png`      | 4:3         | Option C, the courtyard            |
-| `marlowe-alt-c-firetable.png`    | 4:3         | Option C, the fire table           |
-| `marlowe-alt-c-lounge.png`       | 4:3         | Option C, the sunken lounge        |
-| `marlowe-alt-c-dining.png`       | 4:3         | Option C, dining by the mantel     |
-| `marlowe-alt-c-fireplace.png`    | 4:3         | Option C, the mantel wall          |
-| `marlowe-built-entry.jpg`        | 3:2         | Built, the entry                   |
-| `marlowe-entry-full.jpg`         | 3:2 (large) | Built, the entry (large)           |
-| `marlowe-built-courtyard.jpg`    | 3:2         | Built, the courtyard               |
-| `marlowe-built-courtyard2.jpg`   | 3:2         | Built, across the gravel           |
-| `marlowe-courtyard2-full.jpg`    | 3:2 (large) | Built, across the gravel (large)   |
-| `marlowe-kitchen-built.jpg`      | 3:2         | Built, the outdoor kitchen         |
-| `marlowe-kitchen-built-full.jpg` | 3:2 (large) | Built, the kitchen (large)         |
-| `marlowe-pots.jpg`               | 3:2         | Built, pots by the pergola         |
-| `marlowe-pots-full.jpg`          | 3:2 (large) | Built, pots by the pergola (large) |
-| `marlowe-built-lounge.jpg`       | 3:2         | Built, the lounge                  |
-| `marlowe-built-dining2.jpg`      | 3:2         | Built, dining                      |
-| `marlowe-dining2-full.jpg`       | 3:2 (large) | Built, dining (large)              |
-| `marlowe-oaks-built-v2.jpg`      | 3:2         | Built, under the oaks              |
-| `marlowe-oaks-built-full.jpg`    | 3:2 (large) | Built, under the oaks (large)      |
-| `marlowe-fountain-wide.jpg`      | 3:2         | Built, the fountain                |
-| `marlowe-before-courtyard.jpg`   | 16:9        | Compare, courtyard before          |
-| `marlowe-oaks-before.jpg`        | 16:9        | Compare, under the oaks before     |
+| File                              | Ratio       | Slot                               |      |
+| --------------------------------- | ----------- | ---------------------------------- | ---- |
+| `marlowe-hero.webp`               | 3:2         | Index card image                   | real |
+| `marlowe-design-courtyard.webp`   | 16:9        | Design, the courtyard              | real |
+| `marlowe-design-lounge.webp`      | 16:9        | Design, the lounge                 | real |
+| `marlowe-design-oaks.webp`        | 16:9        | Design, under the oaks             | real |
+| `marlowe-alt-a-dining.webp`       | 4:3         | Option A, dining under the sail    | real |
+| `marlowe-alt-a-courtyard.webp`    | 4:3         | Option A, the courtyard            | real |
+| `marlowe-alt-a-path.webp`         | 4:3         | Option A, the path through         | real |
+| `marlowe-alt-a-entry.webp`        | 4:3         | Option A, at the doors             | real |
+| `marlowe-alt-c-overall.webp`      | 4:3         | Option C, the courtyard            | real |
+| `marlowe-alt-c-firetable.webp`    | 4:3         | Option C, the fire table           | real |
+| `marlowe-alt-c-lounge.webp`       | 4:3         | Option C, the sunken lounge        | real |
+| `marlowe-alt-c-dining.webp`       | 4:3         | Option C, dining by the mantel     | real |
+| `marlowe-alt-c-fireplace.webp`    | 4:3         | Option C, the mantel wall          | real |
+| `marlowe-built-entry.webp`        | 3:2         | Built, the entry                   | real |
+| `marlowe-entry-full.webp`         | 3:2 (large) | Built, the entry (large)           | real |
+| `marlowe-built-courtyard.webp`    | 3:2         | Built, the courtyard               | real |
+| `marlowe-built-courtyard2.webp`   | 3:2         | Built, across the gravel           | real |
+| `marlowe-courtyard2-full.webp`    | 3:2 (large) | Built, across the gravel (large)   | real |
+| `marlowe-kitchen-built.webp`      | 3:2         | Built, the outdoor kitchen         | real |
+| `marlowe-kitchen-built-full.webp` | 3:2 (large) | Built, the kitchen (large)         | real |
+| `marlowe-pots.webp`               | 3:2         | Built, pots by the pergola         | real |
+| `marlowe-pots-full.webp`          | 3:2 (large) | Built, pots by the pergola (large) | real |
+| `marlowe-built-lounge.webp`       | 3:2         | Built, the lounge                  | real |
+| `marlowe-built-dining2.webp`      | 3:2         | Built, dining                      | real |
+| `marlowe-dining2-full.webp`       | 3:2 (large) | Built, dining (large)              | real |
+| `marlowe-oaks-built-v2.webp`      | 3:2         | Built, under the oaks              | real |
+| `marlowe-oaks-built-full.webp`    | 3:2 (large) | Built, under the oaks (large)      | real |
+| `marlowe-fountain-wide.webp`      | 3:2         | Built, the fountain                | real |
+| `marlowe-before-courtyard.webp`   | 16:9        | Compare, courtyard before          | real |
+| `marlowe-oaks-before.webp`        | 16:9        | Compare, under the oaks before     | real |
 
 ### `portfolio/viewridge/` (10)
 
-| File                        | Ratio       | Slot                        |
-| --------------------------- | ----------- | --------------------------- |
-| `viewridge-aerial.jpg`      | 3:2         | Built, from above           |
-| `viewridge-aerial-full.jpg` | 3:2 (large) | Built, from above (large)   |
-| `viewridge-steps.jpg`       | 3:2         | Built, the steps            |
-| `viewridge-steps-full.jpg`  | 3:2 (large) | Built, the steps (large)    |
-| `viewridge-backyard.jpg`    | 16:9        | Drawing, backyard view      |
-| `viewridge-massing-1.jpg`   | 16:9        | Drawing, massing study 1    |
-| `viewridge-massing-2.jpg`   | 16:9        | Drawing, top view           |
-| `viewridge-massing-3.jpg`   | 16:9        | Drawing, massing study 3    |
-| `viewridge-planting.jpg`    | 16:9        | Drawing, planting rendering |
-| `viewridge-side-before.jpg` | 16:9        | Still, the side run before  |
+| File                         | Ratio       | Slot                        |      |
+| ---------------------------- | ----------- | --------------------------- | ---- |
+| `viewridge-aerial.webp`      | 3:2         | Built, from above           | real |
+| `viewridge-aerial-full.webp` | 3:2 (large) | Built, from above (large)   | real |
+| `viewridge-steps.webp`       | 3:2         | Built, the steps            | real |
+| `viewridge-steps-full.webp`  | 3:2 (large) | Built, the steps (large)    | real |
+| `viewridge-backyard.webp`    | 16:9        | Drawing, backyard view      | real |
+| `viewridge-massing-1.webp`   | 16:9        | Drawing, massing study 1    | real |
+| `viewridge-massing-2.webp`   | 16:9        | Drawing, top view           | real |
+| `viewridge-massing-3.webp`   | 16:9        | Drawing, massing study 3    | real |
+| `viewridge-planting.webp`    | 16:9        | Drawing, planting rendering | real |
+| `viewridge-side-before.webp` | 16:9        | Still, the side run before  | real |
 
 ### `portfolio/fox-hill/` (17)
 
-| File                            | Ratio       | Slot                              |
-| ------------------------------- | ----------- | --------------------------------- |
-| `foxhill-stair.jpg`             | 3:2         | Built, the stairs                 |
-| `foxhill-stair-full.jpg`        | 3:2 (large) | Built, the stairs (large)         |
-| `foxhill-stair-lit.jpg`         | 3:2         | Built, the stairs at dusk         |
-| `foxhill-stair-lit-full.jpg`    | 3:2 (large) | Built, the stairs at dusk (large) |
-| `foxhill-lawn.jpg`              | 3:2         | Built, the rear lawn              |
-| `foxhill-lawn-full.jpg`         | 3:2 (large) | Built, the rear lawn (large)      |
-| `foxhill-dahlias.jpg`           | 3:2         | Built, the cutting garden         |
-| `foxhill-dahlias-full.jpg`      | 3:2 (large) | Built, the cutting garden (large) |
-| `foxhill-lamp.jpg`              | 3:2         | Built, the lamp bed               |
-| `foxhill-lamp-full.jpg`         | 3:2 (large) | Built, the lamp bed (large)       |
-| `foxhill-stump.jpg`             | 3:2         | Built, the rock garden            |
-| `foxhill-stump-full.jpg`        | 3:2 (large) | Built, the rock garden (large)    |
-| `foxhill-pots.jpg`              | 3:2         | Built, pots at the door           |
-| `foxhill-pots-full.jpg`         | 3:2 (large) | Built, pots at the door (large)   |
-| `foxhill-top.jpg`               | 16:9        | Drawing, top view                 |
-| `foxhill-stair-before-wide.jpg` | 16:9        | Compare, the stair before         |
-| `foxhill-stair-after-wide.jpg`  | 16:9        | Compare, the stair after          |
+| File                             | Ratio       | Slot                              |      |
+| -------------------------------- | ----------- | --------------------------------- | ---- |
+| `foxhill-stair.webp`             | 3:2         | Built, the stairs                 | real |
+| `foxhill-stair-full.webp`        | 3:2 (large) | Built, the stairs (large)         | real |
+| `foxhill-stair-lit.webp`         | 3:2         | Built, the stairs at dusk         | real |
+| `foxhill-stair-lit-full.webp`    | 3:2 (large) | Built, the stairs at dusk (large) | real |
+| `foxhill-lawn.webp`              | 3:2         | Built, the rear lawn              | real |
+| `foxhill-lawn-full.webp`         | 3:2 (large) | Built, the rear lawn (large)      | real |
+| `foxhill-dahlias.webp`           | 3:2         | Built, the cutting garden         | real |
+| `foxhill-dahlias-full.webp`      | 3:2 (large) | Built, the cutting garden (large) | real |
+| `foxhill-lamp.webp`              | 3:2         | Built, the lamp bed               | real |
+| `foxhill-lamp-full.webp`         | 3:2 (large) | Built, the lamp bed (large)       | real |
+| `foxhill-stump.webp`             | 3:2         | Built, the rock garden            | real |
+| `foxhill-stump-full.webp`        | 3:2 (large) | Built, the rock garden (large)    | real |
+| `foxhill-pots.webp`              | 3:2         | Built, pots at the door           | real |
+| `foxhill-pots-full.webp`         | 3:2 (large) | Built, pots at the door (large)   | real |
+| `foxhill-top.webp`               | 16:9        | Drawing, top view                 | real |
+| `foxhill-stair-before-wide.webp` | 16:9        | Compare, the stair before         | real |
+| `foxhill-stair-after-wide.webp`  | 16:9        | Compare, the stair after          | real |
 
 ### `portfolio/hamilton/` (4)
 
-| File                    | Ratio | Slot                          |
-| ----------------------- | ----- | ----------------------------- |
-| `hamilton-after-1.jpg`  | 3:2   | Built, the back yard          |
-| `hamilton-after-2.jpg`  | 3:2   | Built, the side yard          |
-| `hamilton-before-1.jpg` | 16:9  | Compare, the back yard before |
-| `hamilton-before-2.jpg` | 16:9  | Compare, the side yard before |
+| File                     | Ratio | Slot                          |      |
+| ------------------------ | ----- | ----------------------------- | ---- |
+| `hamilton-after-1.webp`  | 3:2   | Built, the back yard          | real |
+| `hamilton-after-2.webp`  | 3:2   | Built, the side yard          | real |
+| `hamilton-before-1.webp` | 16:9  | Compare, the back yard before | real |
+| `hamilton-before-2.webp` | 16:9  | Compare, the side yard before | real |
 
 ### `portfolio/castle-lane/` (4)
 
-| File              | Ratio | Slot                |
-| ----------------- | ----- | ------------------- |
-| `castle-ln-1.png` | 16:9  | Drawing, front yard |
-| `castle-ln-2.png` | 16:9  | Drawing, side yard  |
-| `castle-ln-3.png` | 16:9  | Drawing, backyard   |
-| `castle-ln-4.png` | 16:9  | Drawing, site plan  |
+| File               | Ratio | Slot                |      |
+| ------------------ | ----- | ------------------- | ---- |
+| `castle-ln-1.webp` | 16:9  | Drawing, front yard | real |
+| `castle-ln-2.webp` | 16:9  | Drawing, side yard  | real |
+| `castle-ln-3.webp` | 16:9  | Drawing, backyard   | real |
+| `castle-ln-4.webp` | 16:9  | Drawing, site plan  | real |
 
 ### `portfolio/los-charros/` (6)
 
-| File                          | Ratio | Slot                             |
-| ----------------------------- | ----- | -------------------------------- |
-| `loscharros-slope-after.png`  | 3:2   | Built, the bank after            |
-| `loscharros-before.png`       | 3:2   | Built, the bank before           |
-| `loscharros-creek.jpg`        | 4:5   | Photograph, the dry creek        |
-| `loscharros-after.jpg`        | 4:5   | Photograph, grasses and boulders |
-| `loscharros-planting-day.png` | 4:5   | Photograph, planting day         |
-| `loscharros-render.jpg`       | 16:9  | Drawing, the render              |
+| File                           | Ratio | Slot                             |      |
+| ------------------------------ | ----- | -------------------------------- | ---- |
+| `loscharros-slope-after.webp`  | 3:2   | Built, the bank after            | real |
+| `loscharros-before.webp`       | 3:2   | Built, the bank before           | real |
+| `loscharros-creek.webp`        | 4:5   | Photograph, the dry creek        | real |
+| `loscharros-after.webp`        | 4:5   | Photograph, grasses and boulders | real |
+| `loscharros-planting-day.webp` | 4:5   | Photograph, planting day         | real |
+| `loscharros-render.webp`       | 16:9  | Drawing, the render              | real |
 
-## Videos
+## Video
 
-These go in `public/media/`. They are not placeholdered: a project whose
-footage is missing renders the design's own "to come" panel, which is honest
-about the gap rather than showing an empty frame.
+These live in `public/media/` and are referenced from a project's Markdown as
+`file: <name>`. The path is checked at build time, the same as an image.
 
-To wire one up, drop the file in `public/media/` and change `pending: true`
-to `file: <name>` on that clip in the project's Markdown file.
+A clip that is not yet in the repo is marked `pending: true` instead, which
+renders the design's own "to come" panel rather than an empty frame.
 
-| File                       | Clip                                |
-| -------------------------- | ----------------------------------- |
-| `marlowe-front-1.mp4`      | Marlowe, the front yard             |
-| `marlowe-front-2.mp4`      | Marlowe, the front beds             |
-| `marlowe-front-3.mp4`      | Marlowe, the entry walk             |
-| `viewridge-side-after.mp4` | Viewridge, the side run after       |
-| `viewridge-b2-before.mp4`  | Viewridge, the upper terrace before |
-| `viewridge-b2-after.mp4`   | Viewridge, the upper terrace after  |
-| `hamilton-walkthrough.mp4` | Hamilton, the finished yard         |
+| File                       | Clip                                |         |
+| -------------------------- | ----------------------------------- | ------- |
+| `marlowe-front-1.mp4`      | Marlowe, the front yard             | present |
+| `marlowe-front-2.mp4`      | Marlowe, the front beds             | present |
+| `marlowe-front-3.mp4`      | Marlowe, the entry walk             | present |
+| `viewridge-side-after.mp4` | Viewridge, the side run after       | present |
+| `viewridge-b2-before.mp4`  | Viewridge, the upper terrace before | present |
+| `viewridge-b2-after.mp4`   | Viewridge, the upper terrace after  | present |
+| `hamilton-walkthrough.mp4` | Hamilton, the finished yard         | present |
 
 ## Google Drive embeds
 
-Four walkthroughs play from Google Drive because GMZ has no local copy of the
-footage. They are referenced by file id in the project Markdown, under
-`walkthrough.drive` and on individual clips.
+Six walkthroughs still play from Google Drive because GMZ has no local copy of
+the footage. They are referenced by file id in the project Markdown and in
+`src/data/portfolio.ts`, under `drive:`.
 
 These depend on the Drive files staying link-shared. Nothing at build time can
 check that, so if a walkthrough goes blank on the live site, check the sharing
-on the Drive file first. Replacing them with local mp4s under `public/media/`
-removes that dependency and is worth doing when the files are to hand.
+on the Drive file first. Copying them into `public/media/` removes that
+dependency and is worth doing when the files are to hand.
 
-## The logo
+## Still generated
 
-`src/assets/brand/gmz-logo.svg` is a generated wordmark, not the real mark.
-The design draws the green tree-badge logo from Google Drive. Replacing this
-one file updates the header, the mobile menu, the footer and the unlock veil,
-because all four read the same asset.
-
-`public/favicon.svg` and `public/og-default.jpg` are also placeholders.
+- `src/assets/brand/gmz-logo.svg` is a wordmark, not the real GMZ mark. The
+  design draws the green tree-badge logo from Google Drive. Replacing this one
+  file updates the header, the mobile menu, the footer and the unlock veil,
+  because all four read the same asset.
+- `public/favicon.svg` and `public/og-default.jpg`.
