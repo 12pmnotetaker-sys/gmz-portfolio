@@ -8,7 +8,7 @@ published: true
 needsDecision: false
 ---
 
-For a design or build project, yes: $175, which covers the first hour on the property. For a maintenance account the property walk is still free.
+Yes, for both kinds of work. A design or build consultation is $175, which covers the first hour on the property. A maintenance property walk is shorter and carries a smaller fee; you hear the figure on the first call, before anything is booked.
 
 Someone comes out, walks the site with you, looks at access, grade, drainage and what is already growing there, and talks through what you want the space to be like. If it is going to need longer than the hour, you hear that while we are standing there rather than on an invoice afterwards.
 
