@@ -1,0 +1,3602 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GMZ Operating Manual</title>
+    <!--
+      Standard operating procedures and workflow diagrams for GMZ Landscaping,
+      plus the plan for taking them to the board.
+
+      Same rules as docs/pipeline-and-pricing.html, which this sits alongside:
+      the stage model comes from docs/process-proposal.html, what may be said to
+      a client comes from published entries in src/content/faqs, and the intake
+      gates come from docs/intake-forms.html. This document tells people what to
+      DO; that one explains WHY the pricing is shaped the way it is. Neither
+      decides anything on its own.
+
+      Carries no cost, margin, overhead, burdened rate or per-day minimum. Those
+      live in the facts sheet and are read from there each time. Client-facing
+      fees are stated because they are published on the site; anything not yet
+      decided is marked as pending rather than written as if settled.
+
+      Roles rather than names throughout, so a departure does not invalidate a
+      procedure. The name-to-role mapping lives in the facts sheet.
+
+      Render:  node scripts/render-pdf.mjs docs/operating-manual.html
+    -->
+    <style>
+      :root {
+        --ink: #222222;
+        --ink-soft: #4f544f;
+        --ink-faint: #7b807b;
+        --rule: #d8dcd6;
+        --hair: #eaeee8;
+        --paper: #ffffff;
+        --sunk: #f6f8f4;
+
+        --green: #2e7d32;
+        --green-deep: #1b5e20;
+        --green-wash: #e8f5e9;
+
+        --pay: #8a5a00;
+        --pay-wash: #f9f0dc;
+
+        --serif: 'Charter', 'Bitstream Charter', Georgia, 'Times New Roman', serif;
+        --sans: 'Liberation Sans', Helvetica, Arial, sans-serif;
+      }
+
+      @page {
+        size: letter;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        font-family: var(--sans);
+        color: var(--ink);
+        background: var(--paper);
+        font-size: 9.3pt;
+        line-height: 1.46;
+      }
+
+      .page {
+        position: relative;
+        width: 8.5in;
+        height: 11in;
+        padding: 0.68in 0.78in 0.48in;
+        background: var(--paper);
+        overflow: hidden;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .page:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      /* ---- running furniture ------------------------------------------- */
+
+      .runner {
+        position: absolute;
+        top: 0.42in;
+        left: 0.78in;
+        right: 0.78in;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-size: 7.1pt;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        border-bottom: 0.5pt solid var(--hair);
+        padding-bottom: 4pt;
+      }
+
+      .runner strong {
+        color: var(--green-deep);
+        font-weight: 700;
+      }
+
+      .foot {
+        position: absolute;
+        bottom: 0.3in;
+        left: 0.78in;
+        right: 0.78in;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-size: 7.1pt;
+        color: var(--ink-faint);
+        border-top: 0.5pt solid var(--hair);
+        padding-top: 4pt;
+      }
+
+      /* ---- headings ---------------------------------------------------- */
+
+      .kicker {
+        font-size: 7.4pt;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--green);
+        font-weight: 700;
+        margin-bottom: 5pt;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--serif);
+        font-weight: 400;
+        line-height: 1.16;
+        color: var(--ink);
+      }
+
+      h2 {
+        font-size: 17.5pt;
+        letter-spacing: -0.01em;
+      }
+
+      h3 {
+        font-size: 11.4pt;
+        margin-bottom: 3pt;
+      }
+
+      .deck {
+        font-size: 10.4pt;
+        line-height: 1.45;
+        color: var(--ink-soft);
+        max-width: 5.9in;
+        margin-top: 5pt;
+      }
+
+      p {
+        margin-bottom: 5pt;
+        max-width: 6.5in;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      .lede {
+        font-family: var(--serif);
+        font-size: 11.2pt;
+        line-height: 1.45;
+      }
+
+      em {
+        font-style: italic;
+      }
+
+      strong {
+        font-weight: 700;
+      }
+
+      .rule {
+        height: 0.5pt;
+        background: var(--rule);
+        margin: 9pt 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        gap: 9pt;
+        margin-bottom: 6pt;
+      }
+
+      .section-head .num {
+        font-family: var(--serif);
+        font-size: 15pt;
+        color: var(--green);
+        line-height: 1;
+      }
+
+      /* ---- cover ------------------------------------------------------- */
+
+      .cover {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-top: 1.15in;
+      }
+
+      .mark {
+        font-family: var(--serif);
+        font-size: 26pt;
+        letter-spacing: 0.02em;
+        color: var(--green-deep);
+        line-height: 1;
+      }
+
+      .mark-sub {
+        font-size: 7.6pt;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-top: 7pt;
+      }
+
+      .cover-title {
+        font-family: var(--serif);
+        font-size: 40pt;
+        line-height: 1.02;
+        letter-spacing: -0.018em;
+        margin-top: 0.62in;
+      }
+
+      .cover-title span {
+        color: var(--green);
+      }
+
+      .cover-deck {
+        font-family: var(--serif);
+        font-size: 13pt;
+        line-height: 1.42;
+        color: var(--ink-soft);
+        max-width: 5.1in;
+        margin-top: 16pt;
+      }
+
+      .cover-spine {
+        margin-top: 0.5in;
+        border-left: 2.5pt solid var(--green);
+        padding-left: 14pt;
+        max-width: 5.5in;
+      }
+
+      .cover-spine p {
+        font-size: 10.2pt;
+        line-height: 1.5;
+      }
+
+      .cover-meta {
+        margin-top: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16pt;
+        border-top: 0.5pt solid var(--rule);
+        padding-top: 12pt;
+      }
+
+      .cover-meta dt {
+        font-size: 7.1pt;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 3pt;
+      }
+
+      .cover-meta dd {
+        font-size: 8.8pt;
+        line-height: 1.42;
+        color: var(--ink);
+      }
+
+      .stamp {
+        align-self: flex-start;
+        display: inline-block;
+        font-size: 7.2pt;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--pay);
+        background: var(--pay-wash);
+        border: 0.5pt solid #e0cda0;
+        padding: 3.5pt 8pt;
+        margin-top: 22pt;
+      }
+
+      /* ---- the three numbers ------------------------------------------- */
+
+      .numbers {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10pt;
+        margin-top: 12pt;
+      }
+
+      .numcard {
+        border: 0.5pt solid var(--rule);
+        border-top: 2.5pt solid var(--green);
+        padding: 10pt 11pt 11pt;
+        background: var(--sunk);
+      }
+
+      .numcard.paid {
+        border-top-color: var(--pay);
+      }
+
+      .numcard .ord {
+        font-family: var(--serif);
+        font-size: 8.4pt;
+        color: var(--ink-faint);
+        letter-spacing: 0.05em;
+      }
+
+      .numcard h3 {
+        font-size: 12.6pt;
+        margin: 2pt 0 6pt;
+      }
+
+      .numcard dl {
+        margin: 0;
+      }
+
+      .numcard dt {
+        font-size: 6.9pt;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--green-deep);
+        margin-top: 7pt;
+      }
+
+      .numcard.paid dt {
+        color: var(--pay);
+      }
+
+      .numcard dd {
+        font-size: 8.7pt;
+        line-height: 1.42;
+        margin: 1.5pt 0 0;
+      }
+
+      .say {
+        margin-top: 12pt;
+        background: var(--green-wash);
+        border-left: 2.5pt solid var(--green);
+        padding: 10pt 13pt;
+      }
+
+      .say .lbl {
+        font-size: 7pt;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--green-deep);
+        font-weight: 700;
+        margin-bottom: 4pt;
+      }
+
+      .say q {
+        font-family: var(--serif);
+        font-size: 11.4pt;
+        line-height: 1.45;
+        display: block;
+        quotes: '\201C' '\201D';
+      }
+
+      /* ---- funnel diagram ---------------------------------------------- */
+
+      .funnel {
+        margin-top: 10pt;
+      }
+
+      .band {
+        display: grid;
+        grid-template-columns: 0.98in 1fr;
+        border-top: 0.5pt solid var(--rule);
+      }
+
+      .band:last-child {
+        border-bottom: 0.5pt solid var(--rule);
+      }
+
+      .band-label {
+        padding: 7pt 9pt 6pt 0;
+        border-right: 0.5pt solid var(--rule);
+      }
+
+      .band-label .bl-num {
+        font-family: var(--serif);
+        font-size: 8pt;
+        color: var(--green);
+        letter-spacing: 0.1em;
+      }
+
+      .band-label .bl-name {
+        font-family: var(--serif);
+        font-size: 11pt;
+        line-height: 1.15;
+        margin-top: 2pt;
+      }
+
+      .band-label .bl-note {
+        font-size: 7.3pt;
+        line-height: 1.35;
+        color: var(--ink-faint);
+        margin-top: 4pt;
+      }
+
+      .band-body {
+        padding: 7pt 0 6pt 12pt;
+      }
+
+      .stagerow {
+        display: flex;
+        align-items: flex-start;
+        gap: 7pt;
+        margin-bottom: 3.8pt;
+      }
+
+      .stagerow:last-child {
+        margin-bottom: 0;
+      }
+
+      .node {
+        flex: 0 0 auto;
+        width: 15pt;
+        height: 15pt;
+        border-radius: 50%;
+        border: 0.75pt solid var(--green);
+        color: var(--green-deep);
+        font-size: 7.2pt;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.5pt;
+      }
+
+      .node.money {
+        background: var(--pay);
+        border-color: var(--pay);
+        color: #fff;
+      }
+
+      .node.gate {
+        background: var(--green);
+        border-color: var(--green);
+        color: #fff;
+      }
+
+      .stagerow .txt {
+        flex: 1 1 auto;
+      }
+
+      .stagerow .nm {
+        font-size: 9.4pt;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+
+      .stagerow .pr {
+        font-size: 8pt;
+        line-height: 1.32;
+        color: var(--ink-soft);
+        margin-top: 1pt;
+      }
+
+      .stagerow .pr b {
+        color: var(--pay);
+      }
+
+      .stagerow .pr i {
+        font-style: normal;
+        color: var(--green-deep);
+        font-weight: 700;
+      }
+
+      .legend {
+        display: flex;
+        gap: 18pt;
+        flex-wrap: wrap;
+        margin-top: 6pt;
+        font-size: 7.8pt;
+        color: var(--ink-soft);
+      }
+
+      .legend span {
+        display: flex;
+        align-items: center;
+        gap: 5pt;
+      }
+
+      .chip {
+        width: 11pt;
+        height: 11pt;
+        border-radius: 50%;
+        border: 0.75pt solid var(--green);
+        flex: 0 0 auto;
+      }
+
+      .chip.money {
+        background: var(--pay);
+        border-color: var(--pay);
+      }
+
+      .chip.gate {
+        background: var(--green);
+        border-color: var(--green);
+      }
+
+      /* ---- tables ------------------------------------------------------ */
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 9pt;
+      }
+
+      thead th {
+        font-size: 6.9pt;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--green-deep);
+        text-align: left;
+        font-weight: 700;
+        padding: 0 7pt 4.5pt 0;
+        border-bottom: 1pt solid var(--green);
+        vertical-align: bottom;
+      }
+
+      tbody td {
+        font-size: 8.1pt;
+        line-height: 1.33;
+        padding: 4.4pt 7pt 4.4pt 0;
+        border-bottom: 0.5pt solid var(--hair);
+        vertical-align: top;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: 0.5pt solid var(--rule);
+      }
+
+      td:last-child,
+      th:last-child {
+        padding-right: 0;
+      }
+
+      .st {
+        white-space: nowrap;
+      }
+
+      .st .stnum {
+        font-family: var(--serif);
+        font-size: 8pt;
+        color: var(--green);
+        display: block;
+      }
+
+      .st .stname {
+        font-weight: 700;
+        font-size: 8.6pt;
+        line-height: 1.25;
+        display: block;
+        white-space: normal;
+      }
+
+      .pays {
+        color: var(--pay);
+        font-weight: 700;
+      }
+
+      .free {
+        color: var(--ink-faint);
+      }
+
+      .gatecell {
+        color: var(--green-deep);
+      }
+
+      /* ---- generic blocks ---------------------------------------------- */
+
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 11pt 15pt;
+      }
+
+      .note {
+        background: var(--sunk);
+        border-left: 2pt solid var(--green);
+        padding: 8pt 10pt;
+        font-size: 8.5pt;
+        line-height: 1.4;
+      }
+
+      .note.warn {
+        border-left-color: var(--pay);
+        background: var(--pay-wash);
+      }
+
+      .note h3 {
+        font-size: 10pt;
+        margin-bottom: 3pt;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 12pt;
+      }
+
+      li {
+        font-size: 8.5pt;
+        line-height: 1.4;
+        margin-bottom: 3pt;
+      }
+
+      li:last-child {
+        margin-bottom: 0;
+      }
+
+      li strong {
+        color: var(--ink);
+      }
+
+      .never li::marker {
+        color: var(--pay);
+      }
+
+      .checklist {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .checklist li {
+        display: flex;
+        gap: 7pt;
+        align-items: baseline;
+      }
+
+      .checklist .n {
+        font-family: var(--serif);
+        color: var(--green);
+        font-size: 8.6pt;
+        flex: 0 0 auto;
+      }
+
+      .tag {
+        display: inline-block;
+        font-size: 6.8pt;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 1.5pt 5pt;
+        border: 0.5pt solid var(--rule);
+        color: var(--ink-soft);
+        background: var(--paper);
+        vertical-align: 1pt;
+      }
+
+      .tag.pay {
+        color: var(--pay);
+        border-color: #e0cda0;
+        background: var(--pay-wash);
+      }
+
+      .tag.g {
+        color: var(--green-deep);
+        border-color: #bcd9be;
+        background: var(--green-wash);
+      }
+
+      /* ---- SOP blocks --------------------------------------------------- */
+
+      .sop {
+        border: 0.5pt solid var(--rule);
+        border-left: 2.5pt solid var(--green);
+        padding: 7pt 10pt 7.5pt;
+        margin-bottom: 7pt;
+        break-inside: avoid;
+      }
+
+      .sop:last-child {
+        margin-bottom: 0;
+      }
+
+      .sop-head {
+        display: flex;
+        align-items: baseline;
+        gap: 7pt;
+        margin-bottom: 4pt;
+      }
+
+      .sop-id {
+        font-family: var(--serif);
+        font-size: 8.4pt;
+        color: var(--green);
+        letter-spacing: 0.06em;
+        white-space: nowrap;
+      }
+
+      .sop-name {
+        font-family: var(--serif);
+        font-size: 11.6pt;
+        line-height: 1.14;
+      }
+
+      .sop-meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8pt;
+        border-top: 0.5pt solid var(--hair);
+        border-bottom: 0.5pt solid var(--hair);
+        padding: 4pt 0;
+        margin-bottom: 5pt;
+      }
+
+      .sop-meta div {
+        min-width: 0;
+      }
+
+      .sop-meta dt {
+        font-size: 6.5pt;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--green-deep);
+        font-weight: 700;
+      }
+
+      .sop-meta dd {
+        font-size: 8pt;
+        line-height: 1.3;
+        margin: 1pt 0 0;
+      }
+
+      .sop ol {
+        margin: 0;
+        padding-left: 13pt;
+      }
+
+      .sop ol li {
+        font-size: 8.3pt;
+        line-height: 1.36;
+        margin-bottom: 2.5pt;
+      }
+
+      .sop ol li::marker {
+        color: var(--green);
+        font-weight: 700;
+      }
+
+      .stop {
+        margin-top: 5pt;
+        background: var(--pay-wash);
+        border-left: 2pt solid var(--pay);
+        padding: 5pt 8pt;
+        font-size: 7.9pt;
+        line-height: 1.33;
+      }
+
+      .stop b {
+        color: var(--pay);
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        font-size: 6.8pt;
+      }
+
+      /* ---- flow diagrams ------------------------------------------------ */
+
+      .flow {
+        margin-top: 8pt;
+      }
+
+      .frow {
+        display: grid;
+        grid-template-columns: 0.42in 1fr;
+        column-gap: 8pt;
+      }
+
+      .fnode {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+
+      .fnode span {
+        width: 17pt;
+        height: 17pt;
+        border-radius: 50%;
+        border: 0.75pt solid var(--green);
+        background: var(--paper);
+        color: var(--green-deep);
+        font-size: 7.4pt;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+      }
+
+      .fnode.money span {
+        background: var(--pay);
+        border-color: var(--pay);
+        color: #fff;
+      }
+      .fnode.gate span {
+        background: var(--green);
+        border-color: var(--green);
+        color: #fff;
+      }
+
+      .fnode::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: -6pt;
+        left: 50%;
+        width: 0.75pt;
+        margin-left: -0.375pt;
+        background: var(--rule);
+      }
+
+      .frow:last-child .fnode::before {
+        bottom: 50%;
+      }
+
+      .fbody {
+        padding-bottom: 6pt;
+      }
+
+      .fbody .fname {
+        font-size: 9.2pt;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .fbody .fsub {
+        font-size: 7.9pt;
+        line-height: 1.32;
+        color: var(--ink-soft);
+        margin-top: 1pt;
+      }
+
+      .fbody .fsub b {
+        color: var(--pay);
+      }
+      .fbody .fsub i {
+        font-style: normal;
+        color: var(--green-deep);
+        font-weight: 700;
+      }
+
+      /* ---- decision tree ------------------------------------------------ */
+
+      .dtree {
+        margin-top: 8pt;
+      }
+
+      .dq {
+        background: var(--green-wash);
+        border-left: 2.5pt solid var(--green);
+        padding: 6pt 9pt;
+        font-family: var(--serif);
+        font-size: 10.4pt;
+        margin-bottom: 6pt;
+      }
+
+      .dbranch {
+        display: grid;
+        grid-template-columns: 0.9in 1fr;
+        column-gap: 9pt;
+        border-top: 0.5pt solid var(--hair);
+        padding: 5pt 0;
+      }
+
+      .dbranch:last-child {
+        border-bottom: 0.5pt solid var(--rule);
+      }
+
+      .dif {
+        font-size: 8.2pt;
+        font-weight: 700;
+        color: var(--green-deep);
+        line-height: 1.28;
+      }
+
+      .dthen {
+        font-size: 8.2pt;
+        line-height: 1.34;
+      }
+      .dthen b {
+        color: var(--pay);
+      }
+
+      /* ---- swimlane ----------------------------------------------------- */
+
+      .lane {
+        display: grid;
+        grid-template-columns: 0.85in 1fr;
+        border-top: 0.5pt solid var(--rule);
+      }
+
+      .lane:last-of-type {
+        border-bottom: 0.5pt solid var(--rule);
+      }
+
+      .lane-h {
+        padding: 7pt 8pt 8pt 0;
+        border-right: 0.5pt solid var(--rule);
+      }
+
+      .lane-h .lh {
+        font-family: var(--serif);
+        font-size: 10.4pt;
+        line-height: 1.14;
+      }
+
+      .lane-h .ls {
+        font-size: 7.1pt;
+        line-height: 1.3;
+        color: var(--ink-faint);
+        margin-top: 3pt;
+      }
+
+      .lane-b {
+        padding: 7pt 0 8pt 10pt;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4pt;
+        align-items: flex-start;
+      }
+
+      .step {
+        border: 0.5pt solid var(--rule);
+        background: var(--sunk);
+        padding: 3.5pt 6pt;
+        font-size: 7.6pt;
+        line-height: 1.22;
+        flex: 0 1 auto;
+        max-width: 1.35in;
+      }
+
+      .step.money {
+        background: var(--pay-wash);
+        border-color: #e0cda0;
+      }
+      .step.gate {
+        background: var(--green-wash);
+        border-color: #bcd9be;
+      }
+      .step .sn {
+        display: block;
+        font-size: 6.4pt;
+        letter-spacing: 0.08em;
+        color: var(--ink-faint);
+        font-weight: 700;
+      }
+      .step.money .sn {
+        color: var(--pay);
+      }
+      .step.gate .sn {
+        color: var(--green-deep);
+      }
+
+      .arrow {
+        align-self: center;
+        color: var(--ink-faint);
+        font-size: 8.5pt;
+        flex: 0 0 auto;
+      }
+
+      /* ---- money timeline ----------------------------------------------- */
+
+      .tl {
+        margin-top: 8pt;
+        border-top: 0.5pt solid var(--rule);
+      }
+
+      .tlrow {
+        display: grid;
+        grid-template-columns: 1.05in 1fr 1.15in;
+        column-gap: 9pt;
+        border-bottom: 0.5pt solid var(--hair);
+        padding: 5pt 0;
+      }
+
+      .tlrow .tw {
+        font-size: 8pt;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+      .tlrow .td {
+        font-size: 8pt;
+        line-height: 1.32;
+        color: var(--ink-soft);
+      }
+      .tlrow .tm {
+        font-size: 8pt;
+        font-weight: 700;
+        color: var(--pay);
+        text-align: right;
+        line-height: 1.25;
+      }
+      .tlrow .tm.none {
+        color: var(--ink-faint);
+        font-weight: 400;
+      }
+
+      /* ---- agenda ------------------------------------------------------- */
+
+      .ag {
+        margin-top: 8pt;
+        border-top: 1pt solid var(--green);
+      }
+
+      .agrow {
+        display: grid;
+        grid-template-columns: 0.52in 1.45in 1fr;
+        column-gap: 9pt;
+        border-bottom: 0.5pt solid var(--hair);
+        padding: 5.5pt 0;
+      }
+
+      .agrow .at {
+        font-family: var(--serif);
+        font-size: 8.4pt;
+        color: var(--green);
+      }
+      .agrow .an {
+        font-size: 8.6pt;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+      .agrow .ad {
+        font-size: 8.2pt;
+        line-height: 1.34;
+      }
+      .agrow .ad em {
+        color: var(--green-deep);
+        font-style: normal;
+        font-weight: 700;
+      }
+
+      .ask {
+        display: inline-block;
+        font-size: 6.6pt;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--pay);
+        background: var(--pay-wash);
+        border: 0.5pt solid #e0cda0;
+        padding: 1pt 4pt;
+        margin-right: 4pt;
+        vertical-align: 1pt;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ============================== 1. COVER ============================ -->
+    <div class="page">
+      <div class="cover">
+        <div>
+          <div class="mark">GMZ Landscaping Inc.</div>
+          <div class="mark-sub">Design &middot; Build &middot; Maintenance</div>
+        </div>
+
+        <h1 class="cover-title">How the work<br />actually runs.</h1>
+
+        <p class="cover-deck">
+          Standard operating procedures and workflow diagrams for both service lines, from the first
+          call to the follow-up, with the board agenda for signing them off.
+        </p>
+
+        <div class="cover-spine">
+          <p>
+            <strong>An SOP is not a description of what happens.</strong> It is what happens,
+            written down so it happens the same way when the person who normally does it is on a
+            roof in Woodside. Every procedure here names who owns it, what starts it, what it
+            produces, and the one thing that must not be skipped. Where a step exists because of a
+            law or because GMZ lost money learning it, that reason is stated, because a rule without
+            its reason is the first rule to get dropped.
+          </p>
+        </div>
+
+        <div class="stamp">Internal &middot; not for client distribution</div>
+
+        <dl class="cover-meta">
+          <div>
+            <dt>Covers</dt>
+            <dd>19 procedures, 6 workflow diagrams, both service lines</dd>
+          </div>
+          <div>
+            <dt>Dated</dt>
+            <dd>17 August 2026<br />Supersedes nothing; this is the first issue</dd>
+          </div>
+          <div>
+            <dt>Companion</dt>
+            <dd>
+              <em>Lead-to-sale pipeline and pricing</em> explains why the money is shaped this way.
+              This document says what to do.
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- ========================= 2. HOW TO USE ============================ -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>How to use this</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">01</span>
+        <div>
+          <div class="kicker">Before anything else</div>
+          <h2>Who may do what, and what this document is not</h2>
+        </div>
+      </div>
+
+      <p class="lede">
+        Most of what goes wrong in a small contracting business is not a skill problem. It is
+        somebody doing a thing they were not the right person to do, or doing it from memory when it
+        should have been read off a page.
+      </p>
+
+      <h3 style="font-size: 11.6pt; margin-top: 9pt">
+        Authority: the four things that need the right person
+      </h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 1.55in">This</th>
+            <th style="width: 1.35in">Who may do it</th>
+            <th>Why it is fenced</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Quote a price to a client, in any form, including out loud on site</td>
+            <td class="gatecell">Owner or office admin only</td>
+            <td>
+              A number said aloud is a number GMZ will be held to, and it has to clear the minimum
+              first. That check is not a field task.
+            </td>
+          </tr>
+          <tr>
+            <td>Take payment or a deposit</td>
+            <td class="gatecell">Owner or office admin only</td>
+            <td>
+              Deposits are capped by statute and payments are tied to completed phases. Collecting
+              out of sequence creates a problem no invoice fixes later.
+            </td>
+          </tr>
+          <tr>
+            <td>Attend a property alone on GMZ business</td>
+            <td class="gatecell">Administrative roles only</td>
+            <td>
+              A solo visit involves quoting, judgement and representing the company. Those are
+              management responsibilities and are not part of a laborer role.
+            </td>
+          </tr>
+          <tr>
+            <td>Drive a GMZ vehicle</td>
+            <td class="gatecell">Named drivers on the auto policy only</td>
+            <td>
+              An unlisted driver is a coverage question nobody wants answered after the fact. The
+              current named list lives in the facts sheet, not here, because it changes.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div class="note">
+          <h3>What this document is</h3>
+          <ul>
+            <li>The procedure, in order, for anyone doing the step.</li>
+            <li>The gates: what must be true before the next step runs.</li>
+            <li>The named exceptions, so nobody has to invent one.</li>
+            <li>Client-facing fees, because those are published.</li>
+          </ul>
+        </div>
+        <div class="note warn">
+          <h3>What it deliberately is not</h3>
+          <ul>
+            <li>
+              <strong>Not a price book.</strong> Minimums, rates and the build-up behind them live
+              in the facts sheet and are read from there every time. Copying one here would create a
+              second home for a number that changes.
+            </li>
+            <li>
+              <strong>Not a staff list.</strong> Roles, not names, so a departure does not
+              invalidate a procedure.
+            </li>
+            <li>
+              <strong>Not policy.</strong> Anything undecided is marked pending, not written as
+              settled.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <h3 style="font-size: 11.6pt">What is in here</h3>
+      <div class="grid2" style="margin-top: 6pt; gap: 6pt 15pt">
+        <div>
+          <table style="margin-top: 0">
+            <tbody>
+              <tr>
+                <td style="width: 0.52in" class="gatecell">01</td>
+                <td>Logging an inquiry</td>
+                <td style="width: 0.3in; text-align: right">6</td>
+              </tr>
+              <tr>
+                <td class="gatecell">02</td>
+                <td>The qualification call</td>
+                <td style="text-align: right">6</td>
+              </tr>
+              <tr>
+                <td class="gatecell">03</td>
+                <td>The site consultation</td>
+                <td style="text-align: right">7</td>
+              </tr>
+              <tr>
+                <td class="gatecell">04</td>
+                <td>Concept and planning budget</td>
+                <td style="text-align: right">8</td>
+              </tr>
+              <tr>
+                <td class="gatecell">05</td>
+                <td>Design development</td>
+                <td style="text-align: right">8</td>
+              </tr>
+              <tr>
+                <td class="gatecell">06</td>
+                <td>Bid presentation</td>
+                <td style="text-align: right">9</td>
+              </tr>
+              <tr>
+                <td class="gatecell">07</td>
+                <td>Contract and deposit</td>
+                <td style="text-align: right">9</td>
+              </tr>
+              <tr>
+                <td class="gatecell">08</td>
+                <td>Pre-construction meeting</td>
+                <td style="text-align: right">10</td>
+              </tr>
+              <tr>
+                <td class="gatecell">09</td>
+                <td>Running the build</td>
+                <td style="text-align: right">10</td>
+              </tr>
+              <tr>
+                <td class="gatecell">09b</td>
+                <td>Changes and surprises</td>
+                <td style="text-align: right">11</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table style="margin-top: 0">
+            <tbody>
+              <tr>
+                <td style="width: 0.52in" class="gatecell">10</td>
+                <td>Completion and punch list</td>
+                <td style="width: 0.3in; text-align: right">12</td>
+              </tr>
+              <tr>
+                <td class="gatecell">11</td>
+                <td>Closeout package</td>
+                <td style="text-align: right">12</td>
+              </tr>
+              <tr>
+                <td class="gatecell">12</td>
+                <td>Follow-up calls</td>
+                <td style="text-align: right">12</td>
+              </tr>
+              <tr>
+                <td class="gatecell">M1&ndash;M3</td>
+                <td>Maintenance intake to quote</td>
+                <td style="text-align: right">13</td>
+              </tr>
+              <tr>
+                <td class="gatecell">M4&ndash;M7</td>
+                <td>Agreement to annual review</td>
+                <td style="text-align: right">14</td>
+              </tr>
+              <tr>
+                <td class="gatecell">S1</td>
+                <td>One-off service call</td>
+                <td style="text-align: right">15</td>
+              </tr>
+              <tr>
+                <td class="gatecell">G1</td>
+                <td>Before a number reaches a client</td>
+                <td style="text-align: right">16</td>
+              </tr>
+              <tr>
+                <td class="gatecell">G2</td>
+                <td>Before anything is published</td>
+                <td style="text-align: right">16</td>
+              </tr>
+              <tr>
+                <td class="gatecell">&mdash;</td>
+                <td>Open register and fee schedule</td>
+                <td style="text-align: right">17</td>
+              </tr>
+              <tr>
+                <td class="gatecell">&mdash;</td>
+                <td>Board session plan</td>
+                <td style="text-align: right">18</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3 style="font-size: 11.6pt; margin-top: 7pt">Reading the diagrams</h3>
+      <div class="legend" style="margin-top: 4pt">
+        <span><span class="chip"></span> Step runs, nothing charged</span>
+        <span><span class="chip money"></span> Client pays at this step</span>
+        <span><span class="chip gate"></span> Gate: a decision is asked for and can be a no</span>
+      </div>
+
+      <div class="foot"><span>GMZ operating manual</span><span>2</span></div>
+    </div>
+
+    <!-- ==================== 3. THE WHOLE BUSINESS ========================= -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span
+        ><span>Diagram 1 &middot; the whole business</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">02</span>
+        <div>
+          <div class="kicker">Diagram 1</div>
+          <h2>Two service lines, one front door</h2>
+        </div>
+      </div>
+
+      <p class="deck">
+        Every lead arrives at the same place and is sorted once, on the first call. After that the
+        two lines never merge: separate agreements, separate pricing, separate calendars.
+      </p>
+
+      <div style="margin-top: 9pt">
+        <div class="lane">
+          <div class="lane-h">
+            <div class="lh">Front door</div>
+            <div class="ls">Whoever picks up. One log, whatever the channel.</div>
+          </div>
+          <div class="lane-b">
+            <div class="step"><span class="sn">01</span>Inquiry logged</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step gate"><span class="sn">02</span>Phone qualification</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step gate"><span class="sn">02b</span>Sort the lead</div>
+          </div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-h">
+            <div class="lh">Design &amp; build</div>
+            <div class="ls">Twelve stages. Ends, then starts again as a new project.</div>
+          </div>
+          <div class="lane-b">
+            <div class="step money"><span class="sn">03</span>Consultation</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step money"><span class="sn">04</span>Concept &amp; budget</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step money"><span class="sn">05</span>Design development</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step gate"><span class="sn">06</span>Bid presented</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step money"><span class="sn">07</span>Contract &amp; deposit</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step"><span class="sn">08</span>Pre-con meeting</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step money"><span class="sn">09</span>Build, paid by phase</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step gate"><span class="sn">10</span>Punch list</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step money"><span class="sn">11</span>Closeout</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step"><span class="sn">12</span>Follow-up</div>
+          </div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-h">
+            <div class="lh">Maintenance</div>
+            <div class="ls">Seven stages. Renews rather than ending.</div>
+          </div>
+          <div class="lane-b">
+            <div class="step gate"><span class="sn">M2</span>Route-fit screen</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step money"><span class="sn">M3</span>Walk &amp; quote</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step money"><span class="sn">M4</span>Service agreement</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step"><span class="sn">M5</span>Onboarding visit</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step money"><span class="sn">M6</span>Route, set price per visit</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step gate"><span class="sn">M7</span>Annual review</div>
+            <span class="arrow">&#8630;</span>
+            <div class="step"><span class="sn">back to</span>M6</div>
+          </div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-h">
+            <div class="lh">Service call</div>
+            <div class="ls">Too small for a build crew. Routed, not refused.</div>
+          </div>
+          <div class="lane-b">
+            <div class="step money"><span class="sn">S1</span>Minimum quoted &amp; prepaid</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step"><span class="sn">S2</span>Visit, one person or a truck</div>
+            <span class="arrow">&rarr;</span>
+            <div class="step gate"><span class="sn">S3</span>Offer the maintenance book</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div>
+          <h3>Where the two lines touch</h3>
+          <p>
+            Only twice, and both are handoffs rather than merges. A finished build is offered the
+            maintenance book at closeout, as an offer and not a condition. An existing maintenance
+            client wanting a project runs the full design and build pipeline, with the consultation
+            fee waived because the crew is already on the property.
+          </p>
+        </div>
+        <div>
+          <h3>Where a lead can leave</h3>
+          <p>
+            Four places, all of them cheap: declined on the call, declined after the consultation by
+            either side, stopped after the concept phase, or not signing the bid. Nothing before the
+            design agreement and the construction contract obligates a client to continue, and
+            saying so plainly is what makes the paid steps easy to sell.
+          </p>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <h3 style="font-size: 11.6pt">What is different from how this ran before</h3>
+      <table style="margin-top: 6pt">
+        <thead>
+          <tr>
+            <th style="width: 1.5in">Stage</th>
+            <th style="width: 2.2in">Before</th>
+            <th>Now</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Inquiry</td>
+            <td>Three inboxes, nothing shared</td>
+            <td class="gatecell">One log, on arrival, whoever takes it</td>
+          </tr>
+          <tr>
+            <td>Qualification</td>
+            <td>None. The visit was the first filter</td>
+            <td class="gatecell">Fifteen minutes on the phone, budget band asked</td>
+          </tr>
+          <tr>
+            <td>Consultation</td>
+            <td>Free and unstructured</td>
+            <td class="gatecell">Paid, prepaid, run off a checklist</td>
+          </tr>
+          <tr>
+            <td>Concept and budget</td>
+            <td>Given away</td>
+            <td class="gatecell">A paid first phase of the design agreement</td>
+          </tr>
+          <tr>
+            <td>Contract</td>
+            <td>Varied by job, sometimes an accepted estimate</td>
+            <td class="gatecell">One compliant template, every job above the threshold</td>
+          </tr>
+          <tr>
+            <td>Completion</td>
+            <td>Varied by job</td>
+            <td class="gatecell">Written punch list, ten business days, every job</td>
+          </tr>
+          <tr>
+            <td>After</td>
+            <td>Nothing</td>
+            <td class="gatecell">Closeout package, then calls at thirty days and six months</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="foot"><span>GMZ operating manual</span><span>3</span></div>
+    </div>
+
+    <!-- ==================== 4. ROUTING DECISION TREE ====================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span
+        ><span>Diagram 2 &middot; sorting the lead</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">03</span>
+        <div>
+          <div class="kicker">Diagram 2</div>
+          <h2>Sorting the lead, in order, on the first call</h2>
+        </div>
+      </div>
+
+      <p class="deck">
+        Work down the questions. The first one that decides it, decides it. Getting this wrong sends
+        a build crew to do an hour of work, or prices an hour of work like a project.
+      </p>
+
+      <div class="dtree">
+        <div class="dq">1. Is the property inside the towns GMZ works in?</div>
+        <div class="dbranch">
+          <div class="dif">Yes</div>
+          <div class="dthen">Carry on to question 2. No travel charge.</div>
+        </div>
+        <div class="dbranch">
+          <div class="dif">Near the list</div>
+          <div class="dthen">
+            Carry on, and <b>add the travel charge</b> to whatever visit is booked. Say the number
+            on this call.
+          </div>
+        </div>
+        <div class="dbranch">
+          <div class="dif">Past the outer limit</div>
+          <div class="dthen">
+            <b>Decline now.</b> Give the reason. Do not book a visit you will regret driving to.
+          </div>
+        </div>
+
+        <div class="dq" style="margin-top: 10pt">
+          2. Does the client already have a complete plan set from an architect or designer?
+        </div>
+        <div class="dbranch">
+          <div class="dif">Yes, complete</div>
+          <div class="dthen">
+            Design and build, <b>no design fee</b>. Skips stages 04 and 05. Ask for the plan, the
+            plant list and any grading, drainage and construction details, and check the drawings
+            against the ground before pricing.
+          </div>
+        </div>
+        <div class="dbranch">
+          <div class="dif">Partial, or a sketch</div>
+          <div class="dthen">Treat as no. The paid design step still has to happen.</div>
+        </div>
+
+        <div class="dq" style="margin-top: 10pt">
+          3. What kind of work is it, in the client's own words?
+        </div>
+        <div class="dbranch">
+          <div class="dif">A project</div>
+          <div class="dthen">
+            Suits a build crew: planting, irrigation, drainage, patio, wall, fence, lighting. Go to
+            question 4.
+          </div>
+        </div>
+        <div class="dbranch">
+          <div class="dif">Ongoing upkeep</div>
+          <div class="dthen">
+            Maintenance. <b>Run the route-fit screen before quoting or driving</b> (SOP M2).
+            Openings are specific days, not any day.
+          </div>
+        </div>
+        <div class="dbranch">
+          <div class="dif">One thing fixed or tidied</div>
+          <div class="dthen">
+            Service call (SOP S1). An afternoon of pruning, a repair, a small refresh, a one-time
+            cleanup. Quote the minimum and take it before booking.
+          </div>
+        </div>
+        <div class="dbranch">
+          <div class="dif">They do not know</div>
+          <div class="dthen">
+            Ask what the problem is, not what should be built: standing water, dead lawn, no
+            privacy, unusable slope, nowhere to sit. The answer sorts it.
+          </div>
+        </div>
+
+        <div class="dq" style="margin-top: 10pt">
+          4. Are the described scope and the stated budget band in the same neighbourhood?
+        </div>
+        <div class="dbranch">
+          <div class="dif">Yes</div>
+          <div class="dthen">
+            Book the consultation. <b>Quote the fee and take it now</b>, on this call, before the
+            date goes in the calendar.
+          </div>
+        </div>
+        <div class="dbranch">
+          <div class="dif">No</div>
+          <div class="dthen">
+            <b>Say so on the call.</b> It is the kindest version of the conversation and it is far
+            cheaper than the same conversation after a design is underway.
+          </div>
+        </div>
+        <div class="dbranch">
+          <div class="dif">They will not say</div>
+          <div class="dthen">
+            Information in itself. Record it as refused. At small scopes, genuinely not knowing is
+            fine and not a reason to decline.
+          </div>
+        </div>
+      </div>
+
+      <div class="foot"><span>GMZ operating manual</span><span>4</span></div>
+    </div>
+
+    <!-- ==================== 5. MONEY-IN TIMELINE ========================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span
+        ><span>Diagram 3 &middot; when money arrives</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">04</span>
+        <div>
+          <div class="kicker">Diagram 3</div>
+          <h2>When money arrives, and what it is for</h2>
+        </div>
+      </div>
+
+      <p class="deck">
+        Every charge answers a client asking &ldquo;what am I paying for?&rdquo; If a step cannot
+        answer that in one sentence, it should not be charged for.
+      </p>
+
+      <div class="tl">
+        <div class="tlrow">
+          <div class="tw">First call</div>
+          <div class="td">Fifteen minutes on scope, band, timeline, decision makers, location.</div>
+          <div class="tm none">Nothing</div>
+        </div>
+        <div class="tlrow">
+          <div class="tw">Booking the visit</div>
+          <div class="td">
+            Taken before the date is confirmed, and before anybody drives. Prepaid deliberately: a
+            fee agreed at the property is a contract signed away from our place of business, which
+            carries a statutory cancellation right and, without the right notice attached, one that
+            never expires.
+          </div>
+          <div class="tm">Consultation fee<br />+ travel if out of area</div>
+        </div>
+        <div class="tlrow">
+          <div class="tw">Concept phase</div>
+          <div class="td">
+            First phase of the design agreement. Buys a written concept and a planning range, on
+            paper, from somebody who stood on the site.
+          </div>
+          <div class="tm">Concept phase fee</div>
+        </div>
+        <div class="tlrow">
+          <div class="tw">Design development</div>
+          <div class="td">
+            Second phase of the same agreement, entered only if the concept is approved. Buys the
+            measured plan set and the firm number that only measured plans can produce.
+          </div>
+          <div class="tm">Design fee, a share of construction</div>
+        </div>
+        <div class="tlrow">
+          <div class="tw">Bid presented</div>
+          <div class="td">Plan and price together, in person, decision asked for in the room.</div>
+          <div class="tm none">Nothing new</div>
+        </div>
+        <div class="tlrow">
+          <div class="tw">Contract signed</div>
+          <div class="td">
+            Capped by statute at the lesser of a fixed sum or a tenth of the contract. Long-lead
+            material is ordered the moment this lands, and that ordering window usually sets the
+            earliest honest start rather than crew availability.
+          </div>
+          <div class="tm">Deposit, at the statutory cap</div>
+        </div>
+        <div class="tlrow">
+          <div class="tw">During the build</div>
+          <div class="td">
+            One payment per completed phase: site preparation and grading, hardscape, irrigation,
+            planting. Each falls due when the client can walk out and look at it.
+          </div>
+          <div class="tm">Phase payments</div>
+        </div>
+        <div class="tlrow">
+          <div class="tw">Mid-build changes</div>
+          <div class="td">
+            Priced and signed before the work happens, never after. Nothing reaches a bill without
+            one.
+          </div>
+          <div class="tm">Change orders, as they arise</div>
+        </div>
+        <div class="tlrow">
+          <div class="tw">Punch list cleared</div>
+          <div class="td">
+            Ten business days from the walkthrough. The job is complete when the list is, which is
+            where the incentive belongs.
+          </div>
+          <div class="tm">Final payment</div>
+        </div>
+        <div class="tlrow">
+          <div class="tw">Then, if they take it</div>
+          <div class="td">
+            Maintenance, at a set price per visit, under its own agreement, month to month.
+          </div>
+          <div class="tm">Recurring</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div class="note warn">
+          <h3>Three things never to do with money</h3>
+          <ul>
+            <li>
+              <strong>Never collect a deposit above the statutory cap.</strong> It is the law, and a
+              contractor asking for more is telling the client something.
+            </li>
+            <li>
+              <strong>Never take payment for a phase that is not visibly done.</strong> The schedule
+              follows the work, not the calendar.
+            </li>
+            <li>
+              <strong>Never do extra work on a verbal yes.</strong> That is not generosity, it is a
+              bill the client has not seen and will dispute.
+            </li>
+          </ul>
+        </div>
+        <div class="note">
+          <h3>Nothing is credited</h3>
+          <p>
+            Not the consultation, not the concept phase, not the design fee. Each is its own piece
+            of work with its own price, and each is spent whether or not the next step happens. If
+            any of them were credited, the construction price would simply have to carry those hours
+            somewhere the client could not see them.
+          </p>
+          <p style="margin-top: 5pt">
+            Say this on the first call. Plenty of clients assume otherwise, and signing is the worst
+            possible moment for them to find out.
+          </p>
+        </div>
+      </div>
+
+      <div class="foot"><span>GMZ operating manual</span><span>5</span></div>
+    </div>
+
+    <!-- ==================== 6. SOP 01-02 ================================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>SOP 01 &ndash; 02</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">05</span>
+        <div>
+          <div class="kicker">Procedures &middot; the front door</div>
+          <h2>Taking the call</h2>
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 01</span><span class="sop-name">Logging an inquiry</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Any inbound contact, any channel</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Whoever takes it</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>One logged lead with a callback date</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Record it in the shared lead log on arrival, not at the end of the day. Name, town, what
+            they want, channel it came in on, date.
+          </li>
+          <li>
+            If it came by text, WhatsApp or a web form, log it and then call. A written enquiry
+            answered in writing takes four days to qualify; the same enquiry answered by phone takes
+            fifteen minutes.
+          </li>
+          <li>Give an actual callback date, not &ldquo;someone will be in touch.&rdquo;</li>
+        </ol>
+        <div class="stop">
+          <b>Never</b> &nbsp;Leave a lead in a personal phone, a personal inbox or a memory. A lead
+          that exists in one place only is a lead that dies when that person is on site.
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 02</span><span class="sop-name">The qualification call</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>A logged inquiry</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner or office admin</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>A booked visit, a routed lead, or a decline</dd>
+          </div>
+        </dl>
+        <p style="font-size: 8.3pt; margin-bottom: 4pt">
+          Fifteen minutes. Five questions, in this order, because the last one is the gate and it
+          lands better once they have described the problem out loud.
+        </p>
+        <ol>
+          <li>
+            <strong>What do you want done?</strong> Ask for the problem, not the solution: standing
+            water, dead lawn, no privacy, unusable slope, nowhere to sit. Never invite a client to
+            specify the work; walking them back later costs more than the conversation you skipped.
+          </li>
+          <li>
+            <strong>Where is the property?</strong> Town first. It settles service area, route fit
+            and whether a travel charge applies.
+          </li>
+          <li>
+            <strong>When would you like it done?</strong> Ask what the date is attached to: an
+            event, a house sale, a permit clock, a school year, family arriving. A hard date changes
+            what can honestly be promised and sometimes changes the answer.
+          </li>
+          <li>
+            <strong>Who else is part of the decision?</strong> Partner, family, HOA board, property
+            manager. Ask whether they will be at the visit, and get them there if you can.
+          </li>
+          <li>
+            <strong>What range are you planning around?</strong> Asked plainly. Frame it as being
+            for their benefit, which it is: it is how they find out now rather than after a design
+            is underway.
+          </li>
+        </ol>
+        <p style="font-size: 8.3pt; margin-top: 5pt">
+          Then sort the lead using Diagram 2, and take the visit fee on this call if a visit is what
+          follows.
+        </p>
+        <div class="stop">
+          <b>Never</b> &nbsp;Give a number on this call. Not a range, not a ballpark, not a
+          starting-at figure. A price from somebody who has not seen the property becomes the figure
+          the client remembers for the rest of the project, and every later and better number then
+          reads as an increase.
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 9pt">
+        <h3>Record these three, every call, whatever the outcome</h3>
+        <p>
+          Lead source, the stated budget band or that it was refused, and the outcome. Ninety days
+          of that is the only thing that will ever tell GMZ whether the fees filter the right
+          people. No published research substitutes for it, and it costs about an hour a week.
+        </p>
+      </div>
+
+      <div class="foot"><span>GMZ operating manual</span><span>6</span></div>
+    </div>
+
+    <!-- ==================== 7. SOP 03 ===================================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>SOP 03</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">06</span>
+        <div>
+          <div class="kicker">Procedures &middot; the visit</div>
+          <h2>The site consultation</h2>
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 03</span><span class="sop-name">Running the consultation</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Fee taken, date agreed</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner or office admin, alone</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>A filled checklist and either an offer or a decline</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>Confirm the fee is paid before travelling. If it is not, the visit is not booked.</li>
+          <li>
+            Walk the property with the client. Access, grade, drainage, what is growing, the
+            narrowest gate, where water sits after rain.
+          </li>
+          <li>
+            Ask the direct questions: scope, timing, what they are planning to spend. This is a
+            working conversation, not a sales call.
+          </li>
+          <li>
+            Say what you think out loud, including what is not possible or not advisable. That
+            candour is what the fee bought.
+          </li>
+          <li>
+            Run the compliance checks below before leaving. They change the paperwork, not the
+            price, and they are cheap now and expensive later.
+          </li>
+          <li>
+            Close one of two ways: offer the concept phase with the fee stated, or say plainly that
+            GMZ is not the right contractor for this one.
+          </li>
+          <li>Log hours and miles spent against the lead, same day.</li>
+        </ol>
+        <div class="stop">
+          <b>Never</b> &nbsp;Leave with the client believing a number was given. If the hour
+          produced an impression of cost, name it as a rough impression and say the range comes out
+          of the concept phase.
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top: 9pt">
+        <div class="note">
+          <h3>The five that must come back, or no firm number is possible</h3>
+          <ul class="checklist">
+            <li><span class="n">1</span><span>Client name and the property address</span></li>
+            <li>
+              <span class="n">2</span><span>Which items are in scope, not their dimensions</span>
+            </li>
+            <li>
+              <span class="n">3</span
+              ><span>Material tier on the big-ticket items, or two tiers to price</span>
+            </li>
+            <li>
+              <span class="n">4</span
+              ><span
+                >Access: what a truck and a small machine can reach, and the narrowest gate</span
+              >
+            </li>
+            <li>
+              <span class="n">5</span
+              ><span>Demolition and disposal: in, out, or the client is handling it</span>
+            </li>
+          </ul>
+          <p style="margin-top: 5pt; font-size: 8pt; color: var(--ink-soft)">
+            Also state whether the site was measured or estimated by eye. A guess recorded as a
+            measurement is the expensive kind of error.
+          </p>
+        </div>
+        <div class="note warn">
+          <h3>Three compliance gates, checked on site</h3>
+          <ul>
+            <li>
+              <strong>Any signer aged 65 or over.</strong> The cancellation right is five days
+              rather than three, and it goes on every agreement in the job, not only the first.
+            </li>
+            <li>
+              <strong
+                >New landscape at or above 500 sq ft, or rehab at or above 2,500 sq ft, with a
+                permit.</strong
+              >
+              The state water ordinance documentation package is triggered. A licensed landscape
+              contractor may sign that plan set, which is part of why the paid design step is
+              defensible.
+            </li>
+            <li>
+              <strong>A rebate in play.</strong> Nothing is torn out before the notice to proceed
+              arrives. Check the water supplier and the turf area first.
+            </li>
+          </ul>
+          <p style="margin-top: 5pt; font-size: 8pt">
+            Town rules differ. Name the page or the person you checked with.
+          </p>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 9pt">
+        <h3>Ask for these before the visit, on the qualification call</h3>
+        <p style="margin-bottom: 4pt">
+          None of it is required, and it is the difference between one visit and two.
+        </p>
+        <ul>
+          <li>
+            Photos of the whole area from several angles, including the parts they are unhappy with.
+          </li>
+          <li>
+            A plot plan or survey, any architect's or designer's drawings, and the HOA rules that
+            apply.
+          </li>
+          <li>
+            How a truck and a small machine would reach the work area, and the narrowest gate width.
+          </li>
+          <li>Whether water collects anywhere after rain.</li>
+          <li>What they want kept, and what is already decided as against what is still open.</li>
+        </ul>
+      </div>
+      <div class="foot"><span>GMZ operating manual</span><span>7</span></div>
+    </div>
+
+    <!-- ==================== 8. SOP 04-05 ================================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>SOP 04 &ndash; 05</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">07</span>
+        <div>
+          <div class="kicker">Procedures &middot; the paid design steps</div>
+          <h2>Concept, then measured drawings</h2>
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 04</span
+          ><span class="sop-name">Concept and planning budget</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Client accepts the concept phase</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner, with design support</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>Written concept plus an acknowledged planning range</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>Open the design agreement. This is its first phase, not a separate document.</li>
+          <li>
+            Produce the written concept: what could happen on the property, from somebody who stood
+            on it.
+          </li>
+          <li>
+            Produce the planning range, broken out by area of the property, not as one number.
+          </li>
+          <li>
+            Title it so it cannot be mistaken for a bid, and state on its face that it is a planning
+            range.
+          </li>
+          <li>
+            List everything priced. Then list everything not priced, item by item. The second list
+            is the one to walk through slowly.
+          </li>
+          <li>
+            Get the acknowledgement. It confirms three things: they have seen the scope, they
+            understand this is a range, and they want to continue. It obligates them to nothing
+            further.
+          </li>
+        </ol>
+        <div class="stop">
+          <b>Never</b> &nbsp;Hand over a concept or a range without the acknowledgement. The whole
+          point is that two people cannot remember the scope differently three months later.
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 05</span><span class="sop-name">Design development</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Concept approved and phase two entered</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner, with design support</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>Measured plan set and a firm construction number</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Measure the property. The clock to the presentation date starts here, not at signing,
+            and the agreement should say so.
+          </li>
+          <li>
+            Draw to scale: layout of paving, walls, steps and beds; planting plan; irrigation and
+            drainage resolved; materials specified closely enough to price and build from.
+          </li>
+          <li>
+            Set a target presentation date for this project, written into the agreement. If it needs
+            to move, the client hears it before it passes rather than after.
+          </li>
+          <li>Two rounds of revision are included. Log which round you are on.</li>
+          <li>
+            Know the difference and name it out loud: moving a patio, changing a plant palette or
+            reworking a bed line is a revision. Adding an area of the property, or changing what the
+            project is, is new scope and moves both the design and the construction number.
+          </li>
+          <li>Anything past two rounds is priced in writing before it starts.</li>
+        </ol>
+        <div class="stop">
+          <b>Pending</b> &nbsp;The ownership and copyright position on drawings is not settled, and
+          neither is whether a client may take paid-for drawings to another contractor. Until both
+          are, do not answer either question on the spot. Say it is being finalised and refer it up.
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 9pt">
+        <h3>Revision, or new scope? The distinction that keeps a design fee honest</h3>
+        <p style="margin-bottom: 5pt">
+          Two rounds of revision are included. New scope is not a revision, and calling it one is
+          how a design phase quietly runs to four times its fee. Say which it is at the time, out
+          loud.
+        </p>
+        <table style="margin-top: 0">
+          <thead>
+            <tr>
+              <th style="width: 2.9in">Revision, included</th>
+              <th>New scope, repriced</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Moving the patio, or changing its shape</td>
+              <td class="pays">Adding a second patio</td>
+            </tr>
+            <tr>
+              <td>Changing the plant palette</td>
+              <td class="pays">Adding an area of the property that was not in scope</td>
+            </tr>
+            <tr>
+              <td>Reworking a bed line</td>
+              <td class="pays">Adding lighting, or irrigation, that was not in the concept</td>
+            </tr>
+            <tr>
+              <td>Swapping one paving material for another</td>
+              <td class="pays">Changing what the project is</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top: 5pt; font-size: 8pt; color: var(--ink-soft)">
+          New scope moves both the design fee and the construction number, and both get restated in
+          writing before the work continues.
+        </p>
+      </div>
+      <div class="foot"><span>GMZ operating manual</span><span>8</span></div>
+    </div>
+
+    <!-- ==================== 9. SOP 06-07 ================================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>SOP 06 &ndash; 07</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">08</span>
+        <div>
+          <div class="kicker">Procedures &middot; asking for the job</div>
+          <h2>Presenting the bid, then signing it</h2>
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 06</span><span class="sop-name">Bid presentation</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Plan set and firm number complete</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>A decision, asked for in the room</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Present in person, with the plan and the price together. Never email the package and
+            wait.
+          </li>
+          <li>
+            Have every decision maker there. If they are not, reschedule rather than present twice.
+          </li>
+          <li>
+            Read the exclusions page out loud. It is the shortest page in the document and it is
+            where nearly every contractor dispute actually lives.
+          </li>
+          <li>
+            Where the client asked to compare material levels, present alternates priced on the
+            identical scope so the comparison is honest.
+          </li>
+          <li>
+            State the validity date on the face of the bid, and say what happens after it: material
+            prices get re-checked and the changed line gets shown.
+          </li>
+          <li>Ask for the decision before leaving.</li>
+        </ol>
+        <div class="stop">
+          <b>Never</b> &nbsp;Pad a number to cover something that might not happen. Name it as an
+          exclusion instead. A padded bid charges every client for the unlucky ones and hides how
+          much of their price was real work.
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 07</span
+          ><span class="sop-name">Contract, deposit and the cancellation window</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Client accepts the bid</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner or office admin</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>Signed contract, deposit taken, start date held</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Use the compliant contract template on every job above the statutory threshold. Every
+            time, including for a client you have known for years.
+          </li>
+          <li>Take the deposit at the statutory cap and not a dollar above it.</li>
+          <li>
+            Write the payment schedule as one payment per completed phase, typically site
+            preparation and grading, then hardscape, then irrigation, then planting, with the final
+            payment tied to the cleared punch list.
+          </li>
+          <li>
+            Attach the cancellation notice. Three business days, or five where any signer is 65 or
+            over. Without the correct notice attached the right to cancel does not expire at all.
+          </li>
+          <li>
+            Order long-lead material the moment the contract lands: specimen trees, stone from a
+            particular quarry, custom metal. That window, rather than crew availability, usually
+            sets the earliest honest start.
+          </li>
+          <li>
+            Only now put a start date in the calendar. A date is held by a signed contract, not by a
+            conversation, and the client should be told that plainly rather than discover it in week
+            six.
+          </li>
+        </ol>
+        <div class="stop">
+          <b>Pending</b> &nbsp;The compliant contract template and the written workmanship warranty
+          do not exist yet. Until they do, this procedure cannot be followed as written, which makes
+          both the most urgent documents on the outstanding list.
+        </div>
+      </div>
+
+      <div class="foot"><span>GMZ operating manual</span><span>9</span></div>
+    </div>
+
+    <!-- ==================== 10. SOP 08-09 ================================= -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>SOP 08 &ndash; 09</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">09</span>
+        <div>
+          <div class="kicker">Procedures &middot; on site</div>
+          <h2>Starting the job, and running it</h2>
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 08</span><span class="sop-name">Pre-construction meeting</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Start date confirmed, before the first truck</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner or supervisor</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>Agreed access, a named contact, no surprises on day one</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Half an hour on site. Access route, gate codes, working hours, parking, pets, children,
+            and where the crew may and may not walk.
+          </li>
+          <li>Give them one name and number to call, and say who it is not.</li>
+          <li>
+            Walk them through what week one actually looks like, including the noisy and ugly parts.
+            Demolition looks like a disaster to somebody who was not expecting it.
+          </li>
+          <li>
+            Call the utility locate in. It is free, required, and the marks have to be on the ground
+            before a shovel goes in, so it goes in ahead of day one rather than that morning.
+          </li>
+          <li>
+            Re-measure the gate against what the plan assumed. This is the cheapest half hour in the
+            whole job.
+          </li>
+        </ol>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 09</span><span class="sop-name">Running the build</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Work starts</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Supervisor, reporting to owner</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>Phases completed and paid, no unbilled surprises</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Work in the contracted phase order. Anything that runs under paving, and all grading and
+            drainage, goes first so the property is not built twice.
+          </li>
+          <li>
+            Send one written update a week, the same day each week, with a photo: what changed, what
+            is next, what needs a decision from them.
+          </li>
+          <li>
+            Raise a payment only when its phase is visibly complete and the client could walk out
+            and see it.
+          </li>
+          <li>
+            Anything outside the contracted scope stops and becomes a signed change order before it
+            happens. No exceptions, including for things that take ten minutes.
+          </li>
+          <li>
+            Keep dated photographs of everything that gets covered up. Base depth, drainage runs,
+            sleeves, footings. Half of licensing complaints close for insufficient evidence, and
+            whoever holds the paperwork holds the advantage.
+          </li>
+        </ol>
+        <div class="stop">
+          <b>Never</b> &nbsp;Let a crew member agree to extra work. Quoting is not a laborer
+          responsibility. The correct answer on site is always &ldquo;I will have the office price
+          that for you,&rdquo; and then it goes to the office the same day.
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 9pt">
+        <h3>The weekly update, as a template</h3>
+        <p style="margin-bottom: 5pt">
+          Same day each week, four lines and a photo. It takes five minutes and it is the single
+          cheapest thing GMZ does to keep a client calm through the ugly middle of a build.
+        </p>
+        <table style="margin-top: 0">
+          <tbody>
+            <tr>
+              <td style="width: 1.5in" class="gatecell"><strong>What changed this week</strong></td>
+              <td>Plainly, including anything that did not go to plan.</td>
+            </tr>
+            <tr>
+              <td class="gatecell"><strong>What happens next week</strong></td>
+              <td>So nobody is surprised by a machine arriving.</td>
+            </tr>
+            <tr>
+              <td class="gatecell"><strong>What we need from you</strong></td>
+              <td>
+                Any decision, with the date it is needed by. If nothing, say nothing is needed.
+              </td>
+            </tr>
+            <tr>
+              <td class="gatecell"><strong>Where we are against the finish date</strong></td>
+              <td>On, ahead, or behind and by how much. Behind is fine; silence is not.</td>
+            </tr>
+            <tr>
+              <td class="gatecell"><strong>One photo</strong></td>
+              <td>Even if the week was all excavation and it looks like nothing.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="foot"><span>GMZ operating manual</span><span>10</span></div>
+    </div>
+
+    <!-- ==================== 11. CHANGE ORDER FLOW ========================= -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span
+        ><span>Diagram 4 &middot; changes and surprises</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">10</span>
+        <div>
+          <div class="kicker">Diagram 4 and SOP 09b</div>
+          <h2>When something changes mid-build</h2>
+        </div>
+      </div>
+
+      <p class="deck">
+        Three causes, and two of them are avoidable at bid time. Scope the client adds, decisions
+        made late, and genuine unknowns underground. All three run the same procedure.
+      </p>
+
+      <div class="flow">
+        <div class="frow">
+          <div class="fnode gate"><span>1</span></div>
+          <div class="fbody">
+            <div class="fname">Stop that part of the work</div>
+            <div class="fsub">
+              Not the whole job, just the affected area. Carrying on is what turns a $400
+              conversation into a $4,000 argument.
+            </div>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fnode"><span>2</span></div>
+          <div class="fbody">
+            <div class="fname">Photograph it, dated, before anything is disturbed</div>
+            <div class="fsub">
+              Old slab or footing, rock, abandoned irrigation, septic remnant, roots at a size an
+              arborist should see, a drain that goes nowhere, utilities not where any map says.
+            </div>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fnode"><span>3</span></div>
+          <div class="fbody">
+            <div class="fname">Show the client, on site if possible</div>
+            <div class="fsub">
+              <i>They should learn about this standing next to it, never from the final invoice.</i>
+            </div>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fnode money"><span>4</span></div>
+          <div class="fbody">
+            <div class="fname">Price it at the office and check it against the minimum</div>
+            <div class="fsub">
+              <b>A change order is a small job and gets the same floor check as a large one.</b>
+              Extra days, extra material, extra dump passes, extra access difficulty.
+            </div>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fnode gate"><span>5</span></div>
+          <div class="fbody">
+            <div class="fname">Get it signed by both parties before the work happens</div>
+            <div class="fsub">
+              A written amendment to the contract. Nothing is added to a bill without one.
+            </div>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fnode"><span>6</span></div>
+          <div class="fbody">
+            <div class="fname">Resume, and note the schedule effect in that week's update</div>
+            <div class="fsub">
+              If it moves the finish date, say so the same week rather than letting the client work
+              it out.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div class="note">
+          <h3>How to keep the count near zero</h3>
+          <ul>
+            <li>Get materials chosen before work starts, not during.</li>
+            <li>Walk the exclusions page at bid time and invite the client to challenge it.</li>
+            <li>Assess the drainage rather than assuming the existing setup is fine.</li>
+            <li>
+              Ask for the while-you're-here list before the contract, not in week two. Adding at bid
+              time is nearly always cheaper than adding after the crew has moved past that part of
+              the yard.
+            </li>
+            <li>
+              Where there is real doubt about what is under a surface, say so at bid time and offer
+              a test hole. It costs a fraction of the same discovery in week two with a crew
+              standing on it.
+            </li>
+          </ul>
+        </div>
+        <div class="note warn">
+          <h3>The sentence that costs the most money</h3>
+          <p style="font-size: 9pt">&ldquo;No problem, we can do that.&rdquo;</p>
+          <p style="margin-top: 4pt">
+            Said on site, about something outside scope, without paper. It is not generosity. It is
+            a bill the client has not seen yet, and it will be argued about at the exact moment GMZ
+            is asking for the final payment.
+          </p>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 9pt">
+        <h3>What actually turns up under a Peninsula yard</h3>
+        <p>
+          None of it is visible from the surface, which is precisely why it sits on the exclusions
+          page instead of inside the price: an old slab or footing under the lawn, rock, an
+          abandoned irrigation line, a septic remnant, tree roots at a size where an arborist ought
+          to look at them, a drain that goes nowhere, and utility lines that are not where any map
+          says they are.
+        </p>
+        <p style="margin-top: 5pt">
+          If GMZ padded every bid for things that are usually not there, every client would be
+          paying for the unlucky ones.
+        </p>
+      </div>
+      <div class="foot"><span>GMZ operating manual</span><span>11</span></div>
+    </div>
+
+    <!-- ==================== 12. SOP 10-12 ================================= -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>SOP 10 &ndash; 12</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">11</span>
+        <div>
+          <div class="kicker">Procedures &middot; finishing</div>
+          <h2>Handing the garden over</h2>
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 10</span
+          ><span class="sop-name">Substantial completion and the punch list</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Work substantially finished</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner or supervisor, with the client</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>A written punch list, both parties holding a copy</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Walk the finished project with the client before calling it done. Every job, no
+            exceptions.
+          </li>
+          <li>
+            Write down everything that is not right: a paver sitting proud, a head spraying the
+            fence, a plant that went in leaning. Their list, not an edited version of it.
+          </li>
+          <li>Both parties keep a copy, dated and signed.</li>
+          <li>Clear the list within ten business days.</li>
+          <li>
+            The job is complete when the list is, not before, and the final payment is tied to that
+            moment.
+          </li>
+        </ol>
+        <div class="stop">
+          <b>Say this out loud</b> &nbsp;Some things only show up once somebody lives with the work.
+          The punch list is a tool, not a cutoff for talking to us. Clients who hear that call
+          instead of posting a review.
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 11</span><span class="sop-name">Closeout package</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Punch list cleared</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Office admin</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>A handed-over package and a maintenance offer</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Hand over: a copy of the plan, the plant list, the irrigation zone map with the
+            programmed settings, a care guide, and the written warranty.
+          </li>
+          <li>
+            Walk whoever will care for the garden through the irrigation controller, including if
+            that is the client's own gardener.
+          </li>
+          <li>
+            Make the maintenance offer with a real cadence and a real price, not a vague pitch. Say
+            plainly that it is an offer and not a condition, and that the project price does not
+            depend on the answer.
+          </li>
+          <li>Take the final payment.</li>
+        </ol>
+        <div class="stop">
+          <b>Pending</b> &nbsp;The closeout package template does not exist. Three published answers
+          on the website already promise its contents, so either the template gets written or the
+          promise has to come out of all three answers together.
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP 12</span><span class="sop-name">Follow-up calls</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>30 days, then 6 months from completion</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Office admin</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>Problems caught early, referrals, maintenance conversions</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>Diary both calls at closeout, not later.</li>
+          <li>
+            Ask specifically about the establishment year: watering, anything that has failed,
+            anything they have questions about.
+          </li>
+          <li>
+            Ask for a referral only if the call goes well, and ask in writing for permission before
+            quoting anyone publicly.
+          </li>
+        </ol>
+        <p style="font-size: 8.3pt; margin-top: 5pt">
+          This is the cheapest referral and maintenance conversion available anywhere in this
+          manual, and it is two phone calls.
+        </p>
+      </div>
+
+      <div class="foot"><span>GMZ operating manual</span><span>12</span></div>
+    </div>
+
+    <!-- ==================== 13. MAINTENANCE SOPs ========================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>SOP M1 &ndash; M4</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">12</span>
+        <div>
+          <div class="kicker">Procedures &middot; maintenance</div>
+          <h2>Taking on an account</h2>
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP M1</span><span class="sop-name">Maintenance inquiry</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Referral, build handover or search</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Whoever takes it</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>Logged in the same place as build leads</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Same log as everything else. Maintenance leads dying in a separate inbox is how a route
+            stops growing.
+          </li>
+          <li>Get the town and the property type before anything else.</li>
+        </ol>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP M2</span><span class="sop-name">Route-fit screen</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Before any quote or visit</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Office admin</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>A route day, or an honest no</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Check the address against the existing route days. Openings are specific days, not any
+            day.
+          </li>
+          <li>If it sits near existing stops, name the day on the call.</li>
+          <li>
+            If it does not, say so. An off-route stop costs far more than the extra miles suggest,
+            and the cost is drive time between stops.
+          </li>
+          <li>
+            Clustering is the only real lever on this book, and it compounds across every account. A
+            screen at intake costs nothing and stops the problem getting worse.
+          </li>
+        </ol>
+        <div class="stop">
+          <b>Never</b> &nbsp;Quote a maintenance account before the route check. Taking an account
+          GMZ would chronically reach late serves nobody, and it is far easier to decline now than
+          to resign later.
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP M3</span><span class="sop-name">Property walk and quote</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Route fit confirmed, walk fee taken</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner or office admin</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>One set price per visit and a cadence</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Walk it. How much lawn, how much planted bed, a year of pruning, how much green waste
+            comes off it, how easily equipment moves around it.
+          </li>
+          <li>
+            Decide the cadence honestly against the growing season, not the winter. A lawn on a
+            two-week cycle in late spring stops being maintained and starts being caught up.
+          </li>
+          <li>
+            If the property needs catch-up work first, quote that separately as a service call. A
+            reset is not a maintenance visit.
+          </li>
+          <li>
+            Produce one set price per visit that does not move week to week because one visit ran
+            long.
+          </li>
+          <li>
+            Name what sits outside it: work that is not routine care, and materials brought for the
+            client.
+          </li>
+        </ol>
+      </div>
+
+      <div class="grid2" style="margin-top: 9pt">
+        <div class="note">
+          <h3>Choosing the cadence</h3>
+          <ul>
+            <li>
+              <strong>Weekly</strong> where there is lawn, a lot of planted bed, or a client who
+              wants the place tidy every day of the week.
+            </li>
+            <li>
+              <strong>Every other week</strong> for established shrubs, groundcover, gravel and
+              decomposed granite.
+            </li>
+          </ul>
+          <p style="margin-top: 5pt">
+            Changing cadence changes the agreement and the price, so it is confirmed in writing
+            rather than by quietly showing up more often.
+          </p>
+        </div>
+        <div class="note warn">
+          <h3>The catch-up trap</h3>
+          <p>
+            A neglected property quoted at its steady-state price loses money for months while the
+            crew digs it out. Quote the reset as a separate service call, get it done, and start the
+            agreement on a property that is actually at the condition the price assumes.
+          </p>
+        </div>
+      </div>
+      <div class="foot"><span>GMZ operating manual</span><span>13</span></div>
+    </div>
+
+    <!-- ==================== 14. SOP M4-M7 ================================= -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>SOP M4 &ndash; M7</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">13</span>
+        <div>
+          <div class="kicker">Procedures &middot; maintenance</div>
+          <h2>Running an account, and renewing it</h2>
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP M4</span><span class="sop-name">Service agreement</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Price and cadence agreed</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Office admin</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>A signed agreement with its terms on its face</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Write on the face of it: visit scope, cadence, service day, price, what is in, what is
+            out, the notice period, and the annual review month.
+          </li>
+          <li>
+            Month to month, thirty days' notice either side, no term to buy out. A standing
+            obligation needs terms a construction contract does not have.
+          </li>
+          <li>
+            A recurring visit is neither an emergency nor short notice, so assume the standard
+            cancellation regime applies and attach the notice.
+          </li>
+          <li>Keep it separate from any construction contract; neither absorbs the other.</li>
+        </ol>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP M5</span><span class="sop-name">Onboarding visit</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Agreement signed, first visit</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Supervisor</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>The baseline record for the account</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>Treat the first visit as an assessment, not a normal stop.</li>
+          <li>Photograph the whole property, dated.</li>
+          <li>Walk the irrigation zone by zone and record what works and what does not.</li>
+          <li>
+            Note anything already broken, in writing. This is the record every later argument gets
+            measured against, including &ldquo;it was fine before you started.&rdquo; Quote repairs
+            found as a separate service call rather than absorbing them.
+          </li>
+        </ol>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP M6</span><span class="sop-name">Route operations</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Every service day</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Supervisor</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>Consistent visits at the agreed price</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Fixed day, same crew where possible. A property serviced by whoever is free that morning
+            gets maintained to the average of everyone who has been there.
+          </li>
+          <li>
+            Work from the standing list for that property rather than whatever catches the eye.
+          </li>
+          <li>Price does not move because one visit ran long. That is what a set price means.</li>
+          <li>
+            Anything outside routine care stops and gets priced and approved first, same as a change
+            order on a build.
+          </li>
+          <li>Rain: reschedule rather than skip where the route allows, and say which it is.</li>
+        </ol>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP M7</span><span class="sop-name">Annual review</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>One fixed month a year, every account</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>Scope confirmed, price re-struck, agreement renewed</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Run every account through it in one month. A concentrated week beats twelve scattered
+            conversations.
+          </li>
+          <li>
+            Ask whether the scope is still right. Gardens grow; a property that took an hour three
+            years ago does not now.
+          </li>
+          <li>
+            Re-strike the price. A price that never changes on paper changes somewhere else instead,
+            usually in how much time the property actually gets.
+          </li>
+          <li>
+            Align renewals with the calendar year: the wage floor rises every January on a published
+            schedule.
+          </li>
+        </ol>
+        <div class="stop">
+          <b>Pending</b> &nbsp;The review month is not picked. Choose a quiet one: it becomes the
+          single moment a price change reaches every account.
+        </div>
+      </div>
+
+      <div class="foot"><span>GMZ operating manual</span><span>14</span></div>
+    </div>
+
+    <!-- ==================== 15. SERVICE CALLS ============================= -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>SOP S1</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">14</span>
+        <div>
+          <div class="kicker">Procedures &middot; small work</div>
+          <h2>Service calls, and who may go alone</h2>
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP S1</span><span class="sop-name">One-off service call</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Work too small to mobilise a build crew</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Office admin books it; see the tiers below for who attends</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>The thing fixed, and an offer of the maintenance book</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Decide the tier from the work, using the table below. This decides who goes and what the
+            minimum is.
+          </li>
+          <li>Quote the minimum on the call and take it before booking.</li>
+          <li>
+            Tell the client which tier their job is and why. &ldquo;That one needs two people and a
+            truck&rdquo; is a perfectly good sentence.
+          </li>
+          <li>
+            Encourage them to bundle. One trip covering five small things is far better value than
+            five trips covering one each, and it is better for GMZ too.
+          </li>
+          <li>
+            If the work turns out to be recurring, offer the maintenance book, which is usually
+            cheaper for the same work repeated.
+          </li>
+        </ol>
+        <div class="stop">
+          <b>Pending</b> &nbsp;Both minimums are still to be set. Until they are, quote nothing and
+          refer the call up.
+        </div>
+      </div>
+
+      <table style="margin-top: 10pt">
+        <thead>
+          <tr>
+            <th style="width: 1.15in">Tier</th>
+            <th style="width: 1.2in">Who attends</th>
+            <th style="width: 2.05in">Suitable work</th>
+            <th>Consumes build capacity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="st">
+              <span class="stname">One person</span><span class="stnum">administrative</span>
+            </td>
+            <td class="gatecell">An administrative role, alone. Never a laborer.</td>
+            <td>
+              Diagnose a fault; program or swap a controller; replace a head or a valve; light hand
+              pruning; clear a small blockage; take measurements.
+            </td>
+            <td class="free">
+              No. Draws on nobody who is on a truck, so it does not touch the build calendar.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stname">Two people</span><span class="stnum">crew and truck</span>
+            </td>
+            <td class="gatecell">A truck team</td>
+            <td>
+              Anything involving weight one person should not lift alone; a powered machine; work
+              above standing height; tree limbs; hauling material away.
+            </td>
+            <td class="pays">Yes. Schedule it against build work, not on top of it.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="grid2" style="margin-top: 10pt">
+        <div class="note">
+          <h3>Why a laborer does not run one of these</h3>
+          <p>
+            Not a question of competence. A solo visit involves quoting work, taking payment and
+            representing GMZ on somebody's property with nobody else there. Those are management
+            responsibilities, and putting them on a laborer role is unfair to the person and creates
+            exposure for the company.
+          </p>
+        </div>
+        <div class="note warn">
+          <h3>Do not floor-check a one-person visit against crew minimums</h3>
+          <p>
+            The minimums assume field labour and divide by crew time. A one-person administrative
+            visit uses neither, so running it through that check reports a large shortfall on a job
+            that is perfectly sound, and the tool will refuse the arithmetic outright. Price these
+            on what the visit is worth and on what the hour would otherwise have earned.
+          </p>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 9pt">
+        <h3>Turning a service call into an account, which is where the value is</h3>
+        <p style="margin-bottom: 5pt">
+          A one-off visit is worth having. A one-off visit that becomes a standing account is worth
+          many times more, and the moment to say so is while standing on the property having just
+          fixed something.
+        </p>
+        <ul>
+          <li>
+            <strong>Ask what else has been bothering them.</strong> Most people booked one thing and
+            have been living with four. Bundling them onto this visit is better value for them and a
+            better hour for GMZ.
+          </li>
+          <li>
+            <strong>If the property needs regular attention, say so plainly and quote it.</strong>
+            Not a vague pitch: a cadence, a service day, and a price per visit.
+          </li>
+          <li>
+            <strong>Check the route first.</strong> An account that does not fit a route day should
+            not be offered, however much the client wants it. Run SOP M2 before making the offer,
+            not after.
+          </li>
+          <li>
+            <strong>If they decline, leave it.</strong> One offer, made well, then the work speaks.
+            Pressure on somebody's own doorstep is how a good service call becomes a bad review.
+          </li>
+        </ul>
+      </div>
+      <div class="foot"><span>GMZ operating manual</span><span>15</span></div>
+    </div>
+
+    <!-- ==================== 16. GOVERNANCE SOPs =========================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>SOP G1 &ndash; G2</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">15</span>
+        <div>
+          <div class="kicker">Procedures &middot; governance</div>
+          <h2>Two rules that protect every number and every promise</h2>
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP G1</span
+          ><span class="sop-name">Before any number reaches a client</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Any quote, change order or re-struck price</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>A number that covers labour, overhead and profit</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            Take the quantities off the plan first, so the arithmetic does not depend on anyone's
+            afternoon.
+          </li>
+          <li>
+            Audit the gaps out loud before pricing. Universal on every job: delivery, rental days,
+            dump passes, access surcharges for long carry, slope or a narrow gate, transit, permits.
+            A gap found now is a conversation; found later it is GMZ's money.
+          </li>
+          <li>
+            Never bill owned equipment as a rental. It is already recovered in the burden, and
+            adding it inflates the cost basis and raises the minimum against yourself.
+          </li>
+          <li>
+            Check against the minimum for the correct service line. Route work is maintenance, and
+            the maintenance minimum is the higher of the two, so using the default silently
+            under-prices it.
+          </li>
+          <li>
+            Read the labour-adjusted verdict, not the headline one, on any job carrying real
+            material. A heavy-material job can clear the headline number with the labour priced at
+            nothing.
+          </li>
+          <li>
+            If it lands under, there are three ways out and only three:
+            <strong>add days, cut scope, or hold the price and walk away.</strong> Quietly quoting
+            under it is not one of them.
+          </li>
+        </ol>
+        <div class="stop">
+          <b>Never</b> &nbsp;Thin base depth, drainage or soil preparation to hit a number. It makes
+          the job cheaper on paper and dearer in a few years, and the client pays that second bill
+          while GMZ's name is on the work.
+        </div>
+      </div>
+
+      <div class="sop">
+        <div class="sop-head">
+          <span class="sop-id">SOP G2</span
+          ><span class="sop-name">Before anything is published</span>
+        </div>
+        <dl class="sop-meta">
+          <div>
+            <dt>Trigger</dt>
+            <dd>Any change to the website or a client-facing document</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Owner</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>Nothing published that nobody has decided</dd>
+          </div>
+        </dl>
+        <ol>
+          <li>
+            An undecided policy stays unpublished. A warranty term, a lead time or a fee nobody has
+            agreed to is worse than silence: it is a promise made by accident, and a client will
+            hold GMZ to whatever the website said.
+          </li>
+          <li>
+            A client quote stays unpublished until that client has agreed in writing to be quoted
+            publicly.
+          </li>
+          <li>A project location is a town, never a street address.</li>
+          <li>
+            No internal figure goes on a client-facing document: no cost, no margin, no overhead, no
+            rate, no minimum.
+          </li>
+          <li>
+            Never publish a starting-at figure. It is a number attached to nothing and it is the
+            first thing quoted back at you.
+          </li>
+          <li>
+            Change a fact in its one home, then let everything else read from there. Never retype it
+            into a second place.
+          </li>
+        </ol>
+      </div>
+
+      <table style="margin-top: 9pt">
+        <thead>
+          <tr>
+            <th style="width: 2.3in">Kind of fact</th>
+            <th>Its one home</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Minimums, rates, crew, route days, vehicles, drivers</td>
+            <td class="gatecell">The facts sheet</td>
+          </tr>
+          <tr>
+            <td>What may be said to a client</td>
+            <td class="gatecell">Published website answers only</td>
+          </tr>
+          <tr>
+            <td>Phone, address, licence number, tagline</td>
+            <td class="gatecell">Site data, once</td>
+          </tr>
+          <tr>
+            <td>The stage model and why the money is shaped this way</td>
+            <td class="gatecell">The pipeline and pricing document</td>
+          </tr>
+          <tr>
+            <td>What to actually do at each stage</td>
+            <td class="gatecell">This manual</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="foot"><span>GMZ operating manual</span><span>16</span></div>
+    </div>
+
+    <!-- ==================== 17. OPEN REGISTER ============================= -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>Open register</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">16</span>
+        <div>
+          <div class="kicker">What is not settled</div>
+          <h2>Seven open items, and what each one blocks</h2>
+        </div>
+      </div>
+
+      <p class="deck">
+        Each of these stops a procedure in this manual from being followed as written. Ordered by
+        what it costs to leave alone.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 1.7in">Open item</th>
+            <th style="width: 0.72in">Blocks</th>
+            <th style="width: 1.2in">Needs</th>
+            <th>What it costs to leave</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Compliant construction contract template</strong></td>
+            <td class="gatecell">SOP 07</td>
+            <td class="pays">A lawyer</td>
+            <td>
+              Every job above the threshold is currently signed on something that has not been
+              checked. This is the item with the worst downside if left.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Written workmanship warranty</strong></td>
+            <td class="gatecell">SOP 07, 11</td>
+            <td class="pays">A decision, then half a page</td>
+            <td>
+              Callbacks get negotiated from zero, out of the current job's margin, with nothing
+              excluded and nothing defined.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Drawings: who owns them, what GMZ retains</strong></td>
+            <td class="gatecell">SOP 05</td>
+            <td class="pays">A lawyer</td>
+            <td>
+              The question arrives exactly as the client hands over the design fee, and the honest
+              answer today is that it is being finalised.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Whether drawings may go to another contractor</strong></td>
+            <td class="gatecell">SOP 05</td>
+            <td class="pays">A lawyer</td>
+            <td>
+              Must match the ownership clause. Answering these two separately is how they end up
+              contradicting each other.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Closeout package template</strong></td>
+            <td class="gatecell">SOP 11</td>
+            <td>A template, then reuse</td>
+            <td>
+              Three published answers already promise its contents. Either it gets written or the
+              promise comes out of all three.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>The two service call minimums</strong></td>
+            <td class="gatecell">SOP S1</td>
+            <td>A decision</td>
+            <td>
+              Small work cannot be quoted at all, so it either gets turned away or priced by guess.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>The annual review month</strong></td>
+            <td class="gatecell">SOP M7</td>
+            <td>A decision</td>
+            <td>
+              Prices on the maintenance book drift, because there is no moment at which they can all
+              be re-struck.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div class="note">
+          <h3>The fee schedule, as it stands today</h3>
+          <ul>
+            <li>
+              <strong>Design or build consultation.</strong> $175, first hour on the property,
+              prepaid.
+            </li>
+            <li><strong>Maintenance property walk.</strong> $75, prepaid.</li>
+            <li>
+              <strong>Outside the towns served.</strong> $100 travel on top, and no further than
+              about forty miles.
+            </li>
+            <li>
+              <strong>Concept phase.</strong> Its own fee, stated in writing before it starts.
+            </li>
+            <li>
+              <strong>Design development.</strong> Ten to fifteen percent of the construction price.
+            </li>
+            <li>
+              <strong>Deposit.</strong> The statutory cap: the lesser of a thousand dollars or a
+              tenth of the contract.
+            </li>
+            <li><strong>Service calls.</strong> Not yet set.</li>
+          </ul>
+          <p style="margin-top: 5pt; font-size: 8pt; color: var(--ink-soft)">
+            None of these are credited against anything later.
+          </p>
+        </div>
+        <div class="note warn">
+          <h3>The one thing to measure this quarter</h3>
+          <p>
+            Ninety days of logged leads: source, stated band, whether a visit was booked, and the
+            outcome. GMZ now charges at the top of both funnels while carrying open route days and
+            freed project capacity. A fee at the door filters hardest exactly when there is capacity
+            to spare, which is the situation today.
+          </p>
+          <p style="margin-top: 5pt">
+            Whether that trade is worth it is answerable, but only from GMZ's own numbers. No
+            published source can settle it, and an hour a week for a quarter will.
+          </p>
+        </div>
+      </div>
+
+      <div class="foot"><span>GMZ operating manual</span><span>17</span></div>
+    </div>
+
+    <!-- ==================== 18. BOARD PLAN ================================ -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Operating manual</span><span>Board session</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">17</span>
+        <div>
+          <div class="kicker">How to run the session</div>
+          <h2>Sixty minutes, four decisions, one thing to measure</h2>
+        </div>
+      </div>
+
+      <p class="lede">
+        Do not present the manual. Nobody sits through nineteen procedures. Present the four
+        decisions it needs, use the diagrams as the visual argument, and leave the procedures as the
+        pre-read that proves the decisions are grounded.
+      </p>
+
+      <div class="ag">
+        <div class="agrow">
+          <div class="at">0:00</div>
+          <div class="an">Where we were</div>
+          <div class="ad">
+            One slide, honestly. Leads arriving in three inboxes, no qualification before the drive,
+            a concept and a budget given away free, contracts varying job to job, no punch list, no
+            follow-up.
+            <em>No decision asked. This is the baseline the rest is measured against.</em>
+          </div>
+        </div>
+        <div class="agrow">
+          <div class="at">0:05</div>
+          <div class="an">The shape now</div>
+          <div class="ad">
+            Diagram 1, the whole business on one page. Two lines, one front door, sorted once on the
+            first call. Then Diagram 2, the routing tree, because that is the single change that
+            stops a build crew doing an hour of work.
+            <em>No decision. Establish that the business has a shape.</em>
+          </div>
+        </div>
+        <div class="agrow">
+          <div class="at">0:15</div>
+          <div class="an">Where the money comes in</div>
+          <div class="ad">
+            Diagram 3. Walk the timeline once, then land the two points that matter: precision is
+            earned in stages, and nothing is credited so every cost is visible on its own.
+            <span class="ask">Decision 1</span> Ratify the fee schedule now live: $175, $75, $100
+            travel, a forty-mile limit.
+          </div>
+        </div>
+        <div class="agrow">
+          <div class="at">0:25</div>
+          <div class="an">The two service call minimums</div>
+          <div class="ad">
+            The one gap in the schedule. Small work currently cannot be quoted at all, so it gets
+            turned away or guessed at. Present the two tiers and the reason a laborer does not run a
+            solo visit.
+            <span class="ask">Decision 2</span> Set both minimums.
+          </div>
+        </div>
+        <div class="agrow">
+          <div class="at">0:32</div>
+          <div class="an">The four documents that do not exist</div>
+          <div class="ad">
+            Contract template, warranty, closeout package, and the two drawings questions. Three of
+            them need a lawyer's time. Be blunt that SOP 07 cannot be followed as written until the
+            contract exists, which means every job above the threshold is signed on something
+            unchecked.
+            <span class="ask">Decision 3</span> Authorise the legal spend and name a date.
+          </div>
+        </div>
+        <div class="agrow">
+          <div class="at">0:42</div>
+          <div class="an">The honest risk</div>
+          <div class="ad">
+            GMZ now charges at the top of both funnels while carrying open route days and capacity
+            freed when an account closed. A fee at the door filters hardest exactly when there is
+            capacity to spare. Say this before anyone else notices it.
+            <span class="ask">Decision 4</span> Approve the ninety-day lead log, and agree to
+            revisit the consultation fee on that data rather than on opinion.
+          </div>
+        </div>
+        <div class="agrow">
+          <div class="at">0:52</div>
+          <div class="an">What happens next week</div>
+          <div class="ad">
+            The annual review month, the production host and go-live date, and who owns the lead
+            log.
+            <em>Small items, but they are what turns a decision into a change.</em>
+          </div>
+        </div>
+        <div class="agrow">
+          <div class="at">0:58</div>
+          <div class="an">Close</div>
+          <div class="ad">
+            Restate the four decisions taken and who is doing what by when. Nothing else.
+          </div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div class="note">
+          <h3>Send as the pre-read, three days ahead</h3>
+          <ul>
+            <li>
+              This manual, whole. Ask them to read pages 3 to 5, the diagrams, and the open register
+              on 17.
+            </li>
+            <li>
+              <em>Lead-to-sale pipeline and pricing</em>, which carries the reasoning behind the
+              fees if anyone wants to argue about them.
+            </li>
+            <li>
+              One line naming the four decisions, so nobody arrives expecting a status update.
+            </li>
+          </ul>
+        </div>
+        <div class="note warn">
+          <h3>Three questions to have an answer ready for</h3>
+          <ul>
+            <li>
+              <strong>&ldquo;Won't charging for the visit lose us work?&rdquo;</strong> Yes, some.
+              That is the point, and it is also the risk. Hence the lead log.
+            </li>
+            <li>
+              <strong>&ldquo;Why isn't the design fee credited?&rdquo;</strong> Because the hours
+              are spent whether or not the client builds, and crediting them means burying them in a
+              construction price nobody can see.
+            </li>
+            <li>
+              <strong>&ldquo;Can't we skip the lawyer?&rdquo;</strong> The deposit cap, the required
+              notices and the cancellation windows are statutory. A contract missing its notice can
+              be cancelled indefinitely.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot">
+        <span>GMZ operating manual &middot; GMZ Landscaping Inc. &middot; internal</span
+        ><span>18</span>
+      </div>
+    </div>
+  </body>
+</html>
