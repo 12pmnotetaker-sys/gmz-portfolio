@@ -1,0 +1,2384 @@
+<title>The Client Path</title>
+
+<!--
+  GMZ maintenance client portal: the unified flow, and the bilingual request
+  and message section.
+
+  PROTOTYPE. Standalone HTML, same convention as docs/intake-forms.html.
+
+  This supersedes the three separate concepts in this folder as the direction.
+  They resolve into one product with three depths, decided 2026-08-17:
+
+    - The Route Card becomes the shell and the Today screen.
+    - The Service Record becomes the visit history you drill into.
+    - The Garden Year becomes the seasonal context view.
+
+  New in this file: Requests and messages, bilingual in both directions, with
+  the original text of every message kept alongside its translation.
+
+  Stand-ins, all flagged on the page:
+    - The tree badge is a drawn stand-in for the real GMZ mark, still needed as
+      SVG per DESIGN-HANDOFF.md.
+    - Client name, dates, crew notes and message text are invented sample data.
+    - Photo slots are labelled plates, not photographs.
+    - No dollar figures. Per-visit price and quote amounts live in the client's
+      agreement and in the estimating system.
+
+  Deliberately absent: any response-time promise. Nobody has decided one, and
+  a portal that says "we reply within X" is a term a client will hold GMZ to.
+  Same rule as an unpublished FAQ answer. The urgent path is a phone call,
+  which is how GMZ actually works.
+
+  If this gets built, the GMZ facts in the footer must be read from
+  src/data/site.ts rather than retyped, per "one fact, one home" in CLAUDE.md.
+-->
+
+<style>
+  /* ---- Tokens: complete light palette ----------------------------------
+   * Carried over from the Route Card concept, since that is now the shell.
+   * -------------------------------------------------------------------------*/
+  :root {
+    --stage: #dde3d6;
+    --stage-edge: #c6cfbb;
+    --app: #fbfcf9;
+    --card: #ffffff;
+    --card-sunk: #f1f4ec;
+
+    --ink: #14180f;
+    --ink-soft: #4b5545;
+    --ink-faint: #79826f;
+    --hair: #e3e8db;
+    --rule: #cfd7c5;
+
+    --green: #2e7d32;
+    --green-deep: #1b5e20;
+    --green-wash: #e6f1e4;
+    --on-green: #ffffff;
+
+    /* App chrome stays dark green in both themes, as on a phone app header. */
+    --bar-from: #1b5e20;
+    --bar-to: #133c16;
+
+    /* Semantic states, deliberately not the brand accent. */
+    --wait: #8a5a00;
+    --wait-wash: #fbf0da;
+    --wait-edge: #e0c586;
+    --calm: #4d6b78;
+    --calm-wash: #e8eef1;
+
+    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+    --page: 80rem;
+    --gutter: clamp(1rem, 4vw, 3rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --stage: #0c0f0a;
+      --stage-edge: #232a1d;
+      --app: #14180f;
+      --card: #1b2016;
+      --card-sunk: #222819;
+
+      --ink: #eaeee1;
+      --ink-soft: #b1b9a3;
+      --ink-faint: #848d76;
+      --hair: #2a3122;
+      --rule: #39412f;
+
+      --green: #8ecb8f;
+      --green-deep: #b2e0b2;
+      --green-wash: #1d2a1b;
+      --on-green: #0e1209;
+
+      --wait: #dfab4a;
+      --wait-wash: #2b2211;
+      --wait-edge: #55431d;
+      --calm: #9db6c1;
+      --calm-wash: #1a2328;
+    }
+  }
+
+  :root[data-theme='dark'] {
+    --stage: #0c0f0a;
+    --stage-edge: #232a1d;
+    --app: #14180f;
+    --card: #1b2016;
+    --card-sunk: #222819;
+
+    --ink: #eaeee1;
+    --ink-soft: #b1b9a3;
+    --ink-faint: #848d76;
+    --hair: #2a3122;
+    --rule: #39412f;
+
+    --green: #8ecb8f;
+    --green-deep: #b2e0b2;
+    --green-wash: #1d2a1b;
+    --on-green: #0e1209;
+
+    --wait: #dfab4a;
+    --wait-wash: #2b2211;
+    --wait-edge: #55431d;
+    --calm: #9db6c1;
+    --calm-wash: #1a2328;
+  }
+
+  /* ---- Base ------------------------------------------------------------ */
+  body {
+    margin: 0;
+    background: var(--app);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dt,
+  dd,
+  figcaption {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: var(--green-deep);
+    text-underline-offset: 0.18em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+
+  .skip-link {
+    position: absolute;
+    inset-inline-start: 1rem;
+    inset-block-start: -100%;
+    z-index: 50;
+    padding: 0.6rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    inset-block-start: 1rem;
+  }
+
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .page {
+    max-width: var(--page);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    padding-block: 2rem 4rem;
+  }
+
+  /* ---- Icon sprite ----------------------------------------------------- */
+  .sprite {
+    position: absolute;
+  }
+
+  .glyph,
+  .chev {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ---- Intro ----------------------------------------------------------- */
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block-end: 2rem;
+  }
+
+  .intro__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--green);
+    text-decoration: none;
+  }
+
+  .lockup svg {
+    display: block;
+    flex: none;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+  }
+
+  .lockup .words {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .lockup .name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .lockup .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .stamp {
+    margin-inline-start: auto;
+    padding: 0.22em 0.65em;
+    border: 1px solid var(--wait-edge);
+    border-radius: 999px;
+    background: var(--wait-wash);
+    color: var(--wait);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .intro h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  }
+
+  .intro .lede {
+    max-width: 42rem;
+    font-size: 1.06rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---- Figures --------------------------------------------------------- */
+  figure.diagram {
+    margin: 0;
+    padding: 1.25rem 1.35rem;
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 10px;
+  }
+
+  .scroller {
+    overflow-x: auto;
+  }
+
+  figure.diagram svg {
+    display: block;
+    max-inline-size: 100%;
+    min-inline-size: 40rem;
+    block-size: auto;
+    color: var(--ink-soft);
+  }
+
+  figure.diagram figcaption {
+    margin-block-start: 0.9rem;
+    padding-block-start: 0.8rem;
+    border-block-start: 1px solid var(--hair);
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    max-inline-size: 46rem;
+  }
+
+  /* Diagram primitives, themed through currentColor. */
+  .d-box {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.2;
+  }
+
+  .d-box-wait {
+    fill: none;
+    stroke: var(--wait);
+    stroke-width: 2;
+  }
+
+  .d-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.2;
+  }
+
+  .d-line-loop {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.2;
+    stroke-dasharray: 5 4;
+  }
+
+  .d-title {
+    fill: var(--ink);
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .d-title-wait {
+    fill: var(--wait);
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .d-sub {
+    fill: currentColor;
+    font-family: system-ui, sans-serif;
+    font-size: 11px;
+  }
+
+  .d-edge {
+    fill: currentColor;
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ---- Section rhythm -------------------------------------------------- */
+  section.band {
+    padding-block-start: 3.25rem;
+  }
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+    padding-block-end: 0.6rem;
+    border-block-end: 1px solid var(--rule);
+    margin-block-end: 1.4rem;
+  }
+
+  .head .step {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--green-deep);
+  }
+
+  .head h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+  }
+
+  .head .from {
+    margin-inline-start: auto;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Stage: device on the left, the reasoning on the right. */
+  .stage {
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  @media (min-width: 62rem) {
+    .stage {
+      grid-template-columns: 22rem 1fr;
+      align-items: start;
+    }
+
+    .stage--pair {
+      grid-template-columns: 22rem 22rem 1fr;
+    }
+  }
+
+  .stage > * {
+    min-inline-size: 0;
+  }
+
+  .notes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .note h3 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--green-deep);
+  }
+
+  .note p,
+  .note li {
+    margin-block-start: 0.4rem;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    max-inline-size: 40rem;
+  }
+
+  .note ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .note li {
+    padding-inline-start: 0.95rem;
+    border-inline-start: 2px solid var(--hair);
+  }
+
+  /* ---- Device ---------------------------------------------------------- */
+  .device {
+    inline-size: 100%;
+    max-inline-size: 22rem;
+    padding: 0.5rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 26px;
+    box-shadow: 0 10px 28px rgb(0 0 0 / 12%);
+  }
+
+  .device__inner {
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--app);
+    border: 1px solid var(--hair);
+  }
+
+  .statusbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.35rem 0.9rem 0.1rem;
+    background: var(--bar-to);
+    color: rgb(255 255 255 / 72%);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
+  .appbar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 0.9rem 0.9rem;
+    background: linear-gradient(160deg, var(--bar-from), var(--bar-to));
+    color: #ffffff;
+  }
+
+  .appbar svg.mark {
+    display: block;
+    flex: none;
+    inline-size: 1.85rem;
+    block-size: 1.85rem;
+    color: rgb(255 255 255 / 16%);
+  }
+
+  .appbar .who {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+
+  .appbar .who strong {
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+
+  .appbar .who span {
+    font-size: 0.68rem;
+    color: rgb(255 255 255 / 70%);
+  }
+
+  .appbar .back {
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: 1.7rem;
+    block-size: 1.7rem;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 14%);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .appbar .back .chev {
+    display: block;
+    inline-size: 0.95rem;
+    block-size: 0.95rem;
+    stroke-width: 2;
+  }
+
+  .appbar .title {
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    font-weight: 600;
+  }
+
+  /* The language switch lives in the chrome, not buried in settings. */
+  .lang {
+    display: flex;
+    margin-inline-start: auto;
+    flex: none;
+    border: 1px solid rgb(255 255 255 / 32%);
+    border-radius: 999px;
+    overflow: hidden;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .lang a {
+    padding: 0.2rem 0.45rem;
+    color: rgb(255 255 255 / 78%);
+    text-decoration: none;
+  }
+
+  .lang a[aria-current='true'] {
+    background: rgb(255 255 255 / 88%);
+    color: var(--bar-to);
+    font-weight: 700;
+  }
+
+  .appbody {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.85rem;
+  }
+
+  .card {
+    padding: 0.85rem 0.9rem;
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 10px;
+  }
+
+  .card > * + * {
+    margin-block-start: 0.45rem;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .card .fine {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+
+  .card .what {
+    font-size: 0.94rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .card--next {
+    background: var(--green-wash);
+    border-color: color-mix(in srgb, var(--green) 34%, transparent);
+  }
+
+  .card--next .when {
+    font-family: var(--serif);
+    font-size: 1.42rem;
+    line-height: 1.15;
+  }
+
+  .countdown {
+    display: inline-block;
+    padding: 0.12em 0.5em;
+    border-radius: 999px;
+    background: var(--green);
+    color: var(--on-green);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .card--wait {
+    background: var(--wait-wash);
+    border-color: var(--wait-edge);
+  }
+
+  .card--wait .eyebrow {
+    color: var(--wait);
+  }
+
+  .btnrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-block-start: 0.6rem;
+  }
+
+  .btn {
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--ink);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    border-color: var(--green);
+    color: var(--green-deep);
+  }
+
+  .btn--go {
+    background: var(--wait);
+    border-color: var(--wait);
+    color: var(--wait-wash);
+  }
+
+  .btn--green {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--on-green);
+  }
+
+  .btn--green:hover {
+    background: var(--green-deep);
+    border-color: var(--green-deep);
+    color: var(--on-green);
+  }
+
+  .did {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  .did li {
+    display: flex;
+    gap: 0.45rem;
+  }
+
+  .did li::before {
+    content: '';
+    flex: none;
+    inline-size: 0.38rem;
+    block-size: 0.66rem;
+    margin-inline: 0.18rem 0.3rem;
+    margin-block-start: 0.15em;
+    border-inline-end: 2px solid var(--green);
+    border-block-end: 2px solid var(--green);
+    transform: rotate(42deg);
+  }
+
+  .saw {
+    padding: 0.6rem 0.7rem;
+    background: var(--card-sunk);
+    border-inline-start: 2px solid var(--green);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.82rem;
+  }
+
+  /* Compact visit list, the record depth on a phone. */
+  .reclist {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reclist li {
+    display: grid;
+    grid-template-columns: 4.6rem 1fr;
+    gap: 0.15rem 0.5rem;
+    padding-block: 0.55rem;
+    border-block-start: 1px solid var(--hair);
+    font-size: 0.8rem;
+  }
+
+  .reclist li:first-child {
+    border-block-start: 0;
+  }
+
+  .reclist .d {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .reclist .s {
+    color: var(--ink-soft);
+  }
+
+  .reclist .tag {
+    grid-column: 2;
+    justify-self: start;
+    padding: 0.1em 0.45em;
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .tag-irr {
+    background: var(--calm-wash);
+    color: var(--calm);
+  }
+
+  .tag-out {
+    background: var(--wait-wash);
+    color: var(--wait);
+  }
+
+  /* The year, stacked for a phone: one row per month. */
+  .yearlist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .yearlist li {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.76rem;
+  }
+
+  .yearlist .m {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .yearlist li.is-now .m {
+    color: var(--wait);
+    font-weight: 700;
+  }
+
+  .yearlist .bar {
+    display: flex;
+    align-items: center;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    background: var(--card-sunk);
+    color: var(--ink-soft);
+    font-size: 0.74rem;
+  }
+
+  .yearlist li.is-now .bar {
+    background: var(--wait-wash);
+    border: 1px solid var(--wait-edge);
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ---- Bilingual message thread ---------------------------------------- */
+  .thread {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .msg {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.84rem;
+  }
+
+  .msg--them {
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-start-start-radius: 3px;
+  }
+
+  .msg--you {
+    background: var(--green-wash);
+    border: 1px solid color-mix(in srgb, var(--green) 30%, transparent);
+    border-start-end-radius: 3px;
+    margin-inline-start: 1.5rem;
+  }
+
+  .msg__who {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* The provenance chip is the honest part: it says which language the person
+     actually wrote in, so a translation never passes as their own words. */
+  /* A dot between the name and the date, drawn rather than typed. */
+  .msg__who > span + span:not(.written)::before {
+    content: '\00B7';
+    margin-inline-end: 0.32rem;
+    color: var(--ink-faint);
+  }
+
+  .written {
+    padding: 0.1em 0.4em;
+    border: 1px solid var(--calm);
+    border-radius: 3px;
+    color: var(--calm);
+    font-weight: 600;
+  }
+
+  .msg details {
+    margin-block-start: 0.1rem;
+    font-size: 0.78rem;
+  }
+
+  .msg summary {
+    cursor: pointer;
+    color: var(--green-deep);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .msg details p {
+    margin-block-start: 0.35rem;
+    padding: 0.45rem 0.55rem;
+    background: var(--card-sunk);
+    border-radius: 6px;
+    color: var(--ink-soft);
+  }
+
+  figure.plate {
+    margin: 0;
+  }
+
+  figure.plate svg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: 6px;
+  }
+
+  .composer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .field .lbl {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .field .box {
+    padding: 0.5rem 0.6rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 7px;
+    font-size: 0.82rem;
+    color: var(--ink);
+  }
+
+  .field .box.is-placeholder {
+    color: var(--ink-faint);
+  }
+
+  .field .hint {
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+  }
+
+  .photoadd {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.6rem;
+    border: 1px dashed var(--rule);
+    border-radius: 7px;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .photoadd .glyph {
+    inline-size: 1rem;
+    block-size: 1rem;
+    flex: none;
+  }
+
+  .notapproval {
+    padding: 0.55rem 0.65rem;
+    background: var(--card-sunk);
+    border-inline-start: 2px solid var(--calm);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.76rem;
+    color: var(--ink-soft);
+  }
+
+  /* Request list with states. */
+  .reqs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reqs li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-block: 0.6rem;
+    border-block-start: 1px solid var(--hair);
+  }
+
+  .reqs li:first-child {
+    border-block-start: 0;
+  }
+
+  .reqs .row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .reqs strong {
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+
+  .pill {
+    margin-inline-start: auto;
+    flex: none;
+    padding: 0.1em 0.5em;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .pill--wait {
+    background: var(--wait-wash);
+    color: var(--wait);
+    border: 1px solid var(--wait-edge);
+  }
+
+  .pill--yes {
+    background: var(--green-wash);
+    color: var(--green-deep);
+  }
+
+  .pill--open {
+    background: var(--calm-wash);
+    color: var(--calm);
+  }
+
+  .reqs .meta {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--ink-faint);
+  }
+
+  /* ---- Tab bar --------------------------------------------------------- */
+  .tabbar ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-block-start: 1px solid var(--hair);
+    background: var(--card);
+  }
+
+  .tabbar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.55rem 0.2rem 0.7rem;
+    color: var(--ink-faint);
+    font-size: 0.62rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .tabbar a .glyph {
+    display: block;
+    inline-size: 1.15rem;
+    block-size: 1.15rem;
+  }
+
+  .tabbar a[aria-current='page'] {
+    color: var(--green-deep);
+  }
+
+  .tabbar a:hover {
+    color: var(--green-deep);
+  }
+
+  .tabbar .dot {
+    position: relative;
+  }
+
+  .tabbar .dot::after {
+    content: '';
+    position: absolute;
+    inset-block-start: 0.3rem;
+    inset-inline-start: 55%;
+    inline-size: 0.4rem;
+    block-size: 0.4rem;
+    border-radius: 50%;
+    background: var(--wait);
+  }
+
+  /* ---- Shell map ------------------------------------------------------- */
+  .shellmap {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  @media (min-width: 46rem) {
+    .shellmap {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .shellmap .t {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.95rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 9px;
+  }
+
+  .shellmap .t .glyph {
+    inline-size: 1.3rem;
+    block-size: 1.3rem;
+    color: var(--green-deep);
+  }
+
+  .shellmap .t strong {
+    font-size: 0.95rem;
+  }
+
+  .shellmap .t p {
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+
+  .shellmap .t .src {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---- Rules list ------------------------------------------------------ */
+  .rules {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (min-width: 52rem) {
+    .rules {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .rule {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1rem 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 9px;
+  }
+
+  .rule strong {
+    font-size: 0.95rem;
+  }
+
+  .rule p {
+    font-size: 0.89rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---- Footers --------------------------------------------------------- */
+  .proto {
+    margin-block-start: 3.25rem;
+    padding: 1.25rem 1.4rem;
+    background: var(--card-sunk);
+    border: 1px dashed var(--rule);
+    border-radius: 10px;
+  }
+
+  .proto h2 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .proto ul {
+    margin-block-start: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+
+  .proto li {
+    position: relative;
+    padding-inline-start: 1rem;
+  }
+
+  .proto li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.62em;
+    inline-size: 0.35rem;
+    block-size: 0.35rem;
+    border-radius: 50%;
+    background: var(--ink-faint);
+  }
+
+  .colophon {
+    margin-block-start: 2rem;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--hair);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+</style>
+
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <symbol id="i-today" viewBox="0 0 24 24">
+    <path d="M3.6 11.2 12 4.3l8.4 6.9v8.5h-5.7v-5.6H9.3v5.6H3.6z" />
+  </symbol>
+  <symbol id="i-visits" viewBox="0 0 24 24">
+    <path d="M4 6.5h.01M4 12h.01M4 17.5h.01M8.5 6.5H20M8.5 12H20M8.5 17.5H20" />
+  </symbol>
+  <symbol id="i-year" viewBox="0 0 24 24">
+    <path d="M19.5 4.5c-8 0-13.5 3.8-13.5 9.5a5.6 5.6 0 0 0 5.6 5.6c5.7 0 7.9-6 7.9-15.1Z" />
+    <path d="M6.2 20.2 14 12.4" />
+  </symbol>
+  <symbol id="i-ask" viewBox="0 0 24 24">
+    <path d="M4 5.5h16v11H9.5L4 20.5z" />
+  </symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24">
+    <path d="M3.5 7.5h4l1.5-2h6l1.5 2h4v11h-17z" />
+    <path d="M12 16a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" />
+  </symbol>
+  <symbol id="i-back" viewBox="0 0 24 24">
+    <path d="M14.5 5.5 8 12l6.5 6.5" />
+  </symbol>
+</svg>
+
+<a class="skip-link" href="#path">Skip to the client path</a>
+
+<div class="page">
+  <header class="intro">
+    <div class="intro__top">
+      <a class="lockup" href="#path" aria-label="GMZ Landscaping, Design, Build, Maintenance">
+        <svg viewBox="0 0 48 48" role="img" aria-hidden="true" focusable="false">
+          <rect width="48" height="48" rx="10" fill="currentColor" />
+          <circle cx="24" cy="18.5" r="7.2" fill="#ffffff" />
+          <circle cx="17.2" cy="23.4" r="5.9" fill="#ffffff" />
+          <circle cx="30.8" cy="23.4" r="5.9" fill="#ffffff" />
+          <rect x="22.6" y="23" width="2.8" height="12.5" rx="1.4" fill="#ffffff" />
+          <rect x="13.5" y="36.5" width="21" height="2.2" rx="1.1" fill="#ffffff" opacity="0.75" />
+        </svg>
+        <span class="words">
+          <span class="name">GMZ Landscaping</span>
+          <span class="tag">Design &middot; Build &middot; Maintenance</span>
+        </span>
+      </a>
+      <span class="stamp">Sample account</span>
+    </div>
+
+    <h1>The client path</h1>
+    <p class="lede">
+      One portal rather than three, with a path through it. The three earlier concepts become three
+      depths of the same product: the phone app is the shell, the service record is the history you
+      drill into, and the garden year is the context behind it. The last stage is new: requests and
+      messages, bilingual in both directions, with the original words always kept.
+    </p>
+  </header>
+
+  <section id="path" aria-labelledby="path-heading">
+    <div class="head">
+      <span class="step">The shape</span>
+      <h2 id="path-heading">What a client actually does here</h2>
+    </div>
+
+    <figure class="diagram">
+      <div class="scroller">
+        <svg
+          viewBox="0 0 1200 280"
+          role="img"
+          aria-label="The client path: sign in leads to Today, which shows the next visit and anything waiting on the client. Waiting on you leads to a decision, which leads to the work being booked onto their service day, and a dashed return brings them back to Today the following week. Two depths sit above Today: the visit record, reached by asking what happened, and the garden year, reached by asking why now."
+        >
+          <defs>
+            <marker
+              id="ar"
+              viewBox="0 0 10 10"
+              refX="9"
+              refY="5"
+              markerWidth="7"
+              markerHeight="7"
+              orient="auto-start-reverse"
+            >
+              <path d="M0 0 10 5 0 10z" fill="currentColor" />
+            </marker>
+            <marker
+              id="ar-wait"
+              viewBox="0 0 10 10"
+              refX="9"
+              refY="5"
+              markerWidth="7"
+              markerHeight="7"
+              orient="auto-start-reverse"
+            >
+              <path d="M0 0 10 5 0 10z" fill="#8a5a00" />
+            </marker>
+          </defs>
+
+          <!-- The two depths sit above Today, so nothing crosses the return loop -->
+          <rect class="d-box" x="190" y="8" width="210" height="56" rx="6" />
+          <text class="d-title" x="295" y="32" text-anchor="middle">Visits, the record</text>
+          <text class="d-sub" x="295" y="50" text-anchor="middle">
+            every visit since April 2025
+          </text>
+
+          <rect class="d-box" x="440" y="8" width="180" height="56" rx="6" />
+          <text class="d-title" x="530" y="32" text-anchor="middle">The year</text>
+          <text class="d-sub" x="530" y="50" text-anchor="middle">what the season is doing</text>
+
+          <!-- Spine -->
+          <rect class="d-box" x="20" y="120" width="160" height="62" rx="6" />
+          <text class="d-title" x="100" y="148" text-anchor="middle">Sign in</text>
+          <text class="d-sub" x="100" y="167" text-anchor="middle">once, on a phone</text>
+
+          <rect class="d-box" x="270" y="120" width="160" height="62" rx="6" />
+          <text class="d-title" x="350" y="148" text-anchor="middle">Today</text>
+          <text class="d-sub" x="350" y="167" text-anchor="middle">next visit, last visit</text>
+
+          <rect class="d-box-wait" x="520" y="120" width="160" height="62" rx="6" />
+          <text class="d-title-wait" x="600" y="148" text-anchor="middle">Waiting on you</text>
+          <text class="d-sub" x="600" y="167" text-anchor="middle">a quote, or nothing</text>
+
+          <rect class="d-box" x="770" y="120" width="160" height="62" rx="6" />
+          <text class="d-title" x="850" y="148" text-anchor="middle">Decide</text>
+          <text class="d-sub" x="850" y="167" text-anchor="middle">approve, ask, defer</text>
+
+          <rect class="d-box" x="1020" y="120" width="160" height="62" rx="6" />
+          <text class="d-title" x="1100" y="148" text-anchor="middle">Booked</text>
+          <text class="d-sub" x="1100" y="167" text-anchor="middle">onto your Thursday</text>
+
+          <line class="d-line" x1="180" y1="155" x2="264" y2="155" marker-end="url(#ar)" />
+          <line class="d-line" x1="430" y1="155" x2="514" y2="155" marker-end="url(#ar)" />
+          <line class="d-line" x1="680" y1="155" x2="764" y2="155" marker-end="url(#ar-wait)" />
+          <line class="d-line" x1="930" y1="155" x2="1014" y2="155" marker-end="url(#ar)" />
+          <text class="d-edge" x="222" y="146" text-anchor="middle">opens</text>
+          <text class="d-edge" x="472" y="146" text-anchor="middle">one card</text>
+          <text class="d-edge" x="722" y="146" text-anchor="middle">taps it</text>
+          <text class="d-edge" x="972" y="146" text-anchor="middle">approves</text>
+
+          <!-- Up into the depths -->
+          <line class="d-line" x1="320" y1="120" x2="298" y2="70" marker-end="url(#ar)" />
+          <line class="d-line" x1="375" y1="120" x2="512" y2="70" marker-end="url(#ar)" />
+          <text class="d-edge" x="268" y="100" text-anchor="end">what happened</text>
+          <text class="d-edge" x="452" y="100">why now</text>
+
+          <!-- The loop back: maintenance is a cycle, not a funnel -->
+          <polyline
+            class="d-line-loop"
+            points="1100,182 1100,240 350,240 350,188"
+            marker-end="url(#ar)"
+          />
+          <text class="d-edge" x="725" y="233" text-anchor="middle">and again next Thursday</text>
+        </svg>
+      </div>
+      <figcaption>
+        The spine is four taps wide and ends in a date. The two depths sit above Today and return to
+        it, so a client who never opens them still gets the whole product. The dashed return is the
+        point most portals miss: a maintenance account is a loop, not a funnel, and the same client
+        walks this path every week for years.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="band" aria-labelledby="shell-heading">
+    <div class="head">
+      <span class="step">The shell</span>
+      <h2 id="shell-heading">Four tabs, and where each concept went</h2>
+    </div>
+
+    <div class="shellmap">
+      <div class="t">
+        <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-today" /></svg>
+        <strong>Today</strong>
+        <p>Next visit, anything waiting on you, and what happened last week.</p>
+        <span class="src">From the route card</span>
+      </div>
+      <div class="t">
+        <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-visits" /></svg>
+        <strong>Visits</strong>
+        <p>Every visit, what was done, what was seen, the irrigation walks.</p>
+        <span class="src">From the service record</span>
+      </div>
+      <div class="t">
+        <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-year" /></svg>
+        <strong>The year</strong>
+        <p>What the season is doing and which extra work tends to come up when.</p>
+        <span class="src">From the garden year</span>
+      </div>
+      <div class="t">
+        <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-ask" /></svg>
+        <strong>Ask</strong>
+        <p>Requests and messages, in your language and in the crew's.</p>
+        <span class="src">New</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Stage 1 ============ -->
+  <section class="band" aria-labelledby="s1-heading">
+    <div class="head">
+      <span class="step">01</span>
+      <h2 id="s1-heading">Today</h2>
+      <p class="from">The only screen most weeks</p>
+    </div>
+
+    <div class="stage">
+      <div class="device">
+        <div class="device__inner">
+          <p class="statusbar"><span>Mon 7:48</span><span>Portal</span></p>
+          <div class="appbar">
+            <svg class="mark" viewBox="0 0 48 48" role="img" aria-hidden="true" focusable="false">
+              <rect width="48" height="48" rx="10" fill="currentColor" />
+              <circle cx="24" cy="18.5" r="7.2" fill="#ffffff" />
+              <circle cx="17.2" cy="23.4" r="5.9" fill="#ffffff" />
+              <circle cx="30.8" cy="23.4" r="5.9" fill="#ffffff" />
+              <rect x="22.6" y="23" width="2.8" height="12.5" rx="1.4" fill="#ffffff" />
+            </svg>
+            <span class="who">
+              <strong>The Whitfield Residence</strong>
+              <span>Menlo Park &middot; weekly, Thursdays</span>
+            </span>
+            <span class="lang">
+              <a href="#s1-heading" aria-current="true" lang="en">EN</a>
+              <a href="#s1-heading" lang="es">ES</a>
+            </span>
+          </div>
+
+          <div class="appbody">
+            <div class="card card--next">
+              <p class="eyebrow">Next visit</p>
+              <p class="when">Thursday, August 20</p>
+              <p><span class="countdown">In 3 days</span></p>
+              <p class="fine">
+                Crew 2, sometime during the day. You get a day, not an arrival time, and you do not
+                need to be home.
+              </p>
+            </div>
+
+            <div class="card card--wait">
+              <p class="eyebrow">Waiting on you &middot; 1</p>
+              <p class="what">Replace the leaking valve on the back beds zone</p>
+              <p class="fine">
+                Found on the August 6 irrigation walk. That zone is off until it is fixed.
+              </p>
+              <div class="btnrow">
+                <a class="btn btn--go" href="#s5-heading">Review the quote</a>
+                <a class="btn" href="#s5-heading">Ask about it</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <p class="eyebrow">Last visit &middot; Thu Aug 13</p>
+              <ul class="did">
+                <li>Mowed and edged</li>
+                <li>Beds weeded</li>
+                <li>Green waste hauled</li>
+              </ul>
+              <p class="saw">
+                The hedge on the north fence is shading the roses under it. We flagged it rather
+                than cutting it back.
+              </p>
+              <p><a class="btn" href="#s2-heading">See the visit</a></p>
+            </div>
+          </div>
+
+          <nav class="tabbar" aria-label="Today screen tabs">
+            <ul>
+              <li>
+                <a href="#s1-heading" aria-current="page"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-today" /></svg
+                  >Today</a
+                >
+              </li>
+              <li>
+                <a href="#s2-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-visits" /></svg
+                  >Visits</a
+                >
+              </li>
+              <li>
+                <a href="#s4-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-year" /></svg
+                  >Year</a
+                >
+              </li>
+              <li>
+                <a class="dot" href="#s5-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-ask" /></svg
+                  >Ask</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="notes">
+        <div class="note">
+          <h3>What the client came for</h3>
+          <p>
+            When are you coming, and did anything happen. Both are answered above the fold, in that
+            order, because that is the order they are asked in.
+          </p>
+        </div>
+        <div class="note">
+          <h3>The one thing that moves</h3>
+          <p>
+            Most weeks the middle card is absent and Today is two cards long. That is the design
+            working: a portal that always has something demanding attention trains a client to
+            ignore it. When the amber card does appear, it is the only amber on the screen.
+          </p>
+        </div>
+        <div class="note">
+          <h3>Language sits in the chrome</h3>
+          <p>
+            The switch is next to the account name rather than buried in a settings screen, because
+            a client who needs Spanish needs it on the first screen, not after finding a menu.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Stage 2 ============ -->
+  <section class="band" aria-labelledby="s2-heading">
+    <div class="head">
+      <span class="step">02</span>
+      <h2 id="s2-heading">One visit</h2>
+      <p class="from">One tap from Today</p>
+    </div>
+
+    <div class="stage">
+      <div class="device">
+        <div class="device__inner">
+          <p class="statusbar"><span>Mon 7:49</span><span>Portal</span></p>
+          <div class="appbar">
+            <a class="back" href="#s1-heading" aria-label="Back to Today"
+              ><svg class="chev" aria-hidden="true" focusable="false">
+                <use href="#i-back" /></svg
+            ></a>
+            <span class="title">Thursday, August 13</span>
+          </div>
+
+          <div class="appbody">
+            <div class="card">
+              <p class="eyebrow">Crew 2 &middot; Rafael Jr.</p>
+              <ul class="did">
+                <li>Mowed and edged</li>
+                <li>Hard surfaces blown down</li>
+                <li>Beds weeded</li>
+                <li>Green waste hauled</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <p class="eyebrow">What we saw</p>
+              <p class="saw">
+                The hedge along the north fence has grown enough to shade the roses under it.
+                Cutting it back properly is renovation pruning rather than the light shaping a visit
+                includes, so we left it and put it on your list.
+              </p>
+              <div class="msg__who">
+                <span class="written" lang="en">Written in Spanish</span>
+                <span>Rafael Jr.</span>
+              </div>
+              <details>
+                <summary lang="en">Show the original</summary>
+                <p lang="es">
+                  El seto de la cerca norte ya creció y le está dando sombra a los rosales de abajo.
+                  Podarlo bien es poda de renovación, no la poda ligera que lleva la visita, así que
+                  lo dejamos y lo anotamos en su lista.
+                </p>
+              </details>
+            </div>
+
+            <div class="card">
+              <p class="eyebrow">Photos from the visit</p>
+              <figure class="plate">
+                <svg
+                  viewBox="0 0 300 180"
+                  role="img"
+                  aria-label="Photo slot: the hedge along the north fence, grown tall enough to shade the roses beneath it."
+                >
+                  <defs>
+                    <linearGradient id="pl1" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#1b5e20" />
+                      <stop offset="100%" stop-color="#6e7f63" />
+                    </linearGradient>
+                  </defs>
+                  <rect width="300" height="180" fill="url(#pl1)" />
+                  <text
+                    x="150"
+                    y="86"
+                    text-anchor="middle"
+                    font-family="Helvetica, Arial, sans-serif"
+                    font-size="12"
+                    letter-spacing="2.5"
+                    fill="#ffffff"
+                    fill-opacity="0.82"
+                  >
+                    PHOTO SLOT
+                  </text>
+                  <text
+                    x="150"
+                    y="104"
+                    text-anchor="middle"
+                    font-family="Helvetica, Arial, sans-serif"
+                    font-size="8"
+                    letter-spacing="1.2"
+                    fill="#ffffff"
+                    fill-opacity="0.6"
+                  >
+                    HEDGE, NORTH FENCE
+                  </text>
+                </svg>
+              </figure>
+              <p class="fine">
+                A photograph needs no translation. It is the cheapest thing a crew can send and the
+                least ambiguous thing a client can receive.
+              </p>
+            </div>
+          </div>
+
+          <nav class="tabbar" aria-label="Visit screen tabs">
+            <ul>
+              <li>
+                <a href="#s1-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-today" /></svg
+                  >Today</a
+                >
+              </li>
+              <li>
+                <a href="#s2-heading" aria-current="page"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-visits" /></svg
+                  >Visits</a
+                >
+              </li>
+              <li>
+                <a href="#s4-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-year" /></svg
+                  >Year</a
+                >
+              </li>
+              <li>
+                <a class="dot" href="#s5-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-ask" /></svg
+                  >Ask</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="notes">
+        <div class="note">
+          <h3>The crew writes in Spanish</h3>
+          <p>
+            This is the sentence the whole portal depends on, and asking a crew lead to compose it
+            in English would mean either nothing gets written or something worse than nothing does.
+            They write it once, in their own language, on their phone. The client reads it in
+            theirs, and can always see what was actually written.
+          </p>
+        </div>
+        <div class="note">
+          <h3>Flag, do not fix</h3>
+          <p>
+            The note says what was seen and what was deliberately not done. That is the existing
+            rule, not a new one: work outside routine care gets quoted and approved before anyone
+            touches it.
+          </p>
+        </div>
+        <div class="note">
+          <h3>Where it goes next</h3>
+          <p>
+            The flag becomes an item under Ask, in the same list as anything the client raised
+            themselves. One queue, two sources.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Stage 3 ============ -->
+  <section class="band" aria-labelledby="s3-heading">
+    <div class="head">
+      <span class="step">03</span>
+      <h2 id="s3-heading">The record</h2>
+      <p class="from">Depth, not a step</p>
+    </div>
+
+    <div class="stage">
+      <div class="device">
+        <div class="device__inner">
+          <p class="statusbar"><span>Mon 7:50</span><span>Portal</span></p>
+          <div class="appbar">
+            <a class="back" href="#s1-heading" aria-label="Back to Today"
+              ><svg class="chev" aria-hidden="true" focusable="false">
+                <use href="#i-back" /></svg
+            ></a>
+            <span class="title">Every visit</span>
+          </div>
+
+          <div class="appbody">
+            <div class="card">
+              <p class="eyebrow">71 visits since April 2025</p>
+              <ul class="reclist">
+                <li>
+                  <span class="d">Thu Aug 13</span><span class="s">Mowed, edged, beds weeded</span>
+                  <span class="tag tag-out">Flagged</span>
+                </li>
+                <li>
+                  <span class="d">Thu Aug 6</span
+                  ><span class="s">Grasses cut back, controller up</span>
+                  <span class="tag tag-irr">Irrigation walk</span>
+                </li>
+                <li>
+                  <span class="d">Thu Jul 30</span
+                  ><span class="s">Shrubs shaped, drip line reseated</span>
+                </li>
+                <li>
+                  <span class="d">Thu Jul 23</span><span class="s">Perennials deadheaded</span>
+                </li>
+                <li>
+                  <span class="d">Thu Jul 16</span
+                  ><span class="s">Mowed, edged, hard surfaces</span>
+                </li>
+                <li>
+                  <span class="d">Fri Feb 13</span
+                  ><span class="s">Storm debris, drains checked</span>
+                  <span class="tag tag-irr">Moved for weather</span>
+                </li>
+              </ul>
+            </div>
+            <div class="card">
+              <p class="eyebrow">Irrigation, zone by zone</p>
+              <p class="fine">
+                Twelve monthly walks on record. Tap a month to see what each zone did and what was
+                adjusted.
+              </p>
+              <p><a class="btn" href="#s3-heading">Open the irrigation record</a></p>
+            </div>
+          </div>
+
+          <nav class="tabbar" aria-label="Record screen tabs">
+            <ul>
+              <li>
+                <a href="#s1-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-today" /></svg
+                  >Today</a
+                >
+              </li>
+              <li>
+                <a href="#s3-heading" aria-current="page"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-visits" /></svg
+                  >Visits</a
+                >
+              </li>
+              <li>
+                <a href="#s4-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-year" /></svg
+                  >Year</a
+                >
+              </li>
+              <li>
+                <a class="dot" href="#s5-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-ask" /></svg
+                  >Ask</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="notes">
+        <div class="note">
+          <h3>Rarely opened, and that is fine</h3>
+          <p>
+            Nobody reads seventy visits for pleasure. The record earns its place at three moments: a
+            dispute about whether something was done, a house going on the market, and a new
+            gardener or owner taking over. All three are worth the storage.
+          </p>
+        </div>
+        <div class="note">
+          <h3>On a laptop this is the whole page</h3>
+          <p>
+            The dense two-column layout from the service record concept is what this becomes at
+            width: the account rail on the left, dated entries and the irrigation grid on the right.
+            The phone gets the same data as a list.
+          </p>
+        </div>
+        <div class="note">
+          <h3>It prints</h3>
+          <p>
+            A year of the record on paper is what a client hands to whoever comes next. That is a
+            real use, so the wide layout keeps a print stylesheet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Stage 4 ============ -->
+  <section class="band" aria-labelledby="s4-heading">
+    <div class="head">
+      <span class="step">04</span>
+      <h2 id="s4-heading">The year</h2>
+      <p class="from">Depth, and the answer to "why now"</p>
+    </div>
+
+    <div class="stage">
+      <div class="device">
+        <div class="device__inner">
+          <p class="statusbar"><span>Mon 7:51</span><span>Portal</span></p>
+          <div class="appbar">
+            <a class="back" href="#s1-heading" aria-label="Back to Today"
+              ><svg class="chev" aria-hidden="true" focusable="false">
+                <use href="#i-back" /></svg
+            ></a>
+            <span class="title">Your garden year</span>
+          </div>
+
+          <div class="appbody">
+            <div class="card card--wait">
+              <p class="eyebrow">August</p>
+              <p class="what">The high water month</p>
+              <p class="fine">
+                Growth has slowed since June, so the visit is more about crisp edges and clean beds
+                than cutting back hard. The controller is running its longest cycles of the year,
+                which is why a leak now costs more than a leak in March.
+              </p>
+            </div>
+
+            <div class="card">
+              <p class="eyebrow">The twelve months</p>
+              <ul class="yearlist">
+                <li><span class="m">Jan</span><span class="bar">Dormant, wet ground</span></li>
+                <li><span class="m">Feb</span><span class="bar">Dormant, visits may move</span></li>
+                <li>
+                  <span class="m">Mar</span><span class="bar">Growth starts, water stepped up</span>
+                </li>
+                <li>
+                  <span class="m">Apr</span><span class="bar">Fast growth, mulch window</span>
+                </li>
+                <li><span class="m">May</span><span class="bar">Fast growth</span></li>
+                <li><span class="m">Jun</span><span class="bar">Longest water cycles</span></li>
+                <li><span class="m">Jul</span><span class="bar">Slowing, heat</span></li>
+                <li class="is-now">
+                  <span class="m">Aug</span><span class="bar">You are here</span>
+                </li>
+                <li><span class="m">Sep</span><span class="bar">Water eases off</span></li>
+                <li><span class="m">Oct</span><span class="bar">Leaf drop starts</span></li>
+                <li><span class="m">Nov</span><span class="bar">Leaf drop, water off</span></li>
+                <li><span class="m">Dec</span><span class="bar">Dormant</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <nav class="tabbar" aria-label="Year screen tabs">
+            <ul>
+              <li>
+                <a href="#s1-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-today" /></svg
+                  >Today</a
+                >
+              </li>
+              <li>
+                <a href="#s3-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-visits" /></svg
+                  >Visits</a
+                >
+              </li>
+              <li>
+                <a href="#s4-heading" aria-current="page"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-year" /></svg
+                  >Year</a
+                >
+              </li>
+              <li>
+                <a class="dot" href="#s5-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-ask" /></svg
+                  >Ask</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="notes">
+        <div class="note">
+          <h3>The twelve-month ribbon needs width</h3>
+          <p>
+            On a laptop this is the four-row ribbon from the garden year concept, twelve columns
+            across. On a phone that ribbon becomes twelve rows with the current month marked. Same
+            data, and the reading changes from a chart to a list.
+          </p>
+        </div>
+        <div class="note">
+          <h3>Why it is worth a tab</h3>
+          <p>
+            It answers the question behind most complaints. Why is the lawn cut so short in July,
+            why was nothing pruned in June, why is a mulch quote arriving in April. A client who can
+            see the season coming reads seasonal work as care rather than as an upsell.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Stage 5 ============ -->
+  <section class="band" aria-labelledby="s5-heading">
+    <div class="head">
+      <span class="step">05</span>
+      <h2 id="s5-heading">Ask</h2>
+      <p class="from">New: requests and messages</p>
+    </div>
+
+    <div class="stage stage--pair">
+      <!-- Composer -->
+      <div class="device">
+        <div class="device__inner">
+          <p class="statusbar"><span>Mon 7:53</span><span>Portal</span></p>
+          <div class="appbar">
+            <a class="back" href="#s5-heading" aria-label="Back to your requests"
+              ><svg class="chev" aria-hidden="true" focusable="false">
+                <use href="#i-back" /></svg
+            ></a>
+            <span class="title">Ask us something</span>
+          </div>
+
+          <div class="appbody">
+            <div class="card">
+              <div class="composer">
+                <div class="field">
+                  <span class="lbl">What is it</span>
+                  <span class="box"
+                    >The gate latch on the side path is sticking. It still closes, but you have to
+                    lift it.</span
+                  >
+                </div>
+                <div class="field">
+                  <span class="lbl">Where on the property</span>
+                  <span class="box">Side path, by the fence</span>
+                  <span class="hint"
+                    >Pick from your own garden: front, side path, back, beds, lawn, driveway.</span
+                  >
+                </div>
+                <div class="field">
+                  <span class="lbl">A photo, if you can</span>
+                  <a class="photoadd" href="#s5-heading"
+                    ><svg class="glyph" aria-hidden="true" focusable="false">
+                      <use href="#i-camera" /></svg
+                    >Add a photo</a
+                  >
+                </div>
+                <p class="notapproval">
+                  This asks us to look and, if it is outside routine care, to price it. Nothing gets
+                  done and nothing is charged until you approve a quote.
+                </p>
+                <div class="btnrow">
+                  <a class="btn btn--green" href="#s5-heading">Send it</a>
+                  <a class="btn" href="#s5-heading">Call instead</a>
+                </div>
+                <p class="fine">
+                  Anything urgent is a phone call. This is not the fast channel and does not pretend
+                  to be.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <nav class="tabbar" aria-label="Composer screen tabs">
+            <ul>
+              <li>
+                <a href="#s1-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-today" /></svg
+                  >Today</a
+                >
+              </li>
+              <li>
+                <a href="#s3-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-visits" /></svg
+                  >Visits</a
+                >
+              </li>
+              <li>
+                <a href="#s4-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-year" /></svg
+                  >Year</a
+                >
+              </li>
+              <li>
+                <a href="#s5-heading" aria-current="page"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-ask" /></svg
+                  >Ask</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Thread -->
+      <div class="device">
+        <div class="device__inner">
+          <p class="statusbar"><span>Mon 7:56</span><span>Portal</span></p>
+          <div class="appbar">
+            <a class="back" href="#s5-heading" aria-label="Back to your requests"
+              ><svg class="chev" aria-hidden="true" focusable="false">
+                <use href="#i-back" /></svg
+            ></a>
+            <span class="title">Gate latch, side path</span>
+          </div>
+
+          <div class="appbody">
+            <div class="thread">
+              <div class="msg msg--you">
+                <p class="msg__who"><span>You</span><span>Thu Aug 7</span></p>
+                <p lang="en">
+                  The gate latch on the side path is sticking. It still closes, but you have to lift
+                  it.
+                </p>
+              </div>
+
+              <div class="msg msg--them">
+                <p class="msg__who">
+                  <span>Rafael Jr., Crew 2</span><span>Thu Aug 13</span
+                  ><span class="written" lang="en">Written in Spanish</span>
+                </p>
+                <p lang="en">
+                  We looked at it Thursday. The post has shifted a little with the winter rain,
+                  which is why the latch does not line up. That is not maintenance work, so a
+                  separate quote is coming to you. The gate does still close.
+                </p>
+                <details>
+                  <summary lang="en">Show the original</summary>
+                  <p lang="es">
+                    Ya lo revisamos el jueves. El poste se movió un poco con la lluvia del invierno
+                    y por eso el pasador no alinea. Eso no es trabajo de mantenimiento, así que le
+                    va a llegar un presupuesto aparte. La puerta sí cierra.
+                  </p>
+                </details>
+              </div>
+
+              <div class="msg msg--you">
+                <p class="msg__who"><span>You</span><span>Mon Aug 17</span></p>
+                <p lang="en">Approved the valve quote. When does that happen?</p>
+                <details>
+                  <summary lang="en">Show how the crew read it</summary>
+                  <p lang="es">Aprobé el presupuesto de la válvula. ¿Cuándo se va a hacer?</p>
+                </details>
+              </div>
+
+              <div class="msg msg--them">
+                <p class="msg__who">
+                  <span>Lili, office</span><span>Mon Aug 17</span
+                  ><span class="written" lang="en">Written in Spanish</span>
+                </p>
+                <p lang="en">
+                  Thank you. It is booked for Thursday the 27th, alongside the regular visit. That
+                  day we will leave the zone running again.
+                </p>
+                <details>
+                  <summary lang="en">Show the original</summary>
+                  <p lang="es">
+                    Gracias. Queda programado para el jueves 27, junto con la visita normal. Ese día
+                    dejamos la zona funcionando otra vez.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </div>
+
+          <nav class="tabbar" aria-label="Thread screen tabs">
+            <ul>
+              <li>
+                <a href="#s1-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-today" /></svg
+                  >Today</a
+                >
+              </li>
+              <li>
+                <a href="#s3-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-visits" /></svg
+                  >Visits</a
+                >
+              </li>
+              <li>
+                <a href="#s4-heading"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-year" /></svg
+                  >Year</a
+                >
+              </li>
+              <li>
+                <a href="#s5-heading" aria-current="page"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-ask" /></svg
+                  >Ask</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="notes">
+        <div class="note">
+          <h3>Structured, not a chat box</h3>
+          <p>
+            A free-text message translated across languages loses exactly the part that matters:
+            what and where. Three fields plus a photo survive translation, and they arrive as
+            something the office can act on rather than something it has to interpret.
+          </p>
+        </div>
+        <div class="note">
+          <h3>The original is never thrown away</h3>
+          <p>
+            Every message stores what the person wrote and the translation shown to the other side.
+            The chip says which language it came from, and one tap shows it. Nobody is ever quoted
+            words they did not write, in either direction.
+          </p>
+        </div>
+        <div class="note">
+          <h3>A request is not an approval</h3>
+          <p>
+            The composer says so before the send button, in the client's own language. It is the
+            same promise the site already makes, moved to the moment where it actually gets tested.
+          </p>
+        </div>
+        <div class="note">
+          <h3>The phone stays the urgent path</h3>
+          <p>
+            A water leak is a phone call. Putting "call instead" next to "send it" is honest about
+            what a message queue can and cannot do, and it keeps the portal from becoming the place
+            urgent things go to sit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Lifecycle ============ -->
+  <section class="band" aria-labelledby="life-heading">
+    <div class="head">
+      <span class="step">The spine</span>
+      <h2 id="life-heading">What happens to a request</h2>
+    </div>
+
+    <figure class="diagram">
+      <div class="scroller">
+        <svg
+          viewBox="0 0 1000 210"
+          role="img"
+          aria-label="A request enters the same queue whether the client asked or the crew flagged it. GMZ looks at it and prices it if it falls outside routine care, then it waits on the client. If the client approves, it is booked onto a Thursday and recorded as done. If the client says not now, it stays on the record so it can come back up in its season."
+        >
+          <defs>
+            <marker
+              id="ar2"
+              viewBox="0 0 10 10"
+              refX="9"
+              refY="5"
+              markerWidth="7"
+              markerHeight="7"
+              orient="auto-start-reverse"
+            >
+              <path d="M0 0 10 5 0 10z" fill="currentColor" />
+            </marker>
+            <marker
+              id="ar2-wait"
+              viewBox="0 0 10 10"
+              refX="9"
+              refY="5"
+              markerWidth="7"
+              markerHeight="7"
+              orient="auto-start-reverse"
+            >
+              <path d="M0 0 10 5 0 10z" fill="#8a5a00" />
+            </marker>
+          </defs>
+
+          <rect class="d-box" x="20" y="24" width="160" height="50" rx="6" />
+          <text class="d-title" x="100" y="46" text-anchor="middle">You ask</text>
+          <text class="d-sub" x="100" y="63" text-anchor="middle">what, where, a photo</text>
+
+          <rect class="d-box" x="20" y="126" width="160" height="50" rx="6" />
+          <text class="d-title" x="100" y="148" text-anchor="middle">The crew flags it</text>
+          <text class="d-sub" x="100" y="165" text-anchor="middle">seen on a visit</text>
+
+          <rect class="d-box" x="245" y="75" width="150" height="50" rx="6" />
+          <text class="d-title" x="320" y="97" text-anchor="middle">One queue</text>
+          <text class="d-sub" x="320" y="114" text-anchor="middle">both sources, one list</text>
+
+          <rect class="d-box" x="455" y="75" width="160" height="50" rx="6" />
+          <text class="d-title" x="535" y="97" text-anchor="middle">Looked at, priced</text>
+          <text class="d-sub" x="535" y="114" text-anchor="middle">if outside routine care</text>
+
+          <rect class="d-box-wait" x="675" y="75" width="150" height="50" rx="6" />
+          <text class="d-title-wait" x="750" y="97" text-anchor="middle">Waiting on you</text>
+          <text class="d-sub" x="750" y="114" text-anchor="middle">a written quote</text>
+
+          <rect class="d-box" x="860" y="18" width="130" height="50" rx="6" />
+          <text class="d-title" x="925" y="40" text-anchor="middle">Booked, done</text>
+          <text class="d-sub" x="925" y="57" text-anchor="middle">onto a Thursday</text>
+
+          <rect class="d-box" x="860" y="132" width="130" height="50" rx="6" />
+          <text class="d-title" x="925" y="154" text-anchor="middle">Parked</text>
+          <text class="d-sub" x="925" y="171" text-anchor="middle">stays on record</text>
+
+          <path class="d-line" d="M180 49 L212 49 L212 92 L239 92" marker-end="url(#ar2)" />
+          <path class="d-line" d="M180 151 L212 151 L212 108 L239 108" marker-end="url(#ar2)" />
+          <line class="d-line" x1="395" y1="100" x2="449" y2="100" marker-end="url(#ar2)" />
+          <line class="d-line" x1="615" y1="100" x2="669" y2="100" marker-end="url(#ar2-wait)" />
+          <path class="d-line" d="M825 90 L843 90 L843 43 L854 43" marker-end="url(#ar2)" />
+          <path class="d-line" d="M825 110 L843 110 L843 157 L854 157" marker-end="url(#ar2)" />
+
+          <text class="d-edge" x="422" y="92" text-anchor="middle">triaged</text>
+          <text class="d-edge" x="642" y="92" text-anchor="middle">quoted</text>
+          <text class="d-edge" x="843" y="30" text-anchor="end">approve</text>
+          <text class="d-edge" x="843" y="178" text-anchor="end">not now</text>
+        </svg>
+      </div>
+      <figcaption>
+        The client's requests and the crew's flags are the same queue, which is the whole reason
+        this section works: a client sees GMZ raising things unprompted, in the same list and the
+        same states as their own asks. Nothing leaves "waiting on you" without the client, and "not
+        now" is a real, recorded state rather than a silent drop.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ Language rules ============ -->
+  <section class="band" aria-labelledby="lang-heading">
+    <div class="head">
+      <span class="step">The rules</span>
+      <h2 id="lang-heading">How the two languages work</h2>
+    </div>
+
+    <div class="rules">
+      <div class="rule">
+        <strong>Each side writes in their own language</strong>
+        <p>
+          The client picks English or Spanish for the whole portal. The crew and the office write in
+          theirs. Nobody composes in a second language, because that is where meaning goes missing
+          and where the writing stops happening at all.
+        </p>
+      </div>
+      <div class="rule">
+        <strong>The original is stored, always</strong>
+        <p>
+          Both the original and the translation are kept on every message and every request. The
+          provenance chip names the language it was written in, and the original is one tap away, so
+          a translation never passes itself off as somebody's own words.
+        </p>
+      </div>
+      <div class="rule">
+        <strong>Structure beats free text</strong>
+        <p>
+          What, where and a photo. Three short fields translate cleanly and arrive actionable, where
+          a paragraph arrives as a puzzle. The place names come from the client's own garden rather
+          than a text box.
+        </p>
+      </div>
+      <div class="rule">
+        <strong>Numbers, dates and money are not translated prose</strong>
+        <p>
+          A service day, a quote reference and a date render from the account data in the reader's
+          language and format. They are never passed through a translation, because that is the one
+          place a mistake is expensive.
+        </p>
+      </div>
+      <div class="rule">
+        <strong>Nothing in the portal promises a reply time</strong>
+        <p>
+          No response-time commitment appears anywhere, because none has been decided. The same rule
+          as an unpublished answer on the site: a client will hold GMZ to whatever it said. When a
+          commitment exists, it belongs here and in the FAQ at the same time.
+        </p>
+      </div>
+      <div class="rule">
+        <strong>Urgent stays a phone call</strong>
+        <p>
+          The composer offers the phone next to the send button. A message queue is the wrong
+          channel for water running down a driveway, and the design says so rather than hoping.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proto" aria-labelledby="proto-heading">
+    <h2 id="proto-heading">Prototype notes</h2>
+    <ul>
+      <li>
+        This supersedes the three separate concepts as the direction. They are kept in this folder
+        as the record of what was considered, and each now lives on as a depth of this one product.
+      </li>
+      <li>
+        Spanish text is marked with <code>lang="es"</code> so a screen reader switches voice rather
+        than reading Spanish with an English one. The same applies to the language switch.
+      </li>
+      <li>
+        Spanish in the samples is written as GMZ speaks it, not machine output. Real strings need a
+        bilingual pass before launch: a translated portal with awkward Spanish reads worse to a
+        Spanish-speaking client than an English one.
+      </li>
+      <li>
+        No response-time promise, no lead-time promise and no fee appears anywhere. Nothing here
+        states a term that has not been decided.
+      </li>
+      <li>
+        No dollar figures. Approving a quote refers to the quote, which is where the price lives.
+      </li>
+      <li>
+        The tree badge is a stand-in until the real GMZ mark exists as SVG. Photo slots are labelled
+        plates.
+      </li>
+      <li>
+        Accessibility kept: skip link, visible focus rings, aria-current on the active tab in every
+        screen, one h1, alt text on every plate, diagrams carrying their claim as an aria-label,
+        wide figures scrolling inside their own container, and a reduced-motion block.
+      </li>
+      <li>Client name, dates, crew notes and message text are invented sample data.</li>
+    </ul>
+  </section>
+
+  <p class="colophon">
+    GMZ Landscaping Inc. &middot; CSLB License #636636 &middot; Client portal concept, not a live
+    system.
+  </p>
+</div>
