@@ -154,6 +154,12 @@ const VIDEOS = [
   ['viewridge-b2-before.mp4', 'Viewridge, the upper terrace before'],
   ['viewridge-b2-after.mp4', 'Viewridge, the upper terrace after'],
   ['hamilton-walkthrough.mp4', 'Hamilton, the finished yard'],
+  ['loscharros-walkthrough.mp4', 'Los Charros, the finished slope'],
+  ['viewridge-walkthrough.mp4', 'Viewridge, the whole garden'],
+  ['marlowe-garden-before.mp4', 'Marlowe, the garden before'],
+  ['marlowe-garden-after.mp4', 'Marlowe, the garden after'],
+  ['planting-garden-management.mp4', 'Planting and garden management'],
+  ['garden-walkthrough.mp4', 'A finished garden, walked on completion'],
 ];
 
 /**
@@ -310,14 +316,12 @@ ${VIDEOS.map(([f, l]) => `| \`${f}\` | ${l} | ${existsSync(path.join(ROOT, 'publ
 
 ## Google Drive embeds
 
-Six walkthroughs still play from Google Drive because GMZ has no local copy of
-the footage. They are referenced by file id in the project Markdown and in
-\`src/data/portfolio.ts\`, under \`drive:\`.
+None. Every walkthrough is a local file in \`public/media/\`, listed above.
 
-These depend on the Drive files staying link-shared. Nothing at build time can
-check that, so if a walkthrough goes blank on the live site, check the sharing
-on the Drive file first. Copying them into \`public/media/\` removes that
-dependency and is worth doing when the files are to hand.
+Six of them played from Google Drive until 2026-08-17. That meant those films
+worked only while the Drive files stayed link-shared, and nothing at build time
+could catch it if sharing was switched off. The schema still accepts \`drive:\`
+for footage GMZ has no local copy of, but nothing on the site uses it now.
 
 ## Still generated
 

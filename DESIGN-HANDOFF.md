@@ -140,6 +140,7 @@ reason the whole site sits behind the veil. See CLAUDE.md.
 The favicon and the Open Graph card are generated from the mark by
 `npm run brand`.
 
-The six Google Drive walkthroughs are live embeds. They work only while those
-Drive files stay link-shared, and nothing at build time can check that. Copying
-them into `public/media/` removes the dependency.
+The six Google Drive walkthroughs were live embeds until 2026-08-17 and are now
+local files in `public/media/`, so nothing on the site depends on Drive sharing
+staying on. `MediaClip.astro` still renders a `drive:` embed if one is ever
+needed again.

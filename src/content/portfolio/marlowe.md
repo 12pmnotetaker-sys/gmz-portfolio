@@ -79,10 +79,10 @@ walkthrough:
   beforeAfter:
     - key: 'before'
       label: 'Before'
-      drive: '1XKXZjo1QCo2Yq_2ZpfZVemfc3XlM36iB'
+      file: 'marlowe-garden-before.mp4'
     - key: 'after'
       label: 'After'
-      drive: '1ThJvu3WqI0cIb6muJV0EiR-oofs-53bN'
+      file: 'marlowe-garden-after.mp4'
 built:
   - label: 'The entry'
     src: '../../assets/portfolio/marlowe/marlowe-built-entry.webp'
