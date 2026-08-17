@@ -8,6 +8,7 @@ highlights:
   - Posts set in concrete footings sized for the span
   - Driveway and garden gates on hardware sized for the load
   - Runs stepped or raked to the grade, whichever the site wants
+pullQuote: 'A fence is mostly posts.'
 order: 5
 featured: false
 relatedProjects:

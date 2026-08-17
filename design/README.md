@@ -1,8 +1,12 @@
 # Landing page concepts
 
-Three directions for the GMZ homepage, for Xavier to pick from. They are
-standalone HTML comps, not wired into the Astro build, so nothing here can
-break `npm run build`.
+> **Site Lines was chosen on 2026-08-17 and is now the live design.** It has
+> been built out into the Astro site: `src/styles/tokens.css` carries its
+> values, and the header, footer and homepage are its markup. The three files
+> below stay as a record of what was decided and what was turned down.
+
+Three directions for the GMZ homepage. They are standalone HTML comps, not
+wired into the Astro build, so nothing here can break `npm run build`.
 
 Open them straight from disk, or use the hosted links in the chat thread.
 
@@ -31,16 +35,23 @@ second artwork file.
 
 Assets added to the repo:
 
-- `public/brand/gmz-logo.png` — trimmed master, navy wordmark, for light grounds
-- `public/brand/gmz-logo-knockout.png` — white wordmark, for dark grounds
+- `src/assets/brand/gmz-logo.png` — trimmed master, navy wordmark, for light grounds
+- `src/assets/brand/gmz-logo-knockout.png` — white wordmark, for dark grounds
 
-### One thing to settle
+They live under `src/assets/` rather than `public/` so Astro's `<Image />`
+optimises them. The header serves the mark at roughly 5kB instead of the 33kB
+master.
 
-`src/styles/tokens.css` currently sets `--gmz-green: #2e7d32` and
-`--gmz-ink: #222222`, and its comment says the palette came from the bid
-documents. Neither value is the logo. Before a concept is built out, decide
-which is authoritative: the bid-document green or the logo green. Whichever
-wins should be the only one, in `tokens.css`, per "one fact, one home."
+### The palette question, settled
+
+`tokens.css` used to set `--gmz-green: #2e7d32` and `--gmz-ink: #222222`,
+sourced from the bid documents. Neither matched the logo. The logo values
+won, because the site has to look like the truck and the business card.
+`tokens.css` now carries `#008C41` and `#002B37` and is the only place either
+appears.
+
+If the bid documents should have won instead, change those two values and
+nothing else: every component reads the tokens.
 
 ## What is real and what is not
 
@@ -77,23 +88,49 @@ and needs no network. All are SIL Open Font License; the license texts are in
 National Park is the US park-signage face, which is the register the Straight
 Answers page is written in.
 
-## Taking one forward
+In the built site the Site Lines faces are **self-hosted** rather than
+inlined, in `public/fonts/`, per the handoff's preference over a CDN. Only
+Big Shoulders and Work Sans ship; the other two faces exist solely in the
+comps above.
 
-Follow `DESIGN-HANDOFF.md`. In short: the chosen concept's values go into
-`src/styles/tokens.css` (names stay), the markup moves into the matching
-`.astro` files, hard-coded facts get swapped for `site.ts` reads, and `<img>`
-becomes `<Image />`.
+## What was carried into the site
 
-Each concept already carries the accessibility floor the handoff requires: a
-skip link, visible `:focus-visible` rings, one `h1`, `aria-current` on the
-brand link, alt text on every image, and a `prefers-reduced-motion` block.
+Following `DESIGN-HANDOFF.md`:
+
+- `src/styles/tokens.css` holds the Site Lines values. **Every token name is
+  unchanged**, which is why nothing needed a find-and-replace: the components
+  were already reading tokens, so the palette swap reached all 18 pages.
+- `global.css` gained two heading registers. `h1`/`h2` are the display voice,
+  condensed and uppercase. `h3`/`h4` stay in the body face, because they land
+  on FAQ questions that run a full sentence and condensed uppercase would make
+  those a chore. It also holds `.label` and `.surveyline`, the two pieces of
+  furniture the design repeats.
+- `Header.astro`, `Footer.astro` and `index.astro` are Site Lines markup.
+  `ProjectCard.astro` picked up the registration marks so `/work` speaks the
+  same language.
+- The dark-mode media query is **gone on purpose**, not half-updated. The
+  design is already dark and a marketing site presents one identity. The
+  reasoning is written into `tokens.css` so nobody re-adds it by reflex.
+- Services gained an optional `pullQuote` field. The homepage's "the part you
+  never see" section reads it, so those claims live with the service they
+  belong to instead of being retyped into the page.
+
+The accessibility floor is intact: skip link, visible `:focus-visible` rings,
+one `h1` per page, `aria-current` on the active nav item, alt text on every
+image, and the `prefers-reduced-motion` block. The nav wraps on narrow screens
+rather than collapsing into a drawer, so there is still no JS to unpick and
+nobody loses navigation on a phone.
 
 ## Still outstanding
 
 - A proper **SVG** of the mark. Tracing the PNG produced a badge whose interior
-  filled inverted, so the PNG is what ships here. The SVG is still worth having
-  and is best exported from the original vector artwork rather than traced.
+  filled inverted, so the PNG is what ships. The SVG is still worth having and
+  is best exported from the original vector artwork rather than traced.
 - `public/favicon.svg` and `public/og-default.jpg` are still the generated
-  placeholders.
+  placeholders, and both now clash with a dark site.
+- **Photography.** Every plate is still a generated placeholder.
+- The contact form only renders when `PUBLIC_CONTACT_ENDPOINT` is set. It has
+  been checked against the dark palette and reads correctly, but it is still
+  not wired to anything.
 - `src/data/content.ts` spells "defence" in the change-orders lede; the rest of
   the site is US English.

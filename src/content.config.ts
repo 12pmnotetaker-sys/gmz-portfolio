@@ -109,6 +109,14 @@ const services = defineCollection({
     icon: z.string().default('leaf'),
     /** Bullets for the service card and detail page. */
     highlights: z.array(z.string()).default([]),
+    /**
+     * The one line from this service's copy that makes the structural
+     * argument, e.g. "A fence is mostly posts." The homepage leads with
+     * these rather than restating them in the page, so the claim lives with
+     * the service it belongs to. Optional: only the services that carry a
+     * below-grade point set it.
+     */
+    pullQuote: z.string().max(200).optional(),
     /** Nav and listing order; lower sorts first. */
     order: z.number().default(0),
     featured: z.boolean().default(false),

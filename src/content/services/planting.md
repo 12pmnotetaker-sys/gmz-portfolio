@@ -8,6 +8,7 @@ highlights:
   - Spacing set by mature size, not by how it looks on install day
   - Soil prepared and amended before anything goes in the ground
   - Lawn where a lawn is wanted, and an alternative where it is not
+pullQuote: 'Soil comes first: what is under the mulch decides how much of the plan is alive in year three.'
 order: 4
 featured: true
 relatedProjects:

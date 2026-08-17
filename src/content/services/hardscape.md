@@ -8,6 +8,7 @@ highlights:
   - Retaining and seat walls, engineered where the height calls for it
   - Steps, landings and walkways
   - Drainage resolved under the surface, not around it
+pullQuote: 'Almost everything that goes wrong with a patio goes wrong below it.'
 order: 2
 featured: true
 relatedProjects:

@@ -1,14 +1,24 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '@/assets/brand/gmz-logo-knockout.png';
 import { company, primaryNav, primaryPhone } from '@data/site';
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+const isHome = path === '/';
 ---
 
 <header class="header">
   <div class="container header__inner">
-    <a class="header__brand" href="/">
-      <span class="header__mark">{company.shortName}</span>
+    <a class="header__brand" href="/" aria-current={isHome ? 'page' : undefined}>
+      {
+        /*
+        Decorative: the company name follows as real text, so giving the mark
+        an alt would make a screen reader announce "GMZ Landscaping" twice.
+        The attribute is present and deliberately empty, not dropped.
+      */
+      }
+      <Image class="header__mark" src={logo} alt="" width={72} densities={[1, 2]} />
       <span class="header__name">
         {company.name}
         <span class="header__tagline">{company.tagline}</span>
@@ -37,22 +47,21 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 </header>
 
 <style>
-  /*
-   * Placeholder chrome. This is a working header, not the designed one.
-   * The mobile nav is a plain wrapping list rather than a drawer, so there
-   * is no JS behavior here to unpick when the real design arrives.
-   */
   .header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--color-bg) 90%, transparent);
+    backdrop-filter: blur(10px);
     border-block-end: 1px solid var(--color-border);
-    background: var(--color-bg);
   }
 
   .header__inner {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-md) var(--space-lg);
-    padding-block: var(--space-md);
+    gap: var(--space-sm) var(--space-lg);
+    padding-block: var(--space-sm);
   }
 
   .header__brand {
@@ -65,39 +74,39 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
   }
 
   .header__mark {
-    display: grid;
-    place-items: center;
-    inline-size: 2.5rem;
-    block-size: 2.5rem;
-    border-radius: var(--radius-md);
-    background: var(--color-accent);
-    color: var(--color-accent-contrast);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: var(--text-sm);
-    letter-spacing: 0.04em;
+    inline-size: 34px;
+    block-size: auto;
   }
 
   .header__name {
     display: flex;
     flex-direction: column;
     font-family: var(--font-heading);
-    font-size: var(--text-lg);
-    line-height: var(--leading-tight);
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1;
   }
 
   .header__tagline {
     font-family: var(--font-body);
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-    letter-spacing: 0.06em;
+    font-size: 0.5625rem;
+    font-weight: 400;
+    letter-spacing: var(--tracking-label);
     text-transform: uppercase;
+    color: var(--color-text-muted);
   }
 
+  /*
+   * The nav wraps onto its own line on narrow screens rather than collapsing
+   * into a drawer. Same call the scaffold made: no JS to unpick, and nobody
+   * loses navigation on a phone.
+   */
   .header__list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-lg);
+    gap: var(--space-sm) var(--space-lg);
     list-style: none;
     padding: 0;
     margin: 0;
@@ -106,7 +115,10 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
   .header__list a {
     color: var(--color-text);
     text-decoration: none;
-    font-size: var(--text-sm);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
   }
 
   .header__list a:hover,
@@ -116,13 +128,37 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 
   .header__list a[aria-current='page'] {
     text-decoration: underline;
-    text-underline-offset: 0.4em;
+    text-underline-offset: 0.45em;
+    text-decoration-thickness: 2px;
   }
 
   .header__phone {
-    font-size: var(--text-sm);
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-transform: uppercase;
     text-decoration: none;
     white-space: nowrap;
+    background: var(--color-accent-solid);
+    color: #fff;
+    padding: 0.3rem 1rem 0.2rem;
+    border-radius: var(--radius-md);
+    transition: background var(--transition);
+  }
+
+  .header__phone:hover {
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+  }
+
+  @media (max-width: 60rem) {
+    .header__brand {
+      margin-inline-end: 0;
+    }
+
+    .header__nav {
+      order: 3;
+      flex-basis: 100%;
+    }
   }
 </style>

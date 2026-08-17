@@ -1,10 +1,22 @@
 # Design handoff
 
-How the finished design from Claude Design gets into this repo.
+How the finished design gets into this repo.
+
+> **Status: the "Site Lines" design landed on 2026-08-17.** It was chosen from
+> the three concepts in `design/`. `tokens.css`, `global.css`, `Header.astro`,
+> `Footer.astro`, `ProjectCard.astro` and `index.astro` are now designed rather
+> than scaffold. The remaining page templates inherit the palette through the
+> tokens and are coherent, but have not had bespoke layout attention yet.
+>
+> The procedure below still applies to those pages, and to any later redesign.
 
 The scaffold was built to be replaced. Every page renders real content through
 real routing, but the styling is deliberately thin, so bringing the design in is
 a swap rather than a fight with existing CSS.
+
+The swap worked as intended: because only one hardcoded color existed anywhere
+outside `tokens.css`, changing the token values carried the new palette to all
+18 pages without a find-and-replace. Keep it that way.
 
 ## The short version
 
@@ -115,12 +127,24 @@ The one deliberate exception is `budgetBand` on a project: a coarse range like
 Client identity is also protected: project `location` is a town, never a street
 address, and a testimonial does not render anywhere until `approved: true`.
 
-## Assets still needed
+## Assets
 
-- **Logo.** The green tree-badge mark, ideally as SVG. Replaces the `GMZ` block
-  in `Header.astro` and `public/favicon.svg`.
+Landed:
+
+- **Logo.** `src/assets/brand/gmz-logo.png` and `gmz-logo-knockout.png`,
+  trimmed from the `GMZ_Logo_color` master in Drive. Under `src/assets/` so
+  `<Image />` optimises them. The tree is negative space, so it takes the
+  colour behind it and the knockout needs no separate artwork.
+- **Fonts.** Big Shoulders and Work Sans, subset to Latin-1 and self-hosted in
+  `public/fonts/` with their OFL texts. Self-hosted over a CDN on purpose.
+
+Still needed:
+
+- **An SVG of the mark.** Best exported from the original vector artwork.
+  Tracing the PNG produced a badge whose interior filled inverted, so the
+  raster is what ships today.
 - **Project photography.** Replaces `src/assets/projects/placeholder-*.jpg`.
   See `CONTENT.md`.
-- **A real Open Graph image.** `public/og-default.jpg` is a generated
-  placeholder.
-- **Fonts**, if the design does not use system stacks.
+- **A favicon and an Open Graph image.** `public/favicon.svg` and
+  `public/og-default.jpg` are still generated placeholders, and both now clash
+  with a dark site.

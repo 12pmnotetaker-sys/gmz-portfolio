@@ -49,13 +49,29 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/*
+ * Two heading registers, on purpose.
+ *
+ * h1 and h2 are the display voice: Big Shoulders, condensed, uppercase, the
+ * signage register the design is built on. h3 and h4 drop back to the body
+ * face, because they land on long-form content (FAQ questions run to a full
+ * sentence) and condensed uppercase would make that a chore to read.
+ */
 h1,
-h2,
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  text-wrap: balance;
+}
+
 h3,
 h4 {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  line-height: var(--leading-tight);
+  font-family: var(--font-body);
+  font-weight: 700;
+  line-height: var(--leading-snug);
   text-wrap: balance;
 }
 
@@ -66,10 +82,35 @@ h2 {
   font-size: var(--text-2xl);
 }
 h3 {
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
 }
 h4 {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
+}
+
+/* Small uppercase utility label, used as an eyebrow across the design. */
+.label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/*
+ * The survey rule: a hairline with tick marks, borrowed from a plan sheet.
+ * It is the one recurring ornament in this design, so it lives here rather
+ * than being redrawn in each component.
+ */
+.surveyline {
+  height: 6px;
+  border-top: 1px solid var(--color-accent-solid);
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-accent-solid) 0 1px,
+    transparent 1px 34px
+  );
+  opacity: 0.55;
 }
 
 p,
@@ -157,10 +198,22 @@ hr {
   inset-block-start: -100%;
   z-index: 100;
   padding: var(--space-sm) var(--space-md);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
+  /* Inverted so it is unmissable against the dark ground. */
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  border: 1px solid var(--color-bg-inverse);
   border-radius: var(--radius-md);
+  font-weight: 700;
   text-decoration: none;
+}
+
+.skip-link:hover {
+  color: var(--color-text-inverse);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
 }
 
 .skip-link:focus {

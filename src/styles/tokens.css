@@ -1,60 +1,117 @@
 /**
  * Design tokens for the GMZ portfolio.
  *
- * This file is the seam for the Claude Design handoff. The palette below is
- * the GMZ brand palette as used on the bid documents, so the scaffold looks
- * like GMZ rather than like nothing. When the finished design lands, the
- * expectation is that these VALUES change and the NAMES do not: every
- * component reads tokens, never a literal color or size.
+ * These are the "Site Lines" values, chosen by Xavier on 2026-08-17 from the
+ * three concepts in `design/concepts/`. Token NAMES are unchanged from the
+ * scaffold, so every component kept reading tokens and nothing needed a
+ * find-and-replace. See DESIGN-HANDOFF.md.
  *
- * See DESIGN-HANDOFF.md for the full swap procedure.
+ * The palette is the real logo, sampled off the GMZ_Logo_color master in
+ * Drive rather than retyped from memory: #008C41 badge green and #002B37
+ * wordmark navy. The scaffold previously carried #2e7d32 / #222222, which
+ * matched neither.
  */
+
+/* ---- Faces ----------------------------------------------------------- */
+/* Self-hosted rather than a third-party CDN, per DESIGN-HANDOFF.md. Subset
+   to Latin-1 plus the punctuation the copy actually uses; SIL Open Font
+   License, texts in /public/fonts/. */
+
+@font-face {
+  font-family: 'Big Shoulders';
+  src: url('/fonts/big-shoulders-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/fonts/work-sans-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/fonts/work-sans-400i.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/fonts/work-sans-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* ---- Brand palette ------------------------------------------------ */
-  /* Sourced from the GMZ estimating-system branding reference. */
-  --gmz-green: #2e7d32; /* primary: headings, accents, buttons */
-  --gmz-green-deep: #1b5e20; /* cover banners, footer, hover states */
-  --gmz-green-light: #e8f5e9; /* tinted section fills */
-  --gmz-ink: #222222; /* neutral body text */
-  --gmz-rule: #e0e0e0; /* hairlines and gridlines */
+  /* Sampled from the logo master. One fact, one home: nothing else in the
+     repo may restate these. */
+  --gmz-green: #008c41; /* badge green, exact from the mark */
+  --gmz-green-deep: #00602c; /* pressed and deep fills */
+  --gmz-green-bright: #22b45f; /* the one that stays legible on the navy */
+  --gmz-green-light: #003544; /* raised panel on the dark ground */
+  --gmz-ink: #002b37; /* wordmark navy, exact from the mark */
+  --gmz-ink-deep: #01212b; /* recessed panel */
+  --gmz-paper: #edf2ed; /* type on dark */
+  --gmz-rule: #0e3f4d; /* hairlines and gridlines */
 
   /* ---- Semantic colors ---------------------------------------------- */
-  --color-bg: #ffffff;
-  --color-bg-subtle: #f7f8f6;
+  /* Site Lines is a dark design. "subtle" and "tint" are still the two
+     alternate surfaces, they just sit below and above the ground now. */
+  --color-bg: var(--gmz-ink);
+  --color-bg-subtle: var(--gmz-ink-deep);
   --color-bg-tint: var(--gmz-green-light);
-  --color-bg-inverse: var(--gmz-green-deep);
+  --color-bg-inverse: var(--gmz-paper);
 
-  --color-text: var(--gmz-ink);
-  --color-text-muted: #5c625c;
-  --color-text-inverse: #ffffff;
+  --color-text: var(--gmz-paper);
+  --color-text-muted: #8fa5a0; /* 5.7:1 on the ground */
+  --color-text-inverse: var(--gmz-ink);
 
-  --color-accent: var(--gmz-green);
-  --color-accent-hover: var(--gmz-green-deep);
-  --color-accent-contrast: #ffffff;
+  /* Accent carries links AND filled buttons, so the pair has to work both
+     ways round: bright green type on navy is 5.5:1, and navy type on a
+     bright green fill is the same 5.5:1 inverted. Solid #008C41 as a link
+     colour would only reach 3.4:1, which is why it is not this token. */
+  --color-accent: var(--gmz-green-bright);
+  --color-accent-hover: #6fdc96;
+  --color-accent-contrast: var(--gmz-ink);
+
+  /* The solid brand green, for large fills where the mark itself is showing
+     through: bands, plates, the badge. Not for small type. */
+  --color-accent-solid: var(--gmz-green);
 
   --color-border: var(--gmz-rule);
-  --color-focus: var(--gmz-green-deep);
+  --color-focus: #6fdc96;
 
   /* ---- Type ---------------------------------------------------------- */
-  /* System stacks for now. The design handoff replaces these with the
-     chosen faces and adds the @font-face or hosted-font link. */
-  --font-heading: Georgia, 'Times New Roman', serif;
-  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Big Shoulders is a condensed signage face, so display sizes run larger
+     than they would on a normal grotesque without eating the line. */
+  --font-heading: 'Big Shoulders', 'Arial Narrow', system-ui, sans-serif;
+  --font-body:
+    'Work Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --text-xs: 0.8125rem;
-  --text-sm: 0.9375rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
   --text-base: 1.0625rem;
   --text-lg: 1.25rem;
-  --text-xl: 1.5rem;
-  --text-2xl: 2rem;
-  --text-3xl: 2.75rem;
-  --text-4xl: 3.5rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: 3.5rem;
+  --text-4xl: clamp(2.9rem, 9vw, 8.5rem);
 
-  --leading-tight: 1.15;
-  --leading-snug: 1.35;
-  --leading-normal: 1.6;
+  --leading-tight: 0.94;
+  --leading-snug: 1.3;
+  --leading-normal: 1.62;
+
+  /* Tracking for the small uppercase utility labels the design leans on. */
+  --tracking-label: 0.18em;
 
   /* ---- Space --------------------------------------------------------- */
   --space-2xs: 0.25rem;
@@ -67,35 +124,28 @@
   --space-3xl: 6rem;
 
   /* ---- Layout -------------------------------------------------------- */
-  --width-content: 68rem;
+  --width-content: 82rem;
   --width-prose: 42rem;
-  --gutter: clamp(1rem, 5vw, 3rem);
+  --gutter: clamp(1.25rem, 5vw, 4rem);
 
   /* ---- Surface ------------------------------------------------------- */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 8px;
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 6%);
-  --shadow-md: 0 4px 16px rgb(0 0 0 / 8%);
+  /* Squared off. The design reads as site signage and plan sheets, so the
+     softened corners of the scaffold go. */
+  --radius-sm: 0;
+  --radius-md: 2px;
+  --radius-lg: 3px;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 30%);
+  --shadow-md: 0 10px 30px rgb(0 0 0 / 35%);
 
   --transition: 150ms ease;
 }
 
 /**
- * Dark mode is not designed yet. The tokens below are a neutral inversion so
- * a visitor with a dark preference does not get a white flash; replace them
- * with the real dark palette if the finished design specifies one.
+ * There is deliberately no `prefers-color-scheme` block.
+ *
+ * The scaffold carried a neutral dark inversion because its palette was
+ * light and a dark-preference visitor would otherwise get a white flash.
+ * Site Lines is already dark, and a marketing site presents one identity
+ * rather than tracking the visitor's OS. DESIGN-HANDOFF.md asks for this to
+ * be a decision rather than a half-finished block, so this is the decision.
  */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #141714;
-    --color-bg-subtle: #1c201c;
-    --color-bg-tint: #1f2a20;
-    --color-text: #eceee9;
-    --color-text-muted: #a6ada4;
-    --color-border: #313630;
-    --color-accent: #7cc47f;
-    --color-accent-hover: #a3d9a5;
-    --color-accent-contrast: #10130f;
-  }
-}

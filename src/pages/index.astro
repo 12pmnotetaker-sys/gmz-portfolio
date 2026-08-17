@@ -1,27 +1,101 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import ProjectGrid from '@components/ProjectGrid.astro';
-import ServiceCard from '@components/ServiceCard.astro';
 import Testimonial from '@components/Testimonial.astro';
-import { getFeaturedProjects, getFeaturedServices, getFeaturedTestimonials } from '@data/content';
+import { getFeaturedProjects, getServices, getFeaturedTestimonials } from '@data/content';
 import { company, primaryPhone } from '@data/site';
 
 const projects = await getFeaturedProjects(3);
-const services = await getFeaturedServices(4);
+const services = await getServices();
 const testimonials = await getFeaturedTestimonials(2);
+
+/*
+ * The tagline is three words, so the capability strip is three columns.
+ * The content only knows two service lines, because that is how the work is
+ * sold and quoted. Design is the planning step that opens the design-build
+ * line; everything else in that line is the building.
+ */
+const DESIGN_ID = 'landscape-design';
+const designBuild = services.filter((s) => s.data.serviceLine === 'design-build');
+
+const capabilities = [
+  {
+    name: 'Design',
+    lede: 'A measured plan before anything is built, because it is cheaper to move a line on paper than a wall in the ground.',
+    items: designBuild.filter((s) => s.id === DESIGN_ID),
+  },
+  {
+    name: 'Build',
+    lede: 'The structural half. Bases, footings and drainage sized for the soil and the load rather than for the schedule.',
+    items: designBuild.filter((s) => s.id !== DESIGN_ID),
+  },
+  {
+    name: 'Maintenance',
+    lede: 'A standing obligation rather than a project with an end date, on its own agreement and its own fixed schedule.',
+    items: services.filter((s) => s.data.serviceLine === 'maintenance'),
+  },
+].filter((c) => c.items.length > 0);
+
+/* Services that make a below-grade argument. The claim lives with the
+   service; the homepage only arranges them. */
+const structural = services.filter((s) => s.data.pullQuote);
 ---
 
 <BaseLayout>
   <section class="hero">
     <div class="container">
-      <p class="hero__eyebrow">{company.tagline}</p>
-      <h1 class="hero__title">Outdoor spaces built to last on the Peninsula.</h1>
-      <p class="hero__lede">{company.summary}</p>
-      <p class="hero__actions">
-        <a class="button" href="/contact">Start a project</a>
-        <a class="button button--quiet" href="/work">See our work</a>
-      </p>
-      <p class="hero__license">{company.license.display}</p>
+      <div class="hero__top">
+        <p class="label">{company.tagline}</p>
+      </div>
+
+      <h1 class="hero__title">Everything that lasts<br />starts <em>below</em> the surface.</h1>
+
+      <div class="hero__bottom">
+        <p class="hero__lede">{company.summary}</p>
+        <p class="hero__actions">
+          <a class="button" href="/contact">Start a project</a>
+          <a class="button button--quiet" href="/work">See the work</a>
+        </p>
+      </div>
+
+      <div class="hero__meta">
+        <div class="surveyline" aria-hidden="true"></div>
+        <dl class="stats">
+          <div>
+            <dt>License</dt>
+            <dd>{company.license.display}</dd>
+          </div>
+          <div>
+            <dt>Based in</dt>
+            <dd>{company.address.locality}</dd>
+          </div>
+          <div>
+            <dt>Working across</dt>
+            <dd>The San Francisco Peninsula</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="cap" aria-labelledby="cap-heading">
+    <h2 id="cap-heading" class="visually-hidden">What we do</h2>
+    <div class="cap__grid">
+      {
+        capabilities.map((col) => (
+          <div class="cap__col">
+            <h3>{col.name}</h3>
+            <p class="cap__lede">{col.lede}</p>
+            <ul class="cap__list">
+              {col.items.map((service) => (
+                <li>
+                  <a href={`/services/${service.id}`}>{service.data.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -35,21 +109,47 @@ const testimonials = await getFeaturedTestimonials(2);
     </div>
   </section>
 
-  <section class="section section--tint" aria-labelledby="services-heading">
+  {
+    structural.length > 0 && (
+      <section class="section below" aria-labelledby="below-heading">
+        <div class="container below__grid">
+          <div>
+            <p class="label">Why it holds</p>
+            <h2 id="below-heading">The part you never see</h2>
+          </div>
+          <div class="facts">
+            {structural.map((service) => (
+              <article class="fact">
+                <h3>
+                  <a href={`/services/${service.id}`}>{service.data.pullQuote}</a>
+                </h3>
+                <p>{service.data.summary}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="band">
+    <div class="container band__inner">
+      <p class="band__license">{company.license.display}</p>
+      <p>{company.address.locality}, {company.address.region}</p>
+      <p>Written change orders before any extra work starts</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="area-heading">
     <div class="container">
-      <div class="section__head">
-        <h2 id="services-heading">What we do</h2>
-        <a href="/services">All services</a>
-      </div>
-      <ul class="services">
-        {
-          services.map((service) => (
-            <li>
-              <ServiceCard {service} />
-            </li>
-          ))
-        }
+      <p class="label">Service area</p>
+      <h2 id="area-heading" class="visually-hidden">Where we work</h2>
+      <ul class="towns">
+        {company.serviceArea.map((town) => <li>{town}</li>)}
       </ul>
+      <p class="towns__note">
+        If you are just outside this list, call and ask. The answer depends on the job.
+      </p>
     </div>
   </section>
 
@@ -72,128 +172,364 @@ const testimonials = await getFeaturedTestimonials(2);
 
   <section class="section cta" aria-labelledby="cta-heading">
     <div class="container">
-      <h2 id="cta-heading">Thinking about a project?</h2>
-      <p>
-        Tell us what you have in mind and we will come look at the site. Call
-        <a href={`tel:${primaryPhone.tel}`}>{primaryPhone.display}</a> or
-        <a href="/contact">send us the details</a>.
+      <h2 id="cta-heading">Let's walk the site</h2>
+      <p class="cta__lede">The first visit is free, and booking it commits you to nothing.</p>
+      <p class="cta__actions">
+        <a class="button" href={`tel:${primaryPhone.tel}`}>Call {primaryPhone.display}</a>
+        <a class="button button--quiet" href="/contact">Send the details</a>
       </p>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .hero {
-    padding-block: var(--space-3xl);
-    background: var(--color-bg-subtle);
-    border-block-end: 1px solid var(--color-border);
+  /* ---- shared button ------------------------------------------------- */
+  .button {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 0.62rem 1.5rem 0.5rem;
+    border: 2px solid var(--color-accent-solid);
+    border-radius: var(--radius-md);
+    background: var(--color-accent-solid);
+    color: #fff;
+    text-decoration: none;
+    transition:
+      background var(--transition),
+      border-color var(--transition),
+      color var(--transition);
   }
 
-  .hero__eyebrow {
-    font-size: var(--text-xs);
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-accent);
+  .button:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent-contrast);
+  }
+
+  .button--quiet {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  .button--quiet:hover {
+    background: transparent;
+    border-color: var(--color-text);
+    color: var(--color-text);
+  }
+
+  /* ---- hero ------------------------------------------------------------ */
+  .hero {
+    padding-block: var(--space-2xl) 0;
   }
 
   .hero__title {
-    max-width: 18ch;
-    margin-block-start: var(--space-sm);
     font-size: var(--text-4xl);
+    margin-block: var(--space-lg) 0;
+  }
+
+  .hero__title em {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+
+  .hero__bottom {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-lg) var(--space-xl);
+    align-items: end;
+    margin-block-start: var(--space-xl);
   }
 
   .hero__lede {
-    max-width: var(--width-prose);
-    margin-block-start: var(--space-md);
     font-size: var(--text-lg);
-    color: var(--color-text-muted);
+    max-width: 44ch;
   }
 
   .hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
-    margin-block-start: var(--space-xl);
   }
 
-  .hero__license {
-    margin-block-start: var(--space-lg);
-    font-size: var(--text-xs);
-    letter-spacing: 0.06em;
+  .hero__meta {
+    margin-block-start: var(--space-2xl);
+  }
+
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg) var(--space-2xl);
+    margin: 0;
+    padding-block-start: var(--space-md);
+  }
+
+  .stats div {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .stats dt {
+    font-size: 0.625rem;
+    letter-spacing: var(--tracking-label);
     text-transform: uppercase;
     color: var(--color-text-muted);
   }
 
-  .button {
-    display: inline-block;
-    padding: var(--space-sm) var(--space-lg);
-    border: 1px solid var(--color-accent);
-    border-radius: var(--radius-md);
-    background: var(--color-accent);
-    color: var(--color-accent-contrast);
+  .stats dd {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+  }
+
+  @media (max-width: 54rem) {
+    .hero__bottom {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+  }
+
+  /* ---- capability strip -------------------------------------------------- */
+  .cap {
+    margin-block-start: var(--space-2xl);
+    background: var(--color-bg-subtle);
+    border-block: 1px solid var(--color-border);
+  }
+
+  .cap__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: var(--width-content);
+    margin-inline: auto;
+  }
+
+  .cap__col {
+    padding: var(--space-xl) var(--gutter);
+    border-inline-start: 1px solid var(--color-border);
+  }
+
+  .cap__col:first-child {
+    border-inline-start: 0;
+  }
+
+  .cap__col h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .cap__lede {
+    color: var(--color-text-muted);
     font-size: var(--text-sm);
-    font-weight: 600;
+    margin-block: var(--space-sm) var(--space-lg);
+  }
+
+  .cap__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .cap__list a {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    color: var(--color-text);
     text-decoration: none;
-    transition: background var(--transition);
+    font-size: var(--text-sm);
   }
 
-  .button:hover {
-    background: var(--color-accent-hover);
-    border-color: var(--color-accent-hover);
-    color: var(--color-accent-contrast);
+  .cap__list a::before {
+    content: '';
+    inline-size: 14px;
+    block-size: 1px;
+    background: var(--color-accent-solid);
+    flex: none;
   }
 
-  .button--quiet {
-    background: transparent;
+  .cap__list a:hover {
     color: var(--color-accent);
   }
 
-  .button--quiet:hover {
-    background: var(--color-bg-tint);
-    color: var(--color-accent-hover);
+  @media (max-width: 54rem) {
+    .cap__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cap__col {
+      border-inline-start: 0;
+      border-block-start: 1px solid var(--color-border);
+    }
+
+    .cap__col:first-child {
+      border-block-start: 0;
+    }
   }
 
-  .section--tint {
-    background: var(--color-bg-subtle);
-  }
-
+  /* ---- section furniture --------------------------------------------------- */
   .section__head {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: flex-end;
     justify-content: space-between;
     gap: var(--space-sm);
     margin-block-end: var(--space-lg);
   }
 
   .section__head a {
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
   }
 
-  .services,
+  /* ---- below the surface ----------------------------------------------------- */
+  .below {
+    background: var(--color-bg-subtle);
+    border-block: 1px solid var(--color-border);
+  }
+
+  .below__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--space-xl) var(--space-2xl);
+    align-items: start;
+  }
+
+  .below h2 {
+    margin-block-start: var(--space-sm);
+  }
+
+  .facts {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .fact {
+    border-block-start: 1px solid var(--color-border);
+    padding-block-start: var(--space-md);
+  }
+
+  .fact h3 a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .fact h3 a:hover {
+    color: var(--color-accent);
+  }
+
+  .fact p {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    margin-block-start: var(--space-xs);
+  }
+
+  @media (max-width: 54rem) {
+    .below__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---- license band ------------------------------------------------------------ */
+  /*
+   * The deep green, not the solid brand green. The two short lines here run
+   * at --text-sm, and white on #008C41 is 4.35:1, which is fine for a large
+   * button label but short of the 4.5:1 small text needs. On the deep green
+   * it is 7.8:1. The band reads the same; the type is actually legible.
+   */
+  .band {
+    background: var(--gmz-green-deep);
+    color: #fff;
+  }
+
+  .band__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md) var(--space-lg);
+    padding-block: var(--space-lg);
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .band__license {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+
+  /* ---- towns ---------------------------------------------------------------------- */
+  .towns {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0 0;
+  }
+
+  .towns li {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .towns li::after {
+    content: '/';
+    color: var(--color-accent-solid);
+    margin-inline: var(--space-sm);
+  }
+
+  .towns li:last-child::after {
+    content: '';
+  }
+
+  .towns__note {
+    margin-block-start: var(--space-md);
+    color: var(--color-text-muted);
+    max-width: var(--width-prose);
+  }
+
+  /* ---- quotes and cta -------------------------------------------------------------- */
   .quotes {
     display: grid;
     gap: var(--space-lg);
     grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
     list-style: none;
     padding: 0;
-    margin: 0;
-  }
-
-  .quotes {
-    margin-block-start: var(--space-lg);
+    margin: var(--space-lg) 0 0;
   }
 
   .cta {
     text-align: center;
   }
 
-  .cta p {
-    max-width: var(--width-prose);
+  .cta__lede {
+    max-width: 46ch;
     margin-inline: auto;
     margin-block-start: var(--space-md);
-    font-size: var(--text-lg);
     color: var(--color-text-muted);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
   }
 </style>
