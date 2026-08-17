@@ -11,6 +11,4 @@ decisionNote: "Confirm whether a written closeout package (plan copy, plant list
 
 Water, patience, and attention at the right moments. The first year is the establishment year: roots are moving out of their nursery pots and into your soil, and until that happens plants live closer to the edge than they ever will again.
 
-Watering matters most. New plantings need more frequent water than an established garden, tapering as the season goes on, and trees establish on their own slower clock than shrubs and perennials. If we built your irrigation, the schedule we programmed is the starting point, and it wants adjusting as seasons change rather than leaving alone.
-
-Expect the garden to look like a planting in year one, a garden in year two, and the design in year three. Pruning is light in the first year, feeding is modest, and the main job is water and watching. Whatever plans and schedules your design agreement included are written for your specific garden, and a maintenance cadence through the first year is the surest way to get it established. Ask us at handover what your garden's first year needs; the answer is specific to what we planted.
+Watering matters most. New plantings need more frequent water than an established garden, tapering as the season goes on, and trees establish on a slower clock than shrubs. If we built your irrigation, the schedule we programmed is a starting point and wants adjusting as the seasons change. Expect a planting in year one, a garden in year two, and the design in year three.

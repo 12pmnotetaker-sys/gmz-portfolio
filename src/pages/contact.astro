@@ -3,6 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { formEndpoint } from '@data/portfolio';
 import {
   company,
+  fees,
   licenseShort,
   primaryPhone,
   secondaryPhone,
@@ -25,7 +26,7 @@ const action = formEndpoint || '/contact';
 
 <BaseLayout
   title="Contact"
-  description={`Call ${company.legalName} to arrange a free consultation. ${company.hours.days}, ${company.hours.time}.`}
+  description={`Call ${company.legalName} to book a consultation. ${company.hours.days}, ${company.hours.time}.`}
 >
   <div class="contact">
     <div class="contact__main">
@@ -38,9 +39,10 @@ const action = formEndpoint || '/contact';
       </p>
 
       <p class="contact__note">
-        The first visit is free and takes about an hour. We walk the property, listen to what you
-        want from it, and tell you honestly what it will take. No drawings, no quote, no obligation
-        at that stage.
+        A consultation is {fees.consultation.display} for {fees.consultation.covers}, paid when you
+        book. We walk the property, listen to what you want from it, and tell you honestly what it
+        will take. No drawings and no quote at that stage, and nothing is credited against later
+        work.
       </p>
 
       <form

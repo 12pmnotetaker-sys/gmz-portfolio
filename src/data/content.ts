@@ -81,7 +81,7 @@ export const SORE_POINT_META: { key: string; title: string; lede: string }[] = [
       'The most common question we get, and the one worth answering properly. A landscape price is ' +
       'built from a measured site and chosen materials. Until both exist, an honest number is a ' +
       'range, and a firm-looking number is a guess wearing a suit. The range narrows as the work ' +
-      'gets defined, and the measuring costs you nothing.',
+      'gets defined, and you see every fee before it is charged.',
   },
   {
     key: 'design-fee',

@@ -114,7 +114,7 @@ export const PROCESS_STEPS = [
   {
     n: '1',
     name: 'The visit',
-    note: 'About an hour on site. Free, and there is no drawing or quote at this stage.',
+    note: 'About an hour on site, charged when you book. No drawing or quote at this stage.',
   },
   {
     n: '2',

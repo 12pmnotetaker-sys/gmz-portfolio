@@ -128,6 +128,43 @@ export const company = {
   },
 } as const;
 
+/**
+ * What a client pays before any drawing exists.
+ *
+ * Ratified and live as of 2026-08-17, from the GMZ fee schedule. These are
+ * prices to the client, not internal costs, so they belong on the site.
+ *
+ * Nothing here is credited against anything later. That is deliberate and it
+ * is stated plainly, because the worst moment for a client to discover it is
+ * at contract signing.
+ *
+ * ONE EXCEPTION to the one-fact-one-home rule: the consultation fee is also
+ * written out in `src/content/faqs/does-site-visit-cost.md`, because Markdown
+ * bodies cannot read this file. That is the only answer that states the
+ * number; every other answer refers to the visit being charged without
+ * repeating it. If the fee changes, those are the two places to edit.
+ */
+export const fees = {
+  consultation: {
+    display: '$175',
+    /** What the fee buys. */
+    covers: 'the first hour on the property',
+    prepaid: true,
+  },
+  maintenanceWalk: {
+    display: '$75',
+    prepaid: true,
+  },
+  travel: {
+    display: '$100',
+    /** Charged on top when the property is outside the service area. */
+    note: 'outside the towns served',
+    limitMiles: 40,
+  },
+  /** No fee is credited toward a later stage. */
+  credited: false,
+} as const;
+
 /** The number a visitor calls when only one fits. */
 export const primaryPhone: Phone = company.phones[0];
 
