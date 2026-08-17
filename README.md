@@ -31,8 +31,8 @@ npm run dev        # http://localhost:4321
 
 Requires Node 20.11 or newer. `.nvmrc` pins 22.
 
-The unlock code in development is the same as in production: **GMZ26**. Clear
-it again with "Lock portfolio" in the footer.
+The unlock code in development is the same as in production. It is `gate.code`
+in `src/data/site.ts`. Clear it again with "Lock portfolio" in the footer.
 
 ## Commands
 
@@ -61,8 +61,7 @@ Read this before assuming anything here is protected.
 The site opens behind a veil asking for a consultation code. **That is a
 courtesy screen, not access control.** Specifically:
 
-- The code is `GMZ26`, and it ships in the JavaScript bundle where anyone can
-  read it.
+- The code ships in the JavaScript bundle where anyone can read it.
 - Every page stays directly fetchable by URL. The veil is drawn over the top of
   a page that has already been delivered.
 - With JavaScript disabled the veil never appears at all. It fails open on
@@ -195,9 +194,10 @@ will point at the default.
       the site does not depend on Drive sharing staying on
 - [ ] Review the photography once more for anything a client would not want
       shown, since git history keeps whatever is committed
-- [ ] Wire up and **test** the contact form
-- [ ] Decide whether "Thirty years on the same ground" should track the founding
-      year, which is now 32 years ago
+- [x] Wire up and **test** the contact form (Netlify Forms, one real
+      submission confirmed end to end 2026-08-17)
+- [x] Decide the About headline; GMZ chose "More than 30 years on the ground"
+      (confirmed 2026-08-17)
 - [x] Confirm indexing by street name is what GMZ wants (confirmed 2026-08-17)
 - [ ] Decide whether the unlock veil is enough, or whether this needs real
       host-level protection
