@@ -128,7 +128,14 @@ nobody loses navigation on a phone.
   is best exported from the original vector artwork rather than traced.
 - `public/favicon.svg` and `public/og-default.jpg` are still the generated
   placeholders, and both now clash with a dark site.
-- **Photography.** Every plate is still a generated placeholder.
+- **Photography.** Every plate is still a generated placeholder, and the
+  homepage hero is now the most valuable one to replace: it is the first thing
+  a visitor sees and it is currently an abstract stand-in marked
+  "photography pending" on its face. Drop a real photograph in at
+  `src/assets/hero/placeholder-hero.jpg` and rewrite `heroAlt` at the top of
+  `src/pages/index.astro` to describe it. Nothing else changes.
+  A wide frame works best: it is cropped to roughly 2:1 on a desktop and the
+  lower third is darkened so the headline can sit on it.
 - The contact form only renders when `PUBLIC_CONTACT_ENDPOINT` is set. It has
   been checked against the dark palette and reads correctly, but it is still
   not wired to anything.

@@ -1,9 +1,22 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import ProjectGrid from '@components/ProjectGrid.astro';
 import Testimonial from '@components/Testimonial.astro';
+import heroImage from '@/assets/hero/placeholder-hero.jpg';
 import { getFeaturedProjects, getServices, getFeaturedTestimonials } from '@data/content';
 import { company, primaryPhone } from '@data/site';
+
+/*
+ * The hero photograph, and the alt text that describes it.
+ *
+ * These two belong together: when the real photograph replaces
+ * placeholder-hero.jpg, this string has to be rewritten to describe what is
+ * actually in the frame. Leaving it saying "bands of green" over a picture of
+ * a finished courtyard is worse than having no alt at all.
+ */
+const heroAlt =
+  'Bands of deep green marking a change of grade, standing in until project photography lands.';
 
 const projects = await getFeaturedProjects(3);
 const services = await getServices();
@@ -43,38 +56,45 @@ const structural = services.filter((s) => s.data.pullQuote);
 
 <BaseLayout>
   <section class="hero">
-    <div class="container">
-      <div class="hero__top">
+    <div class="hero__media">
+      <Image
+        class="hero__image"
+        src={heroImage}
+        alt={heroAlt}
+        widths={[900, 1600, 2400]}
+        sizes="100vw"
+        loading="eager"
+        decoding="sync"
+        fetchpriority="high"
+      />
+      <div class="hero__scrim" aria-hidden="true"></div>
+
+      <div class="container hero__overlay">
         <p class="label">{company.tagline}</p>
-      </div>
-
-      <h1 class="hero__title">Everything that lasts<br />starts <em>below</em> the surface.</h1>
-
-      <div class="hero__bottom">
-        <p class="hero__lede">{company.summary}</p>
+        <h1 class="hero__title">Everything that lasts starts <em>below</em> the surface.</h1>
         <p class="hero__actions">
           <a class="button" href="/contact">Start a project</a>
           <a class="button button--quiet" href="/work">See the work</a>
         </p>
       </div>
+    </div>
 
-      <div class="hero__meta">
-        <div class="surveyline" aria-hidden="true"></div>
-        <dl class="stats">
-          <div>
-            <dt>License</dt>
-            <dd>{company.license.display}</dd>
-          </div>
-          <div>
-            <dt>Based in</dt>
-            <dd>{company.address.locality}</dd>
-          </div>
-          <div>
-            <dt>Working across</dt>
-            <dd>The San Francisco Peninsula</dd>
-          </div>
-        </dl>
-      </div>
+    <div class="container hero__meta">
+      <div class="surveyline" aria-hidden="true"></div>
+      <dl class="stats">
+        <div>
+          <dt>License</dt>
+          <dd>{company.license.display}</dd>
+        </div>
+        <div>
+          <dt>Based in</dt>
+          <dd>{company.address.locality}</dd>
+        </div>
+        <div>
+          <dt>Working across</dt>
+          <dd>The San Francisco Peninsula</dd>
+        </div>
+      </dl>
     </div>
   </section>
 
@@ -222,13 +242,53 @@ const structural = services.filter((s) => s.data.pullQuote);
   }
 
   /* ---- hero ------------------------------------------------------------ */
-  .hero {
-    padding-block: var(--space-2xl) 0;
+  /*
+   * Image-led rather than type-led. The photograph is the thing that has to
+   * stop someone scrolling, so it runs full bleed and the words sit on it at
+   * supporting size instead of filling the screen themselves.
+   */
+  .hero__media {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero__image {
+    display: block;
+    inline-size: 100%;
+    block-size: clamp(24rem, 66vh, 42rem);
+    object-fit: cover;
+  }
+
+  /*
+   * Darkens the foot of the image so the overlay always has a ground to sit
+   * on, whatever the photograph turns out to be, and dissolves the bottom
+   * edge into the page so there is no hard seam.
+   */
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      var(--color-bg) 0%,
+      color-mix(in srgb, var(--color-bg) 78%, transparent) 26%,
+      transparent 58%
+    );
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    display: grid;
+    justify-items: start;
+    gap: var(--space-md);
+    padding-block-end: var(--space-xl);
   }
 
   .hero__title {
-    font-size: var(--text-4xl);
-    margin-block: var(--space-lg) 0;
+    font-size: var(--text-2xl);
+    max-width: 22ch;
+    margin: 0;
   }
 
   .hero__title em {
@@ -236,27 +296,15 @@ const structural = services.filter((s) => s.data.pullQuote);
     color: var(--color-accent);
   }
 
-  .hero__bottom {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: var(--space-lg) var(--space-xl);
-    align-items: end;
-    margin-block-start: var(--space-xl);
-  }
-
-  .hero__lede {
-    font-size: var(--text-lg);
-    max-width: 44ch;
-  }
-
   .hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
+    margin: 0;
   }
 
   .hero__meta {
-    margin-block-start: var(--space-2xl);
+    margin-block-start: var(--space-xl);
   }
 
   .stats {
@@ -289,9 +337,12 @@ const structural = services.filter((s) => s.data.pullQuote);
   }
 
   @media (max-width: 54rem) {
-    .hero__bottom {
-      grid-template-columns: 1fr;
-      align-items: start;
+    .hero__image {
+      block-size: clamp(20rem, 56vh, 28rem);
+    }
+
+    .hero__title {
+      font-size: var(--text-xl);
     }
   }
 

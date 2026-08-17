@@ -143,6 +143,11 @@ Still needed:
 - **An SVG of the mark.** Best exported from the original vector artwork.
   Tracing the PNG produced a badge whose interior filled inverted, so the
   raster is what ships today.
+- **A hero photograph.** The highest-value image on the site, since it opens
+  the homepage. Replaces `src/assets/hero/placeholder-hero.jpg`; also rewrite
+  `heroAlt` in `src/pages/index.astro`, which sits directly above the import
+  for exactly that reason. Shoot wide: it crops to about 2:1 on a desktop and
+  the foot of it is darkened so the headline has a ground to sit on.
 - **Project photography.** Replaces `src/assets/projects/placeholder-*.jpg`.
   See `CONTENT.md`.
 - **A favicon and an Open Graph image.** `public/favicon.svg` and
