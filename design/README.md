@@ -6,11 +6,11 @@ break `npm run build`.
 
 Open them straight from disk, or use the hosted links in the chat thread.
 
-| File                                  | Concept          | Position it takes                                          |
-| ------------------------------------- | ---------------- | ---------------------------------------------------------- |
-| `concepts/01-groundwork.html`         | Groundwork       | Editorial portfolio. Quiet, work-led, for a client comparing GMZ against a landscape architect. |
-| `concepts/02-site-lines.html`         | Site Lines       | Dark and structural. For a client who needs to know GMZ can carry a big job. |
-| `concepts/03-straight-answers.html`   | Straight Answers | Trust-led conversion, built on the FAQ content and the free first visit. |
+| File                                | Concept          | Position it takes                                                                               |
+| ----------------------------------- | ---------------- | ----------------------------------------------------------------------------------------------- |
+| `concepts/01-groundwork.html`       | Groundwork       | Editorial portfolio. Quiet, work-led, for a client comparing GMZ against a landscape architect. |
+| `concepts/02-site-lines.html`       | Site Lines       | Dark and structural. For a client who needs to know GMZ can carry a big job.                    |
+| `concepts/03-straight-answers.html` | Straight Answers | Trust-led conversion, built on the FAQ content and the free first visit.                        |
 
 These are three different arguments for the same company, not three palettes.
 Picking one is picking which argument the homepage makes first.
@@ -20,10 +20,10 @@ Picking one is picking which argument the homepage makes first.
 The mark came from `GMZ_Logo_color.png` in Drive (the `orale.agency` original).
 Sampled off that file, the brand is exactly two colors:
 
-| Role             | Hex       | Where it is in the mark          |
-| ---------------- | --------- | -------------------------------- |
-| Badge green      | `#008C41` | Border ring and the tree panel   |
-| Wordmark navy    | `#002B37` | "GMZ" and "Landscaping"          |
+| Role          | Hex       | Where it is in the mark        |
+| ------------- | --------- | ------------------------------ |
+| Badge green   | `#008C41` | Border ring and the tree panel |
+| Wordmark navy | `#002B37` | "GMZ" and "Landscaping"        |
 
 The tree is **negative space**, not a white shape. It shows whatever sits
 behind the mark, which is why the knockout works on a dark ground without a
