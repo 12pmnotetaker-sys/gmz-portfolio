@@ -20,11 +20,12 @@ ephemeral container.
   with the real index numbers
 - `study-002-rebate-reference.txt` — per-town turf-replacement rebate reference
 - `study-002-raw.json` — the unprocessed workflow output
-- `study-003-findings-market.txt` — Study 003: pricing. 11 findings and 12
+- `study-003-findings-market.txt` — Study 003: pricing. 16 findings and 16
   gaps, covering an all-in rate per man-hour derived from a public bid price
   sheet, the prevailing wage determination that governs routine landscape
-  maintenance, the phase weighting behind a paid concept phase, and the one
-  Peninsula competitor found publishing a price list
+  maintenance, the phase weighting behind a paid concept phase, the one
+  Peninsula competitor found publishing a price list, and the national
+  remote-design platforms that sell design without visiting the property
 - `README.txt` — the knowledge base rules (uploaded to Drive)
 
 Study 003 covers all three workstreams of the pricing research plan. It has no

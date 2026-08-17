@@ -446,3 +446,177 @@ G11. Closing prices remain entirely unevidenced. Everything in this workstream
 
 G12. Three sources could not be retrieved (404, 500 and 403). Whether any of
      them publishes rates is unresolved rather than answered.
+
+========================================================================
+COMPETITOR MODEL - ONLINE LANDSCAPE DESIGN PLATFORMS
+Added 2026-08-16
+
+Prices below are taken from each company's own package pages and carry the
+"asking price, self-published" label proposed in the Workstream 2 section.
+That label is still awaiting Xavier's ruling. If he rejects it, this whole
+section is struck with Workstream 2.
+
+Nothing in this section compares these figures against GMZ's own costs,
+margins or floors. That comparison exists and is internal, per rule 6.
+
+------------------------------------------------------------------------
+
+### online-design-platform-model  [ASKING PRICE, self-published / high]
+CLAIM: A category of national online landscape design firms sells design
+  remotely, at a fixed fee, and does not install. The common shape across the
+  two examined:
+    - design produced from client photos and video plus satellite and climate
+      data, with no site visit of any kind
+    - fixed price by package tier, paid up front
+    - turnaround measured in days, not weeks
+    - deliverables are CAD plans, photorealistic renders, plant and material
+      lists, described as build-ready
+    - the client is then matched or referred to a third-party local contractor,
+      who quotes and is paid separately
+  Yardzen states the position verbatim: it designs "without ever stepping foot
+  on your property."
+WHY IT MATTERS: These firms do not compete for construction revenue. They
+  compete for the design fee and for the client relationship at the front of
+  the funnel, and their output is a client arriving at a local contractor
+  holding drawings that no one has verified against the ground.
+SOURCE: Yardzen and BACQYARD package pages
+URL: https://yardzen.com/full-yard-signature
+URL: https://www.bacqyard.com/
+PUBLISHED: captured 2026-08-16   SAMPLE: two firms   GEO: national, all 50 states
+
+------------------------------------------------------------------------
+
+### yardzen-published-prices-2026  [ASKING PRICE, self-published / high]
+CLAIM: Yardzen's published packages, read from its own pages on 2026-08-16:
+    Classic Small Space      $495   up to 500 sq ft, front, side or back yard
+                                    one round of revisions
+                                    additional revision $195
+    Signature Full Yard    $2,495   whole yard
+                                    two rounds of revisions
+                                    additional revision $295
+  Both: delivery "within 5-10 business days", expedited "in a week or less"
+  for "+$395". Both include planting and hardscaping design, photorealistic
+  renders, hand-selected plants and materials, build-ready CAD plans, furniture
+  and decor selections, and a dedicated project manager. The Signature tier adds
+  a lighting plan and a cost advisor.
+  Yardzen does not install. It "connect[s] you with a local, vetted contractor
+  who can install your design."
+QUOTE (verbatim): "your photos and videos, combined with technology, data, and
+  plant science, to design your outdoor spaces without ever stepping foot on
+  your property"
+AUDIT NOTE: An earlier search-result summary reported package prices of $295,
+  $995, $1,395, $1,995 and $3,495. Reading the source pages directly did not
+  reproduce those figures. $295 and $195 are additional-revision charges, not
+  package prices. Only the two tiers above were read at source; the rest of the
+  Yardzen ladder is unverified and is deliberately not recorded here.
+SOURCE: Yardzen package pages
+URL: https://yardzen.com/small-space-classic
+URL: https://yardzen.com/full-yard-signature
+PUBLISHED: captured 2026-08-16   SAMPLE: two packages read at source
+  GEO: national
+
+------------------------------------------------------------------------
+
+### bacqyard-published-prices-2026  [ASKING PRICE, self-published / high]
+CLAIM: BACQYARD's published packages, read from its own site on 2026-08-16,
+  with a standing 35 percent discount applied across the range:
+
+    Front or back yard      list      discounted   revisions
+      Lite                  $995        $647       none included
+      Full                $1,455        $946       one round
+      Plus                $2,155      $1,401       three rounds
+    Entire yard
+      Lite                $1,395        $907
+      Full                $1,755      $1,141
+      Plus                $2,655      $1,726
+    Specialty
+      Mini                  $495                   up to 500 sq ft, one revision
+      Botanical             $545                   planting-focused, one revision
+      Luxe                $3,850      $2,500       unlimited revisions and calls
+                                                   for 90 days, expedited
+
+  Turnaround 10 to 14 days. Design is conducted entirely online with no site
+  visit. Unlike Yardzen, clients "work 1:1 with your designer" by phone, video
+  call, text or email.
+  BACQYARD does not install. It supplies "a complete 'Contractor Packet'
+  including precise CAD drawings, planting lists, and material specifications,"
+  and clients may use partnered contractors or hire independently.
+WHY THE DISCOUNT MATTERS: A discount presented as standing across the entire
+  range means the discounted figure is the operative price and the list price is
+  an anchor. It is also a signal about price pressure in this category, though
+  one firm's pricing tactic is not evidence about the category's health.
+SOURCE: BACQYARD website, package pages
+URL: https://www.bacqyard.com/
+PUBLISHED: captured 2026-08-16   SAMPLE: one firm, full published range
+  GEO: national, stated as all 50 states
+
+------------------------------------------------------------------------
+
+### remote-design-owns-the-low-tier  [DERIVED / medium]
+CLAIM (DERIVED): The entire published ladder of both remote firms sits at or
+  below the entry price of the one Peninsula firm found publishing rates.
+    remote entry, both firms            $495
+    remote mid                          $647 to $1,726
+    remote top                        $2,495 to $2,500 discounted, $3,850 list
+    local Peninsula firm, entry       $1,500
+    local Peninsula firm, top         $3,500
+  The two categories converge only at the top of the range. Below roughly
+  $1,500 the published market is remote-only.
+WHY IT MATTERS: A local firm sending a person to a property cannot meet the
+  sub-$1,500 published tier, and the remote firms have no marginal cost of
+  travel. The low tier is structurally theirs.
+SCOPE COMPARISON: What the remote fee buys is concept-stage work: a layout,
+  renders, and a plant and material list, produced without a survey. Against the
+  published phase weights recorded earlier in this study, schematic design is 18
+  of the 69 points spanned by a design-only engagement, roughly 26 percent. The
+  survey and construction-document work that makes a design buildable, the
+  remaining 74 percent, is not part of what these firms sell.
+CAVEAT: The local comparison rests on a single firm, so "the low tier is
+  remote-only" is a statement about published prices, not about what local firms
+  actually charge on quotation.
+SOURCE: Derived from the three price findings in this study
+PUBLISHED: 2026-08-16   SAMPLE: two remote firms, one local firm
+
+------------------------------------------------------------------------
+
+### yardzen-contractor-revenue-share  [UNVERIFIED, rejected-tier source / low]
+HEALTH WARNING: This finding rests on a single contractor's blog post, which is
+  a source class rule 2 rejects outright. It is recorded because it is the only
+  account of the contractor-side terms found, and because those terms bear
+  directly on a decision. It must be confirmed with Yardzen before it is relied
+  on for anything.
+CLAIM (UNVERIFIED): A landscape contractor reported that Yardzen's partner
+  program charges no fee to join and instead takes a revenue share of 7 percent
+  on projects under $100,000 and 5 percent above $100,000, applied to "any and
+  all work a contractor would do for a Yardzen partner program client," not only
+  to Yardzen-designed projects. In return the contractor receives client leads
+  through mutual referral.
+AGE: The post is dated 2022-07-13. Four years old at the time of recording.
+  Terms may have changed entirely.
+CONTEXT, NOT EVIDENCE: Referral fees in adjacent trades were observed in the
+  same search pass at 5 to 10 percent of job value. Those are unrelated
+  verticals and are recorded as context only.
+SOURCE: Turned Earth / oclandscape.com, contractor blog post
+URL: https://oclandscape.com/ocblog/yardzen-partner-program-the-6650-fee/
+PUBLISHED: 2022-07-13   SAMPLE: one contractor's account   GEO: not stated
+
+========================================================================
+ADDITIONAL GAPS, COMPETITOR MODEL
+
+G13. BACQYARD's contractor-side terms are not published and were not found. It
+     is unknown whether it charges contractors a referral fee, a revenue share,
+     or nothing at all. Yardzen's terms are known only from a rejected-tier
+     source four years old.
+
+G14. Only two of Yardzen's package tiers were read at source. The full ladder,
+     and whether packages exist below $495 or above $2,495, is unverified.
+
+G15. Whether either firm has meaningful volume in GMZ's ten towns is unknown.
+     Both state national coverage; neither publishes market-level counts, and
+     no independent measure of their Peninsula share was found. Popularity is
+     asserted, not measured.
+
+G16. No evidence was found either way on the buildability of remote designs:
+     no study, survey or complaint data on how often a design produced without
+     a site visit requires modification at construction. This is the question
+     that matters most to a builder and it is entirely unevidenced.
