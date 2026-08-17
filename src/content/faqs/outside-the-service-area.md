@@ -10,7 +10,7 @@ needsDecision: false
 
 Usually yes, up to a point, and the answer depends on how far out you are and on which kind of work you want.
 
-Inside the towns GMZ works in, a design or build visit carries its normal fee and nothing is added. Outside them there is a travel charge of $100 on top, because the first trip out is the part that genuinely costs. On a build project a little extra distance is usually workable once the job is running, since the crew parks once in the morning and works the same ground all day, so the driving is spread across a full day of work. The visit to come and look at your property is not spread across anything: it is one round trip for one conversation. You hear the visit fee and the travel charge together on the first call, before you agree to anything, and both are paid when you book rather than settled on your doorstep.
+Inside the towns GMZ works in, a visit carries its normal fee and nothing is added. Outside them there is a travel charge of $100 on top, because the first trip out is the part that genuinely costs. On a build project a little extra distance is usually workable once the job is running, since the crew parks once in the morning and works the same ground all day, so the driving is spread across a full day of work. The visit to come and look at your property is not spread across anything: it is one round trip for one conversation. You hear the visit fee and the travel charge together on the first call, before you agree to anything, and both are paid when you book rather than settled on your doorstep.
 
 The outer limit is about forty miles from Redwood City. Past that the answer is no, for either kind of work, and you will get that straight away rather than after somebody has made the drive.
 
