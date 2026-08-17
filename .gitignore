@@ -27,3 +27,8 @@ Thumbs.db
 # deploy platform caches
 .vercel
 .netlify
+
+# Generated review pages. The screenshot preview published to claude.ai is a
+# build artifact, not source: it inlines the photography as base64 and so
+# duplicates media the repo already carries. Build it to a scratch directory.
+preview.html
