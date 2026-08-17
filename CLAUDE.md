@@ -16,7 +16,7 @@ behind a consultation-code veil.
 ## Rules that are not style preferences
 
 **One fact, one home.** Phone numbers, the mailing address, the CSLB number, the
-hours, the tagline, the founding year and the service area live in
+hours, the tagline, the founding year, the domain and the service area live in
 `src/data/site.ts` and nowhere else. Never retype one into a component or a
 content file. This rule exists because the GMZ estimating system had a contact
 block hardcoded in three places, and correcting one phone number left two of
@@ -108,6 +108,14 @@ hand.
 Six walkthroughs are live Google Drive embeds. They work only while those Drive
 files stay link-shared, and nothing at build time can check that. Copy them into
 `public/media/` when the files are to hand.
+
+## Settled, so nobody re-opens them
+
+- **The domain is `gmzlandscape.com`**, with no "ing". The scaffold assumed
+  `gmzlandscaping.com`, which GMZ does not own. The live Wix site has been on
+  `gmzlandscape.com` throughout. Confirmed 2026-08-17.
+- **Projects are indexed by street name.** See the client-privacy rule above.
+  Confirmed 2026-08-17.
 
 ## Open questions for GMZ
 

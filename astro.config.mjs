@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 // The canonical production origin. Used for canonical link tags and Open Graph
 // tags. Update this once the real domain is live; nothing else in the repo
 // hardcodes an origin.
-const SITE = process.env.SITE_URL ?? 'https://www.gmzlandscaping.com';
+const SITE = process.env.SITE_URL ?? 'https://www.gmzlandscape.com';
 
 /**
  * No sitemap integration.

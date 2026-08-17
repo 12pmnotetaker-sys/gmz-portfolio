@@ -146,8 +146,15 @@ export const hoursInline = `${company.hours.daysShort} ${company.hours.time}`;
 export const foundedLine = `since ${company.founded}`;
 
 export const site = {
-  /** Overridden at build time by SITE_URL; see astro.config.mjs. */
-  url: 'https://www.gmzlandscaping.com',
+  /**
+   * The production origin. Overridden at build time by SITE_URL; see
+   * astro.config.mjs.
+   *
+   * It is gmzlandscape.com, with no "ing". The scaffold assumed
+   * gmzlandscaping.com, which GMZ does not own and never has; the live Wix
+   * site has been on gmzlandscape.com throughout. Confirmed 2026-08-17.
+   */
+  url: 'https://www.gmzlandscape.com',
   title: `${company.name} — ${company.tagline}`,
   titleTemplate: `%s | ${company.name}`,
   description: company.summary,
