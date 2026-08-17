@@ -1,0 +1,1489 @@
+<title>The Service Record</title>
+
+<!--
+  GMZ maintenance client portal, concept 1 of 3: "The Service Record".
+
+  PROTOTYPE. Not wired to anything. Standalone HTML so it can be viewed and
+  compared without running the site, same convention as docs/intake-forms.html
+  and docs/process-proposal.html.
+
+  Stand-ins in this file, all flagged on the page itself:
+    - The tree badge is a drawn stand-in. The real GMZ mark is still needed as
+      SVG; see DESIGN-HANDOFF.md, "Assets still needed".
+    - Client name, dates and notes are invented sample data. Sample phone
+      numbers use the 555 range, matching docs/intake-forms.html.
+    - Photo slots are labelled plates, not photographs.
+    - No dollar figures anywhere. What a client pays per visit lives in their
+      service agreement and in the estimating system, not in a design mockup.
+
+  If this concept is chosen, the GMZ facts in the footer (license, phone,
+  tagline) must be read from src/data/site.ts rather than retyped, per the
+  "one fact, one home" rule in CLAUDE.md. They are literal here only because
+  this file is a prototype outside src/.
+
+  Every policy statement on this page comes from an FAQ in
+  src/content/faqs/ that is already published: month to month with 30 days'
+  notice, a fixed service day, a day rather than an arrival time, one set
+  price per visit, monthly zone-by-zone irrigation checks, extras priced and
+  approved before the work, and an annual price review. Nothing here invents
+  a term nobody has agreed to.
+-->
+
+<style>
+  /* ---- Tokens: complete light palette ---------------------------------- */
+  :root {
+    /* Neutrals carry a green bias so the paper reads as GMZ paper. */
+    --paper: #f4f6f0;
+    --sheet: #ffffff;
+    --sunk: #eaeee2;
+    --ink: #181c15;
+    --ink-soft: #4c5546;
+    --ink-faint: #767e6b;
+    --rule: #d3dac9;
+    --hair: #e5e9db;
+
+    /* Brand green, from src/styles/tokens.css. Used for marks and rules, */
+    /* never for large fills: this concept is paper first. */
+    --green: #2e7d32;
+    --green-deep: #1b5e20;
+    --green-wash: #e6f1e4;
+    /* Label colour that sits on a green fill, flips with the palette. */
+    --on-green: #ffffff;
+
+    /* Semantic, separate from the accent. */
+    --flag: #8a5a00;
+    --flag-wash: #f7edd8;
+    --rest: #5c6b73;
+    --rest-wash: #e7edef;
+
+    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+    --page: 76rem;
+    --gutter: clamp(1rem, 4vw, 3rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --paper: #10130d;
+      --sheet: #181c13;
+      --sunk: #1f2419;
+      --ink: #e9ede0;
+      --ink-soft: #b0b8a2;
+      --ink-faint: #848c76;
+      --rule: #343b2c;
+      --hair: #262c1f;
+
+      --green: #8ecb8f;
+      --green-deep: #b2e0b2;
+      --green-wash: #1d2a1b;
+      --on-green: #10130d;
+
+      --flag: #dba746;
+      --flag-wash: #2a2211;
+      --rest: #9fb6bf;
+      --rest-wash: #1a2226;
+    }
+  }
+
+  :root[data-theme='dark'] {
+    --paper: #10130d;
+    --sheet: #181c13;
+    --sunk: #1f2419;
+    --ink: #e9ede0;
+    --ink-soft: #b0b8a2;
+    --ink-faint: #848c76;
+    --rule: #343b2c;
+    --hair: #262c1f;
+
+    --green: #8ecb8f;
+    --green-deep: #b2e0b2;
+    --green-wash: #1d2a1b;
+    --on-green: #10130d;
+
+    --flag: #dba746;
+    --flag-wash: #2a2211;
+    --rest: #9fb6bf;
+    --rest-wash: #1a2226;
+  }
+
+  /* ---- Base ------------------------------------------------------------ */
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 600;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dd,
+  dt {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: var(--green-deep);
+    text-underline-offset: 0.18em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--green-deep);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+
+  .skip-link {
+    position: absolute;
+    inset-inline-start: 1rem;
+    inset-block-start: -100%;
+    z-index: 50;
+    padding: 0.6rem 1rem;
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    inset-block-start: 1rem;
+  }
+
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .page {
+    max-width: var(--page);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    padding-block: 1.25rem 4rem;
+  }
+
+  /* ---- Brand lockup ---------------------------------------------------- */
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--green);
+    text-decoration: none;
+  }
+
+  .lockup svg {
+    display: block;
+    flex: none;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+  }
+
+  .lockup .words {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .lockup .name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+
+  .lockup .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---- Chrome ---------------------------------------------------------- */
+  .chrome {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 0.9rem;
+    border-block-end: 1px solid var(--rule);
+  }
+
+  .chrome__right {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-inline-start: auto;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  .stamp {
+    padding: 0.2em 0.6em;
+    border: 1px solid var(--flag);
+    border-radius: 2px;
+    background: var(--flag-wash);
+    color: var(--flag);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .who {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .who .initials {
+    display: grid;
+    place-items: center;
+    inline-size: 1.9rem;
+    block-size: 1.9rem;
+    border-radius: 50%;
+    background: var(--green-wash);
+    color: var(--green-deep);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  /* ---- Tabs ------------------------------------------------------------ */
+  .tabs ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    margin: 0;
+    padding-block: 0.7rem;
+    border-block-end: 1px solid var(--rule);
+  }
+
+  .tabs a {
+    color: var(--ink-soft);
+    font-size: 0.86rem;
+    text-decoration: none;
+    padding-block-end: 0.7rem;
+    margin-block-end: -0.75rem;
+    border-block-end: 2px solid transparent;
+  }
+
+  .tabs a:hover {
+    color: var(--green-deep);
+  }
+
+  .tabs a[aria-current='page'] {
+    color: var(--ink);
+    font-weight: 600;
+    border-block-end-color: var(--green);
+  }
+
+  /* ---- Masthead -------------------------------------------------------- */
+  .masthead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem 2rem;
+    padding-block: 2.25rem 1.1rem;
+    border-block-end: 2px solid var(--ink);
+  }
+
+  .masthead h1 {
+    font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+  }
+
+  .masthead .account {
+    margin-block-start: 0.35rem;
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+  }
+
+  .masthead .since {
+    margin-inline-start: auto;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-align: end;
+  }
+
+  /* ---- Two-column body ------------------------------------------------- */
+  .layout {
+    display: grid;
+    gap: 2.5rem;
+    padding-block-start: 2rem;
+  }
+
+  /* A grid item defaults to min-width:auto, which lets the wide tables inside
+     the record column push the whole page sideways. Pin it to zero so the
+     tables scroll inside their own scroller instead. */
+  .layout > * {
+    min-inline-size: 0;
+  }
+
+  @media (min-width: 62rem) {
+    .layout {
+      grid-template-columns: 17.5rem 1fr;
+      gap: 3.5rem;
+    }
+
+    .rail {
+      position: sticky;
+      inset-block-start: 1.5rem;
+      align-self: start;
+    }
+  }
+
+  .rail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .rail h2,
+  .record h2 {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Account facts: a definition list, because that is what it is. */
+  .facts {
+    margin: 0.9rem 0 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.05rem 1rem;
+    font-size: 0.92rem;
+  }
+
+  .facts dt {
+    color: var(--ink-faint);
+    padding-block: 0.4rem;
+    border-block-start: 1px solid var(--hair);
+  }
+
+  .facts dd {
+    padding-block: 0.4rem;
+    border-block-start: 1px solid var(--hair);
+    text-align: end;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .facts dt:first-of-type,
+  .facts dd:first-of-type {
+    border-block-start: 0;
+  }
+
+  .facts .strong {
+    font-weight: 600;
+  }
+
+  .rail .note {
+    margin-block-start: 0.9rem;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+
+  .needs {
+    margin-block-start: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    font-size: 0.9rem;
+  }
+
+  .needs li {
+    display: flex;
+    gap: 0.55rem;
+    color: var(--ink-soft);
+  }
+
+  .needs li::before {
+    content: '';
+    flex: none;
+    inline-size: 0.4rem;
+    block-size: 0.4rem;
+    margin-block-start: 0.55em;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  .rail .button {
+    display: inline-block;
+    margin-block-start: 1rem;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--green);
+    border-radius: 3px;
+    background: var(--green);
+    color: var(--on-green);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 150ms ease;
+  }
+
+  .rail .button:hover {
+    background: var(--green-deep);
+    border-color: var(--green-deep);
+  }
+
+  /* ---- Record ---------------------------------------------------------- */
+  .record {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+  }
+
+  .block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .block > h2 {
+    padding-block-end: 0.5rem;
+    border-block-end: 1px solid var(--rule);
+  }
+
+  /* Next visit: the one thing a client opens this to see. */
+  .next {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem 1.4rem;
+    padding: 1.15rem 1.35rem;
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-inline-start: 3px solid var(--green);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .next .day {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .next .qualifier {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .next .cadence {
+    margin-inline-start: auto;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Approval: the only amber on the page, so it cannot be missed. */
+  .approval {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1.15rem 1.35rem;
+    background: var(--flag-wash);
+    border: 1px solid var(--flag);
+    border-radius: 4px;
+  }
+
+  .approval h3 {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--flag);
+  }
+
+  .approval .what {
+    font-family: var(--serif);
+    font-size: 1.12rem;
+  }
+
+  .approval p {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    max-width: 44rem;
+  }
+
+  .approval .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-block-start: 0.2rem;
+  }
+
+  .approval .actions a {
+    padding: 0.5rem 0.95rem;
+    border: 1px solid var(--flag);
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--flag);
+  }
+
+  .approval .actions a.primary {
+    background: var(--flag);
+    color: var(--flag-wash);
+  }
+
+  /* Visit entries: rows in a ledger, not cards. */
+  .visits {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .visit {
+    display: grid;
+    gap: 0.35rem 1.5rem;
+    padding-block: 1.35rem;
+    border-block-start: 1px solid var(--hair);
+  }
+
+  .visit:first-child {
+    border-block-start: 0;
+  }
+
+  @media (min-width: 46rem) {
+    .visit {
+      grid-template-columns: 9.5rem 1fr;
+    }
+  }
+
+  .visit__when {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .visit__when .date {
+    display: block;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .visit__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .did {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.5rem;
+    font-size: 0.88rem;
+  }
+
+  .did li {
+    padding: 0.15em 0.55em;
+    border-radius: 2px;
+    background: var(--sunk);
+    color: var(--ink-soft);
+  }
+
+  .saw {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .saw .label {
+    flex: none;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    padding-block-start: 0.35em;
+    inline-size: 5.2rem;
+  }
+
+  .saw p {
+    max-width: 42rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    padding: 0.15em 0.5em;
+    border-radius: 2px;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .tag-irr {
+    background: var(--green-wash);
+    color: var(--green-deep);
+  }
+
+  .tag-moved {
+    background: var(--rest-wash);
+    color: var(--rest);
+  }
+
+  .tag-out {
+    background: var(--flag-wash);
+    color: var(--flag);
+  }
+
+  .more {
+    margin-block-start: 1.1rem;
+    font-size: 0.88rem;
+  }
+
+  /* ---- Wide tables ----------------------------------------------------- */
+  .scroller {
+    overflow-x: auto;
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+
+  table {
+    inline-size: 100%;
+    min-inline-size: 44rem;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  caption {
+    padding: 0.85rem 1rem;
+    text-align: start;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    border-block-end: 1px solid var(--hair);
+  }
+
+  th,
+  td {
+    padding: 0.6rem 1rem;
+    text-align: start;
+    border-block-start: 1px solid var(--hair);
+    font-variant-numeric: tabular-nums;
+  }
+
+  thead th {
+    border-block-start: 0;
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  tbody th {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  td.state {
+    color: var(--ink-soft);
+  }
+
+  .dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+  }
+
+  .dot::before {
+    content: '';
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  .dot.is-fixed::before {
+    background: var(--flag);
+  }
+
+  .dot.is-off::before {
+    background: var(--rest);
+  }
+
+  /* ---- Billing --------------------------------------------------------- */
+  .bills {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bill {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 1rem;
+    padding-block: 0.75rem;
+    border-block-start: 1px solid var(--hair);
+    font-size: 0.92rem;
+  }
+
+  .bill:first-child {
+    border-block-start: 0;
+  }
+
+  .bill .ref {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    inline-size: 7rem;
+    flex: none;
+  }
+
+  .bill .period {
+    color: var(--ink);
+  }
+
+  .bill .state {
+    margin-inline-start: auto;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .bill .state.paid {
+    color: var(--green-deep);
+  }
+
+  .bill .state.due {
+    color: var(--flag);
+  }
+
+  /* ---- Photo slot ------------------------------------------------------ */
+  .plates {
+    display: grid;
+    gap: 0.9rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+  }
+
+  .plate {
+    display: block;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .plate svg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+  }
+
+  .plate figcaption {
+    padding: 0.5rem 0.7rem;
+    background: var(--sheet);
+    border-block-start: 1px solid var(--hair);
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+  }
+
+  /* ---- Out of scope ---------------------------------------------------- */
+  .scope {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 46rem) {
+    .scope {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .scope h3 {
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  .scope ul {
+    margin-block-start: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .scope li {
+    padding-inline-start: 0.9rem;
+    border-inline-start: 2px solid var(--hair);
+  }
+
+  /* ---- Footers --------------------------------------------------------- */
+  .proto {
+    margin-block-start: 3.5rem;
+    padding: 1.25rem 1.4rem;
+    background: var(--sunk);
+    border: 1px dashed var(--rule);
+    border-radius: 4px;
+  }
+
+  .proto h2 {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .proto ul {
+    margin-block-start: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+
+  .proto li {
+    padding-inline-start: 1rem;
+    position: relative;
+  }
+
+  .proto li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.62em;
+    inline-size: 0.35rem;
+    block-size: 0.35rem;
+    border-radius: 50%;
+    background: var(--ink-faint);
+  }
+
+  .colophon {
+    margin-block-start: 2rem;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--rule);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+</style>
+
+<a class="skip-link" href="#record">Skip to the service record</a>
+
+<div class="page">
+  <div class="chrome">
+    <a class="lockup" href="#record" aria-label="GMZ Landscaping, Design, Build, Maintenance">
+      <svg viewBox="0 0 48 48" role="img" aria-hidden="true" focusable="false">
+        <rect width="48" height="48" rx="10" fill="currentColor" />
+        <circle cx="24" cy="18.5" r="7.2" fill="#ffffff" />
+        <circle cx="17.2" cy="23.4" r="5.9" fill="#ffffff" />
+        <circle cx="30.8" cy="23.4" r="5.9" fill="#ffffff" />
+        <rect x="22.6" y="23" width="2.8" height="12.5" rx="1.4" fill="#ffffff" />
+        <rect x="13.5" y="36.5" width="21" height="2.2" rx="1.1" fill="#ffffff" opacity="0.75" />
+      </svg>
+      <span class="words">
+        <span class="name">GMZ Landscaping</span>
+        <span class="tag">Design &middot; Build &middot; Maintenance</span>
+      </span>
+    </a>
+
+    <div class="chrome__right">
+      <span class="stamp">Sample account</span>
+      <span class="who">
+        <span class="initials" aria-hidden="true">JW</span>
+        <span>J. Whitfield<span class="sr">, signed in</span></span>
+      </span>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Your account">
+    <ul>
+      <li><a href="#record" aria-current="page">Service record</a></li>
+      <li><a href="#irrigation">Irrigation</a></li>
+      <li><a href="#billing">Billing</a></li>
+      <li><a href="#scope">What is included</a></li>
+      <li><a href="#agreement">Your agreement</a></li>
+    </ul>
+  </nav>
+
+  <header class="masthead">
+    <div>
+      <h1>Service record</h1>
+      <p class="account">The Whitfield Residence, Menlo Park</p>
+    </div>
+    <p class="since">
+      Weekly account<br />
+      since April 2025
+    </p>
+  </header>
+
+  <div class="layout">
+    <aside class="rail" aria-labelledby="account-heading">
+      <div>
+        <h2 id="account-heading">Your account</h2>
+        <dl class="facts">
+          <dt>Service day</dt>
+          <dd class="strong">Thursday</dd>
+          <dt>Cadence</dt>
+          <dd>Weekly</dd>
+          <dt>Crew</dt>
+          <dd>Crew 2</dd>
+          <dt>Crew lead</dt>
+          <dd>Rafael Jr.</dd>
+          <dt>Irrigation walk</dt>
+          <dd>Monthly</dd>
+          <dt>Visits logged</dt>
+          <dd>71</dd>
+          <dt>Price review</dt>
+          <dd>April 2027</dd>
+        </dl>
+        <p class="note">
+          You get a day, not an arrival time. The stops ahead of you vary, so the hour moves. You do
+          not need to be home.
+        </p>
+      </div>
+
+      <div>
+        <h2>What we need on your day</h2>
+        <ul class="needs">
+          <li>Gate access, or the code if the lock has changed</li>
+          <li>Dogs secured</li>
+          <li>A working outdoor spigot</li>
+          <li>Any HOA rule that limits what can be cut</li>
+        </ul>
+        <a class="button" href="#record">Message your crew lead</a>
+      </div>
+    </aside>
+
+    <main class="record" id="record">
+      <section class="block" aria-labelledby="next-heading">
+        <h2 id="next-heading">Next visit</h2>
+        <div class="next">
+          <p class="day">Thursday, August 20</p>
+          <p class="qualifier">Crew 2, sometime during the day</p>
+          <p class="cadence">Week 71 &middot; weekly</p>
+        </div>
+        <div class="approval">
+          <h3>Needs your decision</h3>
+          <p class="what">Replace the leaking valve on the zone that waters the back beds</p>
+          <p>
+            Found on the August 6 irrigation walk and holding for now. Valve work sits outside
+            routine care, so it is quoted and approved before we do it, never added to a bill
+            afterward. The written quote went to your email on Friday, August 14.
+          </p>
+          <div class="actions">
+            <a class="primary" href="#record">Approve the quote</a>
+            <a href="#record">Ask a question first</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="visits-heading">
+        <h2 id="visits-heading">Recent visits</h2>
+        <div class="visits">
+          <article class="visit">
+            <p class="visit__when">
+              <span class="date">Thu Aug 13</span>
+              Crew 2
+            </p>
+            <div class="visit__body">
+              <ul class="did">
+                <li>Mowed and edged</li>
+                <li>Hard surfaces blown down</li>
+                <li>Beds weeded</li>
+                <li>Green waste hauled</li>
+              </ul>
+              <div class="saw">
+                <span class="label">We saw</span>
+                <p>
+                  The hedge along the north fence is starting to shade the roses under it. That is
+                  renovation pruning rather than routine shaping, so it is on your list to decide,
+                  not something we did today.
+                </p>
+              </div>
+              <div class="tags"><span class="tag tag-out">Flagged, outside the visit</span></div>
+            </div>
+          </article>
+
+          <article class="visit">
+            <p class="visit__when">
+              <span class="date">Thu Aug 6</span>
+              Crew 2
+            </p>
+            <div class="visit__body">
+              <ul class="did">
+                <li>Mowed and edged</li>
+                <li>Grasses cut back</li>
+                <li>Irrigation walked zone by zone</li>
+                <li>Controller stepped up for the heat</li>
+              </ul>
+              <div class="saw">
+                <span class="label">We saw</span>
+                <p>
+                  A valve weeping on the zone that waters the back beds. We shut that zone down at
+                  the valve and hand watered the beds so nothing sat dry. Quote to follow.
+                </p>
+              </div>
+              <div class="tags">
+                <span class="tag tag-irr">Monthly irrigation walk</span>
+                <span class="tag tag-out">Quote sent</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="visit">
+            <p class="visit__when">
+              <span class="date">Thu Jul 30</span>
+              Crew 2
+            </p>
+            <div class="visit__body">
+              <ul class="did">
+                <li>Mowed and edged</li>
+                <li>Hard surfaces blown down</li>
+                <li>Shrubs shaped, light seasonal cut</li>
+                <li>Green waste hauled</li>
+              </ul>
+              <div class="saw">
+                <span class="label">We saw</span>
+                <p>
+                  A drip line pulled loose behind the olive, most likely the dog. Reseated it while
+                  we were there, no charge and nothing to decide.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="visit">
+            <p class="visit__when">
+              <span class="date">Thu Jul 23</span>
+              Crew 2
+            </p>
+            <div class="visit__body">
+              <ul class="did">
+                <li>Mowed and edged</li>
+                <li>Beds weeded</li>
+                <li>Perennials deadheaded</li>
+                <li>Green waste hauled</li>
+              </ul>
+              <div class="saw">
+                <span class="label">We saw</span>
+                <p>Nothing needing your attention. The garden is holding up well in the heat.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="visit">
+            <p class="visit__when">
+              <span class="date">Fri Feb 13</span>
+              Crew 2
+            </p>
+            <div class="visit__body">
+              <ul class="did">
+                <li>Mowed and edged</li>
+                <li>Storm debris from the garden cleared</li>
+                <li>Drain inlets checked and cleared</li>
+              </ul>
+              <div class="saw">
+                <span class="label">We saw</span>
+                <p>
+                  Thursday was too wet for the work to be worth doing, so the visit moved to Friday
+                  in the same week. Water was leaving the property the way it should.
+                </p>
+              </div>
+              <div class="tags"><span class="tag tag-moved">Moved for weather</span></div>
+            </div>
+          </article>
+        </div>
+        <p class="more"><a href="#record">All 71 visits since April 2025</a></p>
+      </section>
+
+      <section class="block" aria-labelledby="irrigation-heading" id="irrigation">
+        <h2 id="irrigation-heading">Irrigation walk, zone by zone</h2>
+        <div class="scroller">
+          <table>
+            <caption>
+              Once a month the whole system gets walked, zone by zone, and the controller is set for
+              the season. This is the record of what each zone did.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Zone</th>
+                <th scope="col">What it waters</th>
+                <th scope="col">Jun 4</th>
+                <th scope="col">Jul 2</th>
+                <th scope="col">Aug 6</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Front lawn</td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Front beds, drip</td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+                <td class="state"><span class="dot is-fixed">Emitter replaced</span></td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Side path, drip</td>
+                <td class="state"><span class="dot is-fixed">Head realigned</span></td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Back beds, drip</td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+                <td class="state"><span class="dot is-off">Valve weeping, zone off</span></td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Back lawn</td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Pots and planters, drip</td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+                <td class="state"><span class="dot">Ran clean</span></td>
+                <td class="state"><span class="dot is-fixed">Line reseated</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="plates">
+          <figure class="plate">
+            <svg
+              viewBox="0 0 400 260"
+              role="img"
+              aria-label="Photo slot: the weeping valve at the box serving the back beds, photographed on the August 6 irrigation walk."
+            >
+              <defs>
+                <linearGradient id="p1a" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#37474f" />
+                  <stop offset="100%" stop-color="#8a9a9e" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="260" fill="url(#p1a)" />
+              <text
+                x="200"
+                y="126"
+                text-anchor="middle"
+                font-family="Helvetica, Arial, sans-serif"
+                font-size="15"
+                letter-spacing="3"
+                fill="#ffffff"
+                fill-opacity="0.8"
+              >
+                PHOTO SLOT
+              </text>
+              <text
+                x="200"
+                y="150"
+                text-anchor="middle"
+                font-family="Helvetica, Arial, sans-serif"
+                font-size="10"
+                letter-spacing="1.5"
+                fill="#ffffff"
+                fill-opacity="0.6"
+              >
+                CREW PHOTO FROM THE VISIT
+              </text>
+            </svg>
+            <figcaption>Aug 6 &middot; valve box, back beds</figcaption>
+          </figure>
+          <figure class="plate">
+            <svg
+              viewBox="0 0 400 260"
+              role="img"
+              aria-label="Photo slot: the north fence hedge shading the roses beneath it, photographed on the August 13 visit."
+            >
+              <defs>
+                <linearGradient id="p1b" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#2e7d32" />
+                  <stop offset="100%" stop-color="#7fa06b" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="260" fill="url(#p1b)" />
+              <text
+                x="200"
+                y="126"
+                text-anchor="middle"
+                font-family="Helvetica, Arial, sans-serif"
+                font-size="15"
+                letter-spacing="3"
+                fill="#ffffff"
+                fill-opacity="0.8"
+              >
+                PHOTO SLOT
+              </text>
+              <text
+                x="200"
+                y="150"
+                text-anchor="middle"
+                font-family="Helvetica, Arial, sans-serif"
+                font-size="10"
+                letter-spacing="1.5"
+                fill="#ffffff"
+                fill-opacity="0.6"
+              >
+                CREW PHOTO FROM THE VISIT
+              </text>
+            </svg>
+            <figcaption>Aug 13 &middot; hedge, north fence</figcaption>
+          </figure>
+          <figure class="plate">
+            <svg
+              viewBox="0 0 400 260"
+              role="img"
+              aria-label="Photo slot: the back lawn and beds after the August 13 visit, for the week to week record."
+            >
+              <defs>
+                <linearGradient id="p1c" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3e6b41" />
+                  <stop offset="100%" stop-color="#a8ae94" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="260" fill="url(#p1c)" />
+              <text
+                x="200"
+                y="126"
+                text-anchor="middle"
+                font-family="Helvetica, Arial, sans-serif"
+                font-size="15"
+                letter-spacing="3"
+                fill="#ffffff"
+                fill-opacity="0.8"
+              >
+                PHOTO SLOT
+              </text>
+              <text
+                x="200"
+                y="150"
+                text-anchor="middle"
+                font-family="Helvetica, Arial, sans-serif"
+                font-size="10"
+                letter-spacing="1.5"
+                fill="#ffffff"
+                fill-opacity="0.6"
+              >
+                CREW PHOTO FROM THE VISIT
+              </text>
+            </svg>
+            <figcaption>Aug 13 &middot; back lawn, after</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="billing-heading" id="billing">
+        <h2 id="billing-heading">Billing</h2>
+        <div class="bills">
+          <div class="bill">
+            <span class="ref">Invoice 1104</span>
+            <span class="period">August, weekly service</span>
+            <span class="state due">Due Sep 1</span>
+          </div>
+          <div class="bill">
+            <span class="ref">Invoice 1088</span>
+            <span class="period">July, weekly service</span>
+            <span class="state paid">Paid Aug 3</span>
+          </div>
+          <div class="bill">
+            <span class="ref">Invoice 1071</span>
+            <span class="period">June, weekly service</span>
+            <span class="state paid">Paid Jul 2</span>
+          </div>
+          <div class="bill">
+            <span class="ref">Quote 214</span>
+            <span class="period">Valve replacement, back beds</span>
+            <span class="state due">Awaiting your approval</span>
+          </div>
+        </div>
+        <p class="more">
+          One set price per visit, agreed before the first visit, which does not move because one
+          week ran longer than another. Work outside routine care and materials we bring for you are
+          quoted separately and approved before we start.
+        </p>
+      </section>
+
+      <section class="block" aria-labelledby="scope-heading" id="scope">
+        <h2 id="scope-heading">What a visit includes</h2>
+        <div class="scope">
+          <div>
+            <h3>Every visit</h3>
+            <ul>
+              <li>Mowing and edging where there is lawn</li>
+              <li>Hard surfaces cleaned down</li>
+              <li>Beds weeded</li>
+              <li>Light seasonal pruning and shaping</li>
+              <li>Green waste from that visit hauled away</li>
+              <li>A look at the irrigation as we go</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Quoted separately, always approved first</h3>
+            <ul>
+              <li>Renovation and structural pruning</li>
+              <li>Tree work needing a climb, a lift or a chipper</li>
+              <li>Removing, replacing or adding plants</li>
+              <li>Lawn renovation, seed, sod, aeration</li>
+              <li>Irrigation beyond a quick fix at a head or emitter</li>
+              <li>Mulch, gravel and other materials we bring</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="agreement-heading" id="agreement">
+        <h2 id="agreement-heading">Your agreement</h2>
+        <div class="scroller">
+          <table>
+            <caption>
+              Your service agreement is a separate document from any construction contract. These
+              are the terms on the face of it.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Term</th>
+                <th scope="col">What it says</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Length</th>
+                <td>Month to month. You are not locked in.</td>
+              </tr>
+              <tr>
+                <th scope="row">Ending it</th>
+                <td>Either side, 30 days' notice in writing. No penalty, no term to buy out.</td>
+              </tr>
+              <tr>
+                <th scope="row">Cadence</th>
+                <td>Weekly. A change to cadence changes the agreement, confirmed in writing.</td>
+              </tr>
+              <tr>
+                <th scope="row">Service day</th>
+                <td>Thursday, by route. A day, not an arrival time.</td>
+              </tr>
+              <tr>
+                <th scope="row">Price review</th>
+                <td>Once a year, printed on the face of the agreement. Next: April 2027.</td>
+              </tr>
+              <tr>
+                <th scope="row">Weather</th>
+                <td>
+                  Most work goes ahead in light rain. When conditions make it damaging we move the
+                  visit inside the same week and tell you.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <section class="proto" aria-labelledby="proto-heading">
+    <h2 id="proto-heading">Prototype notes</h2>
+    <ul>
+      <li>
+        Concept 1 of 3. The organising idea is the record: a maintenance account is a running
+        obligation, so the portal is the log of what was done, what was noticed and what is waiting
+        on the client. Paper first, green used only for marks and rules.
+      </li>
+      <li>
+        The tree badge is a stand-in. The real GMZ mark is still needed as SVG, per
+        DESIGN-HANDOFF.md.
+      </li>
+      <li>
+        Photo slots are labelled plates, not photographs, following the same convention as the
+        project placeholders.
+      </li>
+      <li>
+        No dollar figures. What a client pays per visit belongs in their agreement and in the
+        estimating system, so billing here shows reference and state only.
+      </li>
+      <li>
+        Every policy sentence traces to an FAQ already marked published. Nothing states a term that
+        has not been decided.
+      </li>
+      <li>
+        Accessibility kept: skip link, visible focus rings, aria-current on the active tab, one h1,
+        alt text on every plate, tabular figures, and a reduced-motion block.
+      </li>
+      <li>
+        Client name, dates and notes are invented. Sample phone numbers would use the 555 range.
+      </li>
+    </ul>
+  </section>
+
+  <p class="colophon">
+    GMZ Landscaping Inc. &middot; CSLB License #636636 &middot; Client portal concept, not a live
+    system.
+  </p>
+</div>

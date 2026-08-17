@@ -1,0 +1,1524 @@
+<title>The Garden Year</title>
+
+<!--
+  GMZ maintenance client portal, concept 3 of 3: "The Garden Year".
+
+  PROTOTYPE. Standalone HTML, same convention as docs/intake-forms.html.
+
+  The premise: a maintenance account is not a series of unrelated visits, it is
+  one year repeating. So the spine of this portal is the year itself, and the
+  visits hang off it. A client who can see the year coming understands why
+  weekly matters in May, why the water gets turned down in October, and which
+  extra work tends to come up when.
+
+  Deliberately dark first. The palette swaps to a cream ground for a viewer who
+  asks for light, and both are defined in full.
+
+  Stand-ins, all flagged on the page:
+    - The tree badge is a drawn stand-in for the real GMZ mark, still needed as
+      SVG per DESIGN-HANDOFF.md.
+    - Client name, dates and notes are invented sample data.
+    - Photo slots are labelled plates, not photographs.
+    - No dollar figures. Per-visit price lives in the client's service
+      agreement and in the estimating system.
+
+  The year ribbon is a categorical timeline. Its three hues were validated for
+  colour-vision deficiency separation against both the dark and the light
+  surface, and every segment carries a text label as well as a hue, so nothing
+  is encoded by colour alone. A table view of the same data sits under it.
+
+  If this concept is chosen, the GMZ facts in the footer must be read from
+  src/data/site.ts rather than retyped, per "one fact, one home" in CLAUDE.md.
+-->
+
+<style>
+  /* ---- Tokens ----------------------------------------------------------- *
+   * Dark first, on purpose: a garden at dusk, not a document. The bare :root
+   * therefore carries the dark palette, and the light palette is defined in
+   * full for a viewer who asks for it, in both directions.
+   * -------------------------------------------------------------------------*/
+  :root {
+    --ground: #0e1710;
+    --surface: #16241a;
+    --raised: #1d2f21;
+    --hair: #263a29;
+    --rule: #34492f;
+
+    --ink: #eef1e5;
+    --ink-soft: #b4c0ab;
+    --ink-faint: #87947f;
+
+    --accent: #8fcb8f;
+    --accent-quiet: #6aa96c;
+    --on-accent: #0e1710;
+
+    /* Brass marks the present. It is not a status colour and not the accent. */
+    --now: #d9b166;
+    --now-wash: #2b2413;
+
+    /* Validated categorical timeline hues, in this fixed order. */
+    --band-care: #4e9e55;
+    --band-water: #4592c4;
+    --band-season: #c87344;
+    /* Band fills are light in the dark theme, so their labels go dark. */
+    --on-band: #0d1509;
+
+    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+    --page: 80rem;
+    --gutter: clamp(1rem, 4vw, 3.25rem);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme='dark']) {
+      --ground: #f2f4ec;
+      --surface: #ffffff;
+      --raised: #f7f9f2;
+      --hair: #e3e8da;
+      --rule: #cfd8c5;
+
+      --ink: #12190f;
+      --ink-soft: #4a5544;
+      --ink-faint: #75806b;
+
+      --accent: #1b5e20;
+      --accent-quiet: #2e7d32;
+      --on-accent: #ffffff;
+
+      --now: #8a6a1e;
+      --now-wash: #f7eed8;
+
+      --band-care: #2e7d32;
+      --band-water: #155e9e;
+      --band-season: #b05a2a;
+      --on-band: #ffffff;
+    }
+  }
+
+  :root[data-theme='light'] {
+    --ground: #f2f4ec;
+    --surface: #ffffff;
+    --raised: #f7f9f2;
+    --hair: #e3e8da;
+    --rule: #cfd8c5;
+
+    --ink: #12190f;
+    --ink-soft: #4a5544;
+    --ink-faint: #75806b;
+
+    --accent: #1b5e20;
+    --accent-quiet: #2e7d32;
+    --on-accent: #ffffff;
+
+    --now: #8a6a1e;
+    --now-wash: #f7eed8;
+
+    --band-care: #2e7d32;
+    --band-water: #155e9e;
+    --band-season: #b05a2a;
+    --on-band: #ffffff;
+  }
+
+  /* ---- Base ------------------------------------------------------------- */
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 600;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dt,
+  dd,
+  figcaption {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: var(--accent);
+    text-underline-offset: 0.18em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+
+  .skip-link {
+    position: absolute;
+    inset-inline-start: 1rem;
+    inset-block-start: -100%;
+    z-index: 50;
+    padding: 0.6rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    color: var(--ink);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    inset-block-start: 1rem;
+  }
+
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .page {
+    max-width: var(--page);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    padding-block: 1.5rem 4.5rem;
+  }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---- Chrome ----------------------------------------------------------- */
+  .chrome {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1rem 1.25rem;
+  }
+
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .lockup svg {
+    display: block;
+    flex: none;
+    inline-size: 2.6rem;
+    block-size: 2.6rem;
+  }
+
+  .lockup .words {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.12;
+  }
+
+  .lockup .name {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .lockup .tag {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .chrome__right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+    margin-inline-start: auto;
+  }
+
+  .stamp {
+    padding: 0.22em 0.65em;
+    border: 1px solid var(--now);
+    border-radius: 2px;
+    background: var(--now-wash);
+    color: var(--now);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .chrome nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+  }
+
+  .chrome nav a {
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+
+  .chrome nav a:hover {
+    color: var(--accent);
+  }
+
+  .chrome nav a[aria-current='page'] {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
+  }
+
+  /* ---- Cover ------------------------------------------------------------ */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding-block: 1.5rem 2.25rem;
+    border-block: 1px solid var(--rule);
+  }
+
+  .cover h1 {
+    font-size: clamp(2.4rem, 7vw, 4.6rem);
+    letter-spacing: -0.015em;
+  }
+
+  .cover .account {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    font-size: 1rem;
+    color: var(--ink-soft);
+  }
+
+  .cover .account strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .cover .lede {
+    max-width: 44rem;
+    font-size: 1.12rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---- Right now -------------------------------------------------------- */
+  .now-grid {
+    display: grid;
+    gap: 1rem;
+    margin-block-start: 2rem;
+  }
+
+  @media (min-width: 56rem) {
+    .now-grid {
+      grid-template-columns: 1.35fr 1fr 1fr;
+    }
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.2rem 1.3rem;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+  }
+
+  .panel--now {
+    border-color: color-mix(in srgb, var(--now) 45%, transparent);
+    background: linear-gradient(180deg, var(--now-wash), var(--surface) 70%);
+  }
+
+  .panel--now .label {
+    color: var(--now);
+  }
+
+  .panel h2 {
+    font-size: 1.5rem;
+  }
+
+  .panel h3 {
+    font-size: 1.15rem;
+  }
+
+  .panel p {
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+
+  .panel .big {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .panel .push {
+    margin-block-start: auto;
+    padding-block-start: 0.5rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 150ms ease;
+  }
+
+  .btn:hover {
+    background: var(--accent-quiet);
+    border-color: var(--accent-quiet);
+    color: var(--on-accent);
+  }
+
+  .btn--quiet {
+    background: transparent;
+    color: var(--accent);
+  }
+
+  .btn--quiet:hover {
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    color: var(--accent);
+  }
+
+  .btnrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* ---- Section heads ---------------------------------------------------- */
+  section.band {
+    padding-block-start: 3.25rem;
+  }
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+    padding-block-end: 0.6rem;
+    border-block-end: 1px solid var(--rule);
+    margin-block-end: 1.25rem;
+  }
+
+  .head h2 {
+    font-size: clamp(1.5rem, 3.2vw, 2.05rem);
+  }
+
+  .head p {
+    margin-inline-start: auto;
+    max-width: 30rem;
+    font-size: 0.9rem;
+    color: var(--ink-faint);
+  }
+
+  /* ---- The year ribbon -------------------------------------------------- */
+  .ribbon-wrap {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .scroller {
+    overflow-x: auto;
+  }
+
+  .ribbon {
+    min-inline-size: 52rem;
+    padding: 1.1rem 1.2rem 1.3rem;
+  }
+
+  /* Month header row. 12 equal columns after the row-name gutter. */
+  .months,
+  .row {
+    display: grid;
+    grid-template-columns: 8.5rem repeat(12, 1fr);
+    gap: 2px;
+    align-items: stretch;
+  }
+
+  .months {
+    padding-block-end: 0.5rem;
+  }
+
+  .months .gutter {
+    grid-column: 1;
+  }
+
+  .months .m {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-align: center;
+    padding-block-end: 0.3rem;
+    border-block-end: 1px solid var(--hair);
+  }
+
+  .months .m.is-now {
+    color: var(--now);
+    font-weight: 700;
+    border-block-end: 2px solid var(--now);
+  }
+
+  .months .m .tick {
+    display: block;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    color: var(--now);
+  }
+
+  .row {
+    padding-block: 0.28rem;
+  }
+
+  .row__name {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-inline-end: 0.7rem;
+  }
+
+  .row__name .n {
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .row__name .sub {
+    font-size: 0.68rem;
+    color: var(--ink-faint);
+  }
+
+  /* A segment is a data mark: rounded ends, its own label, a 2px surface gap
+     from its neighbours through the grid gap. */
+  .seg {
+    display: flex;
+    align-items: center;
+    min-block-size: 2.1rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--on-band);
+    overflow: hidden;
+  }
+
+  .seg--care {
+    background: var(--band-care);
+  }
+
+  .seg--water {
+    background: var(--band-water);
+  }
+
+  .seg--season {
+    background: var(--band-season);
+  }
+
+  /* Work that is quoted separately is drawn as an outline, not a fill: it is
+     not part of the account until the client approves it. */
+  .seg--quoted {
+    background: transparent;
+    border: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  /* The quiet stretches of a band get a lighter fill rather than a faded
+     label, so the text keeps its contrast either way. */
+  .seg--water.seg--faint {
+    background: color-mix(in srgb, var(--band-water) 32%, var(--surface));
+    color: var(--ink);
+  }
+
+  .seg--season.seg--faint {
+    background: color-mix(in srgb, var(--band-season) 32%, var(--surface));
+    color: var(--ink);
+  }
+
+  /* The axis row sits on the same 12 columns as the bands, so the brass marker
+     lands exactly on the current month rather than being placed by hand. */
+  .row--axis {
+    padding-block: 0;
+  }
+
+  .axis-now {
+    display: flex;
+    justify-content: center;
+    padding-block-start: 0.3rem;
+    border-block-start: 2px solid var(--now);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--now);
+    white-space: nowrap;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.2rem;
+    padding: 0.85rem 1.2rem;
+    border-block-start: 1px solid var(--hair);
+    background: var(--raised);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  .legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .legend .key {
+    inline-size: 0.85rem;
+    block-size: 0.85rem;
+    border-radius: 3px;
+    flex: none;
+  }
+
+  .legend .key--care {
+    background: var(--band-care);
+  }
+
+  .legend .key--water {
+    background: var(--band-water);
+  }
+
+  .legend .key--season {
+    background: var(--band-season);
+  }
+
+  .legend .key--quoted {
+    border: 1px dashed var(--rule);
+  }
+
+  details.table-view {
+    margin-block-start: 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  details.table-view summary {
+    cursor: pointer;
+    color: var(--accent);
+  }
+
+  details.table-view .scroller {
+    margin-block-start: 0.8rem;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+  }
+
+  table {
+    inline-size: 100%;
+    min-inline-size: 40rem;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+  }
+
+  th,
+  td {
+    padding: 0.55rem 0.9rem;
+    text-align: start;
+    border-block-start: 1px solid var(--hair);
+    vertical-align: top;
+  }
+
+  thead th {
+    border-block-start: 0;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  tbody th {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  tbody tr.is-now th,
+  tbody tr.is-now td {
+    background: var(--now-wash);
+  }
+
+  /* ---- Journal ---------------------------------------------------------- */
+  .journal {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .month-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .month-group > h3 {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .entry {
+    display: grid;
+    gap: 1rem;
+    padding: 1.15rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+  }
+
+  @media (min-width: 50rem) {
+    .entry {
+      grid-template-columns: 1fr 15rem;
+      align-items: start;
+    }
+
+    .entry--wide {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .entry__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .entry__when {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.8rem;
+  }
+
+  .entry__when .date {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .entry__when .crew {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .chip {
+    padding: 0.16em 0.55em;
+    border-radius: 3px;
+    background: var(--raised);
+    border: 1px solid var(--hair);
+    color: var(--ink-soft);
+    font-size: 0.74rem;
+  }
+
+  .chip--irr {
+    border-color: color-mix(in srgb, var(--band-water) 55%, transparent);
+    color: var(--ink);
+  }
+
+  .chip--flag {
+    border-color: color-mix(in srgb, var(--now) 60%, transparent);
+    color: var(--ink);
+  }
+
+  .entry p.saw {
+    font-size: 0.96rem;
+    max-width: 44rem;
+  }
+
+  .entry p.saw .who {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+  }
+
+  figure.plate {
+    margin: 0;
+    border: 1px solid var(--hair);
+    border-radius: 5px;
+    overflow: hidden;
+    background: var(--raised);
+  }
+
+  figure.plate svg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+  }
+
+  figure.plate figcaption {
+    padding: 0.45rem 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+  }
+
+  /* ---- Quoted separately ------------------------------------------------ */
+  .quoted-list {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  @media (min-width: 50rem) {
+    .quoted-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .quoted {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.95rem 1.1rem;
+    background: var(--surface);
+    border: 1px dashed var(--rule);
+    border-radius: 6px;
+  }
+
+  .quoted .when {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .quoted strong {
+    font-size: 0.98rem;
+  }
+
+  .quoted p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---- Account band ----------------------------------------------------- */
+  .account-band {
+    display: grid;
+    gap: 1.25rem 2rem;
+    margin-block-start: 3.25rem;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+  }
+
+  @media (min-width: 50rem) {
+    .account-band {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 1rem;
+    margin-block-start: 0.7rem;
+    font-size: 0.92rem;
+  }
+
+  .facts dt {
+    color: var(--ink-faint);
+    padding-block: 0.35rem;
+    border-block-start: 1px solid var(--hair);
+  }
+
+  .facts dd {
+    padding-block: 0.35rem;
+    border-block-start: 1px solid var(--hair);
+    text-align: end;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .facts dt:first-of-type,
+  .facts dd:first-of-type {
+    border-block-start: 0;
+  }
+
+  .terms {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-block-start: 0.7rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .terms li {
+    padding-inline-start: 0.95rem;
+    border-inline-start: 2px solid var(--hair);
+  }
+
+  /* ---- Footers ---------------------------------------------------------- */
+  .proto {
+    margin-block-start: 3.25rem;
+    padding: 1.25rem 1.4rem;
+    background: var(--raised);
+    border: 1px dashed var(--rule);
+    border-radius: 6px;
+  }
+
+  .proto h2 {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .proto ul {
+    margin-block-start: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+
+  .proto li {
+    position: relative;
+    padding-inline-start: 1rem;
+  }
+
+  .proto li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.62em;
+    inline-size: 0.35rem;
+    block-size: 0.35rem;
+    border-radius: 50%;
+    background: var(--ink-faint);
+  }
+
+  .colophon {
+    margin-block-start: 2rem;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--rule);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+</style>
+
+<a class="skip-link" href="#year">Skip to the year</a>
+
+<div class="page">
+  <div class="chrome">
+    <a class="lockup" href="#year" aria-label="GMZ Landscaping, Design, Build, Maintenance">
+      <svg viewBox="0 0 48 48" role="img" aria-hidden="true" focusable="false">
+        <rect width="48" height="48" rx="10" fill="currentColor" />
+        <circle cx="24" cy="18.5" r="7.2" fill="#ffffff" />
+        <circle cx="17.2" cy="23.4" r="5.9" fill="#ffffff" />
+        <circle cx="30.8" cy="23.4" r="5.9" fill="#ffffff" />
+        <rect x="22.6" y="23" width="2.8" height="12.5" rx="1.4" fill="#ffffff" />
+        <rect x="13.5" y="36.5" width="21" height="2.2" rx="1.1" fill="#ffffff" opacity="0.75" />
+      </svg>
+      <span class="words">
+        <span class="name">GMZ Landscaping</span>
+        <span class="tag">Design &middot; Build &middot; Maintenance</span>
+      </span>
+    </a>
+
+    <div class="chrome__right">
+      <nav aria-label="Your account">
+        <ul>
+          <li><a href="#year" aria-current="page">The year</a></li>
+          <li><a href="#journal">Journal</a></li>
+          <li><a href="#quoted">Extra work</a></li>
+          <li><a href="#account">Account</a></li>
+        </ul>
+      </nav>
+      <span class="stamp">Sample account</span>
+    </div>
+  </div>
+
+  <header class="cover">
+    <p class="label">Garden year 2026</p>
+    <h1>The garden year</h1>
+    <p class="account">
+      <strong>The Whitfield Residence</strong>
+      <span>Menlo Park</span>
+      <span>Weekly, Thursdays</span>
+      <span>Crew 2</span>
+      <span>Account since April 2025</span>
+    </p>
+    <p class="lede">
+      A maintenance account is one year repeating, not a string of unrelated visits. This is your
+      year: what the garden is doing, what we are doing about it, and the work that tends to come up
+      in each season so none of it arrives as a surprise.
+    </p>
+  </header>
+
+  <div class="now-grid">
+    <section class="panel panel--now" aria-labelledby="now-heading">
+      <p class="label">Right now</p>
+      <h2 id="now-heading">August</h2>
+      <p>
+        The high water month. Growth has slowed since June, so the visit is more about keeping edges
+        crisp and beds clean than cutting back hard. Grasses get taken down as they finish. The
+        controller is running at its longest cycles of the year, which is why a leak now costs more
+        than a leak in March.
+      </p>
+    </section>
+
+    <section class="panel" aria-labelledby="next-heading">
+      <p class="label">Next visit</p>
+      <h3 id="next-heading" class="big">Thursday, August 20</h3>
+      <p>
+        Crew 2, sometime during the day. You get a day, not an arrival time, and you do not need to
+        be home. We need gate access, dogs secured and the spigot on.
+      </p>
+      <p class="push"><a class="btn btn--quiet" href="#journal">See the last visit</a></p>
+    </section>
+
+    <section class="panel" aria-labelledby="wait-heading">
+      <p class="label">Waiting on you</p>
+      <h3 id="wait-heading" class="big">One quote to decide</h3>
+      <p>
+        Replacing the leaking valve on the back beds zone. Found on the August 6 irrigation walk,
+        that zone is off until it is fixed, and it is quoted separately because valve work sits
+        outside routine care.
+      </p>
+      <p class="push">
+        <span class="btnrow">
+          <a class="btn" href="#quoted">Review the quote</a>
+          <a class="btn btn--quiet" href="#quoted">Ask first</a>
+        </span>
+      </p>
+    </section>
+  </div>
+
+  <section class="band" id="year" aria-labelledby="year-heading">
+    <div class="head">
+      <h2 id="year-heading">Your year, month by month</h2>
+      <p>
+        Routine care runs all twelve months. What changes through the year is the water, what the
+        garden is doing, and which extra work tends to come up.
+      </p>
+    </div>
+
+    <div class="ribbon-wrap">
+      <div class="scroller">
+        <div class="ribbon">
+          <div class="months">
+            <span class="gutter"></span>
+            <span class="m">Jan</span>
+            <span class="m">Feb</span>
+            <span class="m">Mar</span>
+            <span class="m">Apr</span>
+            <span class="m">May</span>
+            <span class="m">Jun</span>
+            <span class="m">Jul</span>
+            <span class="m is-now">Aug<span class="tick">now</span></span>
+            <span class="m">Sep</span>
+            <span class="m">Oct</span>
+            <span class="m">Nov</span>
+            <span class="m">Dec</span>
+          </div>
+
+          <div class="row">
+            <span class="row__name">
+              <span class="n">Routine care</span>
+              <span class="sub">Every visit, included</span>
+            </span>
+            <span class="seg seg--care" style="grid-column: 2 / span 12">
+              Mow, edge, blow down hard surfaces, weed the beds, light shaping, haul the green waste
+            </span>
+          </div>
+
+          <div class="row">
+            <span class="row__name">
+              <span class="n">Water</span>
+              <span class="sub">Walked zone by zone monthly</span>
+            </span>
+            <span class="seg seg--water seg--faint" style="grid-column: 2 / span 2">
+              Mostly off
+            </span>
+            <span class="seg seg--water" style="grid-column: 4 / span 3">Stepped up</span>
+            <span class="seg seg--water" style="grid-column: 7 / span 3">Longest cycles</span>
+            <span class="seg seg--water" style="grid-column: 10 / span 3">Stepped down</span>
+            <span class="seg seg--water seg--faint" style="grid-column: 13 / span 1">Off</span>
+          </div>
+
+          <div class="row">
+            <span class="row__name">
+              <span class="n">The garden</span>
+              <span class="sub">What it is doing</span>
+            </span>
+            <span class="seg seg--season seg--faint" style="grid-column: 2 / span 2">
+              Dormant, wet ground
+            </span>
+            <span class="seg seg--season" style="grid-column: 4 / span 4">
+              Fast growth, where weekly earns its keep
+            </span>
+            <span class="seg seg--season" style="grid-column: 8 / span 3">Slowing, heat</span>
+            <span class="seg seg--season" style="grid-column: 11 / span 3">Leaf drop</span>
+          </div>
+
+          <div class="row">
+            <span class="row__name">
+              <span class="n">Quoted separately</span>
+              <span class="sub">Only if you approve it</span>
+            </span>
+            <span class="seg seg--quoted" style="grid-column: 2 / span 2">
+              Structural pruning, while dormant
+            </span>
+            <span class="seg seg--quoted" style="grid-column: 4 / span 2">
+              Mulch, lawn renovation
+            </span>
+            <span class="seg seg--quoted" style="grid-column: 12 / span 2">
+              Heavy leaf drop haul
+            </span>
+          </div>
+
+          <div class="row row--axis">
+            <span class="row__name"></span>
+            <span class="axis-now" style="grid-column: 9 / span 1">Next visit, Aug 20</span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="legend">
+        <li><span class="key key--care" aria-hidden="true"></span>Included in every visit</li>
+        <li><span class="key key--water" aria-hidden="true"></span>Irrigation through the year</li>
+        <li><span class="key key--season" aria-hidden="true"></span>What the garden is doing</li>
+        <li>
+          <span class="key key--quoted" aria-hidden="true"></span>Quoted separately, approved first
+        </li>
+      </ul>
+    </div>
+
+    <details class="table-view">
+      <summary>Read the year as a table instead</summary>
+      <div class="scroller">
+        <table>
+          <caption class="sr">
+            The garden year by season: routine care, irrigation, what the garden is doing, and work
+            that is quoted separately.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Months</th>
+              <th scope="col">Routine care</th>
+              <th scope="col">Water</th>
+              <th scope="col">The garden</th>
+              <th scope="col">Quoted separately</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Jan to Feb</th>
+              <td>Every visit, unchanged</td>
+              <td>Mostly off, rain does the work</td>
+              <td>Dormant, wet ground, visits may move inside the week</td>
+              <td>Structural pruning while dormant</td>
+            </tr>
+            <tr>
+              <th scope="row">Mar to May</th>
+              <td>Every visit, unchanged</td>
+              <td>Stepped up as the season turns</td>
+              <td>Fast growth, where weekly earns its keep</td>
+              <td>Mulch top-up, lawn renovation</td>
+            </tr>
+            <tr>
+              <th scope="row">Jun to Jul</th>
+              <td>Every visit, unchanged</td>
+              <td>Longest cycles of the year</td>
+              <td>Still growing, flowering finishing</td>
+              <td>Nothing typical</td>
+            </tr>
+            <tr class="is-now">
+              <th scope="row">Aug to Sep</th>
+              <td>Every visit, unchanged</td>
+              <td>Longest cycles, then easing</td>
+              <td>Slowing in the heat, grasses cut back as they finish</td>
+              <td>Nothing typical</td>
+            </tr>
+            <tr>
+              <th scope="row">Oct to Dec</th>
+              <td>Every visit, unchanged</td>
+              <td>Stepped down, then off</td>
+              <td>Leaf drop</td>
+              <td>Heavy leaf drop haul</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <section class="band" id="journal" aria-labelledby="journal-heading">
+    <div class="head">
+      <h2 id="journal-heading">The journal</h2>
+      <p>
+        What the crew did and what they saw, in their words, the same week it happened. Photographs
+        are taken when there is something to show you.
+      </p>
+    </div>
+
+    <div class="journal">
+      <div class="month-group">
+        <h3>August</h3>
+
+        <article class="entry">
+          <div class="entry__body">
+            <p class="entry__when">
+              <span class="date">Thursday, August 13</span>
+              <span class="crew">Crew 2 &middot; Rafael Jr.</span>
+            </p>
+            <ul class="chips">
+              <li class="chip">Mowed and edged</li>
+              <li class="chip">Hard surfaces blown down</li>
+              <li class="chip">Beds weeded</li>
+              <li class="chip">Green waste hauled</li>
+              <li class="chip chip--flag">One thing flagged</li>
+            </ul>
+            <p class="saw">
+              <span class="who">What we saw</span>
+              The hedge along the north fence has grown enough to shade the roses under it. Cutting
+              it back properly is renovation pruning rather than the light shaping a visit includes,
+              so we left it and put it on your list. Say the word and we will price it. Nothing
+              happens on a flag alone.
+            </p>
+          </div>
+          <figure class="plate">
+            <svg
+              viewBox="0 0 400 300"
+              role="img"
+              aria-label="Photo slot: the hedge along the north fence, grown tall enough to shade the roses planted beneath it."
+            >
+              <defs>
+                <linearGradient id="c3a" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1b5e20" />
+                  <stop offset="100%" stop-color="#6e7f63" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#c3a)" />
+              <text
+                x="200"
+                y="146"
+                text-anchor="middle"
+                font-family="Helvetica, Arial, sans-serif"
+                font-size="14"
+                letter-spacing="3"
+                fill="#ffffff"
+                fill-opacity="0.82"
+              >
+                PHOTO SLOT
+              </text>
+              <text
+                x="200"
+                y="168"
+                text-anchor="middle"
+                font-family="Helvetica, Arial, sans-serif"
+                font-size="9"
+                letter-spacing="1.4"
+                fill="#ffffff"
+                fill-opacity="0.6"
+              >
+                HEDGE, NORTH FENCE
+              </text>
+            </svg>
+            <figcaption>Aug 13 &middot; north fence</figcaption>
+          </figure>
+        </article>
+
+        <article class="entry">
+          <div class="entry__body">
+            <p class="entry__when">
+              <span class="date">Thursday, August 6</span>
+              <span class="crew">Crew 2 &middot; Rafael Jr.</span>
+            </p>
+            <ul class="chips">
+              <li class="chip">Mowed and edged</li>
+              <li class="chip">Grasses cut back</li>
+              <li class="chip chip--irr">Irrigation walked, zone by zone</li>
+              <li class="chip">Controller stepped up for the heat</li>
+              <li class="chip chip--flag">Quote sent</li>
+            </ul>
+            <p class="saw">
+              <span class="who">What we saw</span>
+              A valve weeping on the zone that waters the back beds. We shut that zone off at the
+              valve so it was not running all week, and hand watered the beds before we left so
+              nothing sat dry in the heat. The written quote followed on Friday. August is the worst
+              month to leave a zone off, so this one is worth deciding quickly.
+            </p>
+          </div>
+          <figure class="plate">
+            <svg
+              viewBox="0 0 400 300"
+              role="img"
+              aria-label="Photo slot: the weeping valve in the box that serves the back beds zone."
+            >
+              <defs>
+                <linearGradient id="c3b" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#37474f" />
+                  <stop offset="100%" stop-color="#8a9a9e" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#c3b)" />
+              <text
+                x="200"
+                y="146"
+                text-anchor="middle"
+                font-family="Helvetica, Arial, sans-serif"
+                font-size="14"
+                letter-spacing="3"
+                fill="#ffffff"
+                fill-opacity="0.82"
+              >
+                PHOTO SLOT
+              </text>
+              <text
+                x="200"
+                y="168"
+                text-anchor="middle"
+                font-family="Helvetica, Arial, sans-serif"
+                font-size="9"
+                letter-spacing="1.4"
+                fill="#ffffff"
+                fill-opacity="0.6"
+              >
+                VALVE BOX, BACK BEDS
+              </text>
+            </svg>
+            <figcaption>Aug 6 &middot; valve box</figcaption>
+          </figure>
+        </article>
+      </div>
+
+      <div class="month-group">
+        <h3>July</h3>
+
+        <article class="entry entry--wide">
+          <div class="entry__body">
+            <p class="entry__when">
+              <span class="date">Thursday, July 30</span>
+              <span class="crew">Crew 2 &middot; Rafael Jr.</span>
+            </p>
+            <ul class="chips">
+              <li class="chip">Mowed and edged</li>
+              <li class="chip">Shrubs shaped</li>
+              <li class="chip">Beds weeded</li>
+              <li class="chip">Green waste hauled</li>
+            </ul>
+            <p class="saw">
+              <span class="who">What we saw</span>
+              A drip line pulled loose behind the olive, most likely the dog. Reseated it while we
+              were there. That is the kind of thing a weekly visit catches in a minute and a monthly
+              visit finds after the plant has already told you about it.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="quoted" aria-labelledby="quoted-heading">
+    <div class="head">
+      <h2 id="quoted-heading">Work outside the visit</h2>
+      <p>
+        Anything that changes the garden rather than keeping it as it is gets quoted and approved
+        before it happens. It never appears on an invoice you did not agree to.
+      </p>
+    </div>
+
+    <div class="quoted-list">
+      <div class="quoted">
+        <span class="when">Waiting on you &middot; quote 214, sent Aug 14</span>
+        <strong>Replace the leaking valve, back beds zone</strong>
+        <p>
+          The zone stays off until this is done. Approving it books the work onto a Thursday and the
+          price is the one on the quote.
+        </p>
+        <p class="btnrow">
+          <a class="btn" href="#quoted">Approve</a>
+          <a class="btn btn--quiet" href="#quoted">Ask a question</a>
+        </p>
+      </div>
+
+      <div class="quoted">
+        <span class="when">Flagged Aug 13 &middot; not yet priced</span>
+        <strong>Renovation pruning, hedge on the north fence</strong>
+        <p>
+          Tell us to price it and a quote follows. Until then it stays a note on your record and
+          nothing is done.
+        </p>
+        <p class="btnrow"><a class="btn btn--quiet" href="#quoted">Price it</a></p>
+      </div>
+
+      <div class="quoted">
+        <span class="when">Approved Apr 9 &middot; done Apr 16</span>
+        <strong>Mulch top-up, front beds</strong>
+        <p>Materials we bring for you are quoted separately from the visit price.</p>
+      </div>
+
+      <div class="quoted">
+        <span class="when">Declined Feb 20</span>
+        <strong>Lawn aeration, back lawn</strong>
+        <p>
+          Declined for this year. It stays on the record so it can come back up in the spring window
+          rather than being forgotten.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="account-band" id="account">
+    <section aria-labelledby="facts-heading">
+      <h2 class="label" id="facts-heading">Your account</h2>
+      <dl class="facts">
+        <dt>Service day</dt>
+        <dd>Thursday</dd>
+        <dt>Cadence</dt>
+        <dd>Weekly</dd>
+        <dt>Crew</dt>
+        <dd>Crew 2, lead Rafael Jr.</dd>
+        <dt>Irrigation walk</dt>
+        <dd>Monthly, zone by zone</dd>
+        <dt>Visits logged</dt>
+        <dd>71</dd>
+        <dt>Account since</dt>
+        <dd>April 2025</dd>
+        <dt>Next price review</dt>
+        <dd>April 2027</dd>
+      </dl>
+    </section>
+
+    <section aria-labelledby="terms-heading">
+      <h2 class="label" id="terms-heading">What your agreement says</h2>
+      <ul class="terms">
+        <li>Month to month. You are not locked in.</li>
+        <li>Either side can end it with 30 days' notice in writing. No penalty.</li>
+        <li>One set price per visit, agreed before the first visit.</li>
+        <li>A change of cadence changes the agreement, confirmed in writing.</li>
+        <li>The price is reviewed once a year, printed on the face of the agreement.</li>
+        <li>
+          Most work goes ahead in light rain. When conditions would make it damaging we move the
+          visit inside the same week and tell you.
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="proto" aria-labelledby="proto-heading">
+    <h2 id="proto-heading">Prototype notes</h2>
+    <ul>
+      <li>
+        Concept 3 of 3. The organising idea is the year: the client sees the season coming, which is
+        also what makes weekly cadence and seasonal extra work make sense rather than feel like an
+        upsell. Dark first by choice, with the light palette defined in full.
+      </li>
+      <li>
+        The year ribbon is a categorical timeline. Its three hues were checked with a
+        colour-vision-deficiency validator against both the dark and light surfaces, every segment
+        carries its own text label, and a table view of the same data sits under it, so nothing is
+        carried by colour alone.
+      </li>
+      <li>
+        Work that is quoted separately is drawn as an outline rather than a fill, because it is not
+        part of the account until the client approves it.
+      </li>
+      <li>The tree badge is a stand-in until the real GMZ mark exists as SVG.</li>
+      <li>Photo slots are labelled plates, not photographs.</li>
+      <li>
+        No dollar figures. Every policy sentence traces to an FAQ already marked published, so
+        nothing here states a term that has not been decided.
+      </li>
+      <li>
+        Accessibility kept: skip link, visible focus rings, aria-current on the active nav item, one
+        h1, alt text on every plate, tabular figures, wide content scrolling in its own container,
+        and a reduced-motion block.
+      </li>
+      <li>Client name, dates and notes are invented sample data.</li>
+    </ul>
+  </section>
+
+  <p class="colophon">
+    GMZ Landscaping Inc. &middot; CSLB License #636636 &middot; Client portal concept, not a live
+    system.
+  </p>
+</div>

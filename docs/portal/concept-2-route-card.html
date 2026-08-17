@@ -1,0 +1,1457 @@
+<title>The Route Card</title>
+
+<!--
+  GMZ maintenance client portal, concept 2 of 3: "The Route Card".
+
+  PROTOTYPE. Standalone HTML, same convention as docs/intake-forms.html.
+
+  The premise: a maintenance client has two questions, "when are you coming"
+  and "what happened last time", and they ask them on a phone, standing in the
+  kitchen on their service day. So this concept is designed at phone width
+  first and shown in device frames. Everything else is secondary navigation.
+
+  Stand-ins, all flagged on the page:
+    - The tree badge is a drawn stand-in for the real GMZ mark, still needed
+      as SVG per DESIGN-HANDOFF.md.
+    - Client name, dates and notes are invented sample data.
+    - Photo slots are labelled plates, not photographs.
+    - No dollar figures. Per-visit price lives in the client's service
+      agreement and in the estimating system, not in a mockup.
+
+  If this concept is chosen, the GMZ facts in the footer must be read from
+  src/data/site.ts rather than retyped, per "one fact, one home" in CLAUDE.md.
+
+  Policy shown here traces to published FAQs in src/content/faqs/: fixed
+  service day, a day rather than an arrival time, monthly zone-by-zone
+  irrigation checks, extras quoted and approved before the work, month to
+  month with 30 days' notice.
+-->
+
+<style>
+  /* ---- Tokens: complete light palette ---------------------------------- */
+  :root {
+    /* Stage is darker than the app surfaces so the devices sit on top of it. */
+    --stage: #dde3d6;
+    --stage-edge: #c6cfbb;
+    --app: #fbfcf9;
+    --card: #ffffff;
+    --card-sunk: #f1f4ec;
+
+    --ink: #14180f;
+    --ink-soft: #4b5545;
+    --ink-faint: #79826f;
+    --hair: #e3e8db;
+    --rule: #cfd7c5;
+
+    --green: #2e7d32;
+    --green-deep: #1b5e20;
+    --green-darkest: #143f17;
+    --green-wash: #e6f1e4;
+    --on-green: #ffffff;
+
+    /* App chrome stays dark green in both themes, the way a phone app header
+       does, so the white lockup on it never has to flip. */
+    --bar-from: #1b5e20;
+    --bar-to: #133c16;
+
+    /* Semantic states, deliberately not the brand accent. */
+    --wait: #8a5a00;
+    --wait-wash: #fbf0da;
+    --wait-edge: #e0c586;
+    --calm: #4d6b78;
+    --calm-wash: #e8eef1;
+
+    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+    --page: 78rem;
+    --gutter: clamp(1rem, 4vw, 3rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --stage: #0c0f0a;
+      --stage-edge: #232a1d;
+      --app: #14180f;
+      --card: #1b2016;
+      --card-sunk: #222819;
+
+      --ink: #eaeee1;
+      --ink-soft: #b1b9a3;
+      --ink-faint: #848d76;
+      --hair: #2a3122;
+      --rule: #39412f;
+
+      --green: #8ecb8f;
+      --green-deep: #b2e0b2;
+      --green-darkest: #0f1f11;
+      --green-wash: #1d2a1b;
+      --on-green: #0e1209;
+
+      --wait: #dfab4a;
+      --wait-wash: #2b2211;
+      --wait-edge: #55431d;
+      --calm: #9db6c1;
+      --calm-wash: #1a2328;
+    }
+  }
+
+  :root[data-theme='dark'] {
+    --stage: #0c0f0a;
+    --stage-edge: #232a1d;
+    --app: #14180f;
+    --card: #1b2016;
+    --card-sunk: #222819;
+
+    --ink: #eaeee1;
+    --ink-soft: #b1b9a3;
+    --ink-faint: #848d76;
+    --hair: #2a3122;
+    --rule: #39412f;
+
+    --green: #8ecb8f;
+    --green-deep: #b2e0b2;
+    --green-darkest: #0f1f11;
+    --green-wash: #1d2a1b;
+    --on-green: #0e1209;
+
+    --wait: #dfab4a;
+    --wait-wash: #2b2211;
+    --wait-edge: #55431d;
+    --calm: #9db6c1;
+    --calm-wash: #1a2328;
+  }
+
+  /* ---- Base ------------------------------------------------------------ */
+  body {
+    margin: 0;
+    background: var(--app);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dt,
+  dd {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: var(--green-deep);
+    text-underline-offset: 0.18em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+
+  .skip-link {
+    position: absolute;
+    inset-inline-start: 1rem;
+    inset-block-start: -100%;
+    z-index: 50;
+    padding: 0.6rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    inset-block-start: 1rem;
+  }
+
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .page {
+    max-width: var(--page);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    padding-block: 2.25rem 4rem;
+  }
+
+  /* ---- Page intro ------------------------------------------------------ */
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block-end: 2rem;
+  }
+
+  .intro__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--green);
+    text-decoration: none;
+  }
+
+  .lockup svg {
+    display: block;
+    flex: none;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+  }
+
+  .lockup .words {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .lockup .name {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+
+  .lockup .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .stamp {
+    margin-inline-start: auto;
+    padding: 0.22em 0.65em;
+    border: 1px solid var(--wait-edge);
+    border-radius: 999px;
+    background: var(--wait-wash);
+    color: var(--wait);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .intro h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+  }
+
+  .intro .lede {
+    max-width: 40rem;
+    font-size: 1.06rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---- Stage ----------------------------------------------------------- */
+  .stage {
+    display: grid;
+    gap: 2rem 1.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr));
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    background: var(--stage);
+    border: 1px solid var(--stage-edge);
+    border-radius: 12px;
+  }
+
+  .screen {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .screen__label {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  .screen__label .num {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--green-deep);
+  }
+
+  .screen__label h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .screen__note {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  /* Reserve the same height for all three captions so the devices start on the
+     same line rather than stepping down as the caption lengths vary. */
+  @media (min-width: 62rem) {
+    .screen__note {
+      min-block-size: 5.6rem;
+    }
+  }
+
+  /* ---- Device frame ---------------------------------------------------- */
+  .device {
+    inline-size: 100%;
+    max-inline-size: 22rem;
+    margin-inline: auto;
+    padding: 0.5rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 26px;
+    box-shadow: 0 10px 28px rgb(0 0 0 / 12%);
+  }
+
+  .device__inner {
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--app);
+    border: 1px solid var(--hair);
+  }
+
+  .statusbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.35rem 0.9rem 0.1rem;
+    background: var(--bar-to);
+    color: rgb(255 255 255 / 72%);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* ---- App header ------------------------------------------------------ */
+  .appbar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 0.9rem 0.9rem;
+    background: linear-gradient(160deg, var(--bar-from), var(--bar-to));
+    color: #ffffff;
+  }
+
+  .appbar svg {
+    display: block;
+    flex: none;
+    inline-size: 1.85rem;
+    block-size: 1.85rem;
+    color: rgb(255 255 255 / 16%);
+  }
+
+  .appbar .who {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+
+  .appbar .who strong {
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+
+  .appbar .who span {
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    color: rgb(255 255 255 / 70%);
+  }
+
+  .appbar .back {
+    display: grid;
+    place-items: center;
+    inline-size: 1.7rem;
+    block-size: 1.7rem;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 14%);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .appbar .back .chev {
+    display: block;
+    inline-size: 0.95rem;
+    block-size: 0.95rem;
+    stroke-width: 2;
+  }
+
+  .appbar .title {
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    font-weight: 600;
+  }
+
+  /* ---- App body -------------------------------------------------------- */
+  .appbody {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.85rem;
+  }
+
+  .card {
+    padding: 0.85rem 0.9rem;
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 10px;
+  }
+
+  .card > * + * {
+    margin-block-start: 0.45rem;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* The next visit is the reason the app exists, so it gets the display face. */
+  .card--next {
+    background: var(--green-wash);
+    border-color: color-mix(in srgb, var(--green) 34%, transparent);
+  }
+
+  .card--next .when {
+    font-family: var(--serif);
+    font-size: 1.42rem;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .card--next .countdown {
+    display: inline-block;
+    padding: 0.12em 0.5em;
+    border-radius: 999px;
+    background: var(--green);
+    color: var(--on-green);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .card .fine {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+
+  .card .flagged {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .facts li {
+    padding: 0.18em 0.55em;
+    border-radius: 999px;
+    background: var(--card-sunk);
+    color: var(--ink-soft);
+    font-size: 0.72rem;
+  }
+
+  /* The one amber card. State is carried by fill, border and label together. */
+  .card--wait {
+    background: var(--wait-wash);
+    border-color: var(--wait-edge);
+  }
+
+  .card--wait .eyebrow {
+    color: var(--wait);
+  }
+
+  .card--wait .what {
+    font-size: 0.94rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .card--wait p {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+
+  .btnrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-block-start: 0.6rem;
+  }
+
+  .btn {
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--ink);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      background 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .btn:hover {
+    border-color: var(--green);
+    color: var(--green-deep);
+  }
+
+  .btn--go {
+    background: var(--wait);
+    border-color: var(--wait);
+    color: var(--wait-wash);
+  }
+
+  .btn--go:hover {
+    background: var(--wait);
+    color: var(--wait-wash);
+    filter: brightness(1.06);
+  }
+
+  .btn--green {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--on-green);
+  }
+
+  .btn--green:hover {
+    background: var(--green-deep);
+    border-color: var(--green-deep);
+    color: var(--on-green);
+  }
+
+  /* Last visit summary */
+  .did {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  .did li {
+    display: flex;
+    gap: 0.45rem;
+  }
+
+  /* A tick, not an empty circle: everything in this list is work already done,
+     and an unfilled circle reads as an unchecked box. */
+  .did li::before {
+    content: '';
+    flex: none;
+    inline-size: 0.38rem;
+    block-size: 0.66rem;
+    margin-inline: 0.18rem 0.3rem;
+    margin-block-start: 0.15em;
+    border-inline-end: 2px solid var(--green);
+    border-block-end: 2px solid var(--green);
+    transform: rotate(42deg);
+  }
+
+  .saw {
+    padding: 0.6rem 0.7rem;
+    background: var(--card-sunk);
+    border-inline-start: 2px solid var(--green);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.82rem;
+    color: var(--ink);
+  }
+
+  .thumbs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+
+  .thumb {
+    margin: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--hair);
+  }
+
+  .thumb svg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+  }
+
+  .thumb figcaption {
+    padding: 0.3rem 0.45rem;
+    background: var(--card);
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-faint);
+  }
+
+  .quick {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+
+  .quick a {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.6rem 0.65rem;
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 9px;
+    color: var(--ink);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .quick a:hover {
+    border-color: var(--green);
+    color: var(--green-deep);
+  }
+
+  .quick .glyph {
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    border-radius: 6px;
+    background: var(--green-wash);
+    color: var(--green-deep);
+  }
+
+  .quick .glyph svg {
+    inline-size: 0.95rem;
+    block-size: 0.95rem;
+    stroke-width: 1.8;
+  }
+
+  /* Zone list on the visit screen */
+  .zones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .zones li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-block: 0.32rem;
+    border-block-start: 1px solid var(--hair);
+  }
+
+  .zones li:first-child {
+    border-block-start: 0;
+  }
+
+  .zones .z {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--ink-faint);
+    inline-size: 3.4rem;
+    flex: none;
+  }
+
+  .zones .state {
+    margin-inline-start: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .zones .state::before {
+    content: '';
+    inline-size: 0.45rem;
+    block-size: 0.45rem;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  .zones .state.is-fixed::before {
+    background: var(--wait);
+  }
+
+  .zones .state.is-off::before {
+    background: var(--calm);
+  }
+
+  /* Decided list on the approvals screen */
+  .decided {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+  }
+
+  .decided li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-block: 0.5rem;
+    border-block-start: 1px solid var(--hair);
+  }
+
+  .decided li:first-child {
+    border-block-start: 0;
+  }
+
+  .decided .head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .decided .head strong {
+    font-weight: 600;
+  }
+
+  .pill {
+    margin-inline-start: auto;
+    flex: none;
+    padding: 0.1em 0.5em;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .pill--yes {
+    background: var(--green-wash);
+    color: var(--green-deep);
+  }
+
+  .pill--no {
+    background: var(--calm-wash);
+    color: var(--calm);
+  }
+
+  .decided .meta {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    color: var(--ink-faint);
+  }
+
+  /* ---- Tab bar --------------------------------------------------------- */
+  .tabbar ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-block-start: 1px solid var(--hair);
+    background: var(--card);
+  }
+
+  .tabbar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.55rem 0.2rem 0.7rem;
+    color: var(--ink-faint);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  /* Every icon is a stroked sprite symbol, inheriting the link's colour. */
+  .sprite {
+    position: absolute;
+  }
+
+  .glyph,
+  .chev {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .tabbar a .glyph {
+    display: block;
+    inline-size: 1.15rem;
+    block-size: 1.15rem;
+  }
+
+  .tabbar a[aria-current='page'] {
+    color: var(--green-deep);
+  }
+
+  .tabbar a:hover {
+    color: var(--green-deep);
+  }
+
+  /* ---- Below the stage ------------------------------------------------- */
+  .why {
+    display: grid;
+    gap: 1.5rem;
+    margin-block-start: 2.5rem;
+  }
+
+  @media (min-width: 52rem) {
+    .why {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .why h3 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--green-deep);
+  }
+
+  .why p {
+    margin-block-start: 0.5rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .proto {
+    margin-block-start: 3rem;
+    padding: 1.25rem 1.4rem;
+    background: var(--card-sunk);
+    border: 1px dashed var(--rule);
+    border-radius: 10px;
+  }
+
+  .proto h2 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .proto ul {
+    margin-block-start: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+
+  .proto li {
+    position: relative;
+    padding-inline-start: 1rem;
+  }
+
+  .proto li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.62em;
+    inline-size: 0.35rem;
+    block-size: 0.35rem;
+    border-radius: 50%;
+    background: var(--ink-faint);
+  }
+
+  .colophon {
+    margin-block-start: 2rem;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--hair);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+</style>
+
+<!--
+  Icon sprite. Dingbat characters render as a different glyph on every platform,
+  and some fonts substitute a colour emoji, so the tab bar draws its own.
+-->
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <symbol id="i-home" viewBox="0 0 24 24">
+    <path d="M3.6 11.2 12 4.3l8.4 6.9v8.5h-5.7v-5.6H9.3v5.6H3.6z" />
+  </symbol>
+  <symbol id="i-visits" viewBox="0 0 24 24">
+    <path d="M4 6.5h.01M4 12h.01M4 17.5h.01M8.5 6.5H20M8.5 12H20M8.5 17.5H20" />
+  </symbol>
+  <symbol id="i-garden" viewBox="0 0 24 24">
+    <path d="M19.5 4.5c-8 0-13.5 3.8-13.5 9.5a5.6 5.6 0 0 0 5.6 5.6c5.7 0 7.9-6 7.9-15.1Z" />
+    <path d="M6.2 20.2 14 12.4" />
+  </symbol>
+  <symbol id="i-account" viewBox="0 0 24 24">
+    <path d="M12 11.3a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" />
+    <path d="M4.8 20c0-4 3.2-6.2 7.2-6.2s7.2 2.2 7.2 6.2" />
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24">
+    <path d="M3.5 6h17v12h-17z" />
+    <path d="m3.9 6.6 8.1 6.1 8.1-6.1" />
+  </symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24">
+    <path d="M12 5.5v13M5.5 12h13" />
+  </symbol>
+  <symbol id="i-back" viewBox="0 0 24 24">
+    <path d="M14.5 5.5 8 12l6.5 6.5" />
+  </symbol>
+</svg>
+
+<a class="skip-link" href="#screens">Skip to the screens</a>
+
+<div class="page">
+  <header class="intro">
+    <div class="intro__top">
+      <a class="lockup" href="#screens" aria-label="GMZ Landscaping, Design, Build, Maintenance">
+        <svg viewBox="0 0 48 48" role="img" aria-hidden="true" focusable="false">
+          <rect width="48" height="48" rx="10" fill="currentColor" />
+          <circle cx="24" cy="18.5" r="7.2" fill="#ffffff" />
+          <circle cx="17.2" cy="23.4" r="5.9" fill="#ffffff" />
+          <circle cx="30.8" cy="23.4" r="5.9" fill="#ffffff" />
+          <rect x="22.6" y="23" width="2.8" height="12.5" rx="1.4" fill="#ffffff" />
+          <rect x="13.5" y="36.5" width="21" height="2.2" rx="1.1" fill="#ffffff" opacity="0.75" />
+        </svg>
+        <span class="words">
+          <span class="name">GMZ Landscaping</span>
+          <span class="tag">Design &middot; Build &middot; Maintenance</span>
+        </span>
+      </a>
+      <span class="stamp">Sample account</span>
+    </div>
+
+    <h1>The route card</h1>
+    <p class="lede">
+      A maintenance client asks two questions, and asks them on a phone: when are you coming, and
+      what happened last time. This concept answers both in the first screenful and puts anything
+      waiting on a decision directly under them.
+    </p>
+  </header>
+
+  <div class="stage" id="screens">
+    <!-- ---------- Screen 1: home ---------- -->
+    <section class="screen" aria-labelledby="s1">
+      <div class="screen__label">
+        <span class="num">01</span>
+        <h2 id="s1">Home</h2>
+      </div>
+      <p class="screen__note">
+        Next visit, then anything needing a decision, then last week. Nothing above the fold that a
+        client did not come here for.
+      </p>
+
+      <div class="device">
+        <div class="device__inner">
+          <p class="statusbar"><span>Mon 7:48</span><span>Portal</span></p>
+
+          <div class="appbar">
+            <svg viewBox="0 0 48 48" role="img" aria-hidden="true" focusable="false">
+              <rect width="48" height="48" rx="10" fill="currentColor" />
+              <circle cx="24" cy="18.5" r="7.2" fill="#ffffff" />
+              <circle cx="17.2" cy="23.4" r="5.9" fill="#ffffff" />
+              <circle cx="30.8" cy="23.4" r="5.9" fill="#ffffff" />
+              <rect x="22.6" y="23" width="2.8" height="12.5" rx="1.4" fill="#ffffff" />
+            </svg>
+            <span class="who">
+              <strong>The Whitfield Residence</strong>
+              <span>Menlo Park &middot; weekly, Thursdays</span>
+            </span>
+          </div>
+
+          <div class="appbody">
+            <div class="card card--next">
+              <p class="eyebrow">Next visit</p>
+              <p class="when">Thursday, August 20</p>
+              <p><span class="countdown">In 3 days</span></p>
+              <p class="fine">
+                Crew 2, sometime during the day. You get a day, not an arrival time, and you do not
+                need to be home.
+              </p>
+              <ul class="facts">
+                <li>Gate access</li>
+                <li>Dogs secured</li>
+                <li>Spigot on</li>
+              </ul>
+            </div>
+
+            <div class="card card--wait">
+              <p class="eyebrow">Waiting on you</p>
+              <p class="what">Replace the leaking valve on the back beds zone</p>
+              <p>
+                Found on the August 6 irrigation walk. That zone is shut off until it is fixed.
+                Quote sent Friday.
+              </p>
+              <div class="btnrow">
+                <a class="btn btn--go" href="#screens">Approve</a>
+                <a class="btn" href="#screens">Ask a question</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <p class="eyebrow">Last visit &middot; Thu Aug 13</p>
+              <ul class="did">
+                <li>Mowed and edged</li>
+                <li>Hard surfaces blown down</li>
+                <li>Beds weeded</li>
+                <li>Green waste hauled</li>
+              </ul>
+              <p class="saw">
+                The hedge on the north fence is shading the roses under it. That is renovation
+                pruning, not routine shaping, so we flagged it rather than doing it.
+              </p>
+              <p><a class="btn" href="#screens">See the visit</a></p>
+            </div>
+
+            <div class="quick">
+              <a href="#screens"
+                ><span class="glyph" aria-hidden="true"
+                  ><svg focusable="false"><use href="#i-mail" /></svg></span
+                >Message crew</a
+              >
+              <a href="#screens"
+                ><span class="glyph" aria-hidden="true"
+                  ><svg focusable="false"><use href="#i-plus" /></svg></span
+                >Request work</a
+              >
+            </div>
+          </div>
+
+          <nav class="tabbar" aria-label="Home screen tabs">
+            <ul>
+              <li>
+                <a href="#screens" aria-current="page"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-home" /></svg
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#screens"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-visits" /></svg
+                  >Visits</a
+                >
+              </li>
+              <li>
+                <a href="#screens"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-garden" /></svg
+                  >Garden</a
+                >
+              </li>
+              <li>
+                <a href="#screens"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-account" /></svg
+                  >Account</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Screen 2: visit detail ---------- -->
+    <section class="screen" aria-labelledby="s2">
+      <div class="screen__label">
+        <span class="num">02</span>
+        <h2 id="s2">One visit</h2>
+      </div>
+      <p class="screen__note">
+        What the crew did, what they saw, and the photos they took. The irrigation walk sits inside
+        the visit it happened on.
+      </p>
+
+      <div class="device">
+        <div class="device__inner">
+          <p class="statusbar"><span>Mon 7:49</span><span>Portal</span></p>
+
+          <div class="appbar">
+            <a class="back" href="#screens" aria-label="Back to home"
+              ><svg class="chev" aria-hidden="true" focusable="false"><use href="#i-back" /></svg
+            ></a>
+            <span class="title">Thursday, August 6</span>
+          </div>
+
+          <div class="appbody">
+            <div class="card">
+              <p class="eyebrow">Crew 2 &middot; Rafael Jr.</p>
+              <ul class="did">
+                <li>Mowed and edged</li>
+                <li>Grasses cut back for the season</li>
+                <li>Hard surfaces blown down</li>
+                <li>Irrigation walked zone by zone</li>
+                <li>Controller stepped up for the heat</li>
+                <li>Green waste hauled</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <p class="eyebrow">What we saw</p>
+              <p class="saw">
+                A valve weeping on the zone that waters the back beds. We shut that zone off at the
+                valve and hand watered the beds so nothing sat dry. Valve work is outside routine
+                care, so a quote follows and nothing happens until you say so.
+              </p>
+              <div class="thumbs">
+                <figure class="thumb">
+                  <svg
+                    viewBox="0 0 300 210"
+                    role="img"
+                    aria-label="Photo slot: the weeping valve in the box serving the back beds."
+                  >
+                    <defs>
+                      <linearGradient id="c2a" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#37474f" />
+                        <stop offset="100%" stop-color="#8a9a9e" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="300" height="210" fill="url(#c2a)" />
+                    <text
+                      x="150"
+                      y="100"
+                      text-anchor="middle"
+                      font-family="Helvetica, Arial, sans-serif"
+                      font-size="13"
+                      letter-spacing="2.5"
+                      fill="#ffffff"
+                      fill-opacity="0.82"
+                    >
+                      PHOTO SLOT
+                    </text>
+                    <text
+                      x="150"
+                      y="120"
+                      text-anchor="middle"
+                      font-family="Helvetica, Arial, sans-serif"
+                      font-size="8.5"
+                      letter-spacing="1.2"
+                      fill="#ffffff"
+                      fill-opacity="0.6"
+                    >
+                      VALVE BOX
+                    </text>
+                  </svg>
+                  <figcaption>Valve, back beds</figcaption>
+                </figure>
+                <figure class="thumb">
+                  <svg
+                    viewBox="0 0 300 210"
+                    role="img"
+                    aria-label="Photo slot: the back beds after hand watering, showing the plants are not stressed."
+                  >
+                    <defs>
+                      <linearGradient id="c2b" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#2e7d32" />
+                        <stop offset="100%" stop-color="#7fa06b" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="300" height="210" fill="url(#c2b)" />
+                    <text
+                      x="150"
+                      y="100"
+                      text-anchor="middle"
+                      font-family="Helvetica, Arial, sans-serif"
+                      font-size="13"
+                      letter-spacing="2.5"
+                      fill="#ffffff"
+                      fill-opacity="0.82"
+                    >
+                      PHOTO SLOT
+                    </text>
+                    <text
+                      x="150"
+                      y="120"
+                      text-anchor="middle"
+                      font-family="Helvetica, Arial, sans-serif"
+                      font-size="8.5"
+                      letter-spacing="1.2"
+                      fill="#ffffff"
+                      fill-opacity="0.6"
+                    >
+                      BACK BEDS
+                    </text>
+                  </svg>
+                  <figcaption>Beds, hand watered</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="card">
+              <p class="eyebrow">Monthly irrigation walk</p>
+              <ul class="zones">
+                <li><span class="z">Zone 1</span>Front lawn<span class="state">Ran clean</span></li>
+                <li><span class="z">Zone 2</span>Front beds<span class="state">Ran clean</span></li>
+                <li><span class="z">Zone 3</span>Side path<span class="state">Ran clean</span></li>
+                <li>
+                  <span class="z">Zone 4</span>Back beds<span class="state is-off">Off, valve</span>
+                </li>
+                <li><span class="z">Zone 5</span>Back lawn<span class="state">Ran clean</span></li>
+                <li>
+                  <span class="z">Zone 6</span>Planters<span class="state is-fixed"
+                    >Line reseated</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <nav class="tabbar" aria-label="Visit screen tabs">
+            <ul>
+              <li>
+                <a href="#screens"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-home" /></svg
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#screens" aria-current="page"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-visits" /></svg
+                  >Visits</a
+                >
+              </li>
+              <li>
+                <a href="#screens"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-garden" /></svg
+                  >Garden</a
+                >
+              </li>
+              <li>
+                <a href="#screens"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-account" /></svg
+                  >Account</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Screen 3: approvals ---------- -->
+    <section class="screen" aria-labelledby="s3">
+      <div class="screen__label">
+        <span class="num">03</span>
+        <h2 id="s3">Decisions</h2>
+      </div>
+      <p class="screen__note">
+        The screen that keeps extra work off an invoice: quoted, then approved or declined on the
+        record, with the date.
+      </p>
+
+      <div class="device">
+        <div class="device__inner">
+          <p class="statusbar"><span>Mon 7:51</span><span>Portal</span></p>
+
+          <div class="appbar">
+            <a class="back" href="#screens" aria-label="Back to home"
+              ><svg class="chev" aria-hidden="true" focusable="false"><use href="#i-back" /></svg
+            ></a>
+            <span class="title">Decisions</span>
+          </div>
+
+          <div class="appbody">
+            <div class="card card--wait">
+              <p class="eyebrow">Waiting on you &middot; 1</p>
+              <p class="what">Replace the leaking valve on the back beds zone</p>
+              <p>
+                Quote 214, sent Friday, August 14. The zone stays off until it is done. Approving
+                here books it onto a Thursday, and the price is what the quote says.
+              </p>
+              <div class="btnrow">
+                <a class="btn btn--go" href="#screens">Approve</a>
+                <a class="btn" href="#screens">Ask a question</a>
+                <a class="btn" href="#screens">Not now</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <p class="eyebrow">Flagged, not yet quoted</p>
+              <p class="flagged">Renovation pruning, hedge on the north fence</p>
+              <p class="fine">
+                Seen August 13. Tell us to price it and a quote follows. Nothing gets done on a flag
+                alone.
+              </p>
+              <div class="btnrow"><a class="btn btn--green" href="#screens">Price it</a></div>
+            </div>
+
+            <div class="card">
+              <p class="eyebrow">Decided</p>
+              <ul class="decided">
+                <li>
+                  <span class="head"
+                    ><strong>Mulch top-up, front beds</strong
+                    ><span class="pill pill--yes">Approved</span></span
+                  >
+                  <span class="meta">Quote 198 &middot; approved Apr 9 &middot; done Apr 16</span>
+                </li>
+                <li>
+                  <span class="head"
+                    ><strong>Lawn aeration, back lawn</strong
+                    ><span class="pill pill--no">Not now</span></span
+                  >
+                  <span class="meta">Quote 176 &middot; declined Feb 20</span>
+                </li>
+                <li>
+                  <span class="head"
+                    ><strong>Storm debris haul, February</strong
+                    ><span class="pill pill--yes">Approved</span></span
+                  >
+                  <span class="meta">Quote 171 &middot; approved Feb 11 &middot; done Feb 13</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <nav class="tabbar" aria-label="Decisions screen tabs">
+            <ul>
+              <li>
+                <a href="#screens"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-home" /></svg
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#screens"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-visits" /></svg
+                  >Visits</a
+                >
+              </li>
+              <li>
+                <a href="#screens"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-garden" /></svg
+                  >Garden</a
+                >
+              </li>
+              <li>
+                <a href="#screens" aria-current="page"
+                  ><svg class="glyph" aria-hidden="true" focusable="false">
+                    <use href="#i-account" /></svg
+                  >Account</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="why">
+    <div>
+      <h3>Why a phone first</h3>
+      <p>
+        The moment a client uses this is the morning of their service day, standing in the kitchen.
+        Designing for the desk and squeezing it down gets that moment wrong. The same layout widens
+        to two columns on a laptop, next visit and decisions on the left, visit history on the
+        right.
+      </p>
+    </div>
+    <div>
+      <h3>State is a shape, not a colour</h3>
+      <p>
+        Anything waiting on a client carries a fill, a border and a label together, so it still
+        reads as urgent to someone who cannot separate amber from green. Brand green stays on GMZ,
+        not on status.
+      </p>
+    </div>
+    <div>
+      <h3>The upsell is the honesty</h3>
+      <p>
+        Every extra is a quote a client approves before it happens. That turns the part of
+        maintenance clients dread, work appearing on an invoice, into the part they trust.
+      </p>
+    </div>
+  </div>
+
+  <section class="proto" aria-labelledby="proto-heading">
+    <h2 id="proto-heading">Prototype notes</h2>
+    <ul>
+      <li>
+        Concept 2 of 3. Three screens shown in frames: home, one visit, decisions. Sans first for
+        the interface, the serif kept for dates and headings so the brand voice still reads.
+      </li>
+      <li>The tree badge is a stand-in until the real GMZ mark exists as SVG.</li>
+      <li>Photo slots are labelled plates, not photographs.</li>
+      <li>
+        No dollar figures. Approving a quote refers to the quote, which is where the price lives.
+      </li>
+      <li>
+        Every policy sentence traces to an FAQ already marked published. Nothing invents a term.
+      </li>
+      <li>
+        Accessibility kept: skip link, visible focus rings, aria-current in each screen's tab bar,
+        one h1, alt text on every plate, and a reduced-motion block.
+      </li>
+      <li>Client name, dates and notes are invented sample data.</li>
+    </ul>
+  </section>
+
+  <p class="colophon">
+    GMZ Landscaping Inc. &middot; CSLB License #636636 &middot; Client portal concept, not a live
+    system.
+  </p>
+</div>
