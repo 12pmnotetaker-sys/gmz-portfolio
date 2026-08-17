@@ -37,8 +37,13 @@ export const company = {
   summary:
     'A licensed landscape contractor serving the San Francisco Peninsula, designing, building and maintaining outdoor spaces.',
 
+  /** First year of trading. Drives the "since" line and the About facts. */
+  founded: 1994,
+
   address: {
     mailing: 'P.O. Box 3718, Redwood City, CA 94064',
+    /** Split form, for the footer and contact panel which stack the lines. */
+    mailingLines: ['P.O. Box 3718', 'Redwood City, CA 94064'],
     locality: 'Redwood City',
     region: 'CA',
     postalCode: '94064',
@@ -58,12 +63,31 @@ export const company = {
     { name: 'Rafael Jr.', display: '(650) 307-9993', tel: '+16503079993' },
   ] satisfies Phone[],
 
+  /** Office hours. The contact panel stacks these, the footer runs them inline. */
+  hours: {
+    days: 'Monday to Friday',
+    daysShort: 'Mon–Fri',
+    time: '8am – 4pm',
+  },
+
   /** California State License Board number. Confirmed 2026-07-25. */
   license: {
     label: 'CSLB License',
     number: '636636',
     display: 'CSLB License #636636',
   },
+
+  /**
+   * Who draws the plans. Stated on every project page and in the About
+   * facts, because "in house" is a differentiator clients ask about.
+   */
+  drawings: 'In house',
+
+  /**
+   * The region as GMZ describes it in prose. `serviceArea` below is the
+   * town-by-town claim; this is the shorthand the design uses in headings.
+   */
+  serviceRegion: 'The Peninsula',
 
   /**
    * Towns GMZ actively works in. Used by the service-area section and the
@@ -82,6 +106,19 @@ export const company = {
     'Hillsborough',
   ],
 
+  /**
+   * Professional bodies GMZ belongs to. Each is a claim; drop the entry
+   * rather than let a lapsed membership keep rendering.
+   */
+  memberships: [
+    {
+      name: 'Association of Professional Landscape Designers',
+      abbr: 'APLD',
+      /** Logo under src/assets/brand/. Alt text is the full name above. */
+      logo: 'apld-logo.png',
+    },
+  ],
+
   /** Public social profiles. Leave a value empty to hide the link. */
   social: {
     instagram: '',
@@ -91,12 +128,70 @@ export const company = {
   },
 } as const;
 
+/**
+ * What a client pays before any drawing exists.
+ *
+ * Ratified and live as of 2026-08-17, from the GMZ fee schedule. These are
+ * prices to the client, not internal costs, so they belong on the site.
+ *
+ * Nothing here is credited against anything later. That is deliberate and it
+ * is stated plainly, because the worst moment for a client to discover it is
+ * at contract signing.
+ *
+ * ONE EXCEPTION to the one-fact-one-home rule: the consultation fee is also
+ * written out in `src/content/faqs/does-site-visit-cost.md`, because Markdown
+ * bodies cannot read this file. That is the only answer that states the
+ * number; every other answer refers to the visit being charged without
+ * repeating it. If the fee changes, those are the two places to edit.
+ */
+export const fees = {
+  consultation: {
+    display: '$175',
+    /** What the fee buys. */
+    covers: 'the first hour on the property',
+    prepaid: true,
+  },
+  maintenanceWalk: {
+    display: '$75',
+    prepaid: true,
+  },
+  travel: {
+    display: '$100',
+    /** Charged on top when the property is outside the service area. */
+    note: 'outside the towns served',
+    limitMiles: 40,
+  },
+  /** No fee is credited toward a later stage. */
+  credited: false,
+} as const;
+
 /** The number a visitor calls when only one fits. */
 export const primaryPhone: Phone = company.phones[0];
 
+/** The second number the contact page offers as an alternative. */
+export const secondaryPhone: Phone = company.phones[1];
+
+/**
+ * Derived display strings. These exist so the license number and the founding
+ * year each keep exactly one home: change the value above and every rendering
+ * of it follows.
+ */
+export const licenseShort = `CSLB #${company.license.number}`;
+/** "the Peninsula", for use mid-sentence where the capital would read oddly. */
+export const serviceRegionInline = company.serviceRegion.replace(/^The\b/, 'the');
+export const hoursInline = `${company.hours.daysShort} ${company.hours.time}`;
+export const foundedLine = `since ${company.founded}`;
+
 export const site = {
-  /** Overridden at build time by SITE_URL; see astro.config.mjs. */
-  url: 'https://www.gmzlandscaping.com',
+  /**
+   * The production origin. Overridden at build time by SITE_URL; see
+   * astro.config.mjs.
+   *
+   * It is gmzlandscape.com, with no "ing". The scaffold assumed
+   * gmzlandscaping.com, which GMZ does not own and never has; the live Wix
+   * site has been on gmzlandscape.com throughout. Confirmed 2026-08-17.
+   */
+  url: 'https://www.gmzlandscape.com',
   title: `${company.name} — ${company.tagline}`,
   titleTemplate: `%s | ${company.name}`,
   description: company.summary,
@@ -105,15 +200,38 @@ export const site = {
   ogImage: '/og-default.jpg',
 } as const;
 
+/**
+ * The private-portfolio veil.
+ *
+ * This is a courtesy screen, NOT access control. The code ships in the client
+ * bundle and every page stays directly fetchable by URL, so treat it as a
+ * "please don't browse this casually" sign rather than a lock. Anything that
+ * genuinely must not be public does not belong in this repo at all. See the
+ * "Private portfolio" section of README.md.
+ */
+export const gate = {
+  enabled: true,
+  /** Compared case-insensitively after trimming. */
+  code: 'GMZ26',
+  /** localStorage key holding the unlocked flag. */
+  storageKey: 'gmz-portfolio-unlocked',
+} as const;
+
 export interface NavItem {
   label: string;
   href: string;
 }
 
+/**
+ * Primary navigation, in the order the design sets it. "Answers" is the
+ * customer-question library kept from the public scaffold; everything else
+ * comes straight from the portfolio design.
+ */
 export const primaryNav: NavItem[] = [
-  { label: 'Work', href: '/work' },
+  { label: 'The Work', href: '/' },
+  { label: 'Walkthroughs', href: '/walkthroughs' },
+  { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Answers', href: '/faq' },
-  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];

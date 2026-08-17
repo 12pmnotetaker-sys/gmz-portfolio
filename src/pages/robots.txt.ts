@@ -1,16 +1,19 @@
 import type { APIRoute } from 'astro';
 
 /**
- * Generated rather than static so the sitemap URL always matches the site
- * origin configured in astro.config.mjs, including on preview deploys.
+ * The portfolio is private, so nothing here is offered to a crawler.
+ *
+ * This is the half of the privacy story that actually works: the unlock veil
+ * is client-side and a crawler would read straight past it, whereas a
+ * disallow plus the `noindex` that BaseLayout sets on every gated page keeps
+ * these pages out of search results.
+ *
+ * If pages are made public later (`gated={false}` in BaseLayout), allow them
+ * by path here and add the sitemap integration back to astro.config.mjs.
  */
-export const GET: APIRoute = ({ site }) => {
-  const sitemap = new URL('sitemap-index.xml', site);
-
+export const GET: APIRoute = () => {
   const body = `User-agent: *
-Allow: /
-
-Sitemap: ${sitemap.href}
+Disallow: /
 `;
 
   return new Response(body, {

@@ -1,6 +1,6 @@
 ---
 question: 'Is the concept free?'
-short: 'Is the concept free'
+short: 'What the concept costs'
 phase: planning-budget
 serviceLine: design-build
 sorePoint: design-fee
@@ -9,10 +9,6 @@ published: true
 needsDecision: false
 ---
 
-The visit is. The concept is not.
+No, and neither is the visit before it. The consultation is charged when you book, and the concept phase that follows carries its own fee, stated in writing before it starts.
 
-Someone comes out, walks the property with you, looks at what is there and talks through what you want. That costs you nothing and commits you to nothing, and it is where most of the useful conversation happens.
-
-What comes after it is paid work. The written concept and the planning budget that goes with it are the first phase of the design agreement: a considered look at what could happen on your property, and a range to plan around, put on paper by someone who has stood on the site. It is a short phase, priced on its own, and you can stop there. You see the fee in writing before you agree to it.
-
-We do it this way on purpose. A concept given away costs the person receiving it nothing, so it tends to be treated as worth nothing, and the temptation is to produce it quickly rather than properly. Paying for it means the time behind it is real and the number attached to it can be defended. What it is still not is a bid. A price you can commit to comes after a measured plan and chosen materials.
+Charging for both is what lets them be real work rather than a sales call. You get a written concept and a planning budget, which is a range to plan around, not a bid. It is enough to decide whether the project is worth going further with, and not enough to build from.

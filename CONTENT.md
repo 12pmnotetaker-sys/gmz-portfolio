@@ -5,204 +5,165 @@ Adding a project means adding one file and some photos; no code changes.
 
 ## Adding a project
 
-**1. Put the photos in `src/assets/projects/`.**
+**1. Put the photos in `src/assets/portfolio/<slug>/`.**
 
-Name them after the project so they stay findable:
+One folder per project, named after the slug you are about to use:
 
 ```
-src/assets/projects/
-  atherton-courtyard-hero.jpg
-  atherton-courtyard-terrace.jpg
-  atherton-courtyard-before.jpg
+src/assets/portfolio/marlowe/
+  marlowe-hero.jpg
+  marlowe-built-entry.jpg
+  marlowe-entry-full.jpg
 ```
 
-Shoot or export landscape, around 2000px wide. The build generates every
-smaller size and the WebP versions, so there is no need to resize by hand and
-no reason to upload a 12MB file straight off the camera.
+Export around 1800px wide for a grid image and 2400px for a `full` crop. The
+build generates every smaller size and the WebP versions, so there is no need
+to resize by hand and no reason to upload a 12MB file straight off the camera.
 
-**2. Create `src/content/projects/<slug>.md`.**
+**2. Create `src/content/portfolio/<slug>.md`.**
 
-The file name becomes the URL: `atherton-courtyard.md` → `/work/atherton-courtyard`.
+The file name becomes the URL: `marlowe.md` → `/work/marlowe`.
 
 ```markdown
 ---
-title: 'Atherton Courtyard'
-summary: 'One or two sentences. Shows on the card and under the project title.'
-location: Atherton, CA
-completed: 2026-05-20
-serviceLine: design-build
-disciplines:
-  - hardscape
-  - planting
+name: 'Marlowe'
+title: 'Courtyard living, front to back'
+kicker: 'Design & Construction'
+meta: 'Hillside property'
+scope: ['Hardscape', 'Planting']
+phase: 'Built'
+summary: 'One or two sentences. Shows on the index card and under the project title.'
+order: 2
 hero:
-  src: ../../assets/projects/atherton-courtyard-hero.jpg
-  alt: 'A stone terrace with a low seat wall, planted beds behind it.'
-gallery:
-  - src: ../../assets/projects/atherton-courtyard-before.jpg
-    alt: 'The side yard before work, a strip of patchy lawn along a fence.'
-    phase: before
-  - src: ../../assets/projects/atherton-courtyard-terrace.jpg
-    alt: 'The finished terrace seen from the house.'
-    caption: 'The terrace, set on a compacted base.'
-    phase: after
-featured: true
-order: 1
-duration: seven weeks
----
-
-The body of the file. Plain Markdown. This is where the story of the project
-goes: what was there, what was built, and anything worth knowing about how.
-```
-
-**3. Run `npm run dev` and look at it.**
-
-If a field is wrong, the build says so by name. A missing photo, a discipline
-that is not on the list, a summary over 300 characters: all of these fail the
-build rather than shipping broken.
-
-### Quote a value if it contains a colon
-
-`summary: A courtyard: a terrace and a wall` is invalid YAML, because the
-second colon starts a new key. Wrap any value containing `:` in double quotes.
-When in doubt, quote it.
-
-## The fields
-
-### Required
-
-| Field         | What it is                                            |
-| ------------- | ----------------------------------------------------- |
-| `title`       | Project name, as it should read on the page           |
-| `summary`     | One or two sentences, max 300 characters              |
-| `location`    | **Town only.** Never a street address                 |
-| `completed`   | `YYYY-MM-DD`. Sets the default ordering, newest first |
-| `serviceLine` | `design-build` or `maintenance`                       |
-| `disciplines` | One or more. Drives the filter chips on `/work`       |
-| `hero`        | `src` plus `alt`. The card and social image           |
-
-Valid disciplines: `hardscape`, `planting`, `irrigation`, `drainage`,
-`fencing`, `lighting`, `lawn`, `grading`, `concrete`, `masonry`. To add one,
-edit `DISCIPLINES` in `src/content.config.ts` and add a label in
-`DISCIPLINE_LABELS` in `src/data/content.ts`.
-
-### Optional
-
-| Field            | Default | What it does                                                  |
-| ---------------- | ------- | ------------------------------------------------------------- |
-| `gallery`        | empty   | More photos. Each needs `alt`; `caption` and `phase` optional |
-| `featured`       | `false` | Shows on the homepage. Keep this to a handful                 |
-| `order`          | `0`     | Sort weight among featured items; lower sorts first           |
-| `duration`       | —       | Plain words, e.g. `six weeks`                                 |
-| `budgetBand`     | —       | A coarse range, e.g. `"$50k–$100k"`                           |
-| `showBudgetBand` | `false` | Must be `true` for `budgetBand` to render                     |
-| `draft`          | `false` | Visible in `npm run dev`, invisible in production             |
-| `testimonial`    | —       | Slug of a file in `src/content/testimonials/`                 |
-| `seo`            | —       | `title`, `description`, `noindex` overrides                   |
-
-`phase` on a gallery photo is `before`, `during` or `after`.
-
-## Alt text
-
-Every photo needs it, and the build enforces it. Describe what is in the frame
-for someone who cannot see it:
-
-- Not: `"Atherton project"` — that is the title, not a description
-- Not: `"photo of a patio"` — "photo of" is noise, and "a patio" is not specific
-- Yes: `"A flagstone terrace with a low seat wall along one edge, planted beds behind."`
-
-## Adding a testimonial
-
-`src/content/testimonials/<slug>.md`:
-
-```markdown
----
-author: Jane Doe
-location: Menlo Park, CA
-quote: "The quote itself, in the client's own words."
-approved: true
-project: menlo-park-front-garden
-featured: true
-order: 1
+  label: 'The courtyard'
+  src: '../../assets/portfolio/marlowe/marlowe-hero.jpg'
+  alt: 'A gravel courtyard beside a Spanish-tiled house, terracotta paving and clipped hedging.'
 ---
 ```
 
-**`approved` defaults to `false` and nothing renders until it is `true`.** Set
-it only once the client has agreed, in writing, to be quoted publicly with the
-name shown in `author`. A quote given in a text message is not permission to
-publish it.
+That is a complete, valid project. Everything below is optional.
 
-## Adding a service
+**3. Run `npm run dev`** and check it. Then `npm run build`, which is what
+actually catches mistakes.
 
-`src/content/services/<slug>.md`. Same idea; the fields are in
-`src/content.config.ts`. `order` controls where it sits in the listing,
-`highlights` are the bullets, and `relatedProjects` is a list of project slugs.
+### The fields
 
-## Adding or editing an FAQ answer
+| Field     | Notes                                                               |
+| --------- | ------------------------------------------------------------------- |
+| `name`    | How the project is indexed. See "Naming" below                      |
+| `title`   | The editorial headline                                              |
+| `kicker`  | Small label above the name, e.g. `Conceptual Design`                |
+| `meta`    | One-line descriptor shown opposite the name. **Not an address**     |
+| `scope`   | The trades. Rendered as a list and joined with `·`                  |
+| `phase`   | Where the job stands, in GMZ's own words                            |
+| `summary` | The paragraph under the header, and the index blurb                 |
+| `order`   | Index position. Explicit, because the design sets the running order |
+| `hero`    | The index card image. Falls back to the first drawing when absent   |
 
-`src/content/faqs/<slug>.md`. One question per file, so two people can edit
-different answers without colliding.
+### The optional sections
+
+Each one appears on the project page only when it is present, in this order:
+
+- **`walkthrough`** — the film. A `drive:` id, a local `file:`, or `pending: true`
+  for footage that exists but is not in the repo. Can also carry a row of
+  `clips:` and a second row of `beforeAfter:` clips.
+- **`built`** — the "Finished" grid, photographed on completion.
+- **`photos`** — the "Photographs" grid, more from the site.
+- **`drawings`** — the tabbed set, the design as it was drawn.
+- **`alternates`** — schemes that were drawn and not chosen, in named groups.
+- **`compare`** — the drag-to-compare slider. One `pairs:` entry gets no tabs;
+  more than one gets a tab strip.
+
+Copy the shape from an existing project rather than working from this list.
+`marlowe.md` uses every section and is the one to crib from.
+
+## Alt text is required
+
+Every image needs `alt`. The schema rejects the entry without it and the build
+stops, which is deliberate: a portfolio that is almost entirely photographs is
+unusable to anyone using a screen reader if the images are unlabelled.
+
+`label` and `alt` do different jobs and should usually differ:
+
+```yaml
+label: 'The stairs' # the visible caption
+alt: 'Flagstone treads climbing between rendered walls with stone caps, lit at the risers.'
+```
+
+"The stairs" is a fine caption and a useless alt.
+
+## Naming, and client privacy
+
+Projects are indexed by street name, which is how GMZ refers to jobs and what
+the design was drawn around. **Never add a house number**, and keep `meta` to a
+descriptor rather than an address.
+
+GMZ confirmed this on 2026-08-17, so it is settled. The boundary is not: a
+street name plus a photograph of the house is often enough to identify whose
+garden it is, which is why the whole portfolio sits behind the unlock veil
+instead of being a public marketing site. The street is as far as it goes. If a
+client would object to their street being named to another prospect, use a
+descriptor instead.
+
+## Video
+
+Local clips live in `public/media/` and are referenced by filename:
+
+```yaml
+walkthrough:
+  note: 'A walking video of the finished yard, recorded on completion.'
+  file: 'hamilton-walkthrough.mp4'
+```
+
+The path is checked at build time, the same as an image. Name a file that is not
+there and the build stops.
+
+Where the footage exists but is not in the repo yet, say so:
+
+```yaml
+walkthrough:
+  note: 'A walking video of the finished yard, recorded on completion.'
+  pending: true
+```
+
+That renders the design's "Walkthrough to come" panel, which is honest about
+the gap rather than showing an empty frame. Swap `pending: true` for `file:`
+when the mp4 lands.
+
+**Google Drive embeds** (`drive: '<file id>'`) are a last resort, for footage
+GMZ has no local copy of. They only work while the Drive file stays
+link-shared, and nothing at build time can check that: revoke the share and the
+player silently goes blank. Copy the file into `public/media/` when you can.
+
+## What must never appear here
+
+Cost, margin, overhead, burdened labor rates, crew-day counts, contingency and
+supplier pricing are internal to GMZ. They live in the estimating system. Not in
+a content file, not in a comment, not in a commit message.
+
+Client identity is protected too: no house numbers, and no naming a client.
+
+## Adding an FAQ answer
+
+`src/content/faqs/<slug>.md`. An answer stays invisible until
+`published: true`:
 
 ```markdown
 ---
-question: "What's your warranty if something you built fails?"
-short: 'What the warranty covers'
-phase: after
+question: 'How long does the design take?'
+short: 'Design timeline'
+phase: design
 serviceLine: design-build
-sorePoint: change-orders # optional, one of four
-order: 10
 published: false
 needsDecision: true
-decisionNote: 'Exactly what has to be confirmed before this goes live.'
+decisionNote: 'Xavier has not settled on a stated lead time.'
 ---
 
-The answer, in plain prose. Lead with the answer in the first sentence,
-then explain.
+The answer, in Markdown.
 ```
 
-`phase` is one of `getting-started`, `planning-budget`, `design`,
-`firm-price`, `building`, `after`, `maintenance`, `bridge`. `sorePoint` is
-one of `range-vs-price`, `design-fee`, `change-orders`, `timeline`, and an
-entry that has one gets led with on `/straight-answers` instead of buried.
+Leave `published: false` while the underlying policy is undecided. A site that
+states a warranty term or a lead time nobody agreed to is worse than a site
+that stays quiet, because a client will hold GMZ to whatever it said.
 
-### `published` is a gate, like `approved` on a testimonial
-
-**Nothing renders in production until `published: true`.** An answer that
-states a policy nobody has decided is worse than no answer, because a client
-will hold GMZ to whatever the website said.
-
-Held-back answers are fully visible in `npm run dev` with their decision note
-attached, so they can be read and corrected before going live. To see the
-outstanding list without starting a server:
-
-```bash
-npm run faq:decisions
-```
-
-To publish one: make the decision, correct the answer if the decision differs
-from what is written, then set `published: true` and delete the
-`needsDecision` and `decisionNote` lines.
-
-### Where the answers appear
-
-- `/faq` is the searchable page, and the one search engines should find. It
-  emits `FAQPage` structured data, so answers can surface directly in a
-  search result.
-- `/straight-answers` is the same content led by the four recurring
-  objections. It is deliberately `noindex` and excluded from the sitemap,
-  because two indexed pages carrying the same answers compete with each
-  other. It exists to be sent to someone.
-
-Both read from the same files, so an edit lands on both.
-
-## Changing a phone number, address or license number
-
-Not here. Those live in `src/data/site.ts`, once, and every page reads them
-from there.
-
-## What does not go on this site
-
-Cost, margin, overhead, labor rates, crew-day counts and supplier pricing are
-internal. They belong in the estimating system. The only price-shaped thing
-that may appear is `budgetBand`, and only on a project that opts in.
-
-Street addresses do not go on this site either. `location` is a town.
+`npm run faq:decisions` lists what is outstanding.

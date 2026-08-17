@@ -3,6 +3,9 @@ import '@styles/global.css';
 import SEO from '@components/SEO.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import Gate from '@components/Gate.astro';
+import GateFlag from '@components/GateFlag.astro';
+import { gate } from '@data/site';
 
 interface Props {
   title?: string;
@@ -12,9 +15,33 @@ interface Props {
   noindex?: boolean;
   /** Set false on a page that supplies its own full-bleed chrome. */
   chrome?: boolean;
+  /**
+   * Whether this page sits behind the unlock veil.
+   *
+   * Every page does, which is what makes this a private portfolio rather than
+   * a public marketing site. It is a prop rather than a constant so a single
+   * page can be made public later by setting `gated={false}`: that drops the
+   * veil and lets the page be indexed. Nothing else has to change.
+   */
+  gated?: boolean;
 }
 
-const { title, description, image, type, noindex, chrome = true } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  type,
+  noindex,
+  chrome = true,
+  gated = gate.enabled,
+} = Astro.props;
+
+/**
+ * A gated page is never indexable. The veil itself cannot enforce that (a
+ * crawler runs no JavaScript and would read straight past it), so noindex is
+ * what actually keeps these pages out of a search result.
+ */
+const hideFromSearch = noindex || gated;
 ---
 
 <!doctype html>
@@ -22,11 +49,22 @@ const { title, description, image, type, noindex, chrome = true } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <SEO {title} {description} {image} {type} {noindex} />
+
+    <link
+      rel="preload"
+      href="/fonts/gabarito-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <SEO {title} {description} {image} {type} noindex={hideFromSearch} />
     <slot name="head" />
+
+    {gated && <GateFlag />}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -35,5 +73,6 @@ const { title, description, image, type, noindex, chrome = true } = Astro.props;
       <slot />
     </main>
     {chrome && <Footer />}
+    {gated && <Gate />}
   </body>
 </html>

@@ -11,6 +11,4 @@ decisionNote: "Confirm what happens at handover, since it currently varies by jo
 
 Yes, and we will offer it to you at handover, when we walk the finished project together. Maintenance is its own service with its own agreement and schedule, so you get an actual proposal with a visit cadence and a price for your garden, not a vague pitch.
 
-The reason we always raise it is practical. The first year decides whether a planting establishes, and the crew that built the garden knows where every valve, drain and root ball is. A weekly or biweekly visit through establishment is the cheapest insurance on the money you just spent.
-
-If the answer is no, that is fine, and it changes nothing about your project or its price.
+The reason we always raise it is practical. The first year decides whether a planting establishes, and the crew that built the garden knows where every valve, drain and root ball is. If the answer is no, that is fine, and it changes nothing about your project or its price.

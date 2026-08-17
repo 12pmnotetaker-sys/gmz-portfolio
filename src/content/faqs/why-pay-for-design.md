@@ -9,8 +9,6 @@ published: true
 needsDecision: false
 ---
 
-Because the design is real work, and it is the part that makes everything after it accurate. The visit is free. Everything drawn after it is paid, starting with a short first phase: a written concept and a planning budget, a range to plan around rather than a bid. That is enough to decide whether the project is worth going further with. It is not enough to build from.
+Because it is real work, and it is the part that makes everything after it accurate. The visit is charged, the concept phase is charged, and the design is charged, each one stated before it starts.
 
-The paid design step is what turns that concept into something buildable. Your property is measured in detail and drawn to scale. Levels, drainage and access get worked out. Plants and materials get chosen and drawn in place. Those hours are the same hours whether we end up building the project or not, so they are sold as their own step rather than folded into a construction price you have not agreed to yet.
-
-Design is covered by its own signed agreement, separate from any construction contract. You see the scope and the fee in writing before you commit to it.
+What the fee buys is a plan drawn from real measurements of your property, and a construction price built from that plan instead of from a guess. Nothing is credited against anything later; you see each number and judge it on its own.
