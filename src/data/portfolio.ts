@@ -142,12 +142,17 @@ export const PROCESS_STEPS = [
  *
  * An entry either names a `project`, in which case the film comes from that
  * project's own `walkthrough` field, or carries its own `drive` id for footage
- * that has no project page behind it. `meta` is the one-line descriptor shown
- * beside the name; it is here rather than derived from the project because the
- * design words it differently on this page.
+ * that has no project page behind it.
+ *
+ * `meta` is the one-line descriptor shown beside the name, and `note` is
+ * optional: both live here rather than being derived from the project, because
+ * the design words this page differently. Viewridge is the case that proves
+ * it, adding a sentence about the terracing that the project page does not
+ * carry. Omit `note` and the project's own wording is used.
  */
 const WALKTHROUGH_INDEX: (
-  { name: string; meta: string; note: string; drive: string } | { project: string; meta: string }
+  | { name: string; meta: string; note: string; drive: string }
+  | { project: string; meta: string; note?: string }
 )[] = [
   {
     name: 'Planting and garden management',
@@ -164,6 +169,8 @@ const WALKTHROUGH_INDEX: (
   {
     project: 'viewridge',
     meta: 'Built · Six retaining walls, steps and railings',
+    // The design gives this page a fuller note than the project page carries.
+    note: 'The whole garden walked end to end. The terracing reads on video in a way it does not in stills.',
   },
   { project: 'los-charros', meta: 'Built · Hardscape and planting' },
   { project: 'hamilton', meta: 'Built · Hardscape and planting' },
@@ -213,7 +220,8 @@ export async function getWalkthroughs(): Promise<Walkthrough[]> {
     return {
       name: project.data.name,
       meta: entry.meta,
-      note: walkthrough.note,
+      // An entry may word the film differently here than on the project page.
+      note: entry.note ?? walkthrough.note,
       drive: walkthrough.drive,
       file: walkthrough.file,
       href: projectHref(project),
