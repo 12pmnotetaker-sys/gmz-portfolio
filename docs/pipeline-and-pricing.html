@@ -1,0 +1,2082 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GMZ Lead-to-Sale Pipeline and Pricing</title>
+    <!--
+      Internal explainer: how a lead becomes a sale, and what kind of number
+      exists at each stage.
+
+      Source of record for the stage model is docs/process-proposal.html. Source
+      of record for what may be said to a client is src/content/faqs (published
+      entries only). This document explains those two; it does not decide
+      anything on its own. If a stage changes, change it there first.
+
+      Deliberately carries no cost, margin, overhead, burdened rate or per-day
+      minimum. Those live in Jeff's facts sheet, which is the one place they are
+      allowed to live. Restating a floor here would create a second home for it
+      and the two would drift.
+
+      Render to PDF:  node scripts/render-pdf.mjs docs/pipeline-and-pricing.html
+    -->
+    <style>
+      :root {
+        --ink: #222222;
+        --ink-soft: #4f544f;
+        --ink-faint: #7b807b;
+        --rule: #d8dcd6;
+        --hair: #eaeee8;
+        --paper: #ffffff;
+        --sunk: #f6f8f4;
+
+        --green: #2e7d32;
+        --green-deep: #1b5e20;
+        --green-wash: #e8f5e9;
+
+        --pay: #8a5a00;
+        --pay-wash: #f9f0dc;
+
+        --serif: 'Charter', 'Bitstream Charter', Georgia, 'Times New Roman', serif;
+        --sans: 'Liberation Sans', Helvetica, Arial, sans-serif;
+      }
+
+      @page {
+        size: letter;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        font-family: var(--sans);
+        color: var(--ink);
+        background: var(--paper);
+        font-size: 9.3pt;
+        line-height: 1.46;
+      }
+
+      .page {
+        position: relative;
+        width: 8.5in;
+        height: 11in;
+        padding: 0.68in 0.78in 0.48in;
+        background: var(--paper);
+        overflow: hidden;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .page:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      /* ---- running furniture ------------------------------------------- */
+
+      .runner {
+        position: absolute;
+        top: 0.42in;
+        left: 0.78in;
+        right: 0.78in;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-size: 7.1pt;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        border-bottom: 0.5pt solid var(--hair);
+        padding-bottom: 4pt;
+      }
+
+      .runner strong {
+        color: var(--green-deep);
+        font-weight: 700;
+      }
+
+      .foot {
+        position: absolute;
+        bottom: 0.3in;
+        left: 0.78in;
+        right: 0.78in;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-size: 7.1pt;
+        color: var(--ink-faint);
+        border-top: 0.5pt solid var(--hair);
+        padding-top: 4pt;
+      }
+
+      /* ---- headings ---------------------------------------------------- */
+
+      .kicker {
+        font-size: 7.4pt;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--green);
+        font-weight: 700;
+        margin-bottom: 5pt;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--serif);
+        font-weight: 400;
+        line-height: 1.16;
+        color: var(--ink);
+      }
+
+      h2 {
+        font-size: 17.5pt;
+        letter-spacing: -0.01em;
+      }
+
+      h3 {
+        font-size: 11.4pt;
+        margin-bottom: 3pt;
+      }
+
+      .deck {
+        font-size: 10.4pt;
+        line-height: 1.45;
+        color: var(--ink-soft);
+        max-width: 5.9in;
+        margin-top: 5pt;
+      }
+
+      p {
+        margin-bottom: 5pt;
+        max-width: 6.5in;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      .lede {
+        font-family: var(--serif);
+        font-size: 11.2pt;
+        line-height: 1.45;
+      }
+
+      em {
+        font-style: italic;
+      }
+
+      strong {
+        font-weight: 700;
+      }
+
+      .rule {
+        height: 0.5pt;
+        background: var(--rule);
+        margin: 9pt 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        gap: 9pt;
+        margin-bottom: 6pt;
+      }
+
+      .section-head .num {
+        font-family: var(--serif);
+        font-size: 15pt;
+        color: var(--green);
+        line-height: 1;
+      }
+
+      /* ---- cover ------------------------------------------------------- */
+
+      .cover {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-top: 1.15in;
+      }
+
+      .mark {
+        font-family: var(--serif);
+        font-size: 26pt;
+        letter-spacing: 0.02em;
+        color: var(--green-deep);
+        line-height: 1;
+      }
+
+      .mark-sub {
+        font-size: 7.6pt;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-top: 7pt;
+      }
+
+      .cover-title {
+        font-family: var(--serif);
+        font-size: 40pt;
+        line-height: 1.02;
+        letter-spacing: -0.018em;
+        margin-top: 0.62in;
+      }
+
+      .cover-title span {
+        color: var(--green);
+      }
+
+      .cover-deck {
+        font-family: var(--serif);
+        font-size: 13pt;
+        line-height: 1.42;
+        color: var(--ink-soft);
+        max-width: 5.1in;
+        margin-top: 16pt;
+      }
+
+      .cover-spine {
+        margin-top: 0.5in;
+        border-left: 2.5pt solid var(--green);
+        padding-left: 14pt;
+        max-width: 5.5in;
+      }
+
+      .cover-spine p {
+        font-size: 10.2pt;
+        line-height: 1.5;
+      }
+
+      .cover-meta {
+        margin-top: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16pt;
+        border-top: 0.5pt solid var(--rule);
+        padding-top: 12pt;
+      }
+
+      .cover-meta dt {
+        font-size: 7.1pt;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 3pt;
+      }
+
+      .cover-meta dd {
+        font-size: 8.8pt;
+        line-height: 1.42;
+        color: var(--ink);
+      }
+
+      .stamp {
+        align-self: flex-start;
+        display: inline-block;
+        font-size: 7.2pt;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--pay);
+        background: var(--pay-wash);
+        border: 0.5pt solid #e0cda0;
+        padding: 3.5pt 8pt;
+        margin-top: 22pt;
+      }
+
+      /* ---- the three numbers ------------------------------------------- */
+
+      .numbers {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10pt;
+        margin-top: 12pt;
+      }
+
+      .numcard {
+        border: 0.5pt solid var(--rule);
+        border-top: 2.5pt solid var(--green);
+        padding: 10pt 11pt 11pt;
+        background: var(--sunk);
+      }
+
+      .numcard.paid {
+        border-top-color: var(--pay);
+      }
+
+      .numcard .ord {
+        font-family: var(--serif);
+        font-size: 8.4pt;
+        color: var(--ink-faint);
+        letter-spacing: 0.05em;
+      }
+
+      .numcard h3 {
+        font-size: 12.6pt;
+        margin: 2pt 0 6pt;
+      }
+
+      .numcard dl {
+        margin: 0;
+      }
+
+      .numcard dt {
+        font-size: 6.9pt;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--green-deep);
+        margin-top: 7pt;
+      }
+
+      .numcard.paid dt {
+        color: var(--pay);
+      }
+
+      .numcard dd {
+        font-size: 8.7pt;
+        line-height: 1.42;
+        margin: 1.5pt 0 0;
+      }
+
+      .say {
+        margin-top: 12pt;
+        background: var(--green-wash);
+        border-left: 2.5pt solid var(--green);
+        padding: 10pt 13pt;
+      }
+
+      .say .lbl {
+        font-size: 7pt;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--green-deep);
+        font-weight: 700;
+        margin-bottom: 4pt;
+      }
+
+      .say q {
+        font-family: var(--serif);
+        font-size: 11.4pt;
+        line-height: 1.45;
+        display: block;
+        quotes: '\201C' '\201D';
+      }
+
+      /* ---- funnel diagram ---------------------------------------------- */
+
+      .funnel {
+        margin-top: 10pt;
+      }
+
+      .band {
+        display: grid;
+        grid-template-columns: 0.98in 1fr;
+        border-top: 0.5pt solid var(--rule);
+      }
+
+      .band:last-child {
+        border-bottom: 0.5pt solid var(--rule);
+      }
+
+      .band-label {
+        padding: 7pt 9pt 6pt 0;
+        border-right: 0.5pt solid var(--rule);
+      }
+
+      .band-label .bl-num {
+        font-family: var(--serif);
+        font-size: 8pt;
+        color: var(--green);
+        letter-spacing: 0.1em;
+      }
+
+      .band-label .bl-name {
+        font-family: var(--serif);
+        font-size: 11pt;
+        line-height: 1.15;
+        margin-top: 2pt;
+      }
+
+      .band-label .bl-note {
+        font-size: 7.3pt;
+        line-height: 1.35;
+        color: var(--ink-faint);
+        margin-top: 4pt;
+      }
+
+      .band-body {
+        padding: 7pt 0 6pt 12pt;
+      }
+
+      .stagerow {
+        display: flex;
+        align-items: flex-start;
+        gap: 7pt;
+        margin-bottom: 3.8pt;
+      }
+
+      .stagerow:last-child {
+        margin-bottom: 0;
+      }
+
+      .node {
+        flex: 0 0 auto;
+        width: 15pt;
+        height: 15pt;
+        border-radius: 50%;
+        border: 0.75pt solid var(--green);
+        color: var(--green-deep);
+        font-size: 7.2pt;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.5pt;
+      }
+
+      .node.money {
+        background: var(--pay);
+        border-color: var(--pay);
+        color: #fff;
+      }
+
+      .node.gate {
+        background: var(--green);
+        border-color: var(--green);
+        color: #fff;
+      }
+
+      .stagerow .txt {
+        flex: 1 1 auto;
+      }
+
+      .stagerow .nm {
+        font-size: 9.4pt;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+
+      .stagerow .pr {
+        font-size: 8pt;
+        line-height: 1.32;
+        color: var(--ink-soft);
+        margin-top: 1pt;
+      }
+
+      .stagerow .pr b {
+        color: var(--pay);
+      }
+
+      .stagerow .pr i {
+        font-style: normal;
+        color: var(--green-deep);
+        font-weight: 700;
+      }
+
+      .legend {
+        display: flex;
+        gap: 18pt;
+        flex-wrap: wrap;
+        margin-top: 6pt;
+        font-size: 7.8pt;
+        color: var(--ink-soft);
+      }
+
+      .legend span {
+        display: flex;
+        align-items: center;
+        gap: 5pt;
+      }
+
+      .chip {
+        width: 11pt;
+        height: 11pt;
+        border-radius: 50%;
+        border: 0.75pt solid var(--green);
+        flex: 0 0 auto;
+      }
+
+      .chip.money {
+        background: var(--pay);
+        border-color: var(--pay);
+      }
+
+      .chip.gate {
+        background: var(--green);
+        border-color: var(--green);
+      }
+
+      /* ---- tables ------------------------------------------------------ */
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 9pt;
+      }
+
+      thead th {
+        font-size: 6.9pt;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--green-deep);
+        text-align: left;
+        font-weight: 700;
+        padding: 0 7pt 4.5pt 0;
+        border-bottom: 1pt solid var(--green);
+        vertical-align: bottom;
+      }
+
+      tbody td {
+        font-size: 8.1pt;
+        line-height: 1.33;
+        padding: 4.4pt 7pt 4.4pt 0;
+        border-bottom: 0.5pt solid var(--hair);
+        vertical-align: top;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: 0.5pt solid var(--rule);
+      }
+
+      td:last-child,
+      th:last-child {
+        padding-right: 0;
+      }
+
+      .st {
+        white-space: nowrap;
+      }
+
+      .st .stnum {
+        font-family: var(--serif);
+        font-size: 8pt;
+        color: var(--green);
+        display: block;
+      }
+
+      .st .stname {
+        font-weight: 700;
+        font-size: 8.6pt;
+        line-height: 1.25;
+        display: block;
+        white-space: normal;
+      }
+
+      .pays {
+        color: var(--pay);
+        font-weight: 700;
+      }
+
+      .free {
+        color: var(--ink-faint);
+      }
+
+      .gatecell {
+        color: var(--green-deep);
+      }
+
+      /* ---- generic blocks ---------------------------------------------- */
+
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 11pt 15pt;
+      }
+
+      .note {
+        background: var(--sunk);
+        border-left: 2pt solid var(--green);
+        padding: 8pt 10pt;
+        font-size: 8.5pt;
+        line-height: 1.4;
+      }
+
+      .note.warn {
+        border-left-color: var(--pay);
+        background: var(--pay-wash);
+      }
+
+      .note h3 {
+        font-size: 10pt;
+        margin-bottom: 3pt;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 12pt;
+      }
+
+      li {
+        font-size: 8.5pt;
+        line-height: 1.4;
+        margin-bottom: 3pt;
+      }
+
+      li:last-child {
+        margin-bottom: 0;
+      }
+
+      li strong {
+        color: var(--ink);
+      }
+
+      .never li::marker {
+        color: var(--pay);
+      }
+
+      .checklist {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .checklist li {
+        display: flex;
+        gap: 7pt;
+        align-items: baseline;
+      }
+
+      .checklist .n {
+        font-family: var(--serif);
+        color: var(--green);
+        font-size: 8.6pt;
+        flex: 0 0 auto;
+      }
+
+      .tag {
+        display: inline-block;
+        font-size: 6.8pt;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 1.5pt 5pt;
+        border: 0.5pt solid var(--rule);
+        color: var(--ink-soft);
+        background: var(--paper);
+        vertical-align: 1pt;
+      }
+
+      .tag.pay {
+        color: var(--pay);
+        border-color: #e0cda0;
+        background: var(--pay-wash);
+      }
+
+      .tag.g {
+        color: var(--green-deep);
+        border-color: #bcd9be;
+        background: var(--green-wash);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =============================== 1. COVER =========================== -->
+    <div class="page">
+      <div class="cover">
+        <div>
+          <div class="mark">GMZ Landscaping Inc.</div>
+          <div class="mark-sub">Design &middot; Build &middot; Maintenance</div>
+        </div>
+
+        <h1 class="cover-title">
+          From the first call<br />to the signed job,<br /><span
+            >and what the price is<br />at every step.</span
+          >
+        </h1>
+
+        <p class="cover-deck">
+          The twelve stages a design and build lead moves through, the seven a maintenance account
+          moves through, and the one thing to say about money at each of them.
+        </p>
+
+        <div class="cover-spine">
+          <p>
+            <strong>The whole pipeline exists for one reason.</strong> A landscape price gets
+            accurate only as two things happen: somebody measures the property, and somebody chooses
+            the materials. Until both are done, any single number is a guess wearing a suit. So GMZ
+            sells the measuring and the choosing as their own small stages, and gives the client a
+            different <em>kind</em> of number at each one. Nothing is withheld. The precision is
+            simply earned in order.
+          </p>
+        </div>
+
+        <div class="stamp">Internal &middot; not for client distribution</div>
+
+        <dl class="cover-meta">
+          <div>
+            <dt>Prepared for</dt>
+            <dd>Xavier<br />Anyone answering the phone</dd>
+          </div>
+          <div>
+            <dt>Dated</dt>
+            <dd>17 August 2026<br />Re-read when a stage changes</dd>
+          </div>
+          <div>
+            <dt>Built from</dt>
+            <dd>
+              The stage model in <em>process-proposal</em>, the published answers in
+              <em>src/content/faqs</em>, and the intake pack
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- =========================== 2. THE SPINE =========================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Lead to sale</span><span>The three numbers</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">01</span>
+        <div>
+          <div class="kicker">The idea to lead with</div>
+          <h2>There are exactly three numbers, and they are not the same kind of thing</h2>
+        </div>
+      </div>
+
+      <p class="lede">
+        Most of the friction in this trade comes from one confusion: the client hears every number
+        as a price, and only the third one is. Name which of the three you are handing over, every
+        time.
+      </p>
+
+      <div class="numbers">
+        <div class="numcard">
+          <div class="ord">The first number</div>
+          <h3>A planning range</h3>
+          <dl>
+            <dt>What it is</dt>
+            <dd>
+              A window for the work described, broken out by area of the property. Built from a
+              walk, photos and rough dimensions.
+            </dd>
+            <dt>What it is not</dt>
+            <dd>A bid, an offer GMZ is bound to, or a number that can be held.</dd>
+            <dt>Called</dt>
+            <dd>Preliminary Budget and Scope Acknowledgment. It says so on its face.</dd>
+            <dt>Why it is wide</dt>
+            <dd>
+              Nothing is measured and nothing is chosen. It narrows in steps as both happen, and the
+              loose parts get named: demolition, drainage, anything underground.
+            </dd>
+          </dl>
+        </div>
+
+        <div class="numcard paid">
+          <div class="ord">The second number</div>
+          <h3>A design fee</h3>
+          <dl>
+            <dt>What it is</dt>
+            <dd>
+              The price of the work that produces the third number. Ten to fifteen percent of the
+              construction price, which is why the range has to exist first.
+            </dd>
+            <dt>Where in the band</dt>
+            <dd>
+              How many areas are in scope, how much grading and drainage there is to resolve, how
+              much irrigation, whether anything needs outside review.
+            </dd>
+            <dt>Not credited</dt>
+            <dd>
+              It does not come off the construction price and it is not refunded. Say this on the
+              first call, not at signing.
+            </dd>
+            <dt>Includes</dt>
+            <dd>Two rounds of revision. Beyond that is priced in writing first.</dd>
+          </dl>
+        </div>
+
+        <div class="numcard">
+          <div class="ord">The third number</div>
+          <h3>A fixed price</h3>
+          <dl>
+            <dt>What it is</dt>
+            <dd>
+              A number the client can sign, built from a measured plan and selected materials. The
+              first and only commitment about construction cost.
+            </dd>
+            <dt>What earns it</dt>
+            <dd>The measured survey and the material decisions. Nothing else does.</dd>
+            <dt>How long it holds</dt>
+            <dd>
+              To the date on the face of the bid, normally thirty days. Past it, material prices get
+              re-checked and the changed line gets shown.
+            </dd>
+            <dt>Its shortest page</dt>
+            <dd>
+              The exclusions. Named item by item rather than padded, because a padded number charges
+              everybody for the unlucky ones.
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="say">
+        <div class="lbl">The one sentence, if you only get one</div>
+        <q
+          >The visit is free and it commits you to nothing. What comes out of it is a range to plan
+          around. A price you can actually sign comes after we have measured the property and you
+          have chosen the materials, because those two things move a landscape number more than
+          anything else.</q
+        >
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div>
+          <h3>Why the concept is paid now</h3>
+          <p>
+            It used to be given away. A free concept costs the person receiving it nothing, so it
+            gets treated as worth nothing, and the pull is to produce it fast rather than properly.
+            A small fee pays for real time, and separates the clients planning a project from the
+            ones collecting drawings.
+          </p>
+          <p>
+            The ask also gets easier, not harder.
+            <em>Buy a full design before you know what this costs</em> is a leap.
+            <em>Buy a concept and a budget for a small fee, then decide</em> is a step.
+          </p>
+        </div>
+        <div>
+          <h3>The fourth case: somebody else drew it</h3>
+          <p>
+            A client arriving with an architect's or a designer's plan set skips stages 04 and 05
+            entirely, and <strong>there is no design fee</strong>, because GMZ is not doing the
+            design. Walk the property, check the drawings against the ground, and say plainly where
+            a plan does not match the site before pricing anything.
+          </p>
+          <p>
+            What is needed is the full set: plan, plant list, and any grading, drainage or
+            construction details.
+          </p>
+        </div>
+      </div>
+
+      <div class="foot"><span>Lead-to-sale pipeline and pricing</span><span>2</span></div>
+    </div>
+
+    <!-- ========================== 3. FUNNEL MAP =========================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Lead to sale</span
+        ><span>Design and build, twelve stages</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">02</span>
+        <div>
+          <div class="kicker">The shape of it</div>
+          <h2>Twelve stages, four bands, and two places money changes hands before a contract</h2>
+        </div>
+      </div>
+
+      <p class="deck">
+        Each gate exists so the next stage is only run on work worth running it on. Read the four
+        bands rather than the twelve stages: qualify, sell a small paid look, sell the measuring,
+        build and hand over.
+      </p>
+
+      <div class="funnel">
+        <div class="band">
+          <div class="band-label">
+            <div class="bl-num">BAND A</div>
+            <div class="bl-name">Qualify</div>
+            <div class="bl-note">
+              Costs GMZ time and fuel, deliberately. Nothing is charged and nothing firm is said.
+            </div>
+          </div>
+          <div class="band-body">
+            <div class="stagerow">
+              <div class="node">01</div>
+              <div class="txt">
+                <div class="nm">Inquiry</div>
+                <div class="pr">
+                  Every lead lands in one place on arrival, whoever took the call: name, town,
+                  scope, channel, date. <span class="free">No number of any kind.</span>
+                </div>
+              </div>
+            </div>
+            <div class="stagerow">
+              <div class="node gate">02</div>
+              <div class="txt">
+                <div class="nm">Phone qualification</div>
+                <div class="pr">
+                  Fifteen minutes: scope, budget band, timeline, who decides, where it is.
+                  <i>The budget band is the gate.</i> Decline or defer here, before the drive, not
+                  after it.
+                </div>
+              </div>
+            </div>
+            <div class="stagerow">
+              <div class="node">03</div>
+              <div class="txt">
+                <div class="nm">Site consultation</div>
+                <div class="pr">
+                  Free, run off a checklist, and a working conversation rather than a sales call.
+                  Also where GMZ decides whether to take the project. Ends with an offer of the paid
+                  first phase, fee in writing first.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="band">
+          <div class="band-label">
+            <div class="bl-num">BAND B</div>
+            <div class="bl-name">Sell the look</div>
+            <div class="bl-note">
+              First money in. Small enough to be an easy yes, real enough to filter.
+            </div>
+          </div>
+          <div class="band-body">
+            <div class="stagerow">
+              <div class="node money">04</div>
+              <div class="txt">
+                <div class="nm">Concept and planning budget</div>
+                <div class="pr">
+                  <b>Client pays: the concept phase fee.</b> Two deliverables, a written concept and
+                  the planning range. Acknowledging the range commits the client to nothing; it
+                  exists so two people cannot remember the scope differently later.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="band">
+          <div class="band-label">
+            <div class="bl-num">BAND C</div>
+            <div class="bl-name">Sell the measuring</div>
+            <div class="bl-note">
+              The band that earns a firm price. Everything before it is honest guesswork.
+            </div>
+          </div>
+          <div class="band-body">
+            <div class="stagerow">
+              <div class="node money">05</div>
+              <div class="txt">
+                <div class="nm">Design development</div>
+                <div class="pr">
+                  <b>Client pays: the design fee, ten to fifteen percent of construction.</b> Second
+                  phase of the same agreement, entered only on approval of the concept. Measured
+                  survey and drawings.
+                  <i>The clock starts at measuring, not at signing.</i>
+                </div>
+              </div>
+            </div>
+            <div class="stagerow">
+              <div class="node gate">06</div>
+              <div class="txt">
+                <div class="nm">Bid presentation</div>
+                <div class="pr">
+                  Plan and price presented together, in person, and the decision asked for in the
+                  room. Exclusions walked through out loud. Alternates on the big-ticket materials
+                  if the client wants to see the trade in dollars.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="band">
+          <div class="band-label">
+            <div class="bl-num">BAND D</div>
+            <div class="bl-name">Build and hand over</div>
+            <div class="bl-note">
+              Payment follows visible work. The last of it waits for the punch list.
+            </div>
+          </div>
+          <div class="band-body">
+            <div class="stagerow">
+              <div class="node money">07</div>
+              <div class="txt">
+                <div class="nm">Construction agreement</div>
+                <div class="pr">
+                  <b>Client pays: the deposit, then a payment per completed phase.</b> One compliant
+                  contract on every job above $500.
+                  <i>A start date is held by a signed contract, not by a conversation.</i>
+                </div>
+              </div>
+            </div>
+            <div class="stagerow">
+              <div class="node">08</div>
+              <div class="txt">
+                <div class="nm">Pre-construction meeting</div>
+                <div class="pr">
+                  Half an hour before the first truck: access, gate codes, hours, parking, pets,
+                  kids, who to call, what week one looks like.
+                </div>
+              </div>
+            </div>
+            <div class="stagerow">
+              <div class="node">09</div>
+              <div class="txt">
+                <div class="nm">Build</div>
+                <div class="pr">
+                  One update a week, same day, with a photo: what changed, what is next, what needs
+                  a decision. Anything outside scope becomes a signed change order before it
+                  happens.
+                </div>
+              </div>
+            </div>
+            <div class="stagerow">
+              <div class="node gate">10</div>
+              <div class="txt">
+                <div class="nm">Substantial completion</div>
+                <div class="pr">
+                  Written punch list, every job, both parties holding a copy. Ten business days to
+                  clear it.
+                  <i
+                    >The job is complete when the list is, and the final payment is tied to that.</i
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="stagerow">
+              <div class="node">11</div>
+              <div class="txt">
+                <div class="nm">Closeout</div>
+                <div class="pr">
+                  Plan copy, plant list, irrigation zone map and controller settings, care guide,
+                  the written warranty, and the maintenance proposal.
+                </div>
+              </div>
+            </div>
+            <div class="stagerow">
+              <div class="node">12</div>
+              <div class="txt">
+                <div class="nm">Follow-up</div>
+                <div class="pr">
+                  A call at thirty days and again at six months. The cheapest referral and
+                  maintenance conversion in this document.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span><span class="chip"></span> Stage runs, nothing charged</span>
+        <span><span class="chip money"></span> Client pays here</span>
+        <span><span class="chip gate"></span> Gate: a decision is asked for</span>
+      </div>
+
+      <div class="foot"><span>Lead-to-sale pipeline and pricing</span><span>3</span></div>
+    </div>
+
+    <!-- ====================== 4. STAGE TABLE 01-06 ======================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Lead to sale</span><span>Stages 01 to 06</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">03</span>
+        <div>
+          <div class="kicker">Stage by stage, first half</div>
+          <h2>Inquiry to bid: what exists, what it costs, what has to be true to move on</h2>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 1in">Stage</th>
+            <th style="width: 1.68in">What happens</th>
+            <th style="width: 1.55in">What the client walks away with</th>
+            <th style="width: 0.92in">What they pay</th>
+            <th>The gate to the next stage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="st"><span class="stnum">01</span><span class="stname">Inquiry</span></td>
+            <td>Lead recorded in one place on arrival, whatever channel it came in on.</td>
+            <td>A callback with an actual date attached to it.</td>
+            <td class="free">Nothing</td>
+            <td class="gatecell">It is written down somewhere both Lili and Xavier can see.</td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">02</span><span class="stname">Phone qualification</span>
+            </td>
+            <td>
+              Fifteen minutes on scope, budget band, timeline, decision makers and location. The
+              budget question is asked plainly and early.
+            </td>
+            <td>
+              An honest read on fit, in the towns served or not, and which kind of visit their job
+              actually is.
+            </td>
+            <td class="free">Nothing</td>
+            <td class="gatecell">
+              Budget band and described scope are in the same neighbourhood, and the property is
+              servable. If not, say so on the call.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">03</span><span class="stname">Site consultation</span>
+            </td>
+            <td>
+              Property walked off a checklist: access, grade, drainage, what is growing, the
+              narrowest gate, where water sits after rain.
+            </td>
+            <td>
+              A shared understanding of the work, and an offer of the paid first phase with its fee
+              in writing.
+            </td>
+            <td class="free">Nothing.<br />The visit is free and commits them to nothing.</td>
+            <td class="gatecell">
+              GMZ wants the project and the client accepts the concept phase. Either party may stop
+              here at no cost.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">04</span><span class="stname">Concept and planning budget</span>
+            </td>
+            <td>
+              A considered look at what the property could become, put on paper by somebody who
+              stood on it, plus a range broken out by area.
+            </td>
+            <td>
+              A written concept and the Preliminary Budget and Scope Acknowledgment, which states on
+              its face that it is not a bid.
+            </td>
+            <td class="pays">Concept phase fee</td>
+            <td class="gatecell">
+              The client acknowledges the scope and the range, and wants to keep going. This
+              obligates them to nothing further.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">05</span><span class="stname">Design development</span>
+            </td>
+            <td>
+              Measured survey, then drawings: layout, planting plan, irrigation and drainage
+              resolved, materials specified closely enough to price and build from.
+            </td>
+            <td>
+              A measured plan set for the property, and the firm construction number that only
+              measured plans can produce. Two revision rounds included.
+            </td>
+            <td class="pays">Design fee,<br />10 to 15% of construction</td>
+            <td class="gatecell">
+              Presentation date met, or moved before it passes rather than after. Material
+              selections settled.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">06</span><span class="stname">Bid presentation</span>
+            </td>
+            <td>
+              Plan and price presented together in person. Exclusions read out loud. Alternates
+              priced on the identical scope where the client asked to compare material levels.
+            </td>
+            <td>
+              A fixed price they can sign, valid to the date on its face, normally thirty days.
+            </td>
+            <td class="free">Nothing new</td>
+            <td class="gatecell">
+              A decision, asked for in the room. Not a package emailed and waited on.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div class="note">
+          <h3>The five items that stop a firm number</h3>
+          <ul class="checklist">
+            <li><span class="n">1</span><span>Client name and the property address</span></li>
+            <li>
+              <span class="n">2</span><span>Which items are in scope, not their dimensions</span>
+            </li>
+            <li>
+              <span class="n">3</span
+              ><span>Material tier on the big-ticket items, or two tiers to price</span>
+            </li>
+            <li>
+              <span class="n">4</span
+              ><span
+                >Access: what a truck and a small machine can reach, and the narrowest gate</span
+              >
+            </li>
+            <li>
+              <span class="n">5</span
+              ><span>Demolition and disposal: in, out, or the client is handling it</span>
+            </li>
+          </ul>
+          <p style="margin-top: 6pt; font-size: 8.2pt; color: var(--ink-soft)">
+            All five, or the estimate is a guess with a decimal point in it.
+          </p>
+        </div>
+        <div class="note warn">
+          <h3>Three gates that cost real money if missed</h3>
+          <ul>
+            <li>
+              <strong>Any signer aged sixty-five or over.</strong> The cancellation right is five
+              days, not three. It goes on every agreement in the job, not just the first one.
+            </li>
+            <li>
+              <strong
+                >New landscape at or above 500 sq ft, or rehab at or above 2,500 sq ft, with a
+                permit.</strong
+              >
+              The water ordinance documentation is triggered.
+            </li>
+            <li>
+              <strong>A rebate in play.</strong> Nothing gets torn out before the notice to proceed.
+              Check the water supplier and the turf area first.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot"><span>Lead-to-sale pipeline and pricing</span><span>4</span></div>
+    </div>
+
+    <!-- ====================== 5. STAGE TABLE 07-12 ======================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Lead to sale</span><span>Stages 07 to 12</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">04</span>
+        <div>
+          <div class="kicker">Stage by stage, second half</div>
+          <h2>Contract to follow-up: money follows work the client can stand and look at</h2>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 1in">Stage</th>
+            <th style="width: 1.68in">What happens</th>
+            <th style="width: 1.55in">What the client walks away with</th>
+            <th style="width: 0.92in">What they pay</th>
+            <th>The gate to the next stage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="st">
+              <span class="stnum">07</span><span class="stname">Construction agreement</span>
+            </td>
+            <td>
+              One compliant contract on every job above $500, with milestone payments and the
+              statutory deposit cap. Long-lead materials ordered the moment it is in.
+            </td>
+            <td>
+              A signed contract, a payment schedule tied to phases, and a start date that is now
+              actually theirs.
+            </td>
+            <td class="pays">Deposit: $1,000 or 10% of contract, whichever is less</td>
+            <td class="gatecell">
+              Signed, and the cancellation window run. Long-lead ordering, not crew availability,
+              usually sets the earliest honest start.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">08</span><span class="stname">Pre-construction meeting</span>
+            </td>
+            <td>
+              Half an hour on site: access, gate codes, working hours, parking, pets, kids, who to
+              call, and what week one looks like.
+            </td>
+            <td>A named contact and no surprises on the first morning.</td>
+            <td class="free">Nothing</td>
+            <td class="gatecell">
+              Utility locate called in before any digging. Access confirmed against what the gate
+              actually measures.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stnum">09</span><span class="stname">Build</span></td>
+            <td>
+              Work runs in phases: site preparation and grading, hardscape, irrigation, planting.
+              One written update a week, same day, with a photo.
+            </td>
+            <td>
+              A payment due only as each phase completes, and visible progress they can walk out and
+              check.
+            </td>
+            <td class="pays">A payment per completed phase</td>
+            <td class="gatecell">
+              Each phase visibly done. Anything found underground stops the work: photograph it,
+              show it, price it, get a signature, then carry on.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">10</span><span class="stname">Substantial completion</span>
+            </td>
+            <td>
+              Finished project walked together. Everything not right goes on a written punch list,
+              both parties holding a copy.
+            </td>
+            <td>The punch list, and ten business days for it to be cleared.</td>
+            <td class="free">Nothing yet</td>
+            <td class="gatecell">
+              The list is clear. The job is complete when the list is, not before, which is where
+              the incentive belongs.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stnum">11</span><span class="stname">Closeout</span></td>
+            <td>
+              Package handed over: plan copy, plant list, irrigation zone map with programmed
+              settings, care guide, written warranty, and the maintenance proposal.
+            </td>
+            <td>
+              Everything a good gardener would need, whoever ends up holding the hose, plus an
+              actual maintenance proposal with a cadence and a price.
+            </td>
+            <td class="pays">Final payment</td>
+            <td class="gatecell">
+              Maintenance offered at handover, as an offer and not a condition. The project price
+              does not depend on the answer.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stnum">12</span><span class="stname">Follow-up</span></td>
+            <td>A call at thirty days, and again at six months.</td>
+            <td>Somebody to tell when a thing shows up that only living with the work reveals.</td>
+            <td class="free">Nothing</td>
+            <td class="gatecell">
+              Referrals and maintenance conversions come from here more cheaply than from anywhere
+              else.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div>
+          <h3>Change orders: the honest version of the same idea</h3>
+          <p>
+            A change order is the pipeline's pricing logic applied mid-build. New scope means a new
+            number, written and signed before the work rather than discovered on an invoice. Three
+            causes, and two of them are avoidable at bid time: scope the client adds, decisions made
+            late, and genuine unknowns underground.
+          </p>
+          <p>
+            Which is why the exclusions page is the most valuable page in the document. Naming an
+            exclusion tells the client exactly where their price ends, and lets them decide what to
+            do about it: bring the item in now, price it separately, or accept the risk knowingly.
+          </p>
+        </div>
+        <div>
+          <h3>When the range comes back over their budget</h3>
+          <p>
+            That is the planning budget doing its job: it found the gap while closing it was still
+            cheap. Three levers, in the order they usually work.
+          </p>
+          <ul>
+            <li>
+              <strong>Material tier.</strong> The biggest single lever on most projects. The same
+              design in a different surface is a different price.
+            </li>
+            <li>
+              <strong>Scope.</strong> Take something out or make it smaller. Planting instead of a
+              hard surface.
+            </li>
+            <li>
+              <strong>Phasing.</strong> Everything drawn on one plan at the start, the order set so
+              the property is not built twice. Grading, drainage and anything running under paving
+              goes first.
+            </li>
+          </ul>
+          <p style="margin-top: 5pt">
+            The fourth lever, quietly thinning base depth, drainage or soil preparation, is not
+            available. It makes the job cheaper on paper and dearer in a few years, and the client
+            pays that second bill.
+          </p>
+        </div>
+      </div>
+
+      <div class="foot"><span>Lead-to-sale pipeline and pricing</span><span>5</span></div>
+    </div>
+
+    <!-- ======================= 6. MAINTENANCE TRACK ======================= -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Lead to sale</span><span>The maintenance track</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">05</span>
+        <div>
+          <div class="kicker">The other service line</div>
+          <h2>Seven stages, and it renews instead of ending</h2>
+        </div>
+      </div>
+
+      <p class="deck">
+        Priced separately, under its own agreement, and not a smaller version of a build. The
+        pricing question is different: not <em>what does this project cost</em> but
+        <em>what does this property take to keep, every visit, for a year.</em>
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 1.15in">Stage</th>
+            <th style="width: 2.35in">What happens</th>
+            <th style="width: 1.9in">The pricing move</th>
+            <th>Why it is there</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="st"><span class="stnum">01</span><span class="stname">Inquiry</span></td>
+            <td>
+              Referral, build handover or search, recorded in the same place as build leads rather
+              than in somebody's phone.
+            </td>
+            <td class="free">No number.</td>
+            <td class="gatecell">One inbox, or leads die quietly in three of them.</td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">02</span><span class="stname">Route-fit screen</span>
+            </td>
+            <td>
+              Address checked against the existing route days before anybody quotes or drives out.
+              Openings are specific days, not any day.
+            </td>
+            <td class="pays">The screen happens before pricing, not after</td>
+            <td class="gatecell">
+              An off-route stop costs far more than it looks like it does, and the cost is drive
+              time between stops. Clustering is the only lever there is.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">03</span><span class="stname">Property walk and quote</span>
+            </td>
+            <td>
+              Property walked: how much lawn, how much planted bed, a year of pruning, how much
+              green waste comes off it, how easily equipment moves.
+            </td>
+            <td class="pays">One set price per visit</td>
+            <td class="gatecell">
+              A price from a photo or from the street is a price for a property nobody has seen. It
+              changes the moment somebody walks it.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">04</span><span class="stname">Service agreement</span>
+            </td>
+            <td>
+              Written agreement: visit scope, cadence, service day, price, what is in, what is out,
+              notice period, and the annual review on its face.
+            </td>
+            <td class="free">The set price, and everything outside it named</td>
+            <td class="gatecell">
+              Month to month, thirty days' notice either side, no term to buy out. A standing
+              obligation needs terms a construction contract lacks.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">05</span><span class="stname">Onboarding visit</span>
+            </td>
+            <td>
+              First visit is an assessment rather than a normal stop: photos, baseline condition,
+              irrigation walked zone by zone.
+            </td>
+            <td class="free">No change to the price</td>
+            <td class="gatecell">
+              Sets the record everything after is measured against, including any argument about
+              what was already broken.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stnum">06</span><span class="stname">Route</span></td>
+            <td>
+              Fixed day, same crew, weekly or biweekly, working from a standing list for that
+              property rather than whatever catches the eye.
+            </td>
+            <td class="free">Price does not move because one visit ran long</td>
+            <td class="gatecell">
+              Two things sit outside the set price: work that is not routine care, and materials
+              brought for the client. Both priced and approved first.
+            </td>
+          </tr>
+          <tr>
+            <td class="st">
+              <span class="stnum">07</span><span class="stname">Annual review</span>
+            </td>
+            <td>
+              One fixed month a year, every account: is the scope still right, price re-struck,
+              agreement renewed.
+            </td>
+            <td class="pays">The price is re-struck once a year</td>
+            <td class="gatecell">
+              A price that never changes on paper changes somewhere else instead, usually in how
+              much time the property actually gets.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div>
+          <h3>Cadence is a pricing conversation</h3>
+          <p>
+            Weekly for lawn, a lot of planted bed, or a client who wants the place tidy every day.
+            Every other week for established shrubs, groundcover, gravel and decomposed granite. The
+            honest test is the growing season: a lawn on a two-week cycle in late spring stops being
+            maintained and starts being caught up. Changing cadence changes the agreement and the
+            price, so it goes in writing.
+          </p>
+        </div>
+        <div>
+          <h3>Where the two lines meet</h3>
+          <p>
+            <strong>Build to maintenance.</strong> Offered at handover with an actual cadence and
+            price, not a vague pitch. The first year decides whether a planting establishes, and the
+            crew that built it knows where every valve, drain and root ball is.
+          </p>
+          <p>
+            <strong>Maintenance to build.</strong> Runs the full pipeline, no shortcuts. Being a
+            maintenance client changes what GMZ already knows about the property, which sharpens the
+            concept. It does not change how the work is priced, and the two agreements stay
+            separate: neither absorbs the other.
+          </p>
+        </div>
+      </div>
+
+      <div class="foot"><span>Lead-to-sale pipeline and pricing</span><span>6</span></div>
+    </div>
+
+    <!-- ========================= 7. ROUTING ============================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Lead to sale</span><span>The decision at intake</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">06</span>
+        <div>
+          <div class="kicker">The one decision made before anything is priced</div>
+          <h2>Which pipeline is this lead even in?</h2>
+        </div>
+      </div>
+
+      <p class="lede">
+        Decided once, on the first call, and everything downstream follows from it. Get it wrong and
+        either a build crew is sent to do an hour of work, or an hour of work is priced like a
+        project.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 1.5in">Route it here</th>
+            <th style="width: 2.3in">When</th>
+            <th style="width: 1.6in">First number the client hears</th>
+            <th>Then</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="st"><span class="stname">Design and build</span></td>
+            <td>
+              Work that suits a build crew: planting, irrigation, drainage, patios, walls, fences,
+              lighting. Scope described and budget band in the same neighbourhood.
+            </td>
+            <td>A planning range, after a paid concept phase</td>
+            <td class="gatecell">
+              Twelve stages. Free visit, paid concept, paid design, then a fixed price.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stname">Build to others' plans</span></td>
+            <td>
+              Client arrives with a complete set from an architect or designer, plus plant list and
+              any grading, drainage and construction details.
+            </td>
+            <td>
+              A fixed price, after the drawings are checked against the ground.
+              <strong>No design fee.</strong>
+            </td>
+            <td class="gatecell">
+              Skips stages 04 and 05. Say plainly where a plan will not work as drawn, and propose a
+              fix.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stname">Maintenance account</span></td>
+            <td>
+              Ongoing routine care wanted, and the property sits near an existing route day.
+              Openings are specific days.
+            </td>
+            <td>One set price per visit, after a property walk</td>
+            <td class="gatecell">
+              Seven stages. Own agreement, own schedule, own terms. Month to month.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stname">One-off service call</span></td>
+            <td>
+              Too small to mobilise a build crew: an afternoon of pruning, a repair, a small
+              refresh, a one-time cleanup or a short run of catch-up visits.
+            </td>
+            <td>A price for that visit</td>
+            <td class="gatecell">
+              Route permitting. Plenty of cleanups become standing accounts once the reset is done,
+              so quote both.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stname">Decline, on the call</span></td>
+            <td>
+              Budget band and scope are not in the same neighbourhood, the property is well off any
+              route, or a hard date cannot honestly be met.
+            </td>
+            <td>A straight answer, and the reason</td>
+            <td class="gatecell">
+              Said before the drive, not after. An account GMZ would chronically reach late serves
+              nobody.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="rule"></div>
+
+      <div class="grid2">
+        <div class="note">
+          <h3>Why the budget question is asked early, and out loud</h3>
+          <p>
+            It is the qualification gate, and it is asked as much for the client's benefit as for
+            GMZ's: it is how they find out whether GMZ is in the right range, rather than finding
+            out after a design is underway. A refusal to state a band is information too, and at
+            small scopes, genuinely not knowing is fine. Record the band internally: the website
+            says the town, never the number.
+          </p>
+        </div>
+        <div class="note">
+          <h3>Never ask a client to prescribe the work</h3>
+          <p>
+            The intake form asks what they want the space to be like and how they want to use it,
+            not what should be built. A client invited to specify the solution has to be walked back
+            from it later, and that conversation costs more than the one it avoided. Ask for the
+            problem: standing water, dead lawn, no privacy, an unusable slope, nowhere to sit. The
+            solution is what the paid stages are for.
+          </p>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <h3 style="font-size: 12pt; margin-bottom: 6pt">
+        What the visit has to come back with, or stage 04 cannot be written
+      </h3>
+
+      <div class="grid2">
+        <div>
+          <div class="kicker" style="font-size: 7pt">Off the property</div>
+          <ul>
+            <li>
+              <strong>Whether it was measured or estimated by eye.</strong> A measured take-off is
+              what earns a firm number.
+            </li>
+            <li>Soil, grade, existing irrigation and drainage, and where water currently goes.</li>
+            <li>
+              Access: the narrowest gate, whether a small machine passes, and the carry distance.
+            </li>
+            <li>
+              Photos: wide shots, the problem areas, the access route, the meter and the controller.
+            </li>
+            <li>Hours and miles spent on the lead so far.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="kicker" style="font-size: 7pt">Asked of the client beforehand</div>
+          <ul>
+            <li>
+              Photos of the whole area from several angles, including the parts they are unhappy
+              with.
+            </li>
+            <li>
+              A plot plan or survey, any architect's or designer's drawings, and the HOA rules that
+              apply.
+            </li>
+            <li>
+              How a truck and a small machine would reach the work area, and the narrowest gate
+              width.
+            </li>
+            <li>Whether water collects anywhere after rain.</li>
+            <li>What they want kept, and what is decided as against what is still open.</li>
+            <li class="free">
+              None of it is required. It is the difference between one visit and two.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot"><span>Lead-to-sale pipeline and pricing</span><span>7</span></div>
+    </div>
+
+    <!-- ===================== 8. NEVER SAY / CHECKS ======================== -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Lead to sale</span><span>Guardrails and open items</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">07</span>
+        <div>
+          <div class="kicker">The failure modes, all of them cheap to avoid</div>
+          <h2>Six things that undo the whole pipeline in one sentence</h2>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <ul class="never">
+            <li>
+              <strong>A number over the phone.</strong> It becomes the figure the client remembers
+              for the rest of the project, so every later and better number reads as a price
+              increase.
+            </li>
+            <li>
+              <strong>A starting-at figure, anywhere.</strong> Same reason, published. A number
+              attached to nothing, and the first thing quoted back.
+            </li>
+            <li>
+              <strong>&ldquo;The design fee comes off the construction price.&rdquo;</strong> It
+              does not, and it is not refunded. Plenty of clients assume otherwise, and signing is
+              the worst possible moment to find out.
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul class="never">
+            <li>
+              <strong>&ldquo;No problem, we can do that.&rdquo;</strong> Said on site, about
+              something outside scope, without paper. Not generosity: a bill the client has not seen
+              yet.
+            </li>
+            <li>
+              <strong>A padded allowance instead of a named exclusion.</strong> It charges every
+              client for the unlucky ones, and hides how much of the price was real work.
+            </li>
+            <li>
+              <strong>A start date without a signed contract.</strong> The queue is held by
+              paperwork. Say so plainly rather than let the client discover it in week six.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="section-head">
+        <span class="num">08</span>
+        <div>
+          <div class="kicker">Before any number leaves the building</div>
+          <h2>The internal check, and what this document deliberately does not say</h2>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="note">
+          <h3>Every number crosses the floor first</h3>
+          <p>
+            Whatever produced a number, a take-off, a change order, a maintenance quote or a
+            re-struck annual price, it is checked against the per-day minimum for its service line
+            before a client sees it. Below that, a job does not cover labour, overhead and profit.
+            The two service lines have different minimums and the maintenance one is higher, so
+            route work is checked against the maintenance book rather than the default.
+          </p>
+          <p style="margin-top: 5pt">
+            Under it, there are three ways out and only three: add days, cut scope, or hold the
+            price and walk away.
+          </p>
+        </div>
+        <div class="note warn">
+          <h3>The numbers are not printed here on purpose</h3>
+          <p>
+            The per-day minimums and the rates behind them live in one place, Jeff's facts sheet,
+            and are read from there every time. Printing them into an explainer creates a second
+            home for a fact that changes, and the two drift apart within a month. That failure has
+            been paid for once already at GMZ: a crew size written in twenty-three places, one of
+            them still wrong.
+          </p>
+          <p style="margin-top: 5pt">
+            Same reason this document names no phone number, no licence number and no address.
+          </p>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="section-head">
+        <span class="num">09</span>
+        <div>
+          <div class="kicker">If something in here needs changing</div>
+          <h2>Where each kind of fact actually lives</h2>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 2.15in">The fact</th>
+            <th style="width: 2.1in">Its one home</th>
+            <th>Why there and nowhere else</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>The stages themselves, and what each is for</td>
+            <td class="gatecell">docs/process-proposal.html</td>
+            <td>The stage model. If a stage moves, it moves there first, then here.</td>
+          </tr>
+          <tr>
+            <td>What may be said to a client at a stage</td>
+            <td class="gatecell">src/content/faqs, published entries</td>
+            <td>
+              A published answer is settled policy. An unpublished one is a decision not yet made,
+              and it shows on the site with its note attached rather than as a promise.
+            </td>
+          </tr>
+          <tr>
+            <td>The intake questions and the compliance gates</td>
+            <td class="gatecell">docs/intake-forms.html</td>
+            <td>
+              Both sides of the lead, the three gates, and the five items that stop a firm number.
+            </td>
+          </tr>
+          <tr>
+            <td>Per-day minimums, rates, crew, route days</td>
+            <td class="gatecell">Jeff's facts sheet</td>
+            <td>
+              Never retyped anywhere, including into this document. Ask Jeff, who reads it fresh.
+            </td>
+          </tr>
+          <tr>
+            <td>Phone numbers, address, licence number, tagline</td>
+            <td class="gatecell">src/data/site.ts</td>
+            <td>One home on purpose. Correcting one copy of three leaves two of them wrong.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top: 9pt; font-size: 8.2pt; color: var(--ink-faint)">
+        This document explains those sources. It is not one of them. Re-render it after any of them
+        changes:
+        <em>node scripts/render-pdf.mjs docs/pipeline-and-pricing.html</em>
+      </p>
+
+      <div class="foot"><span>Lead-to-sale pipeline and pricing</span><span>8</span></div>
+    </div>
+
+    <!-- ======================== 9. OPEN DECISIONS ========================= -->
+    <div class="page">
+      <div class="runner">
+        <span><strong>GMZ</strong> &nbsp;Lead to sale</span><span>Still open</span>
+      </div>
+
+      <div class="section-head">
+        <span class="num">10</span>
+        <div>
+          <div class="kicker">Still open</div>
+          <h2>Decisions that change what can be said at a stage</h2>
+        </div>
+      </div>
+
+      <p class="deck">
+        Each of these is a sentence GMZ cannot yet say. The pipeline runs without them, but a client
+        asking the question at that stage gets &ldquo;that is being finalised&rdquo; rather than an
+        answer, and that is a worse conversation the further down the pipeline it happens.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 0.72in">Stage</th>
+            <th style="width: 2.15in">The open question</th>
+            <th>What is being said in the meantime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="st"><span class="stnum">05</span></td>
+            <td>Who owns the drawings, and what copyright GMZ retains.</td>
+            <td>
+              Nothing published. The recommended position is that the client receives the drawings
+              and may use them for their property while GMZ keeps copyright. It has to match
+              whatever is decided about taking them elsewhere.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stnum">05</span></td>
+            <td>
+              Whether a client may take paid-for drawings to another contractor, and on what
+              conditions.
+            </td>
+            <td>
+              Held back. Sensitive, and it must be consistent with the ownership clause in the
+              design agreement.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stnum">11</span></td>
+            <td>The closeout package itself.</td>
+            <td>
+              Three published answers promise a plan copy, plant list, irrigation zone map with
+              settings and a care guide. No document delivers that yet. Either the template gets
+              written, or the promise comes out of all three answers together.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stnum">07</span></td>
+            <td>The written workmanship warranty.</td>
+            <td>
+              Half a page: one year on workmanship from completion, plants excluded and the reason
+              stated. Named in the closeout package and not yet written.
+            </td>
+          </tr>
+          <tr>
+            <td class="st"><span class="stnum">&mdash;</span></td>
+            <td>What insurance language may be published.</td>
+            <td>
+              Only the licence record is confirmed, so the site says that plus a certificate on
+              request. No coverage sentence goes back up until the carrier and status are confirmed.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note" style="margin-top: 11pt">
+        <h3>The rule all five follow</h3>
+        <p>
+          An undecided policy does not get published, because a client will hold GMZ to whatever it
+          said. A warranty term, a lead time or a fee that nobody has agreed to is worse than
+          silence: it is a promise made by accident. The same principle governs a testimonial, which
+          does not appear anywhere until the client has agreed in writing to be quoted.
+        </p>
+        <p style="margin-top: 5pt">
+          <em>npm run faq:decisions</em> prints what is currently outstanding, with the note
+          attached to each.
+        </p>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="section-head">
+        <span class="num">11</span>
+        <div>
+          <div class="kicker">Stage 02, on one card</div>
+          <h2>The first call, in the order to ask it</h2>
+        </div>
+      </div>
+
+      <p class="deck">
+        Not a new script: this is the list the site already tells clients to expect, in the order it
+        names them, with the intake fields beside it. Fifteen minutes, and the last question is the
+        gate.
+      </p>
+
+      <div class="grid2" style="margin-top: 8pt">
+        <div>
+          <ul class="checklist">
+            <li>
+              <span class="n">1</span
+              ><span
+                ><strong>What do you want done?</strong> The problem, not the solution. Standing
+                water, dead lawn, no privacy, nowhere to sit.</span
+              >
+            </li>
+            <li>
+              <span class="n">2</span
+              ><span
+                ><strong>Where is the property?</strong> Town first. It decides route fit and
+                whether GMZ serves it at all.</span
+              >
+            </li>
+            <li>
+              <span class="n">3</span
+              ><span
+                ><strong>When would you like it done?</strong> Ask what the date is attached to: an
+                event, a house sale, a permit clock, a school year.</span
+              >
+            </li>
+            <li>
+              <span class="n">4</span
+              ><span
+                ><strong>Who else is part of the decision?</strong> Partner, family, HOA board,
+                property manager. Ask whether they will be at the visit.</span
+              >
+            </li>
+            <li>
+              <span class="n">5</span
+              ><span
+                ><strong>What range are you planning around?</strong> The gate. Asked plainly, and
+                asked for their benefit as much as GMZ's.</span
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="note">
+          <h3>Then one of four things happens</h3>
+          <ul>
+            <li>
+              The band and the scope agree: <strong>book the visit</strong>, and give a real date.
+            </li>
+            <li>
+              Too small for a build crew: <strong>route it</strong> to a service call or a
+              maintenance stop. It does not get refused.
+            </li>
+            <li>
+              Off-route maintenance, or a hard date that cannot be met:
+              <strong>say so on the call.</strong>
+            </li>
+            <li>
+              They press for a number:
+              <strong>the visit is free, the number comes after it.</strong> No figure, not even a
+              rough one.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot">
+        <span
+          >Lead-to-sale pipeline and pricing &middot; GMZ Landscaping Inc. &middot; internal</span
+        ><span>9</span>
+      </div>
+    </div>
+  </body>
+</html>
