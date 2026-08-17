@@ -116,14 +116,14 @@ files stay link-shared, and nothing at build time can check that. Copy them into
   `gmzlandscape.com` throughout. Confirmed 2026-08-17.
 - **Projects are indexed by street name.** See the client-privacy rule above.
   Confirmed 2026-08-17.
+- **The About headline is "More than 30 years on the ground."** The founding year
+  is 1994. GMZ chose the conservative phrasing over an exact count, so do not
+  "correct" it to 32. Confirmed 2026-08-17.
 
 ## Open questions for GMZ
 
 Flagged rather than decided:
 
-- **"Thirty years on the same ground"** is the About headline from the design.
-  The founding year is 1994, so it is 32 years. Kept verbatim as their editorial
-  voice; worth confirming.
 - **Whether the veil is enough**, or whether this needs host-level protection.
 - **The Answers pages are now `noindex`** along with everything else, so the 56
   FAQ entries no longer earn search traffic. They are still reachable behind the

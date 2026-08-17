@@ -212,7 +212,7 @@ export const site = {
 export const gate = {
   enabled: true,
   /** Compared case-insensitively after trimming. */
-  code: 'GMZ26',
+  code: 'cersis',
   /** localStorage key holding the unlocked flag. */
   storageKey: 'gmz-portfolio-unlocked',
 } as const;
