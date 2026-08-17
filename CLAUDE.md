@@ -36,13 +36,15 @@ repo that genuinely must not be public.** Real privacy needs a host-level check.
 The full explanation is in the "Private portfolio" section of README.md.
 
 **Client privacy, and the standing exception.** No house numbers, and never name
-a client. Projects are indexed by **street name**, which is a deliberate
-departure from the town-only rule the public scaffold used, and it is why this
-site is gated rather than public. It is a real exposure: a street name plus a
-photograph of the house often identifies whose garden it is. Do not widen it,
-and if a project would be sensitive, use a descriptor instead of the street.
-This is flagged for GMZ to confirm; until they do, treat it as intentional but
-not settled.
+a client. Projects are indexed by **street name**, a deliberate departure from
+the town-only rule the public scaffold used, and the reason this site is gated
+rather than public. **Confirmed by GMZ 2026-08-17.**
+
+It stays a real exposure, so the boundary matters: a street name plus a
+photograph of the house often identifies whose garden it is. What was agreed is
+the street, and nothing beyond it. Do not widen it to a house number, a client
+name or a precise map reference, and if a particular project would be sensitive,
+use a descriptor instead of the street.
 
 **Undecided policy does not get published.** An FAQ answer stays
 `published: false` until the underlying decision is actually made. The site must
@@ -94,11 +96,14 @@ file keeps its own, and git history is permanent: a later deletion does not
 remove it. On a site already indexed by street name, exact coordinates would be
 a much sharper version of that exposure. Review before committing, not after.
 
-Still generated rather than real:
+The brand assets are real too. `src/assets/brand/gmz-logo.png` is the GMZ mark:
+white artwork on transparent, so it is legible only on the teal chrome, which is
+the only place the design puts it. All four usages read `Logo.astro`, so
+replacing that one file updates the header, drawer, footer and veil together.
 
-- `src/assets/brand/gmz-logo.svg` is a wordmark, not the GMZ mark. Replacing
-  that one file updates the header, drawer, footer and veil.
-- `public/favicon.svg`, `public/og-default.jpg`.
+`public/favicon.png` and `public/og-default.jpg` are derived from the mark by
+`npm run brand`. Re-run it after changing the logo rather than editing them by
+hand.
 
 Six walkthroughs are live Google Drive embeds. They work only while those Drive
 files stay link-shared, and nothing at build time can check that. Copy them into
@@ -111,7 +116,6 @@ Flagged rather than decided:
 - **"Thirty years on the same ground"** is the About headline from the design.
   The founding year is 1994, so it is 32 years. Kept verbatim as their editorial
   voice; worth confirming.
-- **Indexing by street name**, per the client-privacy note above.
 - **Whether the veil is enough**, or whether this needs host-level protection.
 - **The Answers pages are now `noindex`** along with everything else, so the 56
   FAQ entries no longer earn search traffic. They are still reachable behind the

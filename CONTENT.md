@@ -98,11 +98,12 @@ Projects are indexed by street name, which is how GMZ refers to jobs and what
 the design was drawn around. **Never add a house number**, and keep `meta` to a
 descriptor rather than an address.
 
-Be aware of what this means: a street name plus a photograph of the house is
-often enough to identify whose garden it is. That is the reason the whole
-portfolio sits behind the unlock veil instead of being a public marketing site.
-If a client would object to their street being named to another prospect, use a
-descriptor instead of the street.
+GMZ confirmed this on 2026-08-17, so it is settled. The boundary is not: a
+street name plus a photograph of the house is often enough to identify whose
+garden it is, which is why the whole portfolio sits behind the unlock veil
+instead of being a public marketing site. The street is as far as it goes. If a
+client would object to their street being named to another prospect, use a
+descriptor instead.
 
 ## Video
 

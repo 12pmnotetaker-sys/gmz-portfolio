@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { company, gate, hoursInline, licenseShort, primaryPhone, secondaryPhone } from '@data/site';
-import logo from '@/assets/brand/gmz-logo.svg';
+import Logo from '@components/Logo.astro';
 import apld from '@/assets/brand/apld-logo.webp';
 
 /**
@@ -28,7 +28,7 @@ const membership = company.memberships[0];
       </div>
 
       <div class="footer__marks">
-        <img class="footer__logo" src={logo.src} alt={company.name} width="300" height="96" />
+        <Logo height={69} class="footer__logo" />
         {
           membership && (
             <div class="footer__apld">
@@ -110,11 +110,6 @@ const membership = company.memberships[0];
     gap: var(--space-lg);
     align-items: flex-end;
     flex: none;
-  }
-
-  .footer__logo {
-    height: 88px;
-    width: auto;
   }
 
   /* The APLD mark is dark artwork, so it needs a white ground on the teal. */

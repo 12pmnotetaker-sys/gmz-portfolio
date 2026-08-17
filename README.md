@@ -18,8 +18,9 @@ the repo: WebP capped at 2560px on the long edge, deduplicated, and stripped of
 all metadata before they landed. [ASSETS.md](./ASSETS.md) is the current status
 of every slot.
 
-What is still a placeholder: the GMZ logo (`src/assets/brand/gmz-logo.svg` is a
-generated wordmark), `public/favicon.svg` and `public/og-default.jpg`.
+The brand assets are real as well: the GMZ mark is in
+`src/assets/brand/gmz-logo.png`, and the favicon and Open Graph card are
+generated from it by `npm run brand`.
 
 ## Getting started
 
@@ -43,6 +44,7 @@ it again with "Lock portfolio" in the footer.
 | `npm run preview`       | Serve the built `dist/` locally                             |
 | `npm run check`         | Type-check and validate all content against the schemas     |
 | `npm run placeholders`  | Generate any missing placeholder image, and write ASSETS.md |
+| `npm run brand`         | Rebuild the favicon and Open Graph card from the GMZ mark   |
 | `npm run format`        | Prettier over the repo                                      |
 | `npm run faq:decisions` | List FAQ answers held back pending a decision               |
 
@@ -91,6 +93,7 @@ src/
     brand/             Logo and the APLD mark
     portfolio/<slug>/  One folder of photography per project
   components/
+    Logo.astro         The GMZ mark, at whatever height is asked for
     Header.astro       Masthead, nav, mobile drawer
     Footer.astro       Closing invitation, marks, contact strip
     Gate.astro         The unlock veil
@@ -127,6 +130,8 @@ src/
 public/
   fonts/               Gabarito, self-hosted
   media/               Local walkthrough video
+  favicon.png          Generated from the mark by `npm run brand`
+  og-default.jpg       Generated from the mark by `npm run brand`
 scripts/               Placeholder generation, FAQ decision report
 ```
 
@@ -184,8 +189,8 @@ will point at the default.
 - [ ] Confirm the production domain and set `SITE_URL`
 - [x] Replace the placeholder photography, all 81 images ([ASSETS.md](./ASSETS.md))
 - [x] Add the 7 local walkthrough videos to `public/media/`
-- [ ] Replace `src/assets/brand/gmz-logo.svg` with the real GMZ mark
-- [ ] Replace `public/favicon.svg` and `public/og-default.jpg`
+- [x] Replace the placeholder logo with the real GMZ mark
+- [x] Replace the favicon and the Open Graph image
 - [ ] Copy the six remaining Google Drive walkthroughs into `public/media/` so
       the site does not depend on Drive sharing staying on
 - [ ] Review the photography once more for anything a client would not want
@@ -193,8 +198,7 @@ will point at the default.
 - [ ] Wire up and **test** the contact form
 - [ ] Decide whether "Thirty years on the same ground" should track the founding
       year, which is now 32 years ago
-- [ ] Confirm indexing by street name is what GMZ wants, given clients can be
-      identified from it (see CLAUDE.md)
+- [x] Confirm indexing by street name is what GMZ wants (confirmed 2026-08-17)
 - [ ] Decide whether the unlock veil is enough, or whether this needs real
       host-level protection
 - [ ] Work through `npm run faq:decisions` and publish the held-back answers

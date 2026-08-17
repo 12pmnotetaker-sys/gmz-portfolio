@@ -18,7 +18,8 @@
     "format:check": "prettier --check .",
     "astro": "astro",
     "faq:decisions": "node scripts/faq-decisions.mjs",
-    "placeholders": "node scripts/make-portfolio-placeholders.mjs"
+    "placeholders": "node scripts/make-portfolio-placeholders.mjs",
+    "brand": "node --experimental-strip-types scripts/make-brand-images.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

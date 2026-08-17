@@ -1,6 +1,6 @@
 ---
 import { company, gate, licenseShort } from '@data/site';
-import logo from '@/assets/brand/gmz-logo.svg';
+import Logo from '@components/Logo.astro';
 
 /**
  * The unlock veil.
@@ -19,7 +19,7 @@ import logo from '@/assets/brand/gmz-logo.svg';
 
 <div class="veil on-dark" data-gate-veil>
   <div class="veil__lockup">
-    <img src={logo.src} alt={company.name} width="300" height="96" />
+    <Logo height={88} class="veil__mark" />
     <p class="veil__name">
       {company.name}<br /><span>Design Portfolio</span>
     </p>
@@ -160,8 +160,8 @@ import logo from '@/assets/brand/gmz-logo.svg';
     animation: gmzRise 700ms var(--ease) both;
   }
 
-  .veil__lockup img {
-    height: clamp(84px, 9vw, 112px);
+  .veil__lockup :global(.veil__mark) {
+    height: clamp(66px, 7.1vw, 88px);
     width: auto;
     flex: none;
   }
