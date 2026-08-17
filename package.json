@@ -17,11 +17,11 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "astro": "astro",
-    "faq:decisions": "node scripts/faq-decisions.mjs"
+    "faq:decisions": "node scripts/faq-decisions.mjs",
+    "placeholders": "node scripts/make-portfolio-placeholders.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/sitemap": "^3.2.1",
     "astro": "^5.1.1",
     "sharp": "^0.33.5",
     "typescript": "^5.7.2"

@@ -1,0 +1,131 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { PROCESS_STEPS, SERVICE_STAGES } from '@data/portfolio';
+---
+
+<BaseLayout
+  title="Services"
+  description="Design, construction and ongoing care. Most projects run through all three stages; any one of them can be taken on its own."
+>
+  <div class="services">
+    <h1 class="page-title services__title">
+      Design, construction, and keeping it alive afterwards.
+    </h1>
+    <p class="lead services__lede">
+      Most projects run through all three stages with us. Any one of them can be taken on its own.
+    </p>
+
+    <div class="stages">
+      {
+        SERVICE_STAGES.map((stage) => (
+          <div class="stage">
+            <p class="kicker">{stage.stage}</p>
+            <h2 class="stage__title">{stage.title}</h2>
+            <ul class="stage__items">
+              {stage.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <ol class="steps">
+      {
+        PROCESS_STEPS.map((step) => (
+          <li class="step">
+            <p class="kicker">Step {step.n}</p>
+            <p class="step__name">{step.name}</p>
+            <p class="step__note">{step.note}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</BaseLayout>
+
+<style>
+  .services {
+    max-width: var(--width-content);
+    margin-inline: auto;
+    padding: 2.75rem var(--gutter) 0;
+  }
+
+  .services__title {
+    max-width: 24ch;
+  }
+
+  .services__lede {
+    margin-block-start: 1.125rem;
+    max-width: 58ch;
+  }
+
+  .stages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+    margin-block-start: 2.625rem;
+  }
+
+  .stage {
+    border-block-start: var(--rule-structure) solid var(--color-structure);
+    padding-block-start: 0.875rem;
+  }
+
+  .stage__title {
+    margin-block-start: 0.5625rem;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: var(--tracking-heading);
+    color: var(--color-text);
+    line-height: 1.25;
+  }
+
+  .stage__items {
+    margin-block-start: 1rem;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4375rem;
+  }
+
+  .stage__items li {
+    font-size: 1rem;
+    color: var(--color-text);
+    padding-block-end: 0.4375rem;
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  /* The four steps read as a numbered sequence, so they are an ordered list
+     even though the design draws them as a row of panels. */
+  .steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    margin-block-start: 3.25rem;
+    border-block-start: var(--rule-structure) solid var(--color-structure);
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .step {
+    padding: 1.125rem 1.25rem 1.25rem;
+    border-inline-end: 1px solid var(--color-border);
+  }
+
+  .step__name {
+    margin-block-start: var(--space-xs);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .step__note {
+    margin-block-start: var(--space-xs);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+</style>

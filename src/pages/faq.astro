@@ -4,7 +4,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import PageHeader from '@components/PageHeader.astro';
 import FaqAnswer from '@components/FaqAnswer.astro';
 import { getFaqs, FAQ_PHASE_META } from '@data/content';
-import { company, primaryPhone } from '@data/site';
+import { company, gate, primaryPhone } from '@data/site';
 
 /**
  * The searchable answer desk. Optimized for the visitor who arrives from a
@@ -31,6 +31,11 @@ const groupsPresent = FAQ_PHASE_META.filter((p) => faqs.some((f) => f.data.phase
 /**
  * FAQPage structured data, so these answers can surface directly in a search
  * result. This is the reason this layout was chosen over the alternatives.
+ *
+ * It is only emitted when the portfolio is not gated. Offering rich-result
+ * markup on a page that also says `noindex` is a contradictory signal, the
+ * same reason astro.config.mjs no longer publishes a sitemap. Ungate the site
+ * and this comes back on its own.
  */
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -50,7 +55,16 @@ const faqSchema = {
   title="Questions, answered"
   description={`Straight answers about landscape design, building and maintenance from ${company.legalName}, a licensed contractor on the San Francisco Peninsula.`}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline slot="head" />
+  {
+    !gate.enabled && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(faqSchema)}
+        is:inline
+        slot="head"
+      />
+    )
+  }
 
   <PageHeader
     eyebrow="Answers"
@@ -267,7 +281,6 @@ const faqSchema = {
     gap: var(--space-2xs);
     padding: var(--space-2xs) var(--space-sm);
     border: 1px solid var(--color-border);
-    border-radius: 999px;
     background: var(--color-bg);
     color: var(--color-text);
     font: inherit;

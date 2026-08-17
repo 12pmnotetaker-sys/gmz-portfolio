@@ -1,26 +1,89 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { getProjects, projectHref } from '@data/portfolio';
 import { primaryNav } from '@data/site';
+
+const projects = await getProjects();
 ---
 
-<BaseLayout title="Page not found" noindex>
-  <div class="section">
-    <div class="container prose">
-      <h1>That page is not here</h1>
-      <p>
-        The link may be out of date, or the page may have moved. Here is where everything else
-        lives.
-      </p>
-      <ul>
-        <li><a href="/">Home</a></li>
-        {
-          primaryNav.map((item) => (
-            <li>
-              <a href={item.href}>{item.label}</a>
-            </li>
-          ))
-        }
-      </ul>
+<BaseLayout title="Page not found">
+  <div class="missing">
+    <h1 class="page-title">That page is not here</h1>
+    <div class="rule-accent rule-accent--short"></div>
+    <p class="lead missing__lede">
+      The link may be out of date, or the page may have moved. Here is where everything else lives.
+    </p>
+
+    <div class="missing__lists">
+      <nav aria-labelledby="missing-pages">
+        <p class="kicker" id="missing-pages">Pages</p>
+        <ul>
+          {
+            primaryNav.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="missing-projects">
+        <p class="kicker" id="missing-projects">Projects</p>
+        <ul>
+          {
+            projects.map((project) => (
+              <li>
+                <a href={projectHref(project)}>{project.data.name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .missing {
+    max-width: var(--width-content);
+    margin-inline: auto;
+    padding: 2.75rem var(--gutter) 0;
+  }
+
+  .missing__lede {
+    margin-block-start: 1.375rem;
+  }
+
+  .missing__lists {
+    display: flex;
+    gap: var(--space-2xl);
+    flex-wrap: wrap;
+    margin-block-start: 2.5rem;
+  }
+
+  .missing__lists nav {
+    flex: 1 1 220px;
+    border-block-start: var(--rule-structure) solid var(--color-structure);
+    padding-block-start: 0.875rem;
+  }
+
+  .missing__lists ul {
+    list-style: none;
+    padding: 0;
+    margin-block-start: var(--space-sm);
+  }
+
+  .missing__lists li {
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .missing__lists a {
+    display: block;
+    padding-block: 0.6875rem;
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+</style>

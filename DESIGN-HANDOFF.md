@@ -1,126 +1,144 @@
 # Design handoff
 
-How the finished design from Claude Design gets into this repo.
+**Status: landed.** The portfolio design from Claude Design
+(`GMZ Portfolio.dc.html`) is implemented. This document is now the record of
+where each part of it went, and the guide for bringing in the next revision.
 
-The scaffold was built to be replaced. Every page renders real content through
-real routing, but the styling is deliberately thin, so bringing the design in is
-a swap rather than a fight with existing CSS.
+## What the design was, and what it became
 
-## The short version
+The design was a single-file HTML/CSS/JS prototype: one component holding every
+route, switching on a `route` state variable, with all styling inline and all
+content in a `PROJECTS` array at the bottom of the file.
 
-1. Replace the values in `src/styles/tokens.css`. Keep the token names.
-2. Move each page's markup into the matching `.astro` file, keeping the
-   `import` lines and the frontmatter fence.
-3. Delete the placeholder `<style>` block in the file you just restyled.
-4. Run `npm run build`. It will fail loudly if a photo path or a content field
-   is wrong.
+None of that structure survived, and none of it should have. What was recreated
+is the visual output. The mapping:
 
-Nothing else in the repo should need to change. If the design requires a
-content field the schema does not have, add it in `src/content.config.ts`
-first, then use it.
+| In the prototype                     | In this repo                                           |
+| ------------------------------------ | ------------------------------------------------------ |
+| `route` state, `isIndex`/`isProject` | Real routes under `src/pages/`                         |
+| The `PROJECTS` array                 | `src/content/portfolio/*.md`, one file per project     |
+| `FACTS`, hardcoded contact details   | `src/data/site.ts`                                     |
+| `SERVICES`, `STEPS`, `WALKTHROUGHS`  | `src/data/portfolio.ts`                                |
+| Inline `style="..."` on every node   | Tokens plus scoped `<style>` per component             |
+| `<a href="#" onClick={go}>`          | Real `<a href>`, with `aria-current` on the active one |
+| `T(id)` Google Drive thumbnails      | Local assets through Astro's `<Image />`               |
+| Component state for tabs and slider  | Small vanilla scripts, one per component               |
 
-## Where the seams are
+## Where the design's parts live
 
-| What the design controls            | Where it lands                                          |
-| ----------------------------------- | ------------------------------------------------------- |
-| Colors, type, spacing, radii        | `src/styles/tokens.css` — change values, not names      |
-| Global resets and layout primitives | `src/styles/global.css`                                 |
-| Header and footer chrome            | `src/components/Header.astro`, `Footer.astro`           |
-| Homepage sections                   | `src/pages/index.astro`                                 |
-| Project card and grid               | `src/components/ProjectCard.astro`, `ProjectGrid.astro` |
-| Project detail page                 | `src/pages/work/[...slug].astro`                        |
-| Services listing and detail         | `src/pages/services/index.astro`, `[...slug].astro`     |
-| Contact page and form               | `src/pages/contact.astro`                               |
-| Page shell, `<head>`, skip link     | `src/layouts/BaseLayout.astro`                          |
+| Part of the design             | File                                 |
+| ------------------------------ | ------------------------------------ |
+| Palette, type scale, spacing   | `src/styles/tokens.css`              |
+| Kickers, rules, buttons, wells | `src/styles/global.css`              |
+| Masthead, nav, mobile drawer   | `src/components/Header.astro`        |
+| Footer and contact strip       | `src/components/Footer.astro`        |
+| Unlock veil                    | `src/components/Gate.astro`          |
+| Index hero and project index   | `src/pages/index.astro`              |
+| Project page                   | `src/pages/work/[...slug].astro`     |
+| Tabbed drawings viewer         | `src/components/Drawings.astro`      |
+| Drag-to-compare                | `src/components/CompareSlider.astro` |
+| Full-screen viewer             | `src/components/Lightbox.astro`      |
+| Video, stills, "to come"       | `src/components/MediaClip.astro`     |
+| Walkthroughs page              | `src/pages/walkthroughs.astro`       |
+| About, Services, Contact       | the matching file in `src/pages/`    |
 
-Each component keeps its CSS in a scoped `<style>` block in the same file.
-Astro scopes those to the component, so deleting one cannot leak into another.
+## The palette, and keeping it straight
 
-## Bringing HTML from Claude Design into an .astro file
+Four colors doing four jobs. The design holds together as long as the jobs stay
+separate:
 
-An `.astro` file is HTML with an optional frontmatter fence at the top. Pasting
-a designed page in mostly works as-is. Four things to watch:
+| Token         | Value     | Job                                              |
+| ------------- | --------- | ------------------------------------------------ |
+| `--gmz-teal`  | `#002B37` | Chrome: header, footer, veil, inverse panels     |
+| `--gmz-green` | `#008C41` | Action: links, primary buttons                   |
+| `--gmz-amber` | `#F6A400` | Accent: the rule under things, button hover      |
+| `--gmz-blue`  | `#0062B9` | Structure: kickers, section rules, project names |
 
-**Keep the frontmatter fence.** The `---` block at the top of the file is
-JavaScript that runs at build time. It is where the content queries live. Paste
-the design's markup _below_ it and leave the fence alone.
+Type is Gabarito, self-hosted from `public/fonts/`. It is a variable font, so
+weights 400 to 800 all come from one file per subset. Do not add a Google Fonts
+link back: the files are in the repo precisely so the site does not depend on a
+third-party CDN.
 
-**Swap literal content for the data already being queried.** The scaffold
-already fetches the right entries. Where the design has a hard-coded project
-title, use `{project.data.title}`. Where it has a phone number, use
-`{primaryPhone.display}` — never retype a phone number, address or license
-number into a component. See "One fact, one home" below.
+## Deliberate departures from the prototype
 
-**Swap `<img>` for `<Image />`.** Astro's `<Image />` component emits responsive
-WebP at build time; a plain `<img>` ships the original file. The existing usages
-in `ProjectCard.astro` and `work/[...slug].astro` show the shape.
+Six places where the prototype was not copied literally, and why.
 
-**Attribute syntax.** `class` stays `class` (not `className`). Expressions go in
-single braces: `class={someVariable}`. A boolean attribute is
-`hidden={isHidden}`.
+**Alt text was added everywhere.** The prototype had `alt="{{ p.name }}"` or no
+alt at all. The schema now requires real alt text on all 81 images, and there is
+no way around it. This is the single largest addition to the design's content.
 
-## Handling a full-page HTML export
+**Company facts were lifted out.** The prototype hardcoded both phone numbers,
+the email, the P.O. Box and the CSLB number in the footer, the contact page, the
+mobile menu and the veil. They all read from `src/data/site.ts` now.
 
-If the design arrives as a complete standalone HTML document rather than a
-fragment, do not paste the whole thing into a page. Split it:
+**Tabs, the slider and the viewer got real semantics.** The prototype's tabs
+were styled buttons; they are a `tablist` with arrow-key navigation now. The
+compare handle is a `slider` with `aria-valuenow` and keyboard control. The
+lightbox is a native `<dialog>`, which brings the focus trap and Escape with it.
 
-- `<head>` contents that are metadata → already handled by `SEO.astro`, skip them
-- font `@font-face` / `<link>` tags → `src/styles/tokens.css` (or `public/fonts/`
-  for self-hosted files, which is preferred over a third-party CDN)
-- `<style>` in the head → split between `tokens.css` (values) and the relevant
-  component's scoped `<style>` block
-- `<body>` markup → the relevant page and component files
-- inline `<script>` → an Astro `<script>` block at the bottom of the component
+**Every panel renders, and only one shows.** The prototype swapped the active
+image's `src`. Here all panels are in the document with `hidden` on the inactive
+ones, so the first drawing and its note are readable with JavaScript off.
 
-The `work/index.astro` filter script is an example of the last one.
+**The About bio was un-hardcoded.** The prototype centred that paragraph with a
+fixed `463px × 323px` box and two leading `<br>`s. It is centred by the flex row
+now, which holds at any width.
 
-## One fact, one home
+**Autoplay respects `prefers-reduced-motion`.** Clips still play on scroll into
+view, but not for anyone who has asked for less motion. The controls work
+regardless.
 
-`src/data/site.ts` is the only place a company fact may live. Phone numbers,
-the mailing address, the CSLB number, the tagline and the service-area list are
-all read from there, and the structured data in `SEO.astro` reads the same
-values, so a correction reaches the Google result too.
+## Bringing in the next revision
 
-This rule exists because the estimating system learned it the expensive way: a
-contact block hardcoded in three places meant correcting one phone number left
-two of them wrong. Do not retype a fact into a component, even once.
+The seams are the same as before, and the swap procedure is:
 
-## What must survive the redesign
+1. **Colors, type, spacing** changed → edit values in `src/styles/tokens.css`.
+   Keep the names.
+2. **A repeated pattern** changed (the amber rule, a button, a section head) →
+   edit `src/styles/global.css` once and every page follows.
+3. **One component's layout** changed → edit that component's scoped `<style>`.
+4. **Content changed** → edit the Markdown, not the component.
+5. **A new content field** is needed → add it to `src/content.config.ts` first,
+   then use it. The schema is what makes a bad path fail the build.
+6. Run `npm run build`. It will fail loudly on a broken photo path, a missing
+   video or a schema violation, which is the point.
 
-These are not stylistic preferences. Losing any of them is a regression:
+## What must survive any redesign
 
-- **The skip link** (`.skip-link` in `BaseLayout.astro`) and its focus styling.
-- **Visible focus rings.** `:focus-visible` in `global.css`. If the design
-  changes the ring, keep a ring.
-- **Alt text on every image.** The schema requires it; do not route around it
-  by dropping the attribute in a template.
+These are not stylistic preferences. Losing one is a regression:
+
+- **The skip link** and its focus styling.
+- **Visible focus rings.** `:focus-visible` in `global.css`, with the amber
+  variant for the teal chrome. If the design changes the ring, keep a ring.
+- **Alt text on every image.** The schema requires it. Do not route around it by
+  dropping the attribute in a template.
 - **`aria-current="page"`** on the active nav item.
-- **Real heading order.** `h1` once per page, no level skipped.
-- **The `prefers-reduced-motion` block** in `global.css`, if the design adds
-  animation.
-- **The dark-mode token block**, or a deliberate decision to remove it. Do not
-  leave it half-updated, since that ships unreadable text to anyone with a dark
-  preference.
+- **One `h1` per page**, no level skipped.
+- **The `prefers-reduced-motion` block** in `global.css`, and the autoplay opt-out
+  in `MediaClip.astro`.
+- **The dark-mode token block.** The design is light-only, so this is a
+  deliberate derivation rather than something the design specified. Update it
+  with the palette or remove it outright; do not leave it half-updated, which
+  ships unreadable text to anyone with a dark preference.
+- **The tab, slider and dialog semantics** listed above.
 
 ## What must never appear on this site
 
 Cost, margin, overhead, burdened labor rates, crew-day counts, contingency and
 supplier pricing are internal to GMZ. They live in the estimating system and
-they do not belong on a public marketing site, in a content file, in a comment
-or in a commit message.
+they do not belong on this site, in a content file, in a comment or in a commit
+message.
 
-The one deliberate exception is `budgetBand` on a project: a coarse range like
-`"$50k–$100k"`, shown only when `showBudgetBand: true` is set on that entry.
+Client identity is protected: no house numbers, and no naming a client. Note
+that the portfolio indexes by street name, which is a real exposure and the
+reason the whole site sits behind the veil. See CLAUDE.md.
 
-Client identity is also protected: project `location` is a town, never a street
-address, and a testimonial does not render anywhere until `approved: true`.
+## Assets still outstanding
 
-## Assets still needed
+[ASSETS.md](./ASSETS.md) is the complete list and is regenerated by
+`npm run placeholders`. In summary: 81 photographs, 7 videos, the GMZ logo, the
+favicon and the Open Graph image are all placeholders.
 
-- **Logo.** The green tree-badge mark, ideally as SVG. Replaces the `GMZ` block
-  in `Header.astro` and `public/favicon.svg`.
-- **Project photography.** Replaces `src/assets/projects/placeholder-*.jpg`.
-  See `CONTENT.md`.
-- **A real Open Graph image.** `public/og-default.jpg` is a generated
-  placeholder.
-- **Fonts**, if the design does not use system stacks.
+The four Google Drive walkthroughs are live embeds, not placeholders. They work
+only while those Drive files stay link-shared, and nothing at build time can
+check that. Copying them into `public/media/` removes the dependency.

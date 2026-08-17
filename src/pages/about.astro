@@ -1,140 +1,237 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import PageHeader from '@components/PageHeader.astro';
-import { company } from '@data/site';
+import { company, licenseShort, serviceRegionInline } from '@data/site';
+import apld from '@/assets/brand/apld-logo.png';
+import magnolia from '@/assets/about/about-portrait-magnolia.png';
+import garden from '@/assets/about/about-portrait-garden.jpg';
+import ranunculus from '@/assets/about/about-ranunculus.jpg';
+
+const membership = company.memberships[0];
+
+/**
+ * The facts panel. Every value is read from src/data/site.ts so a correction
+ * lands here, in the footer, in the contact panel and in the structured data
+ * at the same time.
+ */
+const facts = [
+  { k: 'Founded', v: String(company.founded) },
+  { k: 'Licence', v: licenseShort },
+  { k: 'Based', v: company.address.locality },
+  { k: 'Serving', v: company.serviceRegion },
+  { k: 'Hours', v: `${company.hours.daysShort}, ${company.hours.time}` },
+  { k: 'Drawings', v: company.drawings },
+  ...(membership ? [{ k: 'Member', v: membership.name }] : []),
+];
 ---
 
 <BaseLayout
   title="About"
-  description={`${company.legalName} is a licensed landscape contractor serving the San Francisco Peninsula.`}
+  description={`${company.legalName} has been designing and building gardens on ${serviceRegionInline} since ${company.founded}, as a family business, licensed and insured throughout.`}
 >
-  <PageHeader
-    eyebrow="About"
-    title={company.legalName}
-    lede="A licensed landscape contractor working on the San Francisco Peninsula."
-  />
-
-  <div class="section">
-    <div class="container layout">
-      <div class="prose">
+  <div class="about">
+    <div class="about__side">
+      <dl class="facts">
         {
-          /*
-           * PLACEHOLDER COPY. This page needs Xavier's own words about the
-           * company's history, the crew and how GMZ works. Everything below
-           * is a shape to fill, not approved copy. House style applies:
-           * no em-dashes in body prose, no manufacturer names.
-           */
+          facts.map((fact) => (
+            <div class="facts__row">
+              <dt>{fact.k}</dt>
+              <dd>{fact.v}</dd>
+            </div>
+          ))
         }
-        <h2>Who we are</h2>
-        <p>
-          GMZ Landscaping is a licensed landscape contractor based in Redwood City, working across
-          the San Francisco Peninsula. We design, build and maintain outdoor spaces for homeowners:
-          patios and walls, planting and irrigation, fences and gates, and the standing weekly care
-          that keeps a finished garden looking finished.
-        </p>
+      </dl>
 
-        <h2>How we work</h2>
-        <p>
-          Most projects start with a site visit and a measured plan. Design resolves the expensive
-          things first: grading, drainage, where you walk and what will still fit the space in ten
-          years. Once the plan is settled we price it in detail, and what we build is what was
-          drawn.
-        </p>
-        <p>
-          Maintenance is its own service, with its own agreement and its own schedule. The same crew
-          sees the same garden on the same day each week, which is what turns problems into small
-          ones.
-        </p>
+      {
+        membership && (
+          <Image
+            class="about__apld"
+            src={apld}
+            alt={membership.name}
+            widths={[166, 332]}
+            sizes="166px"
+          />
+        )
+      }
+    </div>
 
-        <h2>Where we work</h2>
-        <p>We take projects in and around:</p>
-        <ul class="areas">
-          {company.serviceArea.map((area) => <li>{area}</li>)}
-        </ul>
+    <div class="about__body">
+      <h1 class="page-title about__title">Thirty years on the same ground.</h1>
+      <div class="rule-accent rule-accent--short"></div>
+      <p class="about__lede">
+        {company.legalName} has been designing and building gardens on {serviceRegionInline} since {
+          company.founded
+        }, as a family business, licensed and insured throughout.
+      </p>
+
+      <div class="about__intro">
+        <figure class="figure about__portrait">
+          <Image
+            src={magnolia}
+            alt="Liliana, who does the design and drawings at GMZ Landscaping"
+            widths={[260, 520]}
+            sizes="260px"
+          />
+          <div class="rule-accent"></div>
+          <figcaption class="about__caption">Liliana, design and drawings.</figcaption>
+        </figure>
+
+        <p class="about__bio">
+          Since childhood, Liliana has been immersed in gardening and landscaping, growing up around
+          the landscaping trade at home. She spent her youth actively supporting various operations
+          at {company.legalName}. Her enthusiasm for outdoor spaces is reflected in her work, from
+          creating hand-drawn designs to developing comprehensive 3-D plans, demonstrating a strong
+          commitment to her clients.
+        </p>
       </div>
 
-      <aside class="credentials" aria-label="Credentials">
-        <dl>
-          <div>
-            <dt>License</dt>
-            <dd>{company.license.display}</dd>
-          </div>
-          <div>
-            <dt>Based in</dt>
-            <dd>{company.address.locality}, {company.address.region}</dd>
-          </div>
-          <div>
-            <dt>Services</dt>
-            <dd>{company.tagline}</dd>
-          </div>
-        </dl>
-        <p class="credentials__cta"><a href="/contact">Get in touch</a></p>
-      </aside>
+      <div class="about__grid">
+        <figure class="figure">
+          <Image
+            class="about__shot about__shot--garden"
+            src={garden}
+            alt="A garden in flower, with zinnias, hollyhocks and sunflowers along a gravel path"
+            widths={[320, 520, 800]}
+            sizes="(width >= 900px) 320px, 45vw"
+            loading="lazy"
+          />
+          <div class="rule-accent"></div>
+          <figcaption class="about__caption">
+            A garden in flower: zinnias, hollyhocks and sunflowers along a gravel path.
+          </figcaption>
+        </figure>
+
+        <figure class="figure">
+          <Image
+            class="about__shot about__shot--ranunculus"
+            src={ranunculus}
+            alt="Rows of ranunculus in flower under shade frames"
+            widths={[320, 520, 800]}
+            sizes="(width >= 900px) 320px, 45vw"
+            loading="lazy"
+          />
+          <div class="rule-accent"></div>
+          <figcaption class="about__caption">
+            Ranunculus in flower under the shade frames.
+          </figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </BaseLayout>
 
 <style>
-  .layout {
-    display: grid;
-    gap: var(--space-xl);
-    grid-template-columns: 1fr;
-  }
-
-  @media (min-width: 56rem) {
-    .layout {
-      grid-template-columns: minmax(0, 1fr) 16rem;
-      align-items: start;
-    }
-  }
-
-  .areas {
+  .about {
+    max-width: var(--width-content);
+    margin-inline: auto;
+    padding: 2.75rem var(--gutter) 0;
     display: flex;
+    gap: var(--space-2xl);
+    align-items: flex-start;
     flex-wrap: wrap;
-    gap: var(--space-2xs) var(--space-xs);
-    list-style: none;
-    padding: 0;
-    font-size: var(--text-sm);
   }
 
-  .areas li {
-    padding: 0.15em 0.7em;
-    border-radius: 999px;
-    background: var(--color-bg-tint);
-    color: var(--color-accent-hover);
+  .about__side {
+    flex: 1 1 230px;
+    min-width: 220px;
   }
 
-  .credentials {
-    padding: var(--space-lg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-bg-subtle);
-    font-size: var(--text-sm);
+  .about__apld {
+    width: 166px;
+    max-width: 100%;
+    height: auto;
+    margin-block-start: 1.625rem;
   }
 
-  .credentials dl {
+  .about__body {
+    flex: 999 1 520px;
+    min-width: 300px;
+  }
+
+  .about__title {
+    max-width: 22ch;
+  }
+
+  .about__lede {
+    margin-block-start: var(--space-lg);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--color-text);
+    max-width: 56ch;
+  }
+
+  /* ---- Portrait and bio ------------------------------------------------ */
+
+  .about__intro {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-block-start: var(--space-lg);
+  }
+
+  .about__portrait {
+    flex: 0 0 260px;
+    max-width: 260px;
+  }
+
+  .about__portrait :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    /* Crops to the face rather than the middle of the frame. */
+    object-position: 50% 8%;
+    background: var(--gmz-well);
+  }
+
+  /*
+   * The design centres this paragraph against the portrait beside it. The
+   * prototype did that with a fixed pixel height and two leading line breaks;
+   * this centres it with the flex row instead, which holds up at any width.
+   */
+  .about__bio {
+    flex: 1 1 300px;
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 48ch;
+    text-align: center;
+  }
+
+  /* ---- Photo pair ------------------------------------------------------ */
+
+  .about__grid {
     display: grid;
-    gap: var(--space-md);
-    margin: 0;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.75rem 1.5rem;
+    margin-block-start: 2rem;
   }
 
-  .credentials dt {
-    font-size: var(--text-xs);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  .about__shot {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: var(--gmz-well);
+  }
+
+  .about__shot--garden {
+    object-position: 50% 42%;
+  }
+
+  .about__shot--ranunculus {
+    object-position: 50% 46%;
+  }
+
+  .about__caption {
+    margin-block-start: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
     color: var(--color-text-muted);
   }
 
-  .credentials dd {
-    margin: 0;
-    margin-block-start: var(--space-2xs);
-  }
-
-  .credentials__cta {
-    margin-block-start: var(--space-lg);
-    padding-block-start: var(--space-md);
-    border-block-start: 1px solid var(--color-border);
-    font-weight: 600;
+  @media (width < 560px) {
+    .about__bio {
+      text-align: start;
+    }
   }
 </style>

@@ -1,128 +1,299 @@
 ---
+import { getProjects, projectHref } from '@data/portfolio';
 import { company, primaryNav, primaryPhone } from '@data/site';
+import logo from '@/assets/brand/gmz-logo.svg';
 
+/**
+ * The masthead: teal bar, logo, nav, and the 4px amber rule under it.
+ *
+ * The desktop/mobile switch is a CSS media query rather than a measured
+ * viewport width, so it is correct before JavaScript runs and stays correct if
+ * JavaScript never does. Only the menu's open/closed state needs script.
+ */
+const projects = await getProjects();
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+
+/** A nav item is current when the path matches, or sits under it. */
+const isCurrent = (href: string) =>
+  href === '/'
+    ? path === '/' || path.startsWith('/work')
+    : path === href || path.startsWith(`${href}/`);
 ---
 
-<header class="header">
-  <div class="container header__inner">
-    <a class="header__brand" href="/">
-      <span class="header__mark">{company.shortName}</span>
-      <span class="header__name">
-        {company.name}
-        <span class="header__tagline">{company.tagline}</span>
-      </span>
+<header class="masthead on-dark">
+  <div class="masthead__inner">
+    <a class="masthead__logo" href="/">
+      <img src={logo.src} alt={company.name} width="300" height="96" />
     </a>
 
-    <nav class="header__nav" aria-label="Primary">
-      <ul class="header__list">
-        {
-          primaryNav.map((item) => (
-            <li>
-              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+    <nav class="masthead__nav" aria-label="Primary">
+      {
+        primaryNav.map((item) => (
+          <a
+            href={item.href}
+            class:list={['masthead__link', { 'is-current': isCurrent(item.href) }]}
+            aria-current={isCurrent(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
     </nav>
 
-    <a class="header__phone" href={`tel:${primaryPhone.tel}`}>
-      <span class="visually-hidden">Call {company.name} at </span>
-      {primaryPhone.display}
-    </a>
+    <button
+      type="button"
+      class="masthead__burger"
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      data-menu-open
+    >
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <div class="masthead__rule"></div>
 </header>
 
-<style>
+<div class="drawer on-dark" id="mobile-menu" hidden data-menu>
+  <div class="drawer__top">
+    <img src={logo.src} alt={company.name} width="300" height="96" />
+    <button type="button" class="drawer__close" aria-label="Close menu" data-menu-close
+      >&times;</button
+    >
+  </div>
+
+  <div class="rule-accent drawer__bar"></div>
+
+  <nav class="drawer__nav" aria-label="Primary">
+    {
+      primaryNav.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
+
+  <p class="kicker kicker--on-dark drawer__heading">Projects</p>
+  <nav class="drawer__projects" aria-label="Projects">
+    {projects.map((project) => <a href={projectHref(project)}>{project.data.name}</a>)}
+  </nav>
+
+  <a class="btn btn--amber drawer__call" href={`tel:${primaryPhone.tel}`}>
+    Call {primaryPhone.display}
+  </a>
+</div>
+
+<script>
   /*
-   * Placeholder chrome. This is a working header, not the designed one.
-   * The mobile nav is a plain wrapping list rather than a drawer, so there
-   * is no JS behavior here to unpick when the real design arrives.
+   * Open and close the mobile drawer.
+   *
+   * The drawer uses the `hidden` attribute rather than a CSS class so it is
+   * genuinely out of the accessibility tree when closed, and focus moves into
+   * it on open and back to the burger on close.
    */
-  .header {
-    border-block-end: 1px solid var(--color-border);
-    background: var(--color-bg);
+  const burger = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+  const drawer = document.querySelector<HTMLElement>('[data-menu]');
+  const close = document.querySelector<HTMLButtonElement>('[data-menu-close]');
+
+  if (burger && drawer && close) {
+    const setOpen = (open: boolean) => {
+      drawer.hidden = !open;
+      burger.setAttribute('aria-expanded', String(open));
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+      if (open) close.focus();
+      else burger.focus();
+    };
+
+    burger.addEventListener('click', () => setOpen(true));
+    close.addEventListener('click', () => setOpen(false));
+
+    // A link tap navigates, so the drawer does not need closing first; Escape
+    // is the only other way out.
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !drawer.hidden) setOpen(false);
+    });
+  }
+</script>
+
+<style>
+  .masthead {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--gmz-teal);
   }
 
-  .header__inner {
+  .masthead__inner {
+    max-width: var(--width-content);
+    margin-inline: auto;
+    padding: 1rem var(--gutter);
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    gap: var(--space-md) var(--space-lg);
-    padding-block: var(--space-md);
+    gap: var(--space-lg);
   }
 
-  .header__brand {
+  .masthead__logo {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    color: var(--color-text);
+    flex: none;
     text-decoration: none;
-    margin-inline-end: auto;
   }
 
-  .header__mark {
-    display: grid;
-    place-items: center;
-    inline-size: 2.5rem;
-    block-size: 2.5rem;
-    border-radius: var(--radius-md);
-    background: var(--color-accent);
-    color: var(--color-accent-contrast);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: var(--text-sm);
-    letter-spacing: 0.04em;
+  .masthead__logo img {
+    height: 62px;
+    width: auto;
   }
 
-  .header__name {
+  .masthead__nav {
+    display: flex;
+    gap: 1.875rem;
+    font-size: 1rem;
+    font-weight: 500;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .masthead__link {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.78;
+    border-block-end: 2px solid transparent;
+    padding-block-end: 3px;
+    transition: opacity var(--transition);
+  }
+
+  .masthead__link:hover {
+    color: #fff;
+    opacity: 1;
+  }
+
+  .masthead__link.is-current {
+    opacity: 1;
+    border-block-end-color: var(--gmz-amber);
+  }
+
+  .masthead__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 11px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex: none;
+  }
+
+  .masthead__burger span {
+    width: 26px;
+    height: 2px;
+    background: #fff;
+    display: block;
+  }
+
+  .masthead__rule {
+    height: 4px;
+    background: var(--gmz-amber);
+  }
+
+  @media (width < 760px) {
+    .masthead__nav {
+      display: none;
+    }
+
+    .masthead__burger {
+      display: flex;
+    }
+
+    .masthead__logo img {
+      height: 48px;
+    }
+  }
+
+  /* ---- Drawer ---------------------------------------------------------- */
+
+  .drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: var(--gmz-teal);
+    padding: var(--space-lg) var(--gutter);
     display: flex;
     flex-direction: column;
-    font-family: var(--font-heading);
-    font-size: var(--text-lg);
-    line-height: var(--leading-tight);
+    overflow-y: auto;
+    animation: gmzFade 220ms var(--ease) both;
   }
 
-  .header__tagline {
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+  .drawer[hidden] {
+    display: none;
   }
 
-  .header__list {
+  .drawer__top {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-lg);
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .header__list a {
-    color: var(--color-text);
+  .drawer__top img {
+    height: 54px;
+    width: auto;
+  }
+
+  .drawer__close {
+    font-family: var(--font-body);
+    font-size: 1.875rem;
+    line-height: 1;
+    color: #fff;
+    background: transparent;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+  }
+
+  .drawer__bar {
+    width: 56px;
+    margin-block-start: 1.375rem;
+  }
+
+  .drawer__nav {
+    display: flex;
+    flex-direction: column;
+    margin-block-start: 1.625rem;
+  }
+
+  .drawer__nav a {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-heading);
+    color: #fff;
     text-decoration: none;
-    font-size: var(--text-sm);
+    padding-block: 1rem;
+    border-block-end: 1px solid rgb(255 255 255 / 20%);
   }
 
-  .header__list a:hover,
-  .header__list a[aria-current='page'] {
-    color: var(--color-accent);
+  .drawer__heading {
+    margin-block-start: 1.625rem;
   }
 
-  .header__list a[aria-current='page'] {
-    text-decoration: underline;
-    text-underline-offset: 0.4em;
+  .drawer__projects {
+    display: flex;
+    flex-direction: column;
   }
 
-  .header__phone {
-    font-size: var(--text-sm);
+  .drawer__projects a {
+    font-size: 1.1875rem;
     font-weight: 600;
+    color: #fff;
+    opacity: 0.86;
     text-decoration: none;
-    white-space: nowrap;
+    padding-block: 0.8125rem;
+    border-block-end: 1px solid rgb(255 255 255 / 14%);
+  }
+
+  .drawer__call {
+    margin-block-start: 1.75rem;
+    padding: 1.0625rem;
   }
 </style>
