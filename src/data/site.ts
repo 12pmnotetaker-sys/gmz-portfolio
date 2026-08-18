@@ -213,8 +213,16 @@ export const gate = {
   enabled: true,
   /** Compared case-insensitively after trimming. */
   code: 'cersis',
-  /** localStorage key holding the unlocked flag. */
-  storageKey: 'gmz-portfolio-unlocked',
+  /**
+   * localStorage key holding the unlocked flag.
+   *
+   * Bumping this suffix re-locks every browser that had already unlocked,
+   * because the old flag is stored under the old key and nothing reads it any
+   * more. Changing `code` alone does not do that: someone who unlocked with a
+   * previous code stays through the veil until this key changes too. Bump it
+   * when the point is to revoke access rather than just to change the word.
+   */
+  storageKey: 'gmz-portfolio-unlocked-2',
 } as const;
 
 export interface NavItem {
