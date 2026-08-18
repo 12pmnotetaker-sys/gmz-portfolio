@@ -190,8 +190,8 @@ will point at the default.
 - [x] Add the 7 local walkthrough videos to `public/media/`
 - [x] Replace the placeholder logo with the real GMZ mark
 - [x] Replace the favicon and the Open Graph image
-- [ ] Copy the six remaining Google Drive walkthroughs into `public/media/` so
-      the site does not depend on Drive sharing staying on
+- [x] Copy the six remaining Google Drive walkthroughs into `public/media/` so
+      the site does not depend on Drive sharing staying on (done 2026-08-17)
 - [ ] Review the photography once more for anything a client would not want
       shown, since git history keeps whatever is committed
 - [x] Wire up and **test** the contact form (Netlify Forms, one real

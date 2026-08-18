@@ -13,7 +13,7 @@ hero:
   alt: 'Looking straight down on a terraced garden, with gravel treads in timber frames curving between deck rails, planting beds either side and lawn beyond.'
 walkthrough:
   note: 'The whole garden walked end to end.'
-  drive: '19w-2Q29bPvUFtQN2pWhedwJflfogV8li'
+  file: 'viewridge-walkthrough.mp4'
   beforeAfterHeading: 'Two spaces, before and after'
   beforeAfterNote: 'The side run and the upper terrace, each shown as we found it and as it was finished.'
   beforeAfter:

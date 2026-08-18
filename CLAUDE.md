@@ -105,9 +105,16 @@ replacing that one file updates the header, drawer, footer and veil together.
 `npm run brand`. Re-run it after changing the logo rather than editing them by
 hand.
 
-Six walkthroughs are live Google Drive embeds. They work only while those Drive
-files stay link-shared, and nothing at build time can check that. Copy them into
-`public/media/` when the files are to hand.
+Every walkthrough is a local file in `public/media/`. Six of them were Google
+Drive embeds until 2026-08-17, which meant those films played only while the
+Drive files stayed link-shared, and nothing at build time could catch it if
+sharing was turned off. Nothing on the site depends on Drive now.
+
+Three of those six arrived carrying GPS coordinates for the client property, plus
+the phone make and model. They were transcoded to 720p with `-map_metadata -1`,
+which strips every tag, before anything was committed. That is what the rule
+above is for: the originals were 490 MB of camera files with location data in
+them, and a commit would have put those coordinates in the history permanently.
 
 ## Settled, so nobody re-opens them
 

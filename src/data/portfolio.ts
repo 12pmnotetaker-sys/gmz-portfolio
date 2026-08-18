@@ -151,20 +151,20 @@ export const PROCESS_STEPS = [
  * carry. Omit `note` and the project's own wording is used.
  */
 const WALKTHROUGH_INDEX: (
-  | { name: string; meta: string; note: string; drive: string }
+  | { name: string; meta: string; note: string; file: string }
   | { project: string; meta: string; note?: string }
 )[] = [
   {
     name: 'Planting and garden management',
     meta: 'Planting · Ongoing garden management',
     note: 'Planting and garden management on this property, walked on video.',
-    drive: '1_2M49dpqddUvvd1Q92mX5E716ApzuNkG',
+    file: 'planting-garden-management.mp4',
   },
   {
     name: 'Garden walkthrough',
     meta: 'Built · Hardscape and planting',
     note: 'A walking video of the finished garden, recorded on completion.',
-    drive: '1XD3K5hzIqVXh6l-QemfIWu0zbSIWerrH',
+    file: 'garden-walkthrough.mp4',
   },
   {
     project: 'viewridge',
@@ -198,7 +198,7 @@ export async function getWalkthroughs(): Promise<Walkthrough[]> {
 
   return WALKTHROUGH_INDEX.map((entry) => {
     if (!('project' in entry)) {
-      return { name: entry.name, meta: entry.meta, note: entry.note, drive: entry.drive };
+      return { name: entry.name, meta: entry.meta, note: entry.note, file: entry.file };
     }
 
     const project = projects.find((p) => p.id === entry.project);

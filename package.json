@@ -18,7 +18,7 @@
     "format:check": "prettier --check .",
     "astro": "astro",
     "faq:decisions": "node scripts/faq-decisions.mjs",
-    "placeholders": "node scripts/make-portfolio-placeholders.mjs",
+    "placeholders": "node scripts/make-portfolio-placeholders.mjs && prettier --write ASSETS.md --log-level warn",
     "brand": "node --experimental-strip-types scripts/make-brand-images.mjs"
   },
   "dependencies": {

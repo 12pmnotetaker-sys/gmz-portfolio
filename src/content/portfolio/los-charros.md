@@ -13,7 +13,7 @@ hero:
   alt: 'A replanted hillside bank with grasses, kangaroo paw and salvia set through bark around a dry creek of cobble and river rock.'
 walkthrough:
   note: 'The finished slope walked end to end, from the deck down past the dry creek.'
-  drive: '1QlkDbfTV4eDzwr9PlRItXyB4-nWYPKIY'
+  file: 'loscharros-walkthrough.mp4'
 built:
   - label: 'The bank · Before'
     src: '../../assets/portfolio/los-charros/loscharros-before.webp'
