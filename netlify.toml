@@ -5,6 +5,12 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# notify-unlock.mjs emails GMZ when someone enters the consultation code. It is
+# inert unless RESEND_API_KEY and NOTIFY_EMAIL_TO are set, so previews and local
+# runs never send mail.
+[functions]
+  directory = "netlify/functions"
+
 # Astro emits a static 404.html; Netlify serves it automatically.
 
 [[headers]]

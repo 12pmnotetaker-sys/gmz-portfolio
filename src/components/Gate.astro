@@ -50,7 +50,14 @@ import Logo from '@components/Logo.astro';
   <p class="veil__legal">{licenseShort} · {company.address.locality}, California</p>
 </div>
 
-<script is:inline define:vars={{ code: gate.code, storageKey: gate.storageKey }}>
+<script
+  is:inline
+  define:vars={{
+    code: gate.code,
+    storageKey: gate.storageKey,
+    notifiedKey: `${gate.storageKey}-notified`,
+  }}
+>
   /*
    * Inline rather than bundled, because the veil has to resolve in the same
    * tick the page paints. The matching `data-locked` flag is set by the
@@ -99,6 +106,33 @@ import Logo from '@components/Logo.astro';
           window.localStorage.setItem(storageKey, '1');
         } catch {
           /* Private browsing. The veil still lifts for this page view. */
+        }
+
+        /*
+         * Tell the office someone got in. Once per visit, not per page: the
+         * flag lives in sessionStorage, so it clears when the tab closes but
+         * survives navigation within the visit.
+         *
+         * Fire and forget. The response is ignored and every failure is
+         * swallowed, because an unreachable endpoint must never stop the veil
+         * lifting. keepalive lets the request outlive the page if the visitor
+         * navigates immediately.
+         */
+        try {
+          if (!window.sessionStorage.getItem(notifiedKey)) {
+            window.sessionStorage.setItem(notifiedKey, '1');
+            void fetch('/.netlify/functions/notify-unlock', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                path: window.location.pathname,
+                referrer: document.referrer,
+              }),
+              keepalive: true,
+            }).catch(() => {});
+          }
+        } catch {
+          /* Storage unavailable. Skip the notification rather than repeat it. */
         }
 
         veil.dataset.open = '1';
