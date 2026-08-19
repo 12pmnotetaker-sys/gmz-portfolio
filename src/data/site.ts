@@ -231,15 +231,22 @@ export interface NavItem {
 }
 
 /**
- * Primary navigation, in the order the design sets it. "Answers" is the
- * customer-question library kept from the public scaffold; everything else
- * comes straight from the portfolio design.
+ * Primary navigation, in the order the design sets it.
+ *
+ * About and Answers are deliberately off the menu as of 2026-08-18, while GMZ
+ * reworks both. Restore them by putting these two entries back in place:
+ *
+ *     { label: 'About', href: '/about' },      // after Walkthroughs
+ *     { label: 'Answers', href: '/faq' },      // after Services
+ *
+ * The pages themselves still build and stay reachable at /about, /faq and
+ * /straight-answers, so a direct link still works. This hides them from anyone
+ * browsing; it does not take them down. Removing a page from the nav is the
+ * only thing that changed, so do not read this as the answers being retired.
  */
 export const primaryNav: NavItem[] = [
   { label: 'The Work', href: '/' },
   { label: 'Walkthroughs', href: '/walkthroughs' },
-  { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Answers', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
