@@ -212,7 +212,7 @@ export const site = {
 export const gate = {
   enabled: true,
   /** Compared case-insensitively after trimming. */
-  code: 'cersis',
+  code: 'cercis',
   /**
    * localStorage key holding the unlocked flag.
    *
