@@ -155,6 +155,9 @@ result together.
 | `SITE_URL`                  | Production origin. Defaults to `https://www.gmzlandscape.com`. Canonical and OG URLs |
 | `PUBLIC_CONTACT_ENDPOINT`   | Where the consultation form posts. Unset means Netlify Forms                         |
 | `PUBLIC_CF_ANALYTICS_TOKEN` | Cloudflare Web Analytics beacon token. Unset means no analytics at all               |
+| `RESEND_API_KEY`            | Resend key for the unlock notification. Unset means no email is sent                 |
+| `NOTIFY_EMAIL_TO`           | Inbox that receives the unlock notification. Unset means no email is sent            |
+| `NOTIFY_EMAIL_FROM`         | Sender address. Defaults to `onboarding@resend.dev`, which only reaches your own     |
 
 The contact form carries `data-netlify="true"`, so **on Netlify** it is
 collected without any endpoint. It posts over `fetch` and shows the thank-you
