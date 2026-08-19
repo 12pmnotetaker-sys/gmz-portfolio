@@ -1,0 +1,39 @@
+---
+/**
+ * Cloudflare Web Analytics.
+ *
+ * Counts visits, pages and referrers. It answers "did anyone open the link,
+ * and when", which is what GMZ asked for. It deliberately does not answer
+ * "who": there are no cookies, no cross-site identifiers and no visitor
+ * profiles, so nothing here can name a client or follow one around the web.
+ *
+ * Inert until PUBLIC_CF_ANALYTICS_TOKEN is set, so local development and any
+ * preview build stay untracked and the numbers reflect real visitors rather
+ * than our own builds. Set it in the host's environment variables, the same
+ * way SITE_URL is set, and rebuild: environment variables are read at build
+ * time, so saving one changes nothing until a new build runs.
+ *
+ * Two things worth knowing before trusting the numbers:
+ *
+ * 1. The veil is client-side, so the page is delivered and counted before
+ *    anyone types the code. A visit therefore includes people who arrived and
+ *    gave up at the veil. Cloudflare's free tier is pageviews only, with no
+ *    custom events, so it cannot separate "opened the link" from "got in". If
+ *    that distinction starts to matter, a tool with custom events is needed.
+ *
+ * 2. It is a script, so ad blockers and JavaScript-off visitors are missed.
+ *    Expect a genuine undercount rather than a precise figure.
+ */
+const token = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
+---
+
+{
+  token && (
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={JSON.stringify({ token })}
+    />
+  )
+}
