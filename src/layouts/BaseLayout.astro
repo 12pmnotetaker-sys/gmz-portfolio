@@ -5,6 +5,7 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import Gate from '@components/Gate.astro';
 import GateFlag from '@components/GateFlag.astro';
+import Analytics from '@components/Analytics.astro';
 import { gate } from '@data/site';
 
 interface Props {
@@ -74,5 +75,6 @@ const hideFromSearch = noindex || gated;
     </main>
     {chrome && <Footer />}
     {gated && <Gate />}
+    <Analytics />
   </body>
 </html>

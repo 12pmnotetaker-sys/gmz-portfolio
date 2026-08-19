@@ -150,10 +150,11 @@ result together.
 
 ## Configuration
 
-| Variable                  | Purpose                                                                              |
-| ------------------------- | ------------------------------------------------------------------------------------ |
-| `SITE_URL`                | Production origin. Defaults to `https://www.gmzlandscape.com`. Canonical and OG URLs |
-| `PUBLIC_CONTACT_ENDPOINT` | Where the consultation form posts. Unset means Netlify Forms                         |
+| Variable                    | Purpose                                                                              |
+| --------------------------- | ------------------------------------------------------------------------------------ |
+| `SITE_URL`                  | Production origin. Defaults to `https://www.gmzlandscape.com`. Canonical and OG URLs |
+| `PUBLIC_CONTACT_ENDPOINT`   | Where the consultation form posts. Unset means Netlify Forms                         |
+| `PUBLIC_CF_ANALYTICS_TOKEN` | Cloudflare Web Analytics beacon token. Unset means no analytics at all               |
 
 The contact form carries `data-netlify="true"`, so **on Netlify** it is
 collected without any endpoint. It posts over `fetch` and shows the thank-you
