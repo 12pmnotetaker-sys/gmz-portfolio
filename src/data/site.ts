@@ -212,7 +212,7 @@ export const site = {
 export const gate = {
   enabled: true,
   /** Compared case-insensitively after trimming. */
-  code: 'cersis',
+  code: 'cercis',
   /**
    * localStorage key holding the unlocked flag.
    *
@@ -222,7 +222,7 @@ export const gate = {
    * previous code stays through the veil until this key changes too. Bump it
    * when the point is to revoke access rather than just to change the word.
    */
-  storageKey: 'gmz-portfolio-unlocked-2',
+  storageKey: 'gmz-portfolio-unlocked-3',
 } as const;
 
 export interface NavItem {
